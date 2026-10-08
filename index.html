@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="pt" class="theme-default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakura Health | Clínica de Saúde & Bem-Estar | Longevidade e Medicina Integrativa</title>
+  <meta name="description" content="Na Hakura promovemos o equilíbrio harmonioso entre corpo, mente e longevidade. Diagnóstico clínico de precisão e cuidados integrativos. Há cura para tudo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/hakura.css">
+  <style>
+    /* Hakura Senior Typography & Base System */
+    :root {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background, #ffffff);
+      color: var(--foreground, #1A202C);
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Ensure Mux picture backgrounds are sharp and visible */
+    picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Smooth carousel scrolling */
+    [data-slot="carousel-content"] {
+      scroll-behavior: smooth;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    [data-slot="carousel-content"]::-webkit-scrollbar {
+      display: none;
+    }
+    /* Modal styles */
+    .hakura-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .hakura-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .hakura-modal-card {
+      background: #ffffff;
+      color: #000000;
+      border-radius: 28px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 36px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: translateY(16px);
+      transition: transform 0.25s ease;
+    }
+    .hakura-modal-overlay.open .hakura-modal-card {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="antialiased font-sans theme-default">
+
+<!-- Hakura Ambient Glow (Lava Lamp Effect) -->
+<div class="hakura-ambient-glow" aria-hidden="true">
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+</div>
+
+
+<header data-site-header="" class="hakura-site-header theme-default transition-colors duration-300 sticky top-0 z-[100] bg-white/70 backdrop-blur-xl border-b border-slate-100/50 xpad grid grid-cols-[1fr_auto_1fr] gap-6 h-[74px] items-center">
+  <div class="transition-colors duration-300 flex items-center">
+    <a aria-label="Hakura Home" class="hakura-nav-logo transition-transform hover:scale-105 shrink-0 block" href="#scan" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;display:block!important;border-radius:12px!important;overflow:hidden!important;">
+      <img src="./assets/images/hakura_official_logo.png" alt="Hakura" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;object-fit:cover!important;border-radius:12px!important;display:block!important;" />
+    </a>
+  </div>
+  <nav class="transition-all duration-300 opacity-100 translate-y-0 flex justify-center">
+    <ul class="flex items-center gap-7 lg:gap-10">
+      <li><a href="#especialidades"><span class="text-[13px] lg:text-[14px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">ESPECIALIDADES</span></a></li>
+      <li><a href="#equipa"><span class="text-[13px] lg:text-[14px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">EQUIPA</span></a></li>
+      <li><a href="#sobre"><span class="text-[13px] lg:text-[14px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">SOBRE</span></a></li>
+      <li><a href="#blog"><span class="text-[13px] lg:text-[14px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">BLOG</span></a></li>
+      <li><a href="#contactos" id="hakuraNavContactLink"><span class="text-[13px] lg:text-[14px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">CONTACTOS</span></a></li>
+    </ul>
+  </nav>
+  <div class="flex justify-end transition-colors duration-300 items-center">
+    <a class="hakura-header-cta" href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer">
+      <span>Marcar Consulta</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px!important;height:14px!important;min-width:14px!important;max-width:14px!important;min-height:14px!important;max-height:14px!important;stroke:currentColor!important;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</header>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.hakura.pt/#organization",
+      "name": "Hakura Health",
+      "url": "https://www.hakura.pt",
+      "legalName": "Hakura Health Lda.",
+      "email": "geral@hakura.pt",
+      "telephone": "+351 964 166 845",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Estrada Salgados, Urbanização Monte Galé, N.º 39, 3.º",
+        "addressLocality": "Albufeira",
+        "postalCode": "8200-428",
+        "addressCountry": "PT"
+      },
+      "sameAs": [
+        "https://www.instagram.com/hakura.pt/",
+        "https://www.facebook.com/hakura.pt/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.hakura.pt/#website",
+      "name": "Hakura Health | Clínica de Saúde & Bem-Estar",
+      "url": "https://www.hakura.pt",
+      "publisher": { "@id": "https://www.hakura.pt/#organization" }
+    }
+  ]
+}
+</script>
+<section data-slicetype="mainHero" class="relative w-full h-svh min-h-[100vh] overflow-hidden bg-slate-950 flex flex-col justify-center items-center">
+  <!-- Video Background Layer (Nature Macro Video from Gemini Share) -->
+  <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-slate-950 will-change-[top,right,bottom,left,border-radius] hero-video-card" aria-hidden="true">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <video id="heroVideoEl" playsinline autoplay muted loop class="absolute inset-0 block size-full object-cover pointer-events-none z-0" style="width:100%;height:100%;object-fit:cover;">
+        <source src="./assets/videos/hakura_hero_nature.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay absolute inset-0 pointer-events-none z-[1]" style="background: linear-gradient(to bottom, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.2) 45%, rgba(15, 23, 42, 0.65) 100%);"></div>
+    </div>
+  </div>
+
+  <!-- Perfectly Vertically Centered Hero Content -->
+  <div class="xpad hero-content-wrapper relative z-10 flex h-full min-h-svh w-full flex-col justify-between items-center text-center">
+    <!-- Top Spacer for Header Balance -->
+    <div class="w-full h-2 md:h-4 pointer-events-none"></div>
+
+    <!-- Centered Display Headline & Subtitle -->
+    <div class="flex flex-col items-center my-auto max-w-4xl px-4">
+      <h1 class="font-display text-[52px] leading-[1.04] sm:text-[72px] md:text-[98px] lg:text-[106px] font-normal text-white drop-shadow-md tracking-[-0.02em] max-w-[20ch] text-balance hero-reveal">
+        Clínica de Saúde<br />&amp; Bem-estar
+      </h1>
+      <p class="hero-subtitle mt-6 md:mt-8 text-[18px] md:text-[23px] font-normal text-white/90 text-center max-w-[50ch] leading-relaxed drop-shadow-sm hero-reveal">
+        Harmonização perfeita entre o holístico e o tradicional.
+      </p>
+
+      <!-- Main CTA Button -->
+      <div class="mt-10 md:mt-12 hero-reveal pointer-events-auto">
+        <a id="heroCtaBtn" class="hero-cta-primary group pointer-events-auto" href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer">
+          <span>Marcar Consulta</span>
+          <svg viewBox="0 0 24 24" fill="none" class="size-5 shrink-0 transition-transform group-hover:translate-x-1" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom CTA Button (CONHECE A HAKURA ↓) - Liquid Glass -->
+    <div class="flex flex-col items-center pb-10 md:pb-14">
+      <a href="#especialidades" class="hero-cta-btn hero-reveal pointer-events-auto group" aria-label="Conhece a Hakura">
+        <span>CONHECE A HAKURA</span>
+        <svg viewBox="0 0 24 24" fill="none" class="size-4 shrink-0 transition-transform group-hover:translate-y-1" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section><!-- ==========================================================================
+     NEKO HEALTH 1:1 EDITORIAL HERO TRANSITION SECTION
+     ========================================================================== -->
+<div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:9d92e4d58088;base=https%3A%2F%2Fwww.nekohealth.com">
+  <section id="sobre" data-slicetype="headingAndButton" class="hakura-hero-editorial-slice hakura-reveal relative overflow-hidden py-24 md:py-32">
+    <!-- Subtle Organic Floating Blue Dots Particles Canvas Layer -->
+    <canvas id="hakuraEditorialParticlesCanvas" class="pointer-events-none absolute inset-0 z-0 block w-full h-full" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const canvas = document.getElementById("hakuraEditorialParticlesCanvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        
+        let particles = [];
+        let numParticles = 120; // Increased density
+        
+        function resize() {
+          canvas.width = canvas.parentElement.offsetWidth;
+          canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.radius = Math.random() * 2.5 + 1.2;
+            this.baseAlpha = Math.random() * 0.5 + 0.35;
+            this.color = "rgba(55, 156, 183, " + this.baseAlpha + ")"; // Azul mais intenso e visível
+          }
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+          }
+          draw(ctx) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+          }
+        }
+        
+        for(let i = 0; i < numParticles; i++) {
+          particles.push(new Particle());
+        }
+        
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => {
+            p.update();
+            p.draw(ctx);
+          });
+          requestAnimationFrame(animate);
+        }
+        animate();
+      });
+    </script>
+
+    <div class="xpad relative z-10">
+      <div class="grid-default">
+        <div class="col-span-full flex flex-col items-center text-center gap-10 md:gap-14 md:col-[2/-2] lg:col-[3/-3]">
+          <h2 id="hakuraEditorialHeading" class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 text-balance text-slate-900">
+            <span class="hakura-reveal-word">Na</span> <span class="hakura-reveal-word">Hakura,</span> <span class="hakura-reveal-word">harmonizamos</span> <span class="hakura-reveal-word">corpo,</span> <span class="hakura-reveal-word">mente</span> <span class="hakura-reveal-word">e</span> <span class="hakura-reveal-word">espírito.</span> <span class="hakura-reveal-word">Unimos</span> <span class="hakura-reveal-word">a</span> <span class="hakura-reveal-word">medicina</span> <span class="hakura-reveal-word">tradicional</span> <span class="hakura-reveal-word">às</span> <span class="hakura-reveal-word">práticas</span> <span class="hakura-reveal-word">holísticas</span> <span class="hakura-reveal-word">para</span> <span class="hakura-reveal-word">lhe</span> <span class="hakura-reveal-word">oferecer</span> <span class="hakura-reveal-word">um</span> <span class="hakura-reveal-word">atendimento</span> <span class="hakura-reveal-word">único</span> <span class="hakura-reveal-word">e</span> <span class="hakura-reveal-word">acolhedor.</span>
+          </h2>
+          <div>
+            <a class="hakura-header-cta" href="https://hakura.pt/sobre-nos/" target="_blank" rel="noopener noreferrer">
+              <span>Sobre nós</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px!important;height:14px!important;min-width:14px!important;max-width:14px!important;min-height:14px!important;max-height:14px!important;stroke:currentColor!important;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:049b4c5cb02f;base=https%3A%2F%2Fwww.nekohealth.com"><section id="especialidades" data-slicetype="scanProductExplainer" class="theme-yellow hakura-reveal text-foreground bg-background !min-h-0 !overflow-x-visible"><div class="hidden md:block"><div class="relative"><div class="xpad pointer-events-none invisible absolute inset-x-0 top-0 h-px" aria-hidden="true"><div class="grid-default h-full"><div class="col-[1/6] h-full"></div></div></div><div class="relative md:motion-safe:min-h-[calc(var(--sticky-runway)*100svh)]" style="--sticky-runway:5.7"><div class="sticky top-0 h-svh w-full overflow-hidden"><div class="absolute inset-0 z-0 overflow-hidden theme-default" aria-hidden="true"><div class="focus-clip-bg-rest absolute inset-x-0 top-0 bottom-0 bg-background will-change-[clip-path]"></div></div><div class="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true"><div class="focus-clip-asset-rest absolute inset-x-0 top-0 bottom-0 will-change-[clip-path,transform]" style="z-index:1"><div class="focus-clip-asset-shift-rest absolute inset-0 will-change-transform"><div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden"><div class="overflow-hidden absolute inset-0 block h-full w-full"><img alt="" aria-hidden="true" class="absolute inset-0 block h-full w-full object-cover z-10" src="./assets/images/hakura_real_doctors.jpg"><video loop="" playsinline="" class="absolute inset-0 block h-full w-full object-cover opacity-0" preload="none" src="" style="display:none"><track kind="metadata" label="cuepoints" data-removeondestroy=""><track kind="chapters" label="chapters" data-removeondestroy="" src=""></video></div></div></div></div><div class="focus-clip-asset-rest absolute inset-x-0 top-0 bottom-0 will-change-[clip-path,transform]" style="z-index:2"><div class="focus-clip-asset-shift-rest absolute inset-0 will-change-transform"><div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden"><div class="overflow-hidden absolute inset-0 block h-full w-full"><img alt="" aria-hidden="true" class="absolute inset-0 block h-full w-full object-cover z-10" src="./assets/images/hakura_real_spa.jpg"><video loop="" playsinline="" class="absolute inset-0 block h-full w-full object-cover opacity-0" preload="none" src="" style="display:none"><track kind="metadata" label="cuepoints" data-removeondestroy=""><track kind="chapters" label="chapters" data-removeondestroy="" src=""></video></div></div></div></div><div class="focus-clip-asset-rest absolute inset-x-0 top-0 bottom-0 will-change-[clip-path,transform]" style="z-index:3"><div class="focus-clip-asset-shift-rest absolute inset-0 will-change-transform"><div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden"><img src="./assets/images/hakura_pilar_3.png" srcset="https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C0%2C2418%2C2835&amp;w=600&amp;q=75&amp;fit=max&amp;auto=format 600w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C0%2C2418%2C2835&amp;w=1200&amp;q=75&amp;fit=max&amp;auto=format 1200w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C0%2C2418%2C2835&amp;w=1800&amp;q=75&amp;fit=max&amp;auto=format 1800w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C0%2C2418%2C2835&amp;w=2400&amp;q=75&amp;fit=max&amp;auto=format 2400w" sizes="(min-width: 980px) 2400px, 100vw" alt="" width="2400" height="1600" loading="lazy" decoding="async" class="max-w-full block h-full w-full object-cover" style="object-position:52.9% 50%"></div></div></div><div class="focus-clip-asset-rest absolute inset-x-0 top-0 bottom-0 will-change-[clip-path,transform]" style="z-index:4"><div class="focus-clip-asset-shift-rest absolute inset-0 will-change-transform"><div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden"><img src="./assets/images/hakura_pilar_aesthetic.png" srcset="https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?w=600&amp;q=75&amp;fit=max&amp;auto=format 600w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?w=1200&amp;q=75&amp;fit=max&amp;auto=format 1200w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?w=1800&amp;q=75&amp;fit=max&amp;auto=format 1800w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?w=2060&amp;q=75&amp;fit=max&amp;auto=format 2060w" sizes="(min-width: 980px) 2400px, 100vw" alt="" width="2400" height="2398" loading="lazy" decoding="async" class="max-w-full block h-full w-full object-cover" style="object-position:50% 46.6%"></div></div></div></div><div class="relative z-40 h-svh w-full text-foreground theme-default"><div class="xpad pointer-events-none absolute inset-x-0 top-0 h-svh"><div class="grid-default h-full"><div class="col-span-full flex h-full flex-col items-start md:col-[7/12] justify-start pt-[calc(var(--site-header-height-mobile)+40px)] pb-[calc(var(--site-header-height-mobile)+40px)] md:pt-[calc(var(--site-header-height-desktop)+40px)] md:pb-[calc(var(--site-header-height-desktop)+40px)] pl-6 md:pl-16 lg:pl-24"><div class="flex w-full flex-col items-start"><span class="text-[12px] md:text-[13px] text-[#379cb7] font-bold tracking-[0.2em] mb-2 uppercase">HAKURA</span><nav aria-label="Product features" class="pointer-events-auto w-full"><ul class="flex items-center gap-6 md:gap-10 whitespace-nowrap overflow-x-auto no-scrollbar pb-2"><li><button type="button" aria-current="step" class="cursor-pointer bg-transparent p-0 text-left transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground opacity-100"><span class="text-[14px] leading-[16px] tracking-[0.6px] font-medium uppercase md:text-[16px] md:leading-[20px]">MEDICAL</span></button></li><li><button type="button" class="cursor-pointer bg-transparent p-0 text-left transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[14px] leading-[16px] tracking-[0.6px] font-medium uppercase md:text-[16px] md:leading-[20px]">SPA</span></button></li><li><button type="button" class="cursor-pointer bg-transparent p-0 text-left transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[14px] leading-[16px] tracking-[0.6px] font-medium uppercase md:text-[16px] md:leading-[20px]">HOLISTIC</span></button></li><li><button type="button" class="cursor-pointer bg-transparent p-0 text-left transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[14px] leading-[16px] tracking-[0.6px] font-medium uppercase md:text-[16px] md:leading-[20px]">AESTHETIC</span></button></li></ul></nav>          
+          <h2 class="hakura-explainer-title font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 text-balance text-slate-900 mb-4">
+            Diagnóstico clínico avançado e cardiologia de precisão
+</h2></div><div class="opacity-0" style="opacity:1;transform:none"><p class="hakura-explainer-desc text-[16px] md:text-[18px] leading-relaxed text-slate-600 max-w-xl mb-6">Monitorização cardiovascular contínua, eletrocardiograma e análises laboratoriais imediatas lideradas por médicos especialistas.</p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] font-medium md:text-[18px] text-slate-900">Saber mais</span></a></div></div></div></div></div></div></div></div><div class="xpad pointer-events-none invisible absolute inset-x-0 top-0" aria-hidden="true"><div class="grid-default"><div class="col-span-full md:col-[7/12]"><div><div class="flex w-full flex-col items-start gap-y-6 md:gap-y-8"><div style="opacity:1;transform:none"><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 horizon-reveal text-balance" aria-label="A sua pele, em maior detalhe do que alguma vez viu"><div class="horizon-word-mask horizon-word1-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word1" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">Your</div></div> <div class="horizon-word-mask horizon-word2-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word2" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">skin,</div></div> <div class="horizon-word-mask horizon-word3-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word3" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">in</div></div> <div class="horizon-word-mask horizon-word4-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word4" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">more</div></div> <div class="horizon-word-mask horizon-word5-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word5" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">detail</div></div> <div class="horizon-word-mask horizon-word6-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word6" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">than</div></div> <div class="horizon-word-mask horizon-word7-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word7" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">you’ve</div></div> <div class="horizon-word-mask horizon-word8-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word8" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">ever</div></div> <div class="horizon-word-mask horizon-word9-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word9" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">seen</div></div> <div class="horizon-word-mask horizon-word10-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word10" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">before</div></div> </h2></div><div class="opacity-0" style="opacity:1;transform:none"><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px]">A Hakura mapeia toda a sua pele em alta definição, monitorizando cada sinal e alteração para máxima prevenção dermatológica.</p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] -tracking-[0.1px] font-medium md:text-[18px] group-disabled:text-disabled-foreground">Saber mais</span></a></div></div></div></div><div><div class="flex w-full flex-col items-start gap-y-6 md:gap-y-8"><div style="opacity:1;transform:none"><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 horizon-reveal text-balance" aria-label="Uma visão detalhada do desempenho do seu coração"><div class="horizon-word-mask horizon-word1-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word1" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">An</div></div> <div class="horizon-word-mask horizon-word2-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word2" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">in-depth</div></div> <div class="horizon-word-mask horizon-word3-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word3" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">picture</div></div> <div class="horizon-word-mask horizon-word4-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word4" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">of</div></div> <div class="horizon-word-mask horizon-word5-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word5" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">how</div></div> <div class="horizon-word-mask horizon-word6-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word6" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">your</div></div> <div class="horizon-word-mask horizon-word7-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word7" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">heart</div></div> <div class="horizon-word-mask horizon-word8-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word8" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">is</div></div> <div class="horizon-word-mask horizon-word9-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word9" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">performing</div></div></h2></div><div class="opacity-0" style="opacity:1;transform:none"><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px]">Combinamos eletrocardiograma e medição arterial em quatro pontos para traçar um quadro cardiovascular preciso e imediato.</p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] -tracking-[0.1px] font-medium md:text-[18px] group-disabled:text-disabled-foreground">Saber mais</span></a></div></div></div></div><div><div class="flex w-full flex-col items-start gap-y-6 md:gap-y-8"><div style="opacity:1;transform:none"><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 horizon-reveal text-balance" aria-label="Análise laboratorial imediata – sem espera"><div class="horizon-word-mask horizon-word1-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word1" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">Blood</div></div> <div class="horizon-word-mask horizon-word2-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word2" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">assessment</div></div> <div class="horizon-word-mask horizon-word3-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word3" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">–</div></div> <div class="horizon-word-mask horizon-word4-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word4" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">without</div></div> <div class="horizon-word-mask horizon-word5-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word5" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">the</div></div> <div class="horizon-word-mask horizon-word6-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word6" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">wait</div></div> </h2></div><div class="opacity-0" style="opacity:1;transform:none"><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px]">O seu perfil sanguíneo é analisado no nosso laboratório clínico, com resultados revistos pelo médico em minutos. </p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] -tracking-[0.1px] font-medium md:text-[18px] group-disabled:text-disabled-foreground">Saber mais</span></a></div></div></div></div><div><div class="flex w-full flex-col items-start gap-y-6 md:gap-y-8"><div style="opacity:1;transform:none"><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 horizon-reveal text-balance" aria-label="Uma imagem clara da sua saúde metabólica"><div class="horizon-word-mask horizon-word1-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word1" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">An</div></div> <div class="horizon-word-mask horizon-word2-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word2" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">actionable</div></div> <div class="horizon-word-mask horizon-word3-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word3" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">image</div></div> <div class="horizon-word-mask horizon-word4-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word4" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">of</div></div> <div class="horizon-word-mask horizon-word5-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word5" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">your</div></div> <div class="horizon-word-mask horizon-word6-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word6" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">metabolic</div></div> <div class="horizon-word-mask horizon-word7-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word7" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">health</div></div> </h2></div><div class="opacity-0" style="opacity:1;transform:none"><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px]">Avaliação rigorosa da composição corporal, gordura visceral e força muscular para um plano de longevidade ativa.</p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] -tracking-[0.1px] font-medium md:text-[18px] group-disabled:text-disabled-foreground">Saber mais</span></a></div></div></div></div></div></div></div></div></div></div></div></div><div class="md:hidden"><div class="relative"><div class="pin-spacer pin-spacer-scanProductExplainer-mobile-steps" style="order: 0; place-self: auto; grid-area: auto; z-index: auto; float: none; flex-shrink: 1; display: block; margin: 0px; inset: 0px; position: relative; flex-basis: auto; overflow: visible; box-sizing: border-box; width: 745px; height: 2673px; padding: 0px 0px 2204px;"><div class="relative h-lvh w-full overflow-hidden" style="translate: none; rotate: none; scale: none; inset: 0px auto auto 0px; margin: 0px; max-width: 745px; width: 745px; max-height: 469px; height: 469px; padding: 0px; transform: translate(0px, 0px);"><div class="xpad pointer-events-none invisible absolute inset-x-0 top-6 bottom-6" aria-hidden="true"></div><div class="absolute overflow-hidden bg-background will-change-[top,right,bottom,left,border-radius] theme-default" style="border-radius: 24px; inset: 24px 20px;"><div class="absolute inset-x-0 top-0 w-full overflow-hidden rounded-b-m h-[75vw]"><div class="absolute inset-0 overflow-hidden will-change-transform" style="z-index: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><div class="overflow-hidden absolute inset-0 block h-full w-full"><img alt="" aria-hidden="true" class="absolute inset-0 block size-full object-cover z-10" src="./assets/images/hakura_real_spa.jpg"><video loop="" playsinline="" class="absolute inset-0 block size-full object-cover opacity-0" preload="none" src="" style="display:none"><track kind="metadata" label="cuepoints" data-removeondestroy=""><track kind="chapters" label="chapters" data-removeondestroy="" src=""></video></div></div><div class="absolute inset-0 overflow-hidden will-change-transform" style="z-index: 2; translate: none; rotate: none; scale: none; transform: translate(0%, 100%);"><div class="overflow-hidden absolute inset-0 block h-full w-full"><img alt="" aria-hidden="true" class="absolute inset-0 block size-full object-cover z-10" src="./assets/images/hakura_real_doctors.jpg"><video loop="" playsinline="" class="absolute inset-0 block size-full object-cover opacity-0" preload="none" src="" style="display:none"><track kind="metadata" label="cuepoints" data-removeondestroy=""><track kind="chapters" label="chapters" data-removeondestroy="" src=""></video></div></div><div class="absolute inset-0 overflow-hidden will-change-transform" style="z-index: 3; translate: none; rotate: none; scale: none; transform: translate(0%, 100%);"><img src="https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264,511,2418,1814&amp;w=800&amp;h=600&amp;q=75&amp;fit=crop&amp;auto=format" srcset="https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=200&amp;h=150&amp;q=75&amp;fit=crop&amp;auto=format 200w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=400&amp;h=300&amp;q=75&amp;fit=crop&amp;auto=format 400w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=600&amp;h=450&amp;q=75&amp;fit=crop&amp;auto=format 600w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=800&amp;h=600&amp;q=75&amp;fit=crop&amp;auto=format 800w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=1200&amp;h=900&amp;q=75&amp;fit=crop&amp;auto=format 1200w, https://cdn.sanity.io/images/koy54ah1/production/220bd8b4764b54f29b061b502b1be1df969744ad-4252x2835.jpg?rect=264%2C511%2C2418%2C1814&amp;w=1600&amp;h=1200&amp;q=75&amp;fit=crop&amp;auto=format 1600w" sizes="100vw" alt="" width="800" height="600" loading="lazy" decoding="async" class="max-w-full block size-full object-cover" style="object-position:52.9% 50%"></div><div class="absolute inset-0 overflow-hidden will-change-transform" style="z-index: 4; translate: none; rotate: none; scale: none; transform: translate(0%, 100%);"><img src="https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0,186,2060,1545&amp;w=800&amp;h=600&amp;q=75&amp;fit=crop&amp;auto=format" srcset="https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=200&amp;h=150&amp;q=75&amp;fit=crop&amp;auto=format 200w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=400&amp;h=300&amp;q=75&amp;fit=crop&amp;auto=format 400w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=600&amp;h=450&amp;q=75&amp;fit=crop&amp;auto=format 600w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=800&amp;h=600&amp;q=75&amp;fit=crop&amp;auto=format 800w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=1200&amp;h=900&amp;q=75&amp;fit=crop&amp;auto=format 1200w, https://cdn.sanity.io/images/koy54ah1/production/3f364d739557752cbd8db8b6995676fe883f5932-2060x2058.png?rect=0%2C186%2C2060%2C1545&amp;w=1600&amp;h=1200&amp;q=75&amp;fit=crop&amp;auto=format 1600w" sizes="100vw" alt="" width="800" height="600" loading="lazy" decoding="async" class="max-w-full block size-full object-cover" style="object-position:50% 46.6%"></div></div></div><div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col justify-start gap-y-4 overflow-hidden pb-6 pt-4 text-foreground top-[75vw]"><div class="xpad flex w-full flex-col"><span class="text-[11px] text-[#379cb7] font-bold tracking-[0.2em] mt-3 mb-1 text-center uppercase block w-full">HAKURA</span><nav aria-label="Product features" class="pointer-events-auto w-full pt-1"><ul class="flex w-full"><li class="min-w-0 flex-1"><button type="button" aria-current="step" class="flex w-full cursor-pointer justify-center bg-transparent p-0 transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground opacity-100"><span class="text-[11px] leading-[16px] tracking-[1px] font-medium uppercase md:text-[14px]">MEDICAL</span></button></li><li class="min-w-0 flex-1"><button type="button" class="flex w-full cursor-pointer justify-center bg-transparent p-0 transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[11px] leading-[16px] tracking-[1px] font-medium uppercase md:text-[14px]">SPA</span></button></li><li class="min-w-0 flex-1"><button type="button" class="flex w-full cursor-pointer justify-center bg-transparent p-0 transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[11px] leading-[16px] tracking-[1px] font-medium uppercase md:text-[14px]">HOLISTIC</span></button></li><li class="min-w-0 flex-1"><button type="button" class="flex w-full cursor-pointer justify-center bg-transparent p-0 transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground/50 hover:opacity-80"><span class="text-[11px] leading-[16px] tracking-[1px] font-medium uppercase md:text-[14px]">AESTHETIC</span></button></li></ul><div class="relative mt-3 h-px w-full" role="progressbar" aria-label="Feature scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0%"><div class="absolute inset-0 rounded-full bg-foreground/20"></div><div class="absolute inset-y-0 left-0 rounded-full bg-foreground" style="width:0%"></div></div></nav><div class="flex w-full flex-col items-start mt-4 gap-y-4"><div style="opacity:1;transform:none"><h3 class="font-display text-[32px] leading-[40px] tracking-[0px] font-normal md:text-[44px] md:leading-[52px] prose-h3 horizon-reveal text-balance" aria-label="A sua pele, em maior detalhe do que alguma vez viu"><div class="horizon-word-mask horizon-word1-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word1" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">Your</div></div> <div class="horizon-word-mask horizon-word2-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word2" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">skin,</div></div> <div class="horizon-word-mask horizon-word3-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word3" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">in</div></div> <div class="horizon-word-mask horizon-word4-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word4" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">more</div></div> <div class="horizon-word-mask horizon-word5-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word5" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">detail</div></div> <div class="horizon-word-mask horizon-word6-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word6" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">than</div></div> <div class="horizon-word-mask horizon-word7-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word7" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">you’ve</div></div> <div class="horizon-word-mask horizon-word8-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word8" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">ever</div></div> <div class="horizon-word-mask horizon-word9-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word9" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">seen</div></div> <div class="horizon-word-mask horizon-word10-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="horizon-word horizon-word10" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);">before</div></div> </h3></div><div class="opacity-0" style="opacity:1;transform:none"><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px]">A Hakura mapeia toda a sua pele em alta definição, monitorizando cada sinal e alteração para máxima prevenção dermatológica.</p></div><div class="opacity-0" style="opacity:1;transform:none"><div class="pointer-events-auto"><a class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan"><span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 disabled:pointer-events-none disabled:text-disabled-foreground outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[1px] focus-visible:ring-offset-4 [&amp;_svg]:shrink-0 bg-inverted text-inverted-foreground hover:bg-inverted-hover group-hover:bg-inverted-hover active:bg-inverted-pressed group-active:bg-inverted-pressed size-control-md md:size-control-lg rounded-s md:rounded-m [&amp;_svg:not([class*='size-'])]:size-6 disabled:bg-disabled disabled:hover:bg-disabled disabled:active:bg-disabled group-disabled:bg-disabled group-disabled:text-disabled-foreground pointer-events-none"><svg viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12.4697 19.4697L19.1895 12.75L3 12.75L3 11.25L19.1895 11.25L12.4697 4.53027L13.5303 3.46973L19.9392 9.87868C21.1108 11.0503 21.1108 12.9497 19.9392 14.1213L13.5303 20.5303L12.4697 19.4697Z" fill="currentColor"></path></svg></span><span class="text-[16px] leading-[24px] -tracking-[0.1px] font-medium md:text-[18px] group-disabled:text-disabled-foreground">Saber mais</span></a></div></div></div></div></div></div></div></div></div></section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:95f647b46afa;base=https%3A%2F%2Fwww.nekohealth.com"><section data-slicetype="spacer" class="h-6 md:h-10" style="background-color:#F0F7F9;background-image:linear-gradient(to bottom, rgba(240, 247, 249, 0), #ffffff);"></section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:f5b213aae1ac;base=https%3A%2F%2Fwww.nekohealth.com"><section id="equipa" data-slicetype="siteCarousel" class="bg-background overflow-x-hidden scroll-mt-24 hakura-reveal py-24 md:py-32">
+  <div class="xpad">
+    <div class="grid-default gap-y-10 md:gap-y-[60px]">
+      
+      <!-- Carousel Header -->
+      <div class="col-span-full flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <span class="text-[13px] md:text-[14px] uppercase tracking-[0.16em] font-semibold text-[#379cb7] block mb-2">EQUIPA HAKURA</span>
+          <h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 max-w-[20ch] text-balance">
+            Corpo Clínico
+          </h2>
+        </div>
+        <p class="text-[16px] md:text-[18px] text-slate-600 max-w-md font-normal leading-relaxed">
+          Uma equipa multidisciplinar de médicos, terapeutas e especialistas em longevidade dedicados ao seu cuidado integral.
+        </p>
+      </div>
+
+      <!-- Carousel Track Container -->
+      <div class="col-span-full">
+        <div class="relative w-full" role="region" aria-roledescription="carousel" aria-label="Equipa Hakura" data-slot="carousel">
+          <div class="overflow-x-auto pb-6 pt-4 scrollbar-none" data-slot="carousel-content" id="hakuraTeamCarouselContent" style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+            <div class="flex -ml-4 md:-ml-6" style="width: max-content;">
+
+              <!-- Slide 1: Dra. Raquel Silva -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/hakura_doctor_raquel.png" alt="Dra. Raquel Silva" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      DIREÇÃO CLÍNICA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Dra. Raquel Silva</h3>
+                    <p class="team-card-spec">Medicina Geral, Integrativa & Longevidade</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Dra. Mariana Guerreiro -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/mariana_guerreiro.png" alt="Dra. Mariana Guerreiro" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      DRA. · MEDICINA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Dra. Mariana Guerreiro</h3>
+                    <p class="team-card-spec">Medicina Estética & Regenerativa</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Dra. Lisbeth de Sousa -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/lisbeth_sousa.png" alt="Dra. Lisbeth de Sousa" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      DRA. · PSICOLOGIA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Dra. Lisbeth de Sousa</h3>
+                    <p class="team-card-spec">Psicologia Clínica & Bem-Estar Mental</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Dra. Safira Carvalho -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/safira_carvalho.png" alt="Dra. Safira Carvalho" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      DRA. · NUTRIÇÃO
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Dra. Safira Carvalho</h3>
+                    <p class="team-card-spec">Nutrição Funcional & Longevidade</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Sandra Fernandes -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/sandra_fernandes.png" alt="Sandra Fernandes" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Sandra Fernandes</h3>
+                    <p class="team-card-spec">Macrobiótica & Alimentação Curativa</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6: John Sanchez -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/john_sanchez.png" alt="John Sanchez" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">John Sanchez</h3>
+                    <p class="team-card-spec">Acupunctura Médica Tradicional</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 7: Joana Costa -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/joana_costa.png" alt="Joana Costa" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Joana Costa</h3>
+                    <p class="team-card-spec">Massagens Terapêuticas & Rituais SPA</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 8: Carina Apolónia -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/carina_apolonia.png" alt="Carina Apolónia" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Carina Apolónia</h3>
+                    <p class="team-card-spec">Homeopatia Clínica & Equilíbrio Vital</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 9: Anabela Mealha -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/anabela_mealha.png" alt="Anabela Mealha" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Anabela Mealha</h3>
+                    <p class="team-card-spec">Fisioterapia Avançada & Reabilitação</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 10: Raquel Lança -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/raquel_lanca.png" alt="Raquel Lança" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Raquel Lança</h3>
+                    <p class="team-card-spec">Fisioterapia & Saúde Neuromuscular</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 11: Fátima Ferreira -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/fatima_ferreira.png" alt="Fátima Ferreira" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Fátima Ferreira</h3>
+                    <p class="team-card-spec">Reiki & Harmonização Energética</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 12: Inês Silva -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/ines_silva.png" alt="Inês Silva" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Inês Silva</h3>
+                    <p class="team-card-spec">Terapia de Bowen & Alívio Fascial</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 13: Joana Gomes -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/joana_gomes.png" alt="Joana Gomes" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Joana Gomes</h3>
+                    <p class="team-card-spec">Hypnobirthing & Acompanhamento Perinatal</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 14: Márcia Gomes -->
+              <div role="group" aria-roledescription="slide" class="hakura-team-slide shrink-0">
+                <div class="group hakura-team-card-inner">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_25%,rgba(255,255,255,0.95)_0%,rgba(240,248,252,0.4)_70%,transparent_100%)] pointer-events-none"></div>
+                  <img src="./assets/images/team/marcia_gomes.png" alt="Márcia Gomes" class="hakura-team-cutout" loading="lazy" />
+                  <div class="hakura-team-scrim-bottom pointer-events-none"></div>
+                  
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="team-card-badge">
+                      TERAPEUTA
+                    </span>
+                  </div>
+
+                  <div class="relative z-10 p-6">
+                    <h3 class="team-card-name">Márcia Gomes</h3>
+                    <p class="team-card-spec">Massagem do Bebé & Cuidado Pediátrico</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel Controls & Progress Bar -->
+          <div class="flex items-center justify-between mt-8">
+            <div class="flex-1 max-w-xs hakura-carousel-progress-track">
+              <div class="hakura-carousel-progress-bar" id="hakuraTeamProgressBar" style="width: 25%;"></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" aria-label="Anterior" class="size-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition-colors" onclick="scrollTeamCarousel(-1)">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button type="button" aria-label="Seguinte" class="size-10 rounded-full bg-slate-900 hover:bg-[#379cb7] text-white flex items-center justify-center transition-colors" onclick="scrollTeamCarousel(1)">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:492064dcadca;base=https%3A%2F%2Fwww.nekohealth.com"><section data-slicetype="ratings" class="bg-background hakura-reveal py-24 md:py-32"><div class="xpad"><div class="flex flex-col items-center gap-12 md:gap-[100px]"><div class="flex w-full max-w-[989px] flex-col items-center gap-6 text-center md:gap-8"><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 max-w-[20ch] text-balance text-slate-900">Avaliado em 4.9 de 5 estrelas</h2><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px] max-w-[583px] text-balance text-slate-600">Comprometemo-nos com os mais elevados padrões clínicos – tal como os nossos pacientes.</p></div><div class="flex w-full flex-col gap-8 md:flex-row md:gap-5"><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Ter os resultados detalhados e o plano clínico apresentado por uma equipa médica de topo em poucos minutos foi simplesmente extraordinário. É assim que os cuidados de saúde integrativos devem ser.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Tiago M.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Lisboa · Parque das Nações</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">A minha experiência na Hakura superou qualquer expectativa. Tecnologia de diagnóstico avançada aliada a uma atenção humana genuína e um espaço de bem-estar profundamente harmonioso.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Carolina S.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Cascais</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Não podia ter investido uma hora de forma mais inteligente. O equilíbrio perfeito entre medicina preventiva, hidroterapia regenerativa e suporte clínico personalizado.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Inês P.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Sintra</span></div></figcaption></figure></div></div></div></section></div></div>
+<!-- ==========================================================================
+     NOVA SECÇÃO: BLOG & LONGEVIDADE (Estilo Neko Carousel)
+     ========================================================================== -->
+<section id="blog" data-slicetype="siteCarousel" class="hakura-blog-section hakura-reveal py-24 md:py-32 bg-[#F8FAFC] overflow-hidden scroll-mt-24">
+  <div class="xpad">
+    <div class="flex flex-col gap-10 md:gap-14">
+      
+      <!-- Cabeçalho do Blog -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <span class="text-[13px] md:text-[14px] uppercase tracking-[0.16em] font-semibold text-[#379cb7] block mb-2">ARTIGOS &amp; NOVIDADES</span>
+          <h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 max-w-[20ch] text-balance text-slate-900">
+            Conhecimento &amp; Bem-Estar
+          </h2>
+        </div>
+        <a href="https://hakura.pt/" target="_blank" rel="noopener noreferrer" class="hakura-header-cta !bg-[#0f172a] hover:!bg-[#379cb7] !h-[44px] !px-5 text-white text-[14px] transition-all duration-300 w-fit shrink-0">
+          <span>Ver todos no Hakura.pt</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4" style="width:14px!important;height:14px!important;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- 3 Artigos Exatos de Hakura.pt (Grid Responsiva de Cartões Elegantes) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-[1100px] w-full mx-auto px-4 md:px-0">
+        
+        <!-- Artigo 1: Homeopatia Pediátrica -->
+        <article class="hakura-official-blog-card group">
+          <div class="hakura-official-blog-img-box">
+            <span class="hakura-official-blog-badge">HOMEOPATIA</span>
+            <img src="./assets/images/blog_homeopatia.png" alt="Homeopatia Pediátrica Mitos &amp; Verdades" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6 md:p-7 flex flex-col flex-1 justify-between gap-5">
+            <div class="flex flex-col gap-3">
+              <h3 class="font-display text-[20px] md:text-[22px] leading-[1.3] font-normal text-slate-900 group-hover:text-[#379cb7] transition-colors">
+                HOMEOPATIA PEDIÁTRICA MITOS &amp; VERDADES
+              </h3>
+              <p class="text-[14px] leading-relaxed text-slate-500 line-clamp-3">
+                A homeopatia é um tema que gera muita discussão e polarização. Aqui estão alguns mitos e verdades sobre essa prática: Deve consultar sempre um profissional qualificado...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <a href="https://hakura.pt/homeopatia-pediatrica-mitos-verdades/" target="_blank" rel="noopener noreferrer" class="text-[13px] font-semibold tracking-wider text-[#379cb7] group-hover:text-[#2492cf] uppercase flex items-center gap-1.5 transition-colors">
+                SABER MAIS &rarr;
+              </a>
+              <span class="text-[12px] text-slate-400">22 de Outubro de 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artigo 2: Fisioterapia Postura -->
+        <article class="hakura-official-blog-card group">
+          <div class="hakura-official-blog-img-box">
+            <span class="hakura-official-blog-badge">FISIOTERAPIA</span>
+            <img src="./assets/images/blog_fisioterapia.png" alt="Fisioterapia para Melhorar a Postura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6 md:p-7 flex flex-col flex-1 justify-between gap-5">
+            <div class="flex flex-col gap-3">
+              <h3 class="font-display text-[20px] md:text-[22px] leading-[1.3] font-normal text-slate-900 group-hover:text-[#379cb7] transition-colors">
+                FISIOTERAPIA PARA MELHORAR A POSTURA: TRATAMENTOS E PREÇOS
+              </h3>
+              <p class="text-[14px] leading-relaxed text-slate-500 line-clamp-3">
+                A postura desempenha um papel fundamental na saúde do corpo, e muitos de nós passamos horas em frente ao computador ou em posições incorretas. Descubra como corrigir...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <a href="https://hakura.pt/fisioterapia-para-melhorar-a-postura-tratamentos-e-precos/" target="_blank" rel="noopener noreferrer" class="text-[13px] font-semibold tracking-wider text-[#379cb7] group-hover:text-[#2492cf] uppercase flex items-center gap-1.5 transition-colors">
+                SABER MAIS &rarr;
+              </a>
+              <span class="text-[12px] text-slate-400">12 de Outubro de 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artigo 3: Biotipo Nutrição -->
+        <article class="hakura-official-blog-card group">
+          <div class="hakura-official-blog-img-box">
+            <span class="hakura-official-blog-badge">NUTRIÇÃO</span>
+            <img src="./assets/images/blog_nutricao.jpg" alt="Descobre qual é o teu biotipo?" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6 md:p-7 flex flex-col flex-1 justify-between gap-5">
+            <div class="flex flex-col gap-3">
+              <h3 class="font-display text-[20px] md:text-[22px] leading-[1.3] font-normal text-slate-900 group-hover:text-[#379cb7] transition-colors">
+                DESCOBRE QUAL É O TEU BIOTIPO?
+              </h3>
+              <p class="text-[14px] leading-relaxed text-slate-500 line-clamp-3">
+                Já te perguntaste porque é que algumas dietas funcionam tão bem para os teus amigos, mas não para ti? A resposta pode estar na individualidade biológica do teu biotipo corporal...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <a href="https://hakura.pt/descobre-qual-e-o-teu-biotipo/" target="_blank" rel="noopener noreferrer" class="text-[13px] font-semibold tracking-wider text-[#379cb7] group-hover:text-[#2492cf] uppercase flex items-center gap-1.5 transition-colors">
+                SABER MAIS &rarr;
+              </a>
+              <span class="text-[12px] text-slate-400">25 de Setembro de 2024</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ==========================================================================
+     OFFICIAL HAKURA FOOTER (Redesigned for Clean Clinical & High Contrast)
+     ========================================================================== -->
+<footer id="contactos" class="hakura-official-footer overflow-hidden bg-white">
+  
+  <!-- Pre-footer CTA Banner -->
+  <div class="relative overflow-hidden text-foreground bg-white">
+    <div class="xpad relative z-10 flex w-full flex-col items-center gap-7 py-16 md:py-24 text-center">
+
+      <div class="w-full max-w-4xl">
+        <h2 class="font-display text-[44px] leading-[1.1] sm:text-[56px] md:text-[72px] font-normal text-slate-900 tracking-[-0.02em] text-balance mb-4" style="font-family:'Gotu',serif!important;">
+          Cuide da sua saúde com precisão e serenidade
+        </h2>
+      </div>
+      <div>
+        <a data-slot="button" class="group flex items-center justify-center gap-3 whitespace-nowrap transition-all rounded-full bg-[#379cb7] text-white hover:bg-[#2b7d93] px-10 py-5 text-[18px] md:text-[20px] font-medium no-underline active:scale-95 duration-200 shadow-lg hover:shadow-xl" href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer">
+          <span>Marcar Consulta</span>
+          <svg viewBox="0 0 24 24" fill="none" class="size-6 shrink-0 transition-transform group-hover:translate-x-1" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main 3-Column Footer Navigation (Option A: Editorial Minimalist) -->
+  <div class="xpad py-16 md:py-24 bg-white">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start max-w-7xl mx-auto">
+      
+      <!-- Col 1: Logo -->
+      <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
+          <a href="#" class="inline-block text-[#379cb7]" aria-label="Página Inicial Hakura">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 257.58 42.99" class="h-6 md:h-8 w-auto fill-current">
+              <path d="M60.23,0l-17.38,42.48h2.34c.28,0,.52-.08.72-.24s.34-.35.42-.57l4.98-12.34h20.87l4.98,12.34c.1.24.24.44.42.59s.41.22.69.22h2.37L63.26,0h-3.03ZM52.24,27.05l8.65-21.44c.16-.36.31-.75.45-1.19.14-.43.27-.89.39-1.37.28.98.57,1.82.87,2.52l8.65,21.47h-19.01Z"/>
+              <rect x="92.27" y=".29" width="2.84" height="42.19"/>
+              <path d="M107.58,22.22c-.32.14-.63.31-.92.56,5.28,1.91,7.86,6.75,12.82,18.76.23.56.79.95,1.4.95h3.83c-6.6-14.53-10.19-18.39-17.12-20.26Z"/>
+              <polygon points="29.69 19.81 3.09 19.81 3.09 0 0 0 0 42.48 3.09 42.48 3.09 22.13 29.69 22.13 29.69 42.48 32.79 42.48 32.79 0 29.69 0 29.69 19.81"/>
+              <path d="M199.22,22.91c1.86-.22,3.54-.65,5.03-1.29,1.49-.64,2.76-1.47,3.81-2.48,1.05-1.01,1.86-2.19,2.42-3.53.56-1.34.84-2.82.84-4.44,0-3.66-1.22-6.44-3.65-8.33-2.43-1.89-6.09-2.84-10.97-2.84h-16.19v42.48h3.09v-19.21h10.88c.42,0,.78.02,1.07.06.29.04.54.11.75.2.21.09.4.22.57.38s.33.35.49.57l13.63,17.23c.2.3.41.5.65.62.23.11.52.16.86.16h2.64l-14.62-18.37c-.38-.5-.81-.9-1.29-1.2ZM196.27,20.99h-12.68V2.43h13.1c3.78,0,6.66.73,8.63,2.19,1.97,1.46,2.96,3.7,2.96,6.73,0,1.48-.27,2.81-.81,3.99-.54,1.18-1.33,2.19-2.36,3.03s-2.29,1.49-3.78,1.94c-1.49.45-3.18.67-5.06.67Z"/>
+              <path d="M240.2,0h-3.03l-17.38,42.48h2.34c.28,0,.52-.08.72-.24s.34-.35.42-.57l4.98-12.34h20.87l4.98,12.34c.1.24.24.44.42.59s.41.22.69.22h2.37L240.2,0ZM229.18,27.05l8.65-21.44c.16-.36.31-.75.45-1.19.14-.43.27-.89.39-1.37.28.98.57,1.82.87,2.52l8.65,21.47h-19.01Z"/>
+              <path d="M166.45,26.27c0,1.98-.3,3.83-.89,5.54-.59,1.71-1.45,3.2-2.57,4.46-1.12,1.26-2.49,2.25-4.1,2.96-1.61.71-3.44,1.07-5.48,1.07s-3.87-.36-5.48-1.08c-1.61-.72-2.97-1.71-4.08-2.97-1.11-1.26-1.96-2.75-2.55-4.46-.59-1.71-.89-3.56-.89-5.54V0h-3.09v26.27c0,2.34.37,4.53,1.11,6.56s1.81,3.8,3.2,5.31c1.39,1.51,3.08,2.7,5.07,3.56,1.99.86,4.23,1.29,6.71,1.29s4.72-.43,6.71-1.29c1.99-.86,3.68-2.05,5.07-3.56,1.39-1.51,2.46-3.28,3.2-5.31.74-2.03,1.11-4.22,1.11-6.56V0h-3.06v26.27Z"/>
+              <path d="M111.78,12.76l-15.03,15.43c-.02.18-.04.36-.03.55.02.22.13.42.25.61L126.34.29h-7.3c-1.22,6.26-5.35,10.56-7.26,12.46Z"/>
+            </svg>
+          </a>
+
+        </div>
+        
+        <!-- Redes Sociais -->
+        <div class="flex items-center gap-3">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/hakura.pt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Hakura" class="size-10 rounded-full bg-[#edf7fa] hover:bg-[#379cb7] text-[#379cb7] hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 no-underline">
+            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/hakura.pt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Hakura" class="size-10 rounded-full bg-[#edf7fa] hover:bg-[#379cb7] text-[#379cb7] hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 no-underline">
+            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+
+
+      <!-- Col 2: CONTACTOS & HORÁRIO -->
+      <div class="flex flex-col gap-5">
+        <h4 class="text-[14px] md:text-[15px] font-semibold tracking-[0.1em] uppercase text-slate-900">
+          HORÁRIO &amp; MORADA
+        </h4>
+        <div class="flex flex-col gap-6 text-[15px] text-slate-600">
+          
+          <!-- Horário -->
+          <div class="flex gap-4 items-start">
+            <svg class="size-5 shrink-0 mt-0.5 text-[#379cb7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div class="flex flex-col">
+              <span class="font-medium text-slate-900">Segunda a Sexta: 09h00 – 19h00</span>
+              <span>Sábado e Domingo: Encerrado</span>
+            </div>
+          </div>
+          
+          <!-- Morada -->
+          <div class="flex gap-4 items-start">
+            <svg class="size-5 shrink-0 mt-0.5 text-[#379cb7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div class="flex flex-col">
+              <span class="leading-relaxed">Estrada Salgados, Urbanização Monte Galé, N.º 39, 3.º<br>8200-428 Albufeira</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Col 3: Telefone, Email e ERS -->
+      <div class="flex flex-col gap-5">
+        <h4 class="text-[14px] md:text-[15px] font-semibold tracking-[0.1em] uppercase text-slate-900">
+          CONTACTOS &amp; INFORMAÇÃO LEGAL
+        </h4>
+        <div class="flex flex-col gap-6 text-[15px] text-slate-600">
+        
+          <!-- Contactos Diretos -->
+          <div class="flex flex-col gap-2">
+          <div>
+            <a href="tel:+351964166845" class="text-slate-900 font-medium hover:text-[#379cb7] transition-colors block text-[16px] no-underline">
+              +351 964 166 845
+            </a>
+            <span class="text-[12px] text-slate-500 block mt-0.5">
+              (Chamada para a rede móvel nacional)
+            </span>
+          </div>
+          <div>
+            <a href="mailto:geral@hakura.pt" class="text-slate-600 hover:text-[#379cb7] transition-colors no-underline">
+              geral@hakura.pt
+            </a>
+          </div>
+        </div>
+        
+        <!-- ERS Badge -->
+        <div class="mt-2 flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-full py-2 px-4 w-fit hover:border-[#379cb7]/30 transition-colors">
+          <img src="./assets/images/ers_clean_logo.png" alt="ERS" class="h-6 w-auto object-contain opacity-90" />
+          <div class="flex flex-col">
+            <span class="text-[9px] uppercase font-bold text-slate-400 leading-tight tracking-[0.1em]">Registo ERS</span>
+            <span class="text-[12px] font-semibold text-slate-700 leading-tight">E158444</span>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sub-footer: Linha Clara de Direitos Reservados e Links Legais unificados num unico bloco branco -->
+  <div class="bg-white border-t border-slate-100 flex flex-col items-center justify-center py-10 md:py-12">
+    <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6 max-w-7xl mx-auto px-6">
+      <ul class="flex flex-wrap justify-center items-center gap-6 text-[13px] md:text-[14px] text-slate-500 m-0 p-0">
+        <li style="list-style: none;"><a href="https://hakura.pt/politica-de-privacidade/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Política de Privacidade</a></li>
+        <li style="list-style: none;"><a href="https://hakura.pt/termos-e-condicoes/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Termos e Condições</a></li>
+        <li style="list-style: none;"><a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Livro de Reclamação Online</a></li>
+      </ul>
+      <p class="text-[13px] md:text-[14px] text-slate-500 font-normal m-0 tracking-wide text-center">
+        HAKURA &copy; 2026. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Booking Modal for HAKURA -->
+<div class="hakura-modal-overlay" id="hakuraModal">
+  <div class="hakura-modal-card">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <div>
+        <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #00875a;">Hakura Health Scan</span>
+        <h3 style="font-size: 28px; font-weight: 500; margin: 4px 0 0; letter-spacing: -0.02em;">Agendar Hakura Scan</h3>
+      </div>
+      <button type="button" id="closeHakuraModal" style="background: #f4f4f4; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 16px;">✕</button>
+    </div>
+
+    <p style="font-size: 15px; color: #555; line-height: 1.5; margin-bottom: 24px;">
+      Exame completo de 60 minutos com tecnologia ótica 3D, ECG, avaliação de rigidez arterial e consulta médica imediata.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+      <label style="font-size: 13px; font-weight: 600; text-transform: uppercase;">1. Escolha a Clínica</label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <button type="button" class="clinic-opt-btn" data-clinic="Lisboa" style="padding: 14px; border: 2px solid #000; border-radius: 14px; background: #fafafa; font-weight: 600; text-align: left; cursor: pointer;">
+          <div>Lisboa</div>
+          <small style="color: #666; font-weight: 400;">Av. da Liberdade</small>
+        </button>
+        <button type="button" class="clinic-opt-btn" data-clinic="Porto" style="padding: 14px; border: 1px solid #ddd; border-radius: 14px; background: #fff; font-weight: 600; text-align: left; cursor: pointer;">
+          <div>Porto</div>
+          <small style="color: #666; font-weight: 400;">Foz do Douro</small>
+        </button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
+      <label style="font-size: 13px; font-weight: 600; text-transform: uppercase;">2. Os Seus Dados</label>
+      <input type="text" id="hakuraName" placeholder="Nome completo" style="padding: 14px 16px; border: 1px solid #ddd; border-radius: 12px; font-size: 15px; font-family: inherit; outline: none;">
+      <input type="email" id="hakuraEmail" placeholder="Email para confirmação" style="padding: 14px 16px; border: 1px solid #ddd; border-radius: 12px; font-size: 15px; font-family: inherit; outline: none;">
+      <input type="tel" id="hakuraPhone" placeholder="Telemóvel (+351)" style="padding: 14px 16px; border: 1px solid #ddd; border-radius: 12px; font-size: 15px; font-family: inherit; outline: none;">
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid #eee;">
+      <div>
+        <div style="font-size: 22px; font-weight: 600;">€295</div>
+        <small style="color: #666;">Inclui exame e consulta médica</small>
+      </div>
+      <button type="button" id="submitHakuraBooking" style="background: #000; color: #fff; padding: 14px 28px; border-radius: 9999px; font-size: 15px; font-weight: 600; border: none; cursor: pointer;">
+        Confirmar Agendamento
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     FLOATING SQUIRCLE SPEECH BUBBLE BUTTON & LATERAL CONTACT DRAWER
+     ========================================================================== -->
+<!-- Floating Button (Squircle with Minimalist Speech Bubble) -->
+<button type="button" id="hakuraContactDrawerBtn" aria-label="Abrir Apoio &amp; Contacto" class="hakura-float-contact-btn group">
+  <svg class="size-5 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+  </svg>
+</button>
+
+<!-- Drawer Backdrop Overlay -->
+<div id="hakuraDrawerBackdrop" class="hakura-drawer-backdrop" aria-hidden="true"></div>
+
+<!-- Lateral Contact Drawer (Matching Neko Health Exact Screenshot) -->
+<aside id="hakuraContactDrawer" class="hakura-contact-drawer" aria-label="Gaveta de Contactos e Apoio" role="dialog" aria-modal="true">
+  <!-- Drawer Top Bar -->
+  <div class="p-6 md:p-8 flex items-center justify-between border-b border-slate-100">
+    <button type="button" id="closeHakuraDrawerBtn" aria-label="Fechar gaveta" class="size-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer">
+      <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <span class="font-display text-2xl md:text-3xl font-normal text-slate-900 tracking-tight" style="font-family:'Gotu',serif!important;">Contacte-nos</span>
+    <div class="size-10"></div>
+  </div>
+
+  <!-- Drawer Body -->
+  <div class="flex-1 p-6 md:p-8 flex flex-col justify-between gap-8 overflow-y-auto">
+    <div class="flex flex-col gap-6">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl text-slate-900 font-normal tracking-tight">Apoio & Contacto</h2>
+        <p class="text-[15px] leading-relaxed text-slate-600 mt-2 font-normal">
+          Tem alguma questão ou precisa de apoio? A nossa equipa médica e de apoio está aqui para si.
+        </p>
+      </div>
+
+      <!-- Contact Rows -->
+      <div class="flex flex-col divide-y divide-slate-100">
+        
+        <!-- Horário -->
+        <div class="py-4 flex items-start gap-3.5 text-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-[#379cb7] flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="flex flex-col text-[14px] pt-2">
+            <span class="font-medium text-slate-900">Segunda a Sexta: 09h00 – 19h00</span>
+            <span class="text-slate-500">Sábado e Domingo: Encerrado</span>
+          </div>
+        </div>
+
+        <!-- Telefone -->
+        <a href="tel:+351964166845" class="py-4 flex items-center gap-3.5 text-slate-800 hover:text-[#379cb7] transition-colors group">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-[#379cb7]/15 text-[#379cb7] flex items-center justify-center transition-colors shrink-0">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[15px] font-medium">+351 964 166 845</span>
+            <span class="text-[11px] text-slate-400 leading-none mt-1">(Chamada para a rede móvel nacional)</span>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:geral@hakura.pt" class="py-4 flex items-center gap-3.5 text-slate-800 hover:text-[#379cb7] transition-colors group">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-[#379cb7]/15 text-[#379cb7] flex items-center justify-center transition-colors shrink-0">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <span class="text-[15px] font-medium">geral@hakura.pt</span>
+        </a>
+
+        <!-- Morada -->
+        <div class="py-4 flex items-start gap-3.5 text-slate-800">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-[#379cb7] flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div class="flex flex-col text-[14px] pt-2">
+            <span class="leading-relaxed text-slate-600">Estrada Salgados, Urbanização Monte Galé, N.º 39, 3.º<br>8200-428 Albufeira</span>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+
+    <!-- Bottom Button: Send message -->
+    <div class="flex flex-col gap-3 mt-6">
+      <div class="flex items-center gap-4 before:h-px before:flex-1 before:bg-slate-100 after:h-px after:flex-1 after:bg-slate-100 mb-2">
+        <span class="text-[13px] font-semibold tracking-wider text-slate-400 uppercase">Precisa de Ajuda?</span>
+      </div>
+      <a href="mailto:geral@hakura.pt?subject=Contacto%20-%20Hakura%20Health" id="hakuraDrawerSendMessage" class="w-full py-4 px-6 rounded-2xl bg-[#379cb7] hover:bg-[#2e88a0] active:scale-[0.98] text-white font-medium text-[16px] flex items-center justify-center gap-2 transition-all duration-200 text-center cursor-pointer">
+        <span>Enviar mensagem</span>
+        <svg class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- Specialty Detail Modal (when user clicks '+' or a specialty card) -->
+<div id="hakuraSpecialtyModal" class="hakura-specialty-modal-overlay" aria-hidden="true">
+  <div class="hakura-specialty-modal-content">
+    <div class="relative p-6 sm:p-8 flex flex-col gap-6">
+      <div class="flex items-center justify-between">
+        <span id="specModalBadge" class="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-slate-100 text-slate-800">
+          ESPECIALIDADE HAKURA
+        </span>
+        <button type="button" id="closeSpecModalBtn" class="size-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center cursor-pointer transition-colors">
+          <svg class="size-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div>
+        <h3 id="specModalTitle" class="font-display text-2xl sm:text-3xl text-slate-900 font-normal">Hakura Medical</h3>
+        <p id="specModalDesc" class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+          Diagnóstico clínico de precisão e acompanhamento personalizado.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Procedimentos & Consultas Disponíveis</h4>
+        <ul id="specModalList" class="flex flex-col gap-2 text-sm text-slate-700">
+          <!-- Populated dynamically via JS -->
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+        <button type="button" id="specModalBookBtn" class="flex-1 py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-[#379cb7] text-white font-medium text-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+          <span>Agendar Consulta</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Interactive functionality:
+  // 1. Hook up all "Marcar Consulta" and CTA buttons to open Hakura booking modal
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('hakuraModal');
+    const closeBtn = document.getElementById('closeHakuraModal');
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.querySelectorAll('a, button').forEach(el => {
+      const txt = (el.textContent || '').trim().toLowerCase();
+      if (txt.includes('waitlist') || txt.includes('agendar') || txt.includes('book') || el.getAttribute('aria-label') === 'Marcar Consulta') {
+        el.addEventListener('click', openModal);
+      }
+    });
+
+    // 2. Interactive tabs for the 4 modalities: skin, heart, blood, body
+    const tabButtons = document.querySelectorAll('button[id^="radix-"], [role="tab"], li button');
+    // Also handle locations carousel prev/next buttons
+    const nextBtns = document.querySelectorAll('button[aria-label="Next slide"], button[aria-label="Next"], [data-slot="carousel"] button');
+    const carouselContent = document.querySelector('[data-slot="carousel-content"]');
+    
+    if (carouselContent && nextBtns.length > 0) {
+      nextBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          carouselContent.scrollBy({ left: 380, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // 3. Blog carousel navigation controls
+    const blogTrack = document.getElementById('blogCarouselTrack');
+    const blogPrev = document.getElementById('blogPrevBtn');
+    const blogNext = document.getElementById('blogNextBtn');
+    if (blogTrack && blogPrev && blogNext) {
+      blogPrev.addEventListener('click', () => {
+        blogTrack.scrollBy({ left: -360, behavior: 'smooth' });
+      });
+      blogNext.addEventListener('click', () => {
+        blogTrack.scrollBy({ left: 360, behavior: 'smooth' });
+      });
+    }
+
+    
+    // 4. Floating Speech Bubble Button & Lateral Contact Drawer Logic
+    const drawerBtn = document.getElementById('hakuraContactDrawerBtn');
+    const drawer = document.getElementById('hakuraContactDrawer');
+    const backdrop = document.getElementById('hakuraDrawerBackdrop');
+    const closeDrawerBtn = document.getElementById('closeHakuraDrawerBtn');
+
+    function openDrawer() {
+      if (drawer && backdrop) {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDrawer() {
+      if (drawer && backdrop) {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (drawerBtn) drawerBtn.addEventListener('click', openDrawer);
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    // Also connect "Contactos" links in header/footer to open the drawer
+    document.querySelectorAll('a[href="#contactos"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openDrawer();
+      });
+    });
+
+    // 5. Specialty Detail Modal Data & Logic
+    const specialtiesData = {
+      medical: {
+        badge: 'PILAR 01 · CLÍNICA & LONGEVIDADE',
+        title: 'Hakura Medical',
+        desc: 'Diagnóstico clínico avançado, medicina preventiva e acompanhamento contínuo por médicos especialistas.',
+        procedures: [
+          'Consulta de Medicina Geral & Familiar de Precisão',
+          'Avaliação Cardiovascular Contínua & Eletrocardiograma (ECG)',
+          'Painel Analítico Imediato (Resultados em Minutos)',
+          'Check-up de Longevidade & Biomarcadores Celulares',
+          'Controlo Metabólico & Tensão Arterial em 4 Pontos'
+        ]
+      },
+      spa: {
+        badge: 'PILAR 02 · SPA & REGENERAÇÃO',
+        title: 'Hakura SPA',
+        desc: 'Ambiente exclusivo de regeneração neuromuscular, circuitos termais e descompressão física profunda.',
+        procedures: [
+          'Circuito de Hidroterapia & Balneoterapia Médica',
+          'Massagens Terapêuticas, Miofasciais & Desportivas',
+          'Drenagem Linfática Avançada & Desintoxicação',
+          'Sauna de Infravermelhos & Terapia de Calor Profundo',
+          'Rituais de Descompressão & Recuperação Neurovegetativa'
+        ]
+      },
+      holistic: {
+        badge: 'PILAR 03 · SAÚDE INTEGRATIVA',
+        title: 'Hakura Holistic',
+        desc: 'Medicina integrativa com base científica para harmonizar metabolismo, sono e vitalidade mente-corpo.',
+        procedures: [
+          'Acupuntura Médica & Terapias Orientais Tradicionais',
+          'Consulta de Nutrição Funcional & Longevidade',
+          'Otimização do Ritmo Circadiano & Higiene do Sono',
+          'Fitoterapia Clínica & Suplementação Personalizada',
+          'Técnicas de Respiração Guiada & Gestão do Eixo do Stress'
+        ]
+      },
+      aesthetic: {
+        badge: 'PILAR 04 · ESTÉTICA AVANÇADA',
+        title: 'Hakura Aesthetic',
+        desc: 'Dermatologia clínica e procedimentos estéticos regenerativos que valorizam a beleza natural e a saúde da pele.',
+        procedures: [
+          'Mapeamento Dermatológico Digital de Alta Resolução',
+          'Bioestimuladores de Colagénio & Hidratação Dérmica',
+          'Rejuvenescimento Facial com Tecnologia Não Invasiva',
+          'Peelings Regenerativos Médicos & Harmonização Suave',
+          'Protocolos Personalizados de Cuidados Cutâneos Longevity'
+        ]
+      }
+    };
+
+    const specModal = document.getElementById('hakuraSpecialtyModal');
+    const closeSpecModalBtn = document.getElementById('closeSpecModalBtn');
+    const specModalBadge = document.getElementById('specModalBadge');
+    const specModalTitle = document.getElementById('specModalTitle');
+    const specModalDesc = document.getElementById('specModalDesc');
+    const specModalList = document.getElementById('specModalList');
+    const specModalBookBtn = document.getElementById('specModalBookBtn');
+
+    function openSpecialtyModal(key) {
+      const data = specialtiesData[key];
+      if (!data || !specModal) return;
+      specModalBadge.textContent = data.badge;
+      specModalTitle.textContent = data.title;
+      specModalDesc.textContent = data.desc;
+      specModalList.innerHTML = data.procedures.map(p => `
+        <li class="flex items-center gap-2.5 py-1">
+          <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
+          <span>${p}</span>
+        </li>
+      `).join('');
+      specModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpecialtyModal() {
+      if (specModal) {
+        specModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (closeSpecModalBtn) closeSpecModalBtn.addEventListener('click', closeSpecialtyModal);
+    if (specModal) {
+      specModal.addEventListener('click', (e) => {
+        if (e.target === specModal) closeSpecialtyModal();
+      });
+    }
+
+    if (specModalBookBtn) {
+      specModalBookBtn.addEventListener('click', () => {
+        closeSpecialtyModal();
+        openModal();
+      });
+    }
+
+    // Attach click handlers to all specialty cards and plus buttons
+    document.querySelectorAll('.hakura-especialidade-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const specKey = card.getAttribute('data-specialty');
+        if (specKey) openSpecialtyModal(specKey);
+      });
+    });
+
+    // Close any modal or drawer on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        closeSpecialtyModal();
+        closeModal();
+      }
+    });
+
+    // Modal submit confirmation
+    const submitBtn = document.getElementById('submitHakuraBooking');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        const name = document.getElementById('hakuraName').value.trim();
+        const email = document.getElementById('hakuraEmail').value.trim();
+        if (!name || !email) {
+          alert('Por favor preencha o seu nome e email.');
+          return;
+        }
+        alert('Obrigado, ' + name + '! O seu agendamento para o Hakura Health Scan foi registado com sucesso. Enviámos a confirmação para ' + email);
+        closeModal();
+      });
+    }
+  });
+</script>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script type="module" src="./js/animations.js"></script>
+
+<script>
+window.toggleHakuraPillar = function(pillarId) {
+  const card = document.getElementById('pillar-card-' + pillarId);
+  if (!card) return;
+  const wasOpen = card.classList.contains('is-open');
+  
+  // Close all cards for accordion behavior
+  document.querySelectorAll('.hakura-pillar-list-card').forEach(function(c) {
+    c.classList.remove('is-open');
+  });
+
+  // If it was not open, open it
+  if (!wasOpen) {
+    card.classList.add('is-open');
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  const teamCarousel = document.getElementById('hakuraTeamCarouselContent');
+  const teamProgress = document.getElementById('hakuraTeamProgressBar');
+  
+  if (teamCarousel && teamProgress) {
+    const updateProgress = () => {
+      const maxScroll = teamCarousel.scrollWidth - teamCarousel.clientWidth;
+      if (maxScroll <= 0) {
+        teamProgress.style.width = '100%';
+        return;
+      }
+      const scrollPercent = (teamCarousel.scrollLeft / maxScroll) * 100;
+      // Start at 15% so it's visible, then grow to 100%
+      const fillAmount = 15 + (scrollPercent * 0.85);
+      teamProgress.style.width = fillAmount + '%';
+    };
+    
+    teamCarousel.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    
+    // Initial calculation
+    setTimeout(updateProgress, 100);
+    
+    window.scrollTeamCarousel = function(direction) {
+      const scrollAmount = teamCarousel.clientWidth * 0.75;
+      teamCarousel.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+    };
+  }
+});
+</script>
+
+<script>
+  (function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    document.querySelectorAll('.hakura-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+<!-- Neko Health UX/UI Enhancements: GSAP Scrollytelling & Custom Cursor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Horizon Reveal Effect with GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const reveals = document.querySelectorAll(".horizon-reveal");
+    reveals.forEach((reveal) => {
+      const words = reveal.querySelectorAll(".horizon-word");
+      
+      gsap.set(words, { opacity: 0.1, y: 15 });
+      
+      gsap.to(words, {
+        scrollTrigger: {
+          trigger: reveal,
+          start: "top 85%",
+          end: "center center",
+          scrub: 0.5,
+        },
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    });
+
+    // 3. Curtain Reveal on Load
+    gsap.from(".hero-reveal", {
+      y: 35,
+      opacity: 0,
+      duration: 1.1,
+      stagger: 0.15,
+      ease: "power3.out",
+      delay: 0.2
+    });
+
+    // 4. Subtle Parallax for Team Images
+    const parallaxImages = document.querySelectorAll(".hakura-team-card-inner img");
+    parallaxImages.forEach(img => {
+      gsap.to(img, {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: img.closest('.hakura-team-slide'),
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    });
+
+    // 5. Expand White Zone (Hakura Medical & Specialties Drawer)
+    const expandPanel = document.getElementById("hakuraExpandPanel");
+    const closeExpandBtn = document.getElementById("closeExpandPanel");
+    const closeExpandText = document.getElementById("closeExpandText");
+    const expandContent = document.getElementById("expandPanelContent");
+    const expandSpecialtiesList = document.getElementById("expandSpecialtiesList");
+
+    const pillarsDrawerData = {
+      medical: {
+        badge: "HAKURA HEALTH · CORPO CLÍNICO",
+        title: "Hakura Medical",
+        subtitle: "Especialidades e Cuidados Clínicos Integrados",
+        description: "Acompanhamento clínico multidisciplinar com diagnóstico de precisão e planos de recuperação funcional e medicina preventiva.",
+        specialties: [
+          { name: "Fisioterapia", desc: "Reabilitação funcional, motora e postural adaptada a cada fase de recuperação." },
+          { name: "Fisioterapia Pélvica", desc: "Prevenção e reabilitação especializada da musculatura do pavimento pélvico." },
+          { name: "Fisioterapia Temporomandibular (ATM)", desc: "Tratamento de disfunções da articulação temporomandibular, bruxismo e dor orofacial." },
+          { name: "Psicologia", desc: "Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo." },
+          { name: "Nutrição", desc: "Planos alimentares clínicos personalizados, otimização metabólica e reeducação alimentar." },
+          { name: "Medicina Geral e Familiar", desc: "Acompanhamento médico global, check-ups preventivos e diagnóstico clínico." },
+          { name: "Pilates Clínico (Individual)", desc: "Sessões individuais orientadas por fisioterapeuta para estabilidade postural e fortalecimento do core." },
+          { name: "Terapia da Fala", desc: "Avaliação e intervenção clínica em comunicação, linguagem e deglutição." }
+        ]
+      },
+      spa: {
+        badge: "HAKURA HEALTH · RECUPERAÇÃO",
+        title: "Hakura Spa",
+        subtitle: "Rituais de Bem-Estar e Hidroterapia",
+        description: "Experiências imersivas de relaxamento profundo e descompressão do sistema nervoso através da água e terapias manuais.",
+        specialties: [
+          { name: "Massagens Terapêuticas", desc: "Alívio de dores musculares, tensões acumuladas e relaxamento miofascial profundo." },
+          { name: "Hidroterapia e Banhos Térmicos", desc: "Circuitos de regeneração celular e alívio do stress através da água." },
+          { name: "Drenagem Linfática Manual", desc: "Estímulo da circulação e desintoxicação natural do organismo." },
+          { name: "Rituais Sensoriais Anti-Stress", desc: "Aromaterapia e rituais que induzem descanso e serenidade duradoura." }
+        ]
+      },
+      holistic: {
+        badge: "HAKURA HEALTH · INTEGRATIVA",
+        title: "Hakura Holistic",
+        subtitle: "Medicina Integrativa e Harmonia Natural",
+        description: "A convergência entre a sabedoria das terapias ancestrais e a medicina regenerativa moderna.",
+        specialties: [
+          { name: "Acupuntura Médica", desc: "Tratamento neuromodulador da dor, inflamação e equilíbrio energético." },
+          { name: "Osteopatia Clínica", desc: "Terapia manual orientada para o equilíbrio músculo-esquelético global." },
+          { name: "Naturopatia e Fitoterapia", desc: "Otimização funcional através de suplementação clínica e botânica avançada." },
+          { name: "Ozonoterapia e Terapia Celular", desc: "Reforço mitocondrial e estimulação das defesas antioxidantes celulares." }
+        ]
+      },
+      aesthetic: {
+        badge: "HAKURA HEALTH · REGENERATIVA",
+        title: "Hakura Aesthetic",
+        subtitle: "Dermatologia e Medicina Estética",
+        description: "Protocolos não-invasivos desenhados para a saúde celular e vitalidade natural da pele.",
+        specialties: [
+          { name: "Mapeamento Cutâneo Facial e Corporal", desc: "Avaliação dermatológica pormenorizada de sinais e microtextura cutânea." },
+          { name: "Tratamentos Faciais Regenerativos", desc: "Protocolos clínicos avançados para luminosidade, elasticidade e firmeza." },
+          { name: "Bioestimuladores de Colagénio", desc: "Estímulo endógeno da matriz extracelular para suporte estrutural duradouro." },
+          { name: "Rejuvenescimento Não-Invasivo", desc: "Tecnologia de ponta orientada para longevidade e renovação celular suave." }
+        ]
+      }
+    };
+
+    function openPillarDrawer(pillarKey) {
+      const data = pillarsDrawerData[pillarKey] || pillarsDrawerData.medical;
+      
+      const badgeEl = document.getElementById("expandPanelBadge");
+      const titleEl = document.getElementById("expandPanelTitle");
+      const subtitleEl = document.getElementById("expandPanelSubtitle");
+      const descEl = document.getElementById("expandPanelDesc");
+      const listEl = document.getElementById("expandSpecialtiesList");
+
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (titleEl) titleEl.textContent = data.title;
+      if (subtitleEl) subtitleEl.textContent = data.subtitle;
+      if (descEl) descEl.textContent = data.description;
+      
+      if (listEl) {
+        listEl.innerHTML = data.specialties.map((item, idx) => `
+          <div class="hakura-specialty-card py-4 flex items-start gap-4">
+            <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">
+              ${idx + 1}
+            </span>
+            <div class="flex-1">
+              <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">
+                ${item.name}
+              </h4>
+              <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+      gsap.set(expandPanel, { 
+        pointerEvents: "auto", 
+        display: "flex",
+        x: "100%",
+        opacity: 1
+      });
+
+      tl.to(expandPanel, {
+        x: "0%",
+        duration: 0.5
+      });
+
+      tl.to([closeExpandBtn, expandContent], {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        stagger: 0.08
+      }, "-=0.25");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePanelLogic() {
+      const tl = gsap.timeline({ defaults: { ease: "power4.inOut" } });
+      
+      tl.to([closeExpandBtn, expandContent], {
+        opacity: 0,
+        y: 10,
+        duration: 0.25
+      });
+      
+      tl.to(expandPanel, {
+        x: "100%",
+        duration: 0.4,
+        onComplete: () => {
+          gsap.set(expandPanel, { pointerEvents: "none", opacity: 0 });
+          document.body.style.overflow = "";
+        }
+      }, "-=0.1");
+    }
+
+    if (closeExpandBtn) closeExpandBtn.addEventListener("click", closePanelLogic);
+    if (closeExpandText) closeExpandText.addEventListener("click", closePanelLogic);
+
+    // Close on Escape key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePanelLogic();
+    });
+
+    // Close on click outside drawer content
+    expandPanel.addEventListener("click", (e) => {
+      if (e.target === expandPanel) closePanelLogic();
+    });
+
+    // Select all "Saber mais" buttons in the Especialidades section
+    const saberMaisBtns = document.querySelectorAll('#especialidades a[href="#scan"]');
+    saberMaisBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const pillar = btn.getAttribute("data-pillar") || "medical";
+        openPillarDrawer(pillar);
+      });
+    });
+
+    // Hook up tab buttons in Especialidades to open the drawer
+    const pillarTabBtns = document.querySelectorAll('#especialidades button');
+    pillarTabBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const text = btn.textContent.trim().toUpperCase();
+        if (text.includes("MEDICAL")) {
+          e.preventDefault();
+          openPillarDrawer("medical");
+        } else if (text.includes("SPA")) {
+          e.preventDefault();
+          openPillarDrawer("spa");
+        } else if (text.includes("HOLISTIC")) {
+          e.preventDefault();
+          openPillarDrawer("holistic");
+        } else if (text.includes("AESTHETIC")) {
+          e.preventDefault();
+          openPillarDrawer("aesthetic");
+        }
+      });
+    });
+
+    // Also make the "HAKURA" header badge in Especialidades clickable to open Medical
+    const hakuraBadges = document.querySelectorAll('#especialidades span');
+    hakuraBadges.forEach(span => {
+      if (span.textContent.trim() === "HAKURA") {
+        span.style.cursor = "pointer";
+        span.addEventListener("click", () => openPillarDrawer("medical"));
+      }
+    });
+
+  });
+</script>
+
+<!-- Hakura Expandable Info Panel (Specialties Drawer) -->
+<div id="hakuraExpandPanel" class="fixed inset-y-0 right-0 w-full md:w-[680px] lg:w-[740px] bg-white z-[200] flex flex-col shadow-[-20px_0_60px_rgba(15,23,42,0.18)] opacity-0 pointer-events-none overflow-y-auto" style="will-change: transform, opacity;">
+  
+  <!-- Sticky Top Navigation Bar -->
+  <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 md:px-12 py-5 flex items-center justify-between">
+    <button id="closeExpandText" class="text-[14px] text-slate-500 hover:text-[#379cb7] font-medium flex items-center gap-2 transition-colors cursor-pointer group">
+      <svg viewBox="0 0 24 24" fill="none" class="size-4 transition-transform group-hover:-translate-x-1" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      <span>Voltar</span>
+    </button>
+    <button id="closeExpandPanel" class="text-slate-400 hover:text-slate-900 transition-colors p-2 -mr-2 cursor-pointer rounded-full hover:bg-slate-100" aria-label="Fechar painel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Panel Content Container -->
+  <div id="expandPanelContent" class="w-full px-6 md:px-12 py-8 md:py-12 flex flex-col flex-1 opacity-0 translate-y-4">
+    <span id="expandPanelBadge" class="text-[12px] md:text-[13px] text-[#379cb7] font-bold tracking-[0.2em] mb-3 uppercase block">
+      HAKURA HEALTH · CORPO CLÍNICO
+    </span>
+    
+    <h2 id="expandPanelTitle" class="font-display text-[36px] md:text-[50px] leading-[1.08] text-slate-900 mb-3 text-balance">
+      Hakura Medical
+    </h2>
+    
+    <p id="expandPanelSubtitle" class="text-[17px] md:text-[19px] text-[#2b7d93] font-medium mb-3">
+      Especialidades e Cuidados Clínicos Integrados
+    </p>
+    
+    <p id="expandPanelDesc" class="text-[15px] md:text-[16px] text-slate-600 leading-relaxed font-light mb-8 max-w-2xl">
+      A nossa equipa clínica proporciona um acompanhamento personalizado com diagnóstico de precisão e terapias de recuperação funcional focadas na sua longevidade.
+    </p>
+
+    <!-- Specialties List (Pre-rendered for Hakura Medical) -->
+    <div class="mb-10">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+        <span class="text-[12px] uppercase tracking-[0.14em] font-semibold text-slate-400">Especialidades Disponíveis</span>
+        <span class="text-[12px] text-slate-400">Atendimento Clínico</span>
+      </div>
+      
+      <div id="expandSpecialtiesList" class="divide-y divide-slate-100 flex flex-col">
+        <!-- Default Hakura Medical Specialties (without prices) -->
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">1</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Fisioterapia</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Reabilitação funcional, motora e postural adaptada a cada fase de recuperação.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">2</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Fisioterapia Pélvica</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Prevenção e reabilitação especializada da musculatura do pavimento pélvico.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">3</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Fisioterapia Temporomandibular (ATM)</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Tratamento de disfunções da articulação temporomandibular, bruxismo e dor orofacial.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">4</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Psicologia</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">5</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Nutrição</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Planos alimentares clínicos personalizados, otimização metabólica e reeducação alimentar.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">6</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Medicina Geral e Familiar</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Acompanhamento médico global, check-ups preventivos e diagnóstico clínico.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">7</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Pilates Clínico (Individual)</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Sessões individuais orientadas por fisioterapeuta para estabilidade postural e fortalecimento do core.</p>
+          </div>
+        </div>
+        <div class="hakura-specialty-card py-4 flex items-start gap-4">
+          <span class="size-7 rounded-full bg-[#edf7fa] text-[#379cb7] font-semibold text-[13px] flex items-center justify-center shrink-0 mt-0.5" style="background-color:#edf7fa;color:#379cb7;min-width:28px;height:28px;">8</span>
+          <div class="flex-1">
+            <h4 class="text-[17px] md:text-[18px] font-medium text-slate-900 leading-snug">Terapia da Fala</h4>
+            <p class="text-[13.5px] md:text-[14px] text-slate-500 font-light mt-1 leading-relaxed">Avaliação e intervenção clínica em comunicação, linguagem e deglutição.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking CTA Footer -->
+    <div class="mt-auto pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-left w-full sm:w-auto">
+        <span class="text-[12px] text-slate-400 uppercase tracking-wider block font-medium">Marcações e Apoio</span>
+        <a href="tel:+351964166845" class="text-[15px] font-semibold text-slate-900 hover:text-[#379cb7] transition-colors no-underline">
+          +351 964 166 845
+        </a>
+      </div>
+      <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center gap-3 whitespace-nowrap transition-all rounded-full bg-[#379cb7] text-white hover:bg-[#2b7d93] px-8 py-4 text-[16px] font-medium no-underline shadow-md hover:shadow-lg w-full sm:w-auto">
+        <span>Marcar Consulta</span>
+        <svg viewBox="0 0 24 24" fill="none" class="size-5 shrink-0 transition-transform group-hover:translate-x-1" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
