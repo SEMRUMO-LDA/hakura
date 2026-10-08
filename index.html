@@ -1495,7 +1495,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     };
 
-    function openPillarDrawer(pillarKey) {
+    function openPillarDrawer(pillarKey, skipOpen = false) {
       const data = pillarsDrawerData[pillarKey] || pillarsDrawerData.medical;
       
       const badgeEl = document.getElementById("expandPanelBadge");
@@ -1539,6 +1539,8 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
         `).join('');
       }
+
+      if (skipOpen) return;
 
       // If panel is already open, just animate the content in place without opening again
       if (expandPanel.style.pointerEvents === "auto") {
@@ -1683,7 +1685,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initialize with Medical Data so drawer isn't empty on first load if CSS/JS timing differs
     setTimeout(() => {
-      openPillarDrawer('medical');
+      openPillarDrawer('medical', true);
     }, 50);
   });
 </script>
