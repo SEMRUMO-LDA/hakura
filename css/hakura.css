@@ -3041,76 +3041,61 @@ header[data-site-header],
               top 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* 1. OVER HERO (scrollY <= 40): Liquid glass translucent pill */
+/* 1. OVER HERO & SCROLLED: Ultra-clean frosted glass pill with high-contrast text */
+header[data-site-header],
 header[data-site-header]:not(.header-scrolled),
+header[data-site-header].header-scrolled,
+.hakura-site-header,
 .hakura-site-header:not(.header-scrolled),
-.hakura-pill-header:not(.header-scrolled) {
-  background: rgba(255, 255, 255, 0.12) !important;
+.hakura-site-header.header-scrolled,
+.hakura-pill-header {
+  background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(28px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
 }
 
+header[data-site-header] nav ul a,
+header[data-site-header] nav ul a span,
 header[data-site-header]:not(.header-scrolled) nav ul a,
 header[data-site-header]:not(.header-scrolled) nav ul a span,
-.hakura-site-header:not(.header-scrolled) nav ul a,
-.hakura-site-header:not(.header-scrolled) nav ul a span,
-.hakura-pill-header:not(.header-scrolled) nav ul a,
-.hakura-pill-header:not(.header-scrolled) nav ul a span {
-  color: #ffffff !important;
-  font-family: var(--font-ibm-plex-sans), 'IBM Plex Sans', -apple-system, sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 13.5px !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
-  transition: color 0.25s ease !important;
-  text-decoration: none !important;
-}
-
-header[data-site-header]:not(.header-scrolled) nav ul a:hover,
-header[data-site-header]:not(.header-scrolled) nav ul a:hover span,
-.hakura-site-header:not(.header-scrolled) nav ul a:hover,
-.hakura-site-header:not(.header-scrolled) nav ul a:hover span {
-  color: #38bdf8 !important;
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.7) !important;
-}
-
-/* 2. ON SCROLL (scrollY > 40): Ultra-refraction liquid frosted glass with dark text */
-header[data-site-header].header-scrolled,
-.hakura-site-header.header-scrolled,
-.hakura-pill-header.header-scrolled {
-  top: 12px !important;
-  background: rgba(255, 255, 255, 0.72) !important;
-  backdrop-filter: blur(32px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 18px 42px -10px rgba(12, 24, 38, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
-}
-
 header[data-site-header].header-scrolled nav ul a,
 header[data-site-header].header-scrolled nav ul a span,
+.hakura-site-header nav ul a,
+.hakura-site-header nav ul a span,
+.hakura-site-header:not(.header-scrolled) nav ul a,
+.hakura-site-header:not(.header-scrolled) nav ul a span,
 .hakura-site-header.header-scrolled nav ul a,
 .hakura-site-header.header-scrolled nav ul a span,
-.hakura-pill-header.header-scrolled nav ul a,
-.hakura-pill-header.header-scrolled nav ul a span {
+.hakura-pill-header nav ul a,
+.hakura-pill-header nav ul a span {
   color: #0f172a !important;
-  font-family: var(--font-ibm-plex-sans), 'IBM Plex Sans', -apple-system, sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 13.5px !important;
-  letter-spacing: 0.05em !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
   text-shadow: none !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
+header[data-site-header] nav ul a:hover,
+header[data-site-header] nav ul a:hover span,
+header[data-site-header]:not(.header-scrolled) nav ul a:hover,
+header[data-site-header]:not(.header-scrolled) nav ul a:hover span,
 header[data-site-header].header-scrolled nav ul a:hover,
 header[data-site-header].header-scrolled nav ul a:hover span,
+.hakura-site-header nav ul a:hover,
+.hakura-site-header nav ul a:hover span,
+.hakura-site-header:not(.header-scrolled) nav ul a:hover,
+.hakura-site-header:not(.header-scrolled) nav ul a:hover span,
 .hakura-site-header.header-scrolled nav ul a:hover,
 .hakura-site-header.header-scrolled nav ul a:hover span {
-  color: #2492cf !important;
+  color: #379cb7 !important;
 }
 
 /* Nav links list styling */
@@ -4758,21 +4743,52 @@ button:active,
    ========================================================================== */
 #hakuraExpandPanel {
   background: #ffffff !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
   -webkit-overflow-scrolling: touch !important;
   box-shadow: -20px 0 60px rgba(15, 23, 42, 0.15) !important;
+}
+
+#expandPanelContent {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  padding-top: 24px !important;
+  padding-bottom: clamp(100px, 16vh, 180px) !important;
+}
+
+#expandPanelContent::-webkit-scrollbar {
+  width: 6px;
+}
+#expandPanelContent::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+#expandPanelContent::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+#expandPanelContent::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 .hakura-specialties-grid {
   display: grid !important;
   grid-template-columns: 1fr !important;
-  gap: 16px !important;
+  gap: 12px !important;
   width: 100% !important;
 }
 
 @media (min-width: 768px) {
   .hakura-specialties-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 16px 20px !important;
+    gap: 12px 16px !important;
   }
 }
 
@@ -4780,20 +4796,16 @@ button:active,
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border: 1px solid #eef2f6 !important;
   border-radius: 14px !important;
-  padding: 16px !important;
+  padding: 14px 18px !important;
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
 }
 
 .hakura-specialty-card:hover {
   background-color: #f8fafc !important;
-  border-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 16px rgba(55, 156, 183, 0.08) !important;
-}
-
-#expandPanelContent {
-  padding-top: clamp(100px, 12vw, 140px) !important;
+  box-shadow: 0 6px 16px rgba(55, 156, 183, 0.1) !important;
 }
 
 /* Bulletproof Top-Right Close Button */
@@ -4963,7 +4975,7 @@ html, body {
     padding-left: 18px !important;
     padding-right: 18px !important;
     padding-top: 20px !important;
-    padding-bottom: 96px !important;
+    padding-bottom: clamp(100px, 18vh, 180px) !important;
   }
   #expandPanelTitle {
     font-size: 28px !important;
@@ -4996,6 +5008,42 @@ html, body {
   right: max(1rem, env(safe-area-inset-right, 0px)) !important;
 }
 
+/* 6b. Mobile Floating CTA Button Bulletproof Solid Blue */
+.hakura-mobile-cta-btn {
+  background-color: #379cb7 !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: 0 4px 16px rgba(55, 156, 183, 0.4) !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hakura-mobile-cta-btn:hover {
+  background-color: #2b7d93 !important;
+  color: #ffffff !important;
+}
+
+.hakura-mobile-cta-btn:active {
+  transform: scale(0.97) !important;
+}
+
+.hakura-mobile-cta-btn svg {
+  width: 17px !important;
+  height: 17px !important;
+  stroke: #ffffff !important;
+  stroke-width: 2 !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
 /* 7. Dual Screen & Compact Foldables (Width <= 360px) */
 @media (max-width: 360px) {
   .xpad {
@@ -5013,4 +5061,33 @@ html, body {
     padding: 4px 7px !important;
     font-size: 10px !important;
   }
+}
+
+/* 8. Hakura Newsletter Pill Input (Bulletproof Rounded & Liquid Glow) */
+.hakura-newsletter-form {
+  border-radius: 9999px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+}
+
+.hakura-newsletter-form:focus-within {
+  border-color: #379cb7 !important;
+  box-shadow: 0 0 0 3px rgba(55, 156, 183, 0.18), 0 10px 30px rgba(55, 156, 183, 0.12) !important;
+}
+
+.hakura-newsletter-input {
+  border-radius: 9999px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+.hakura-newsletter-input:focus,
+.hakura-newsletter-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
