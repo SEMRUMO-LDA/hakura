@@ -191,24 +191,28 @@ function initStickyExplainerAnimation() {
     // 3. Update Text Slide Opacity / Content for the 4 Hakura Pillars
     const hakuraPillarsData = [
       {
-        title: "Diagnóstico clínico avançado e cardiologia de precisão",
-        description: "Monitorização cardiovascular contínua, eletrocardiograma e análises laboratoriais imediatas lideradas por médicos especialistas.",
-        buttonText: "Descobrir HAKURA MEDICAL"
+        pillar: "medical",
+        title: "Medicina Integrada e Reabilitação Funcional",
+        description: "Acompanhamento multidisciplinar em fisioterapia geral, pélvica e ATM, psicologia clínica, nutrição e medicina geral e familiar.",
+        buttonText: "Saber mais"
       },
       {
-        title: "Recuperação profunda, hidroterapia e rituais de bem-estar",
-        description: "Terapias de relaxamento celular através da água, massagens terapêuticas e rituais que regeneram o sistema nervoso e restabelecem a harmonia natural.",
-        buttonText: "Descobrir HAKURA SPA"
+        pillar: "spa",
+        title: "Rituais de Bem-Estar e Recuperação Profunda",
+        description: "Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais remodeladores, drenagem linfática e alívio de tensões.",
+        buttonText: "Saber mais"
       },
       {
-        title: "Medicina integrativa, acupuntura e harmonia global",
-        description: "Acupuntura médica, ozonoterapia e planos nutricionais desenhados para restaurar o equilíbrio energético e acelerar a autorregeneração celular.",
-        buttonText: "Descobrir HAKURA HOLISTIC"
+        pillar: "holistic",
+        title: "Terapias Integrativas e Equilíbrio Natural",
+        description: "Harmonização bioenergética e autorregeneração com acupunctura médica tradicional, sessões de reiki e consultas de homeopatia personalizadas.",
+        buttonText: "Saber mais"
       },
       {
-        title: "Dermatologia de precisão e medicina estética regenerativa",
-        description: "Mapeamento cutâneo completo em ultra-alta definição e procedimentos estéticos não-invasivos orientados para a longevidade celular da pele.",
-        buttonText: "Descobrir HAKURA AESTHETIC"
+        pillar: "aesthetic",
+        title: "Medicina Estética e Cuidados Cutâneos",
+        description: "Consultas de avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda para vitalidade da sua pele.",
+        buttonText: "Saber mais"
       }
     ];
 
@@ -223,11 +227,13 @@ function initStickyExplainerAnimation() {
       setTimeout(() => {
         const titleEl = textWrapper.querySelector('h2');
         const descEl = textWrapper.querySelector('p');
+        const btnLink = textWrapper.querySelector('a');
         const btnTextEl = textWrapper.querySelector('a span:last-child');
 
         if (titleEl) titleEl.textContent = activePillar.title;
         if (descEl) descEl.textContent = activePillar.description;
         if (btnTextEl) btnTextEl.textContent = activePillar.buttonText;
+        if (btnLink) btnLink.setAttribute('data-pillar', activePillar.pillar);
 
         textWrapper.style.opacity = '1';
         textWrapper.style.transform = 'translateY(0px)';
