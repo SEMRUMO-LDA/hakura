@@ -5001,29 +5001,86 @@ html, body {
   transform: translateY(0) !important;
 }
 
-/* 6. Mobile Safe Areas (iPhone Dynamic Island & Home Indicator) */
-#mobileBottomCTA {
-  bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
-  left: max(1rem, env(safe-area-inset-left, 0px)) !important;
-  right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+/* ==========================================================================
+   6. 4 PILLARS DESKTOP SMOOTH CROSS-FADE LAYERS
+   ========================================================================== */
+.hakura-pillar-desktop-layer {
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity;
 }
 
-/* 6b. Mobile Floating CTA Button Bulletproof Solid Blue */
+/* ==========================================================================
+   7. MOBILE HEADER STRICT RULE (< 1024px)
+   Strictly shows ONLY logo icon on left & hamburger button on right
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .hakura-site-header {
+    height: 64px !important;
+    padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+    padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .hakura-site-header nav,
+  .hakura-site-header .hakura-header-cta {
+    display: none !important;
+  }
+  .hakura-site-header .hakura-nav-logo {
+    display: flex !important;
+    align-items: center !important;
+  }
+  #hakuraMobileMenuBtn {
+    display: flex !important;
+  }
+}
+
+/* ==========================================================================
+   8. MOBILE FLOATING CTA BAR (Edge-to-Edge / De Ponta a Ponta e Flutuar)
+   ========================================================================== */
+#mobileBottomCTA {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+  padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+  padding-top: 10px !important;
+  padding-bottom: max(12px, calc(10px + env(safe-area-inset-bottom, 0px))) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: 0 -4px 24px rgba(15, 23, 42, 0.08) !important;
+  z-index: 150 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+}
+
+#mobileBottomCTA.translate-y-full {
+  transform: translateY(100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Mobile CTA Button - Solid Blue #379cb7, Calendar Icon, White Text */
 .hakura-mobile-cta-btn {
   background-color: #379cb7 !important;
   color: #ffffff !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  gap: 10px !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-weight: 600 !important;
   font-size: 14.5px !important;
   letter-spacing: 0.02em !important;
-  box-shadow: 0 4px 16px rgba(55, 156, 183, 0.4) !important;
-  border-radius: 9999px !important;
+  box-shadow: 0 4px 16px rgba(55, 156, 183, 0.35) !important;
+  border-radius: 16px !important;
+  height: 48px !important;
   text-decoration: none !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .hakura-mobile-cta-btn:hover {
@@ -5032,38 +5089,165 @@ html, body {
 }
 
 .hakura-mobile-cta-btn:active {
-  transform: scale(0.97) !important;
+  transform: scale(0.98) !important;
 }
 
 .hakura-mobile-cta-btn svg {
-  width: 17px !important;
-  height: 17px !important;
+  width: 18px !important;
+  height: 18px !important;
   stroke: #ffffff !important;
   stroke-width: 2 !important;
   display: block !important;
   flex-shrink: 0 !important;
 }
 
-/* 7. Dual Screen & Compact Foldables (Width <= 360px) */
+/* ==========================================================================
+   9. SENIOR UX/UI DESIGN SYSTEM — MOBILE RESPONSIVE TOKENS (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* Section Spacing Rhythm - Balanced 56px (py-14) */
+  .py-24,
+  .py-32,
+  .py-20,
+  .py-28,
+  .hakura-hero-editorial-slice,
+  section[data-slicetype="siteCarousel"],
+  section[data-slicetype="ratings"],
+  .hakura-blog-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* Footer Spacing */
+  .hakura-official-footer .py-20,
+  .hakura-official-footer .py-28 {
+    padding-top: 2.75rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+  .hakura-official-footer .py-16,
+  .hakura-official-footer .py-24 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  /* Sub-footer clearance for edge-to-edge bottom bar */
+  .hakura-official-footer .bg-white.border-t {
+    padding-top: 2rem !important;
+    padding-bottom: max(96px, calc(80px + env(safe-area-inset-bottom, 0px))) !important;
+  }
+
+  /* Horizontal Breathing Room */
+  .xpad {
+    padding-left: clamp(16px, 4.5vw, 22px) !important;
+    padding-right: clamp(16px, 4.5vw, 22px) !important;
+  }
+
+  /* Fluid Mobile Typography Scale */
+  /* H1: Hero Display */
+  section[data-slicetype="mainHero"] h1.font-display {
+    font-size: clamp(32px, 8.8vw, 42px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.025em !important;
+    max-width: 14ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  section[data-slicetype="mainHero"] .hero-subtitle {
+    font-size: clamp(15px, 4vw, 17px) !important;
+    line-height: 1.55 !important;
+    margin-top: 12px !important;
+    max-width: 32ch !important;
+  }
+
+  /* H2: Section Titles */
+  h2.font-display.prose-h2,
+  #hakuraEditorialHeading,
+  section[data-slicetype="ratings"] h2,
+  .hakura-blog-section h2,
+  .hakura-official-footer h2 {
+    font-size: clamp(26px, 7vw, 34px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* H3: Card Headers */
+  .team-card-name,
+  .hakura-mobile-pillar-card h3,
+  .hakura-blog-card h3 {
+    font-size: clamp(18px, 5.2vw, 22px) !important;
+    line-height: 1.26 !important;
+  }
+
+  /* Body Copy & Explanations */
+  p.text-\[16px\],
+  p.text-\[18px\],
+  section[data-slicetype="ratings"] blockquote p,
+  .hakura-mobile-pillar-card p {
+    font-size: 14.5px !important;
+    line-height: 1.62 !important;
+  }
+
+  /* Eyebrow & Category Badges */
+  span.uppercase.tracking-\[0\.16em\],
+  span.uppercase.tracking-\[0\.2em\],
+  span.uppercase.tracking-\[0\.15em\] {
+    font-size: 11px !important;
+    letter-spacing: 0.16em !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Micro-interactions & animations on mobile */
+  .hakura-reveal {
+    transform: translateY(16px) !important;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .hakura-reveal.is-visible {
+    transform: translateY(0) !important;
+  }
+
+  /* Fast, responsive touch feedback */
+  a, button {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  button:active, .cursor-pointer:active {
+    opacity: 0.92;
+  }
+
+  /* Newsletter input clean padding */
+  .hakura-newsletter-form {
+    padding: 4px !important;
+  }
+  .hakura-newsletter-input {
+    font-size: 14px !important;
+    padding-left: 2.75rem !important;
+  }
+}
+
+/* ==========================================================================
+   10. ULTRA-COMPACT SCREENS (Width <= 360px)
+   ========================================================================== */
 @media (max-width: 360px) {
   .xpad {
     padding-left: 14px !important;
     padding-right: 14px !important;
   }
   h1.font-display {
-    font-size: 30px !important;
+    font-size: 29px !important;
   }
   .hero-cta-btn {
-    padding: 12px 22px !important;
-    font-size: 12px !important;
+    padding: 11px 20px !important;
+    font-size: 11.5px !important;
   }
-  #hakuraFloatingPill .hakura-drawer-tab {
-    padding: 4px 7px !important;
-    font-size: 10px !important;
+  .hakura-mobile-cta-btn {
+    font-size: 13.5px !important;
+    gap: 6px !important;
   }
 }
 
-/* 8. Hakura Newsletter Pill Input (Bulletproof Rounded & Liquid Glow) */
+/* ==========================================================================
+   11. NEWSLETTER PILL INPUT (Liquid Glow & Border Handling)
+   ========================================================================== */
 .hakura-newsletter-form {
   border-radius: 9999px !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;

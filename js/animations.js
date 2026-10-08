@@ -216,28 +216,35 @@ function initStickyExplainerAnimation() {
       }
     ];
 
-    const activePillar = hakuraPillarsData[activeIndex];
-    const textWrapper = desktopContainer.querySelector('.relative.mt-10 .flex.w-full.flex-col');
-    if (textWrapper && textWrapper.dataset.currentIndex !== String(activeIndex)) {
-      textWrapper.dataset.currentIndex = String(activeIndex);
-      textWrapper.style.opacity = '0';
-      textWrapper.style.transform = 'translateY(8px)';
-      textWrapper.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    if (typeof window.selectDesktopPillar === 'function') {
+      if (window.__hakuraCurrentDesktopPillar !== activeIndex) {
+        window.__hakuraCurrentDesktopPillar = activeIndex;
+        window.selectDesktopPillar(activeIndex);
+      }
+    } else {
+      const activePillar = hakuraPillarsData[activeIndex];
+      const textWrapper = desktopContainer.querySelector('.relative.mt-10 .flex.w-full.flex-col');
+      if (textWrapper && textWrapper.dataset.currentIndex !== String(activeIndex)) {
+        textWrapper.dataset.currentIndex = String(activeIndex);
+        textWrapper.style.opacity = '0';
+        textWrapper.style.transform = 'translateY(8px)';
+        textWrapper.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
 
-      setTimeout(() => {
-        const titleEl = textWrapper.querySelector('h2');
-        const descEl = textWrapper.querySelector('p');
-        const btnLink = textWrapper.querySelector('a');
-        const btnTextEl = textWrapper.querySelector('a span:last-child');
+        setTimeout(() => {
+          const titleEl = textWrapper.querySelector('h2');
+          const descEl = textWrapper.querySelector('p');
+          const btnLink = textWrapper.querySelector('a');
+          const btnTextEl = textWrapper.querySelector('a span:last-child');
 
-        if (titleEl) titleEl.textContent = activePillar.title;
-        if (descEl) descEl.textContent = activePillar.description;
-        if (btnTextEl) btnTextEl.textContent = activePillar.buttonText;
-        if (btnLink) btnLink.setAttribute('data-pillar', activePillar.pillar);
+          if (titleEl) titleEl.textContent = activePillar.title;
+          if (descEl) descEl.textContent = activePillar.description;
+          if (btnTextEl) btnTextEl.textContent = activePillar.buttonText;
+          if (btnLink) btnLink.setAttribute('data-pillar', activePillar.pillar);
 
-        textWrapper.style.opacity = '1';
-        textWrapper.style.transform = 'translateY(0px)';
-      }, 200);
+          textWrapper.style.opacity = '1';
+          textWrapper.style.transform = 'translateY(0px)';
+        }, 200);
+      }
     }
   }
 
@@ -246,6 +253,9 @@ function initStickyExplainerAnimation() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const targetIdx = idx % 4;
+      if (typeof window.selectDesktopPillar === 'function') {
+        window.selectDesktopPillar(targetIdx);
+      }
       const runwayHeight = explainerSection.offsetHeight - window.innerHeight;
       const targetProgress = targetIdx / 3;
       const targetScroll = explainerSection.offsetTop + targetProgress * runwayHeight;
