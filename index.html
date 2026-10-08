@@ -109,8 +109,8 @@
 </header>
 
 <!-- Floating Specialties Pill -->
-<div class="fixed top-[90px] inset-x-0 z-[90] flex justify-center pointer-events-none transition-transform duration-300" id="hakuraFloatingPill">
-  <div class="pointer-events-auto bg-white/90 backdrop-blur-xl shadow-[0_4px_20px_rgba(15,23,42,0.06)] border border-slate-100 rounded-full px-2 py-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[95vw]">
+<div class="fixed top-[90px] w-full left-0 z-[90] flex justify-center pointer-events-none transition-transform duration-300" id="hakuraFloatingPill">
+  <div class="pointer-events-auto bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(15,23,42,0.08)] border border-slate-100/50 rounded-full px-2 py-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[95vw]">
     <button type="button" onclick="window.openPillarDrawer('medical'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="medical">Medical</button>
     <button type="button" onclick="window.openPillarDrawer('spa'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="spa">Spa</button>
     <button type="button" onclick="window.openPillarDrawer('holistic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="holistic">Holistic</button>
@@ -179,11 +179,11 @@
 
     </div>
 
-    <!-- Bottom CTA Button (CONHECE A HAKURA ↓) - Liquid Glass -->
+    <!-- Bottom CTA Button (CONHEÇA MELHOR ↓) - Liquid Glass -->
     <div class="flex flex-col items-center pb-10 md:pb-14">
-      <a href="#especialidades" class="hero-cta-btn hero-reveal pointer-events-auto group" aria-label="Conhece a Hakura">
-        <span>CONHECE A HAKURA</span>
-        <svg viewBox="0 0 24 24" fill="none" class="size-4 shrink-0 transition-transform group-hover:translate-y-1" stroke="currentColor" stroke-width="2.2">
+      <a href="#especialidades" class="hero-cta-btn hero-reveal pointer-events-auto group" aria-label="Conheça Melhor">
+        <span>CONHEÇA MELHOR</span>
+        <svg viewBox="0 0 24 24" fill="none" class="size-4 shrink-0 transition-transform" stroke="currentColor" stroke-width="2.2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </a>
@@ -1560,6 +1560,14 @@ document.addEventListener("DOMContentLoaded", function() {
       const floatingPill = document.getElementById("hakuraFloatingPill");
       if (floatingPill) floatingPill.classList.add("-translate-y-32");
 
+      // Shrink and hide main header
+      const header = document.querySelector('.hakura-site-header');
+      if (header) {
+        header.style.transform = 'translateY(-100%) scale(0.95)';
+        header.style.opacity = '0';
+        header.style.pointerEvents = 'none';
+      }
+
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       gsap.set(expandPanel, { 
@@ -1605,6 +1613,14 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       const floatingPill = document.getElementById("hakuraFloatingPill");
       if (floatingPill) floatingPill.classList.remove("-translate-y-32");
+      
+      // Restore main header
+      const header = document.querySelector('.hakura-site-header');
+      if (header) {
+        header.style.transform = '';
+        header.style.opacity = '1';
+        header.style.pointerEvents = '';
+      }
       
       tl.to(expandContent, {
         opacity: 0,
@@ -1704,17 +1720,15 @@ document.addEventListener("DOMContentLoaded", function() {
       <button type="button" onclick="window.openPillarDrawer('holistic')" class="hakura-drawer-tab" data-tab-pillar="holistic">Holistic</button>
       <button type="button" onclick="window.openPillarDrawer('aesthetic')" class="hakura-drawer-tab" data-tab-pillar="aesthetic">Aesthetic</button>
     </div>
-    <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center size-11 rounded-full bg-slate-900 text-white hover:bg-[#379cb7] hover:scale-105 transition-all shrink-0 shadow-md ml-4" aria-label="Fechar especialidades">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/></svg>
+    <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-6 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-all shrink-0 ml-4 font-semibold text-[13px] tracking-wide gap-2 shadow-sm" aria-label="Voltar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      VOLTAR
     </button>
   </div>
   
   <!-- Panel Content Container -->
-  <div id="expandPanelContent" class="w-full px-6 md:px-12 pt-8 md:pt-10 pb-8 md:pb-12 flex flex-col flex-1 opacity-0 translate-y-4 overflow-y-auto" style="padding-top: 2rem !important;">
-    <a href="#" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer(); return false;" class="group inline-flex w-fit items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors duration-300 font-medium text-[13px] uppercase tracking-wider mb-8 self-end">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 transition-transform group-hover:-translate-x-1"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Voltar
-    </a>
+  <div id="expandPanelContent" class="w-full px-6 md:px-12 pt-8 md:pt-10 pb-24 md:pb-32 flex flex-col flex-1 opacity-0 translate-y-4 overflow-y-auto" style="padding-top: 2rem !important;">
+
     <span id="expandPanelBadge" class="text-[12px] md:text-[13px] text-[#379cb7] font-bold tracking-[0.2em] mb-3 uppercase block">
       ESPECIALIDADES
     </span>
@@ -1727,7 +1741,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </p>
 
     <!-- Specialties List (Pre-rendered for Hakura Medical in 2-Column Responsive Grid) -->
-    <div class="mb-10">
+    <div class="mb-24 md:mb-40">
       <div id="expandSpecialtiesList" class="hakura-specialties-grid">
       </div>
     </div>

@@ -2753,7 +2753,6 @@ section[data-slicetype="mainHero"] .hero-subtitle {
   background: rgba(255, 255, 255, 0.22) !important;
   border-color: rgba(255, 255, 255, 0.6) !important;
   color: #ffffff !important;
-  transform: translateY(-2px) !important;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25), 0 0 24px rgba(55, 156, 183, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
 }
 
@@ -2768,7 +2767,7 @@ section[data-slicetype="mainHero"] .hero-subtitle {
 }
 
 .hero-cta-btn:hover svg {
-  transform: translateY(2px) !important;
+  opacity: 0.9 !important;
 }
 
 
@@ -4731,7 +4730,6 @@ button:active,
   background: rgba(255, 255, 255, 0.28) !important;
   border-color: rgba(255, 255, 255, 0.8) !important;
   color: #ffffff !important;
-  transform: translateY(-2px) !important;
   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.35), 0 0 24px rgba(55, 156, 183, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
 }
 
@@ -4744,7 +4742,7 @@ button:active,
 }
 
 .hero-cta-btn:hover svg {
-  transform: translateY(2px) !important;
+  opacity: 0.9 !important;
 }
 
 /* ==========================================================================
@@ -4752,7 +4750,6 @@ button:active,
    ========================================================================== */
 #hakuraExpandPanel {
   background: #ffffff !important;
-  overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
   box-shadow: -20px 0 60px rgba(15, 23, 42, 0.15) !important;
 }
@@ -4832,6 +4829,33 @@ button:active,
   stroke-width: 2.5 !important;
   display: block !important;
   pointer-events: none !important;
+}
+
+/* ==========================================================================
+   HAKURA FLOATING PILL TABS STYLES
+   ========================================================================== */
+.hakura-drawer-tab {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.hakura-drawer-tab:hover {
+  background-color: rgba(241, 245, 249, 0.7);
+  color: #0f172a;
+}
+.hakura-drawer-tab.active {
+  background-color: #ffffff;
+  color: #379cb7;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 
 
