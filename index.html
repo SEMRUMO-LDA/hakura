@@ -463,127 +463,100 @@
     </div>
   </div>
 
-  <!-- Mobile 4 Pillars Interactive Showcase -->
-  <div class="md:hidden w-full py-14 px-4 sm:px-6 bg-white overflow-hidden">
-    <div class="w-full flex flex-col items-center text-center mb-8">
+  <!-- Mobile 4 Pillars Interactive Showcase (Neko-style Snap Carousel) -->
+  <div class="md:hidden w-full py-16 bg-white flex flex-col">
+    <!-- Header Text -->
+    <div class="w-full flex flex-col px-6 mb-8">
       <span class="text-[11px] text-[#379cb7] font-bold tracking-[0.2em] uppercase mb-2 block">ESPECIALIDADES NA HAKURA</span>
-      <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.18] text-slate-900 text-balance" style="font-family:'Gotu',serif!important;">
+      <h2 class="font-display text-[30px] sm:text-[34px] leading-[1.15] text-slate-900 text-balance" style="font-family:'Gotu',serif!important;">
         Cuidado Clínico &amp; Integrativo
       </h2>
-      <p class="text-[14.5px] text-slate-600 mt-2 max-w-sm leading-relaxed font-light">
-        Quatro pilares conectados para promover a sua vitalidade, equilíbrio e longevidade ativa.
+      <p class="text-[14.5px] text-slate-600 mt-3 max-w-sm leading-relaxed font-light">
+        Quatro pilares conectados para promover a sua vitalidade e longevidade ativa. Faça swipe para explorar.
       </p>
-
-      <!-- Mobile Tabs (Medical | Spa | Holistic | Aesthetic) -->
-      <div class="mt-6 flex items-center justify-start sm:justify-center gap-1.5 p-1.5 bg-slate-100 rounded-full border border-slate-200/80 overflow-x-auto no-scrollbar max-w-full">
-        <button type="button" onclick="window.selectMobilePillar('medical')" class="hakura-mobile-pillar-tab active px-4 py-2 rounded-full text-[12px] font-semibold tracking-wider uppercase transition-all duration-300 bg-white text-[#379cb7] shadow-sm whitespace-nowrap cursor-pointer" data-mobile-pillar="medical">Medical</button>
-        <button type="button" onclick="window.selectMobilePillar('spa')" class="hakura-mobile-pillar-tab px-4 py-2 rounded-full text-[12px] font-semibold tracking-wider uppercase transition-all duration-300 text-slate-500 hover:text-slate-800 whitespace-nowrap cursor-pointer" data-mobile-pillar="spa">Spa</button>
-        <button type="button" onclick="window.selectMobilePillar('holistic')" class="hakura-mobile-pillar-tab px-4 py-2 rounded-full text-[12px] font-semibold tracking-wider uppercase transition-all duration-300 text-slate-500 hover:text-slate-800 whitespace-nowrap cursor-pointer" data-mobile-pillar="holistic">Holistic</button>
-        <button type="button" onclick="window.selectMobilePillar('aesthetic')" class="hakura-mobile-pillar-tab px-4 py-2 rounded-full text-[12px] font-semibold tracking-wider uppercase transition-all duration-300 text-slate-500 hover:text-slate-800 whitespace-nowrap cursor-pointer" data-mobile-pillar="aesthetic">Aesthetic</button>
-      </div>
     </div>
 
-    <!-- Mobile Pillar Interactive Cards -->
-    <div id="hakuraMobilePillarContent" class="w-full max-w-md mx-auto">
+    <!-- Snap Carousel -->
+    <div class="w-full flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-6 gap-4" style="scroll-padding-left: 1.5rem;">
+      
       <!-- Card 1: Medical -->
-      <div class="hakura-mobile-pillar-card transition-all duration-300" data-pillar-card="medical">
-        <div class="relative w-full aspect-[16/11] rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 mb-5 bg-slate-100">
+      <div class="snap-start shrink-0 w-[85vw] sm:w-[320px] flex flex-col gap-4">
+        <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_12px_40px_-12px_rgba(15,23,42,0.15)] bg-slate-100">
           <img src="./assets/images/hakura_real_doctors.jpg" alt="Hakura Medical" class="w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
-          <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+          <span class="absolute top-5 left-5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[10.5px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
             Pilar 01 · Medical
           </span>
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <h3 class="font-display text-[22px] sm:text-[25px] text-slate-900 leading-snug" style="font-family:'Gotu',serif!important;">
-            Medicina Integrada e Reabilitação Funcional
-          </h3>
-          <p class="text-[14.5px] text-slate-600 leading-relaxed font-light">
-            Acompanhamento multidisciplinar em fisioterapia geral, pélvica e ATM, psicologia clínica, nutrição funcional e medicina geral e familiar.
-          </p>
-          <div class="pt-2">
-            <button type="button" onclick="window.openPillarDrawer('medical'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-900 text-white hover:bg-[#379cb7] active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
-              <span>Ver Especialidades Medical</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
+          <div class="absolute bottom-0 inset-x-0 p-6 flex flex-col gap-2.5">
+             <h3 class="font-display text-[24px] text-white leading-[1.15]" style="font-family:'Gotu',serif!important;">Medicina Integrada e Reabilitação</h3>
+             <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Acompanhamento multidisciplinar em fisioterapia, psicologia, nutrição funcional e medicina geral.</p>
           </div>
         </div>
+        <button type="button" onclick="window.openPillarDrawer('medical'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+          <span>Ver Especialidades</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
       </div>
 
       <!-- Card 2: Spa -->
-      <div class="hakura-mobile-pillar-card hidden transition-all duration-300" data-pillar-card="spa">
-        <div class="relative w-full aspect-[16/11] rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 mb-5 bg-slate-100">
+      <div class="snap-start shrink-0 w-[85vw] sm:w-[320px] flex flex-col gap-4">
+        <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_12px_40px_-12px_rgba(15,23,42,0.15)] bg-slate-100">
           <img src="./assets/images/hakura_real_spa.jpg" alt="Hakura Spa" class="w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
-          <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+          <span class="absolute top-5 left-5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[10.5px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
             Pilar 02 · Spa
           </span>
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <h3 class="font-display text-[22px] sm:text-[25px] text-slate-900 leading-snug" style="font-family:'Gotu',serif!important;">
-            Rituais de Bem-Estar e Recuperação Profunda
-          </h3>
-          <p class="text-[14.5px] text-slate-600 leading-relaxed font-light">
-            Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais remodeladores, drenagem linfática e alívio de tensões musculares.
-          </p>
-          <div class="pt-2">
-            <button type="button" onclick="window.openPillarDrawer('spa'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-900 text-white hover:bg-[#379cb7] active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
-              <span>Ver Rituais de Spa</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
+          <div class="absolute bottom-0 inset-x-0 p-6 flex flex-col gap-2.5">
+             <h3 class="font-display text-[24px] text-white leading-[1.15]" style="font-family:'Gotu',serif!important;">Rituais de Bem-Estar e Recuperação</h3>
+             <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais e alívio de tensões.</p>
           </div>
         </div>
+        <button type="button" onclick="window.openPillarDrawer('spa'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+          <span>Ver Rituais</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
       </div>
 
       <!-- Card 3: Holistic -->
-      <div class="hakura-mobile-pillar-card hidden transition-all duration-300" data-pillar-card="holistic">
-        <div class="relative w-full aspect-[16/11] rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 mb-5 bg-slate-100">
+      <div class="snap-start shrink-0 w-[85vw] sm:w-[320px] flex flex-col gap-4">
+        <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_12px_40px_-12px_rgba(15,23,42,0.15)] bg-slate-100">
           <img src="./assets/images/hakura_pilar_3.png" alt="Hakura Holistic" class="w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
-          <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+          <span class="absolute top-5 left-5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[10.5px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
             Pilar 03 · Holistic
           </span>
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <h3 class="font-display text-[22px] sm:text-[25px] text-slate-900 leading-snug" style="font-family:'Gotu',serif!important;">
-            Terapias Integrativas e Equilíbrio Natural
-          </h3>
-          <p class="text-[14.5px] text-slate-600 leading-relaxed font-light">
-            Harmonização bioenergética e autorregeneração com acupunctura médica tradicional, sessões de reiki e consultas de homeopatia personalizadas.
-          </p>
-          <div class="pt-2">
-            <button type="button" onclick="window.openPillarDrawer('holistic'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-900 text-white hover:bg-[#379cb7] active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
-              <span>Ver Terapias Holísticas</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
+          <div class="absolute bottom-0 inset-x-0 p-6 flex flex-col gap-2.5">
+             <h3 class="font-display text-[24px] text-white leading-[1.15]" style="font-family:'Gotu',serif!important;">Terapias Integrativas e Equilíbrio</h3>
+             <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Harmonização bioenergética com acupunctura médica, sessões de reiki e consultas de homeopatia.</p>
           </div>
         </div>
+        <button type="button" onclick="window.openPillarDrawer('holistic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+          <span>Ver Terapias</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
       </div>
 
       <!-- Card 4: Aesthetic -->
-      <div class="hakura-mobile-pillar-card hidden transition-all duration-300" data-pillar-card="aesthetic">
-        <div class="relative w-full aspect-[16/11] rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 mb-5 bg-slate-100">
+      <div class="snap-start shrink-0 w-[85vw] sm:w-[320px] flex flex-col gap-4">
+        <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_12px_40px_-12px_rgba(15,23,42,0.15)] bg-slate-100">
           <img src="./assets/images/hakura_pilar_aesthetic.png" alt="Hakura Aesthetic" class="w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
-          <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+          <span class="absolute top-5 left-5 bg-white/95 backdrop-blur-md text-[#379cb7] text-[10.5px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
             Pilar 04 · Aesthetic
           </span>
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <h3 class="font-display text-[22px] sm:text-[25px] text-slate-900 leading-snug" style="font-family:'Gotu',serif!important;">
-            Medicina Estética e Cuidados Cutâneos
-          </h3>
-          <p class="text-[14.5px] text-slate-600 leading-relaxed font-light">
-            Consultas de avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda para revitalização e saúde da pele.
-          </p>
-          <div class="pt-2">
-            <button type="button" onclick="window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-900 text-white hover:bg-[#379cb7] active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
-              <span>Ver Cuidados Estéticos</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
+          <div class="absolute bottom-0 inset-x-0 p-6 flex flex-col gap-2.5">
+             <h3 class="font-display text-[24px] text-white leading-[1.15]" style="font-family:'Gotu',serif!important;">Medicina Estética e Cuidados Cutâneos</h3>
+             <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda.</p>
           </div>
         </div>
+        <button type="button" onclick="window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+          <span>Ver Cuidados</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
       </div>
+
+      <!-- End Padding Spacer to allow final snap to align -->
+      <div class="snap-end shrink-0 w-2"></div>
     </div>
   </div>
 </section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:95f647b46afa;base=https%3A%2F%2Fwww.nekohealth.com"><section data-slicetype="spacer" class="h-6 md:h-10" style="background-color:#F0F7F9;background-image:linear-gradient(to bottom, rgba(240, 247, 249, 0), #ffffff);"></section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:f5b213aae1ac;base=https%3A%2F%2Fwww.nekohealth.com"><section id="equipa" data-slicetype="siteCarousel" class="bg-background overflow-x-hidden scroll-mt-24 hakura-reveal py-24 md:py-32">
