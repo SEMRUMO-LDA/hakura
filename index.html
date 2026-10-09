@@ -78,30 +78,65 @@
 </head>
 <body class="antialiased font-sans theme-default">
 
-<!-- Hakura Ambient Glow (Lava Lamp Effect) -->
-<div class="hakura-ambient-glow" aria-hidden="true">
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-</div>
-
-
-<header data-site-header="" class="hakura-site-header theme-default transition-colors duration-300 sticky top-0 z-[100] bg-white/80 backdrop-blur-xl border-b border-slate-100/60 xpad flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] gap-4 lg:gap-6 h-[64px] md:h-[72px]">
-  <div class="transition-colors duration-300 flex items-center">
+<header data-site-header="" class="hakura-site-header theme-default transition-colors duration-300 sticky top-0 z-[100] bg-white/90 backdrop-blur-xl border-b border-slate-100/80 xpad flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 h-[64px] md:h-[72px]">
+  <div class="transition-colors duration-300 flex items-center gap-3">
     <a aria-label="Hakura Home" class="hakura-nav-logo transition-transform hover:scale-105 shrink-0 block" href="#scan" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;display:block!important;border-radius:12px!important;overflow:hidden!important;">
       <img src="./assets/images/hakura_official_logo.png" alt="Hakura" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;object-fit:cover!important;border-radius:12px!important;display:block!important;" />
     </a>
   </div>
-  <nav class="hidden lg:flex transition-all duration-300 opacity-100 translate-y-0 justify-center">
+  <nav class="hidden md:flex transition-all duration-300 opacity-100 translate-y-0 justify-center">
     <ul class="flex items-center gap-5 lg:gap-8">
-      <li><a href="#especialidades"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">ESPECIALIDADES</span></a></li>
-      <li><a href="#equipa"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">EQUIPA</span></a></li>
-      <li><a href="#sobre"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">SOBRE</span></a></li>
-      <li><a href="#blog"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">BLOG</span></a></li>
-      <li><a href="#contactos" id="hakuraNavContactLink"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap">CONTACTOS</span></a></li>
+      <li class="relative group">
+        <a href="#especialidades" class="flex items-center gap-1.5 py-2 cursor-pointer">
+          <span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 group-hover:text-[#379cb7] transition-colors">ESPECIALIDADES</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-3.5 opacity-60 transition-transform group-hover:rotate-180 group-hover:text-[#379cb7]"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50 w-56">
+          <div class="bg-white/95 backdrop-blur-2xl border border-slate-200/80 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.15)] rounded-2xl p-2 flex flex-col gap-1">
+            <button type="button" onclick="window.selectDesktopPillar(0); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+              <span class="flex items-center gap-2">
+                <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
+                Medical
+              </span>
+              <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
+            </button>
+            <button type="button" onclick="window.selectDesktopPillar(1); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+              <span class="flex items-center gap-2">
+                <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
+                Spa
+              </span>
+              <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
+            </button>
+            <button type="button" onclick="window.selectDesktopPillar(2); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+              <span class="flex items-center gap-2">
+                <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
+                Holistic
+              </span>
+              <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
+            </button>
+            <button type="button" onclick="window.selectDesktopPillar(3); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+              <span class="flex items-center gap-2">
+                <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
+                Aesthetic
+              </span>
+              <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
+            </button>
+            <div class="h-px bg-slate-100 my-1"></div>
+            <button type="button" onclick="window.openPillarDrawer('medical');" class="text-left px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-[12px] font-semibold text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer">
+              <span>Ver Catálogo Completo</span>
+              <span class="text-xs font-bold">&plus;</span>
+            </button>
+          </div>
+        </div>
+      </li>
+      <li><a href="#equipa"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">EQUIPA</span></a></li>
+      <li><a href="#sobre"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">SOBRE</span></a></li>
+      <li><a href="#blog"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">BLOG</span></a></li>
+      <li><a href="#contactos" id="hakuraNavContactLink"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">CONTACTOS</span></a></li>
     </ul>
   </nav>
   <div class="flex justify-end transition-colors duration-300 items-center gap-2.5 sm:gap-4">
-    <a class="hakura-header-cta hidden lg:inline-flex" href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer">
+    <a class="hakura-header-cta hidden md:inline-flex" href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 shrink-0" stroke-linecap="round" stroke-linejoin="round" style="width:16px!important;height:16px!important;min-width:16px!important;stroke:currentColor!important;">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
         <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -114,7 +149,7 @@
       </svg>
     </a>
     <!-- Mobile Hamburger Toggle Button -->
-    <button id="hakuraMobileMenuBtn" type="button" class="lg:hidden flex items-center justify-center size-10 rounded-full bg-slate-100/90 text-slate-800 hover:bg-slate-200 transition-colors cursor-pointer" aria-label="Abrir Menu">
+    <button id="hakuraMobileMenuBtn" type="button" class="md:hidden flex items-center justify-center size-10 rounded-full bg-slate-100/90 text-slate-800 hover:bg-slate-200 transition-colors cursor-pointer" aria-label="Abrir Menu">
       <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="4" y1="7" x2="20" y2="7"></line>
         <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -125,7 +160,7 @@
 </header>
 
 <!-- Mobile Navigation Fullscreen Liquid Glass Drawer -->
-<div id="hakuraMobileNavDrawer" class="lg:hidden fixed inset-0 z-[120] bg-slate-950/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" aria-modal="true" role="dialog">
+<div id="hakuraMobileNavDrawer" class="md:hidden fixed inset-0 z-[120] bg-slate-950/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" aria-modal="true" role="dialog">
   <div class="absolute top-0 inset-x-0 bg-white/95 backdrop-blur-2xl border-b border-slate-100 shadow-2xl p-6 pt-5 pb-8 flex flex-col gap-5 -translate-y-full transition-transform duration-300 rounded-b-3xl" id="hakuraMobileNavMenuCard">
     <div class="flex items-center justify-between pb-3 border-b border-slate-100">
       <div class="flex items-center gap-3">
@@ -165,19 +200,19 @@
     <div class="pt-1 border-t border-slate-100">
       <span class="text-[11px] font-bold text-[#379cb7] tracking-[0.15em] uppercase block mb-2 px-1">4 PILARES HAKURA</span>
       <div class="grid grid-cols-2 gap-2">
-        <button type="button" onclick="window.closeMobileNavMenu &amp;&amp; window.closeMobileNavMenu(); window.openPillarDrawer('medical'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
+        <button type="button" onclick="window.closeMobileNavMenu && window.closeMobileNavMenu(); window.openPillarDrawer('medical'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
           <span>Medical</span>
           <span class="text-xs text-slate-400">&rarr;</span>
         </button>
-        <button type="button" onclick="window.closeMobileNavMenu &amp;&amp; window.closeMobileNavMenu(); window.openPillarDrawer('spa'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
+        <button type="button" onclick="window.closeMobileNavMenu && window.closeMobileNavMenu(); window.openPillarDrawer('spa'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
           <span>Spa</span>
           <span class="text-xs text-slate-400">&rarr;</span>
         </button>
-        <button type="button" onclick="window.closeMobileNavMenu &amp;&amp; window.closeMobileNavMenu(); window.openPillarDrawer('holistic'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
+        <button type="button" onclick="window.closeMobileNavMenu && window.closeMobileNavMenu(); window.openPillarDrawer('holistic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
           <span>Holistic</span>
           <span class="text-xs text-slate-400">&rarr;</span>
         </button>
-        <button type="button" onclick="window.closeMobileNavMenu &amp;&amp; window.closeMobileNavMenu(); window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
+        <button type="button" onclick="window.closeMobileNavMenu && window.closeMobileNavMenu(); window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="p-2.5 rounded-xl bg-slate-50 hover:bg-[#379cb7]/10 text-slate-800 hover:text-[#379cb7] text-[13px] font-medium transition-colors text-left flex items-center justify-between cursor-pointer">
           <span>Aesthetic</span>
           <span class="text-xs text-slate-400">&rarr;</span>
         </button>
@@ -194,16 +229,6 @@
         Ligar (+351 964 166 845)
       </a>
     </div>
-  </div>
-</div>
-
-<!-- Floating Specialties Pill (Desktop Only) -->
-<div class="hidden md:flex fixed top-[90px] w-full left-0 z-[90] justify-center pointer-events-none transition-transform duration-300" id="hakuraFloatingPill">
-  <div class="pointer-events-auto bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(15,23,42,0.08)] border border-slate-100/50 rounded-full px-2 py-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[95vw]">
-    <button type="button" onclick="window.openPillarDrawer('medical'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="medical">Medical</button>
-    <button type="button" onclick="window.openPillarDrawer('spa'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="spa">Spa</button>
-    <button type="button" onclick="window.openPillarDrawer('holistic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="holistic">Holistic</button>
-    <button type="button" onclick="window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="hakura-drawer-tab" data-tab-pillar="aesthetic">Aesthetic</button>
   </div>
 </div>
 
@@ -293,24 +318,27 @@
         const ctx = canvas.getContext("2d");
         
         let particles = [];
-        let numParticles = 120; // Increased density
+        const numParticles = 28;
+        let isVisible = false;
+        let animId = null;
         
         function resize() {
+          if (!canvas.parentElement) return;
           canvas.width = canvas.parentElement.offsetWidth;
           canvas.height = canvas.parentElement.offsetHeight;
         }
-        window.addEventListener("resize", resize);
+        window.addEventListener("resize", resize, { passive: true });
         resize();
 
         class Particle {
           constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.radius = Math.random() * 2.5 + 1.2;
-            this.baseAlpha = Math.random() * 0.5 + 0.35;
-            this.color = "rgba(55, 156, 183, " + this.baseAlpha + ")"; // Azul mais intenso e visível
+            this.x = Math.random() * (canvas.width || 800);
+            this.y = Math.random() * (canvas.height || 400);
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.radius = Math.random() * 2 + 1;
+            this.baseAlpha = Math.random() * 0.35 + 0.2;
+            this.color = "rgba(55, 156, 183, " + this.baseAlpha + ")";
           }
           update() {
             this.x += this.vx;
@@ -326,19 +354,33 @@
           }
         }
         
-        for(let i = 0; i < numParticles; i++) {
+        for (let i = 0; i < numParticles; i++) {
           particles.push(new Particle());
         }
         
         function animate() {
+          if (!isVisible) return;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          particles.forEach(p => {
-            p.update();
-            p.draw(ctx);
-          });
-          requestAnimationFrame(animate);
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw(ctx);
+          }
+          animId = requestAnimationFrame(animate);
         }
-        animate();
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              isVisible = true;
+              cancelAnimationFrame(animId);
+              animate();
+            } else {
+              isVisible = false;
+              cancelAnimationFrame(animId);
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(canvas.parentElement || canvas);
       });
     </script>
 
@@ -367,7 +409,7 @@
           <!-- 4 Desktop Cross-Fading Asset Layers -->
           <div class="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">
             <!-- Layer 0: Medical -->
-            <div id="hakuraPillarDesktopLayer0" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:4; opacity: 1;">
+            <div id="hakuraPillarDesktopLayer0" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:1; opacity: 1;">
               <div class="focus-clip-asset-shift-rest absolute inset-0">
                 <div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden">
                   <div class="overflow-hidden absolute inset-0 block h-full w-full">
@@ -377,7 +419,7 @@
               </div>
             </div>
             <!-- Layer 1: Spa -->
-            <div id="hakuraPillarDesktopLayer1" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:3; opacity: 0;">
+            <div id="hakuraPillarDesktopLayer1" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:2; opacity: 1; clip-path: inset(100% 0 0 0);">
               <div class="focus-clip-asset-shift-rest absolute inset-0">
                 <div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden">
                   <div class="overflow-hidden absolute inset-0 block h-full w-full">
@@ -387,7 +429,7 @@
               </div>
             </div>
             <!-- Layer 2: Holistic -->
-            <div id="hakuraPillarDesktopLayer2" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:2; opacity: 0;">
+            <div id="hakuraPillarDesktopLayer2" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:3; opacity: 1; clip-path: inset(100% 0 0 0);">
               <div class="focus-clip-asset-shift-rest absolute inset-0">
                 <div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden">
                   <img alt="Hakura Holistic" src="./assets/images/hakura_pilar_3.png" class="max-w-full block h-full w-full object-cover" style="object-position:52.9% 50%">
@@ -395,7 +437,7 @@
               </div>
             </div>
             <!-- Layer 3: Aesthetic -->
-            <div id="hakuraPillarDesktopLayer3" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:1; opacity: 0;">
+            <div id="hakuraPillarDesktopLayer3" class="focus-clip-asset-rest hakura-pillar-desktop-layer absolute inset-x-0 top-0 bottom-0" style="z-index:4; opacity: 1; clip-path: inset(100% 0 0 0);">
               <div class="focus-clip-asset-shift-rest absolute inset-0">
                 <div class="focus-clip-asset-box absolute top-0 bottom-0 left-0 overflow-hidden">
                   <img alt="Hakura Aesthetic" src="./assets/images/hakura_pilar_aesthetic.png" class="max-w-full block h-full w-full object-cover" style="object-position:50% 46.6%">
@@ -1841,19 +1883,9 @@ document.addEventListener("DOMContentLoaded", function() {
         gsap.to(hakuraExpandScrim, { opacity: 1, duration: 0.4 });
       }
 
-      // Hide mobile bottom CTA and floating pill if open
+      // Hide mobile bottom CTA if open
       const mobileBottomCTA = document.getElementById("mobileBottomCTA");
       if (mobileBottomCTA) mobileBottomCTA.classList.add("translate-y-full", "opacity-0", "pointer-events-none");
-      const floatingPill = document.getElementById("hakuraFloatingPill");
-      if (floatingPill) floatingPill.classList.add("-translate-y-32");
-
-      // Shrink and hide main header
-      const header = document.querySelector('.hakura-site-header');
-      if (header) {
-        header.style.transform = 'translateY(-100%) scale(0.95)';
-        header.style.opacity = '0';
-        header.style.pointerEvents = 'none';
-      }
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
@@ -1893,20 +1925,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }});
       }
 
-      // Show mobile bottom CTA and pill again smoothly
+      // Show mobile bottom CTA smoothly
       const mobileBottomCTA = document.getElementById("mobileBottomCTA");
       if (mobileBottomCTA) {
         mobileBottomCTA.classList.remove("translate-y-full", "opacity-0", "pointer-events-none");
-      }
-      const floatingPill = document.getElementById("hakuraFloatingPill");
-      if (floatingPill) floatingPill.classList.remove("-translate-y-32");
-      
-      // Restore main header
-      const header = document.querySelector('.hakura-site-header');
-      if (header) {
-        header.style.transform = '';
-        header.style.opacity = '1';
-        header.style.pointerEvents = '';
       }
       
       tl.to(expandContent, {
@@ -1954,36 +1976,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const pillar = btn.getAttribute("data-pillar") || "medical";
         openPillarDrawer(pillar);
       });
-    });
-
-    // Hook up tab buttons in Especialidades to open the drawer
-    const pillarTabBtns = document.querySelectorAll('#especialidades button');
-    pillarTabBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const text = btn.textContent.trim().toUpperCase();
-        if (text.includes("MEDICAL")) {
-          e.preventDefault();
-          openPillarDrawer("medical");
-        } else if (text.includes("SPA")) {
-          e.preventDefault();
-          openPillarDrawer("spa");
-        } else if (text.includes("HOLISTIC")) {
-          e.preventDefault();
-          openPillarDrawer("holistic");
-        } else if (text.includes("AESTHETIC")) {
-          e.preventDefault();
-          openPillarDrawer("aesthetic");
-        }
-      });
-    });
-
-    // Also make the "HAKURA" header badge in Especialidades clickable to open Medical
-    const hakuraBadges = document.querySelectorAll('#especialidades span');
-    hakuraBadges.forEach(span => {
-      if (span.textContent.trim() === "HAKURA") {
-        span.style.cursor = "pointer";
-        span.addEventListener("click", () => openPillarDrawer("medical"));
-      }
     });
 
     // Initialize with Medical Data so drawer isn't empty on first load if CSS/JS timing differs
@@ -2104,23 +2096,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Desktop 4 Pillars Switcher
   window.selectDesktopPillar = function(idx) {
     idx = Math.max(0, Math.min(3, parseInt(idx) || 0));
+    window.__hakuraCurrentDesktopPillar = idx;
     
-    // Cross-fade the 4 layers
-    for (let i = 0; i < 4; i++) {
-      const layer = document.getElementById("hakuraPillarDesktopLayer" + i);
-      if (layer) {
-        if (i === idx) {
-          layer.style.opacity = "1";
-          layer.style.visibility = "visible";
-          layer.style.pointerEvents = "auto";
-        } else {
-          layer.style.opacity = "0";
-          layer.style.visibility = "hidden";
-          layer.style.pointerEvents = "none";
-        }
-      }
-    }
-
     // Update desktop tabs
     const tabs = document.querySelectorAll(".hakura-desktop-pillar-tab");
     tabs.forEach((tab, i) => {
@@ -2146,6 +2123,19 @@ document.addEventListener("DOMContentLoaded", function() {
     if (descEl) descEl.textContent = data.desc;
     if (linkEl) linkEl.setAttribute("data-pillar", data.key);
     if (linkTextEl) linkTextEl.textContent = data.linkText;
+
+    // Smoothly reveal corresponding photo layer
+    for (let i = 1; i < 4; i++) {
+      const layer = document.getElementById("hakuraPillarDesktopLayer" + i);
+      if (layer) {
+        layer.style.transition = "clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+        if (i <= idx) {
+          layer.style.clipPath = "inset(0% 0 0 0)";
+        } else {
+          layer.style.clipPath = "inset(100% 0 0 0)";
+        }
+      }
+    }
   };
 
   // Mobile 4 Pillars Switcher

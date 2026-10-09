@@ -4568,56 +4568,7 @@ a.group[href]:hover span[data-slot="button"] svg {
 
 /* Hakura Ambient Glow (Lava Lamp) */
 .hakura-ambient-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 50; /* Bring it above opaque backgrounds */
-  mix-blend-mode: multiply; /* Tint white backgrounds, keep darks dark */
-  overflow: hidden;
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.6; /* Increased slightly for visibility */
-  animation: floatOrb 22s ease-in-out infinite alternate;
-}
-
-.glow-orb.orb-1 {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(55, 156, 183, 0.4) 0%, rgba(55, 156, 183, 0) 70%);
-  top: -10%;
-  left: -10%;
-}
-
-.glow-orb.orb-2 {
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, rgba(43, 125, 147, 0.35) 0%, rgba(43, 125, 147, 0) 70%);
-  bottom: -20%;
-  right: -10%;
-  animation-delay: -7s;
-  animation-duration: 27s;
-}
-
-@keyframes floatOrb {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(5%, 15%) scale(1.1);
-  }
-  66% {
-    transform: translate(-10%, 5%) scale(0.95);
-  }
-  100% {
-    transform: translate(-5%, -5%) scale(1.05);
-  }
+  display: none !important;
 }
 
 /* 5. Minimalist Custom Scrollbar ("Invisible Edge") */
