@@ -4367,13 +4367,13 @@ section a:hover [data-slot="button"],
   background-color: #2b7d93 !important;
 }
 
-/* Equal Height for all 3 Blog Post Images (User Request) */
+/* Equal Height for all Blog Post Images (User Request - 4 Cards Grid) */
 .hakura-official-blog-img-box {
   position: relative !important;
   width: 100% !important;
-  height: 240px !important;
-  min-height: 240px !important;
-  max-height: 240px !important;
+  height: 210px !important;
+  min-height: 210px !important;
+  max-height: 210px !important;
   overflow: hidden !important;
   background-color: #f1f5f9 !important;
 }
@@ -4381,8 +4381,8 @@ section a:hover [data-slot="button"],
 .hakura-official-blog-img-box img {
   width: 100% !important;
   height: 100% !important;
-  min-height: 240px !important;
-  max-height: 240px !important;
+  min-height: 210px !important;
+  max-height: 210px !important;
   object-fit: cover !important;
   object-position: center center !important;
   display: block !important;
@@ -4615,8 +4615,8 @@ body.drawer-open header[data-site-header] {
   background: #ffffff !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 1px 8px rgba(15, 23, 42, 0.04) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
   padding: 0 clamp(20px, 3.5vw, 48px) !important;
   z-index: 100020 !important;
 }
@@ -4801,7 +4801,7 @@ button:active,
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
   padding-top: 24px !important;
-  padding-bottom: clamp(100px, 16vh, 180px) !important;
+  padding-bottom: 0px !important;
 }
 
 #expandPanelContent::-webkit-scrollbar {
@@ -5007,7 +5007,7 @@ body {
     padding-left: 18px !important;
     padding-right: 18px !important;
     padding-top: 20px !important;
-    padding-bottom: clamp(100px, 18vh, 180px) !important;
+    padding-bottom: 0px !important;
   }
   #expandPanelTitle {
     font-size: 28px !important;
@@ -5461,7 +5461,7 @@ body.drawer-open #hakuraExpandPanel {
   flex-direction: column !important;
   width: 100% !important;
   position: relative !important;
-  padding-bottom: clamp(260px, 35vh, 400px) !important;
+  padding-bottom: 0px !important;
 }
 
 .pillar-stack-card {
@@ -5480,6 +5480,10 @@ body.drawer-open #hakuraExpandPanel {
   width: 100% !important;
 }
 
+.pillar-stack-card:last-child {
+  margin-bottom: 0px !important;
+}
+
 .pillar-stack-card:hover {
   border-color: rgba(55, 156, 183, 0.45) !important;
   box-shadow: 0 -4px 22px -2px rgba(55, 156, 183, 0.12), 0 20px 44px -8px rgba(15, 23, 42, 0.12) !important;
@@ -5496,7 +5500,7 @@ body.drawer-open #hakuraExpandPanel {
 
 .pillar-stack-card.is-stacked .pillar-card-header {
   background-color: rgba(248, 250, 252, 0.98) !important;
-  border-bottom-color: rgba(226, 232, 240, 0.5) !important;
+  border-bottom: none !important;
 }
 
 .pillar-card-header {
@@ -5510,7 +5514,7 @@ body.drawer-open #hakuraExpandPanel {
   background-color: rgba(248, 250, 252, 0.96) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: none !important;
   cursor: pointer !important;
   text-align: left !important;
   user-select: none !important;
