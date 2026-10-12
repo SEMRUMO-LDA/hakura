@@ -2107,7 +2107,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
                 <div class="flex items-center gap-3 md:gap-4">
                   <div class="hidden sm:flex items-center gap-2.5 px-3 py-1 rounded-full bg-white border border-slate-200/70 shadow-2xs">
-                    <img src="${item.doctor.avatar}" alt="" class="size-5 rounded-full object-cover shrink-0" />
+                    <img src="${item.doctor.avatar}" alt="" class="size-5 rounded-full object-cover shrink-0" onerror="this.style.display='none'" />
                     <span class="text-[12px] font-semibold text-slate-700">${item.doctor.name}</span>
                     <span class="text-[10px] text-[#379cb7] font-mono uppercase tracking-wider">· ${item.doctor.role}</span>
                   </div>
@@ -2154,7 +2154,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   <!-- Coluna 2: Fotografia da Clínica / Tratamento -->
                   <div class="flex flex-col justify-between">
                     <div class="pillar-specialty-photo-box relative group h-full min-h-[260px] md:min-h-[300px]">
-                      <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" class="size-full object-cover" loading="lazy" />
+                      <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" class="size-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/hakura_clinic_interior.jpg';" />
                       <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none"></div>
                       <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-medium tracking-wide">
                         <span class="bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">Clínica Hakura</span>
@@ -2167,7 +2167,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   <div class="flex flex-col">
                     <div class="pillar-professional-card">
                       <div class="pillar-pro-avatar">
-                        <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" />
+                        <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/team/mariana_guerreiro.png';" />
                       </div>
                       <span class="team-card-badge text-[10px] mb-2 uppercase tracking-wider">
                         ${item.doctor.role}
