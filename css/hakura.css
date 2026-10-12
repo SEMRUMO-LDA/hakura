@@ -3414,13 +3414,19 @@ header[data-site-header] nav ul,
 }
 
 .focus-clip-asset-box {
-  border-radius: 32px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 32px !important;
+  border-bottom-right-radius: 32px !important;
   overflow: hidden !important;
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12) !important;
 }
 
 .focus-clip-asset-rest {
-  border-radius: 32px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 32px !important;
+  border-bottom-right-radius: 32px !important;
   overflow: hidden !important;
 }
 
@@ -4595,13 +4601,32 @@ header[data-site-header] {
 body.drawer-open header[data-site-header] {
   opacity: 1 !important;
   pointer-events: auto !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background-color: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 64px !important;
+  min-height: 64px !important;
+  border-radius: 0 !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 8px rgba(15, 23, 42, 0.04) !important;
+  padding: 0 clamp(20px, 3.5vw, 48px) !important;
+  z-index: 100020 !important;
+}
+
+@media (min-width: 768px) {
+  body.drawer-open header[data-site-header] {
+    height: 64px !important;
+    min-height: 64px !important;
+    padding: 0 clamp(24px, 4vw, 48px) !important;
+  }
 }
 
 /* 4. Hero Scroll Indicator */
@@ -4870,27 +4895,28 @@ button:active,
    HAKURA FLOATING PILL TABS STYLES
    ========================================================================== */
 .hakura-drawer-tab {
-  padding: 8px 20px;
-  border-radius: 9999px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #475569;
-  background-color: transparent;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  cursor: pointer;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  background-color: transparent !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  line-height: 1.2 !important;
 }
 .hakura-drawer-tab:hover {
-  background-color: rgba(241, 245, 249, 0.7);
-  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  color: #0f172a !important;
 }
 .hakura-drawer-tab.active {
-  background-color: #ffffff;
-  color: #379cb7;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  background-color: #ffffff !important;
+  color: #379cb7 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
 }
 
 /* ==========================================================================
@@ -4969,8 +4995,8 @@ body {
     gap: 6px !important;
   }
   #hakuraExpandPanel .hakura-drawer-tab {
-    padding: 6px 11px !important;
-    font-size: 11px !important;
+    padding: 3.5px 9px !important;
+    font-size: 10.5px !important;
   }
   #hakuraCloseExpandPanel {
     padding: 8px 14px !important;
@@ -5417,10 +5443,10 @@ body {
 
 @media (min-width: 768px) {
   #hakuraExpandPanel {
-    top: 72px !important;
-    height: calc(100vh - 72px) !important;
-    height: calc(100dvh - 72px) !important;
-    max-height: calc(100dvh - 72px) !important;
+    top: 64px !important;
+    height: calc(100vh - 64px) !important;
+    height: calc(100dvh - 64px) !important;
+    max-height: calc(100dvh - 64px) !important;
   }
 }
 
@@ -5435,16 +5461,16 @@ body.drawer-open #hakuraExpandPanel {
   flex-direction: column !important;
   width: 100% !important;
   position: relative !important;
-  padding-bottom: 60px !important;
+  padding-bottom: clamp(260px, 35vh, 400px) !important;
 }
 
 .pillar-stack-card {
   position: sticky !important;
-  --stack-base-top: 14px;
-  --header-stack-h: 56px;
+  --stack-base-top: 10px;
+  --header-stack-h: 46px;
   top: calc(var(--stack-base-top) + var(--stack-idx, 0) * var(--header-stack-h)) !important;
   z-index: calc(10 + var(--stack-idx, 0)) !important;
-  border-radius: 22px !important;
+  border-radius: 20px !important;
   background-color: #ffffff !important;
   border: 1px solid rgba(226, 232, 240, 0.95) !important;
   box-shadow: 0 -4px 18px -2px rgba(15, 23, 42, 0.05), 0 16px 36px -8px rgba(15, 23, 42, 0.08) !important;
@@ -5475,12 +5501,12 @@ body.drawer-open #hakuraExpandPanel {
 
 .pillar-card-header {
   width: 100% !important;
-  height: 56px !important;
-  min-height: 56px !important;
+  height: 46px !important;
+  min-height: 46px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 0 22px !important;
+  padding: 0 20px !important;
   background-color: rgba(248, 250, 252, 0.96) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -5511,64 +5537,71 @@ body.drawer-open #hakuraExpandPanel {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 32px !important;
-  height: 32px !important;
+  width: 28px !important;
+  height: 28px !important;
   border-radius: 9999px !important;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease !important;
   flex-shrink: 0 !important;
 }
 
 .pillar-card-body {
-  padding: 26px 24px !important;
+  padding: 18px 22px !important;
   background-color: #ffffff !important;
   overflow: hidden !important;
   width: 100% !important;
+  max-height: 320px !important;
 }
 
 .pillar-accordion-grid {
   display: grid !important;
-  grid-template-columns: 1.35fr 1.15fr 0.9fr !important;
-  gap: 28px !important;
+  grid-template-columns: 1.3fr 1.15fr 0.95fr !important;
+  gap: 20px !important;
   align-items: stretch !important;
   width: 100% !important;
+  height: 100% !important;
 }
 
 @media (max-width: 1024px) {
   .pillar-accordion-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px !important;
+    grid-template-columns: 1.2fr 1fr !important;
+    gap: 18px !important;
   }
   .pillar-accordion-grid > div:last-child {
     grid-column: span 2 !important;
+  }
+  .pillar-card-body {
+    max-height: none !important;
   }
 }
 
 @media (max-width: 767px) {
   .pillar-stack-container {
-    padding-bottom: clamp(100px, 15vh, 180px) !important;
+    padding-bottom: clamp(400px, 60vh, 750px) !important;
   }
   .pillar-stack-card {
     --stack-base-top: 8px;
-    --header-stack-h: 46px;
+    --header-stack-h: 44px;
     top: calc(var(--stack-base-top) + var(--stack-idx, 0) * var(--header-stack-h)) !important;
-    border-radius: 18px !important;
+    border-radius: 16px !important;
     margin-bottom: 14px !important;
+    max-height: none !important;
   }
   .pillar-card-header {
-    height: 46px !important;
-    min-height: 46px !important;
+    height: 44px !important;
+    min-height: 44px !important;
     padding: 0 14px !important;
   }
   .pillar-accordion-chevron {
-    width: 28px !important;
-    height: 28px !important;
+    width: 26px !important;
+    height: 26px !important;
   }
   .pillar-card-body {
-    padding: 18px 14px !important;
+    padding: 16px 14px !important;
+    max-height: none !important;
   }
   .pillar-accordion-grid {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 16px !important;
   }
   .pillar-accordion-grid > div:last-child {
     grid-column: span 1 !important;
@@ -5580,24 +5613,26 @@ body.drawer-open #hakuraExpandPanel {
   flex-direction: column !important;
   align-items: center !important;
   text-align: center !important;
-  padding: 22px 18px !important;
-  border-radius: 20px !important;
+  padding: 16px 14px !important;
+  border-radius: 18px !important;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
   border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  height: 100% !important;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+  height: 240px !important;
+  min-height: 240px !important;
+  max-height: 240px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
 }
 
 .pillar-pro-avatar {
   position: relative !important;
-  width: 80px !important;
-  height: 80px !important;
+  width: 58px !important;
+  height: 58px !important;
   border-radius: 9999px !important;
   overflow: hidden !important;
   background-color: #e2e8f0 !important;
-  border: 3.5px solid #ffffff !important;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12) !important;
-  margin-bottom: 12px !important;
+  border: 3px solid #ffffff !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1) !important;
+  margin-bottom: 8px !important;
   flex-shrink: 0 !important;
 }
 
@@ -5610,19 +5645,28 @@ body.drawer-open #hakuraExpandPanel {
 .pillar-specialty-photo-box {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
-  min-height: 280px !important;
-  border-radius: 20px !important;
+  height: 240px !important;
+  min-height: 240px !important;
+  max-height: 240px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 18px !important;
+  border-bottom-right-radius: 18px !important;
+  border-radius: 0 0 18px 18px !important;
   overflow: hidden !important;
   background-color: #f1f5f9 !important;
   border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
 }
 
 .pillar-specialty-photo-box img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 17px !important;
+  border-bottom-right-radius: 17px !important;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
