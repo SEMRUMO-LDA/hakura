@@ -5617,19 +5617,58 @@ body.drawer-open #hakuraExpandPanel {
   border-radius: 18px !important;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
   border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  height: 240px !important;
-  min-height: 240px !important;
-  max-height: 240px !important;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+}
+
+.pillar-pro-book-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  background-color: #379cb7 !important;
+  color: #ffffff !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 8px rgba(55, 156, 183, 0.25) !important;
+  margin-top: auto !important;
+  width: auto !important;
+  cursor: pointer !important;
+}
+
+.pillar-pro-book-btn:hover {
+  background-color: #2b7d93 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(55, 156, 183, 0.35) !important;
+  color: #ffffff !important;
+}
+
+.pillar-pro-book-btn svg {
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  max-width: 13px !important;
+  stroke: currentColor !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
 }
 
 .pillar-pro-avatar {
   position: relative !important;
-  width: 58px !important;
-  height: 58px !important;
+  width: 62px !important;
+  height: 62px !important;
   border-radius: 9999px !important;
   overflow: hidden !important;
-  background-color: #e2e8f0 !important;
+  background-color: #f1f5f9 !important;
   border: 3px solid #ffffff !important;
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1) !important;
   margin-bottom: 8px !important;
@@ -5640,14 +5679,20 @@ body.drawer-open #hakuraExpandPanel {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  object-position: center 10% !important;
+}
+
+.pillar-card-header img {
+  object-fit: cover !important;
+  object-position: center 10% !important;
 }
 
 .pillar-specialty-photo-box {
   position: relative !important;
   width: 100% !important;
-  height: 240px !important;
-  min-height: 240px !important;
-  max-height: 240px !important;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   border-bottom-left-radius: 18px !important;
