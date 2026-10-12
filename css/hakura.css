@@ -3041,35 +3041,62 @@ header[data-site-header],
               top 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* 1. OVER HERO & SCROLLED: Ultra-clean frosted glass pill with high-contrast text */
-header[data-site-header],
+/* 1. OVER HERO (scrollY <= 40): Liquid glass translucent pill */
 header[data-site-header]:not(.header-scrolled),
-header[data-site-header].header-scrolled,
-.hakura-site-header,
 .hakura-site-header:not(.header-scrolled),
-.hakura-site-header.header-scrolled,
-.hakura-pill-header {
-  background: rgba(255, 255, 255, 0.9) !important;
+.hakura-pill-header:not(.header-scrolled) {
+  background: rgba(255, 255, 255, 0.14) !important;
   backdrop-filter: blur(28px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.45) !important;
 }
 
-header[data-site-header] nav ul a,
-header[data-site-header] nav ul a span,
 header[data-site-header]:not(.header-scrolled) nav ul a,
 header[data-site-header]:not(.header-scrolled) nav ul a span,
-header[data-site-header].header-scrolled nav ul a,
-header[data-site-header].header-scrolled nav ul a span,
-.hakura-site-header nav ul a,
-.hakura-site-header nav ul a span,
 .hakura-site-header:not(.header-scrolled) nav ul a,
 .hakura-site-header:not(.header-scrolled) nav ul a span,
+.hakura-pill-header:not(.header-scrolled) nav ul a,
+.hakura-pill-header:not(.header-scrolled) nav ul a span {
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+  transition: color 0.2s ease !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+header[data-site-header]:not(.header-scrolled) nav ul a:hover,
+header[data-site-header]:not(.header-scrolled) nav ul a:hover span,
+.hakura-site-header:not(.header-scrolled) nav ul a:hover,
+.hakura-site-header:not(.header-scrolled) nav ul a:hover span {
+  color: #38bdf8 !important;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.7) !important;
+}
+
+/* 2. ON SCROLL (scrollY > 40): Ultra-clean frosted glass pill with high-contrast text */
+header[data-site-header].header-scrolled,
+.hakura-site-header.header-scrolled,
+.hakura-pill-header.header-scrolled {
+  top: 12px !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(32px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: 0 14px 38px -10px rgba(12, 24, 38, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+}
+
+header[data-site-header].header-scrolled nav ul a,
+header[data-site-header].header-scrolled nav ul a span,
 .hakura-site-header.header-scrolled nav ul a,
 .hakura-site-header.header-scrolled nav ul a span,
-.hakura-pill-header nav ul a,
-.hakura-pill-header nav ul a span {
+.hakura-pill-header.header-scrolled nav ul a,
+.hakura-pill-header.header-scrolled nav ul a span {
   color: #0f172a !important;
   font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
   font-weight: 600 !important;
@@ -3083,16 +3110,8 @@ header[data-site-header].header-scrolled nav ul a span,
   visibility: visible !important;
 }
 
-header[data-site-header] nav ul a:hover,
-header[data-site-header] nav ul a:hover span,
-header[data-site-header]:not(.header-scrolled) nav ul a:hover,
-header[data-site-header]:not(.header-scrolled) nav ul a:hover span,
 header[data-site-header].header-scrolled nav ul a:hover,
 header[data-site-header].header-scrolled nav ul a:hover span,
-.hakura-site-header nav ul a:hover,
-.hakura-site-header nav ul a:hover span,
-.hakura-site-header:not(.header-scrolled) nav ul a:hover,
-.hakura-site-header:not(.header-scrolled) nav ul a:hover span,
 .hakura-site-header.header-scrolled nav ul a:hover,
 .hakura-site-header.header-scrolled nav ul a:hover span {
   color: #379cb7 !important;
@@ -3530,8 +3549,7 @@ section[data-slicetype="siteCarousel"] h2,
 
 /* Senior Liquid Glass Touch across all site CTAs */
 .btn-glass-cta,
-.hakura-cta-btn,
-section a [data-slot="button"] {
+.hakura-cta-btn {
   background: rgba(15, 23, 42, 0.88) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
@@ -3540,7 +3558,37 @@ section a [data-slot="button"] {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+section a [data-slot="button"],
+#hakuraExplainerLink [data-slot="button"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 9999px !important;
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+section a [data-slot="button"] svg,
+#hakuraExplainerLink [data-slot="button"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.2 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
 section a:hover [data-slot="button"],
+#hakuraExplainerLink:hover [data-slot="button"] {
+  background: #379cb7 !important;
+  box-shadow: 0 6px 20px rgba(55, 156, 183, 0.35) !important;
+}
+
 .hakura-cta-btn:hover {
   background: rgba(55, 156, 183, 0.92) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
@@ -4510,12 +4558,12 @@ p.text-slate-600 {
   font-weight: 300 !important;
 }
 
-/* 2. Button Micro-interactions */
+/* 2. Button Micro-interactions (Clean containment) */
 a.group[href] span[data-slot="button"] svg {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 a.group[href]:hover span[data-slot="button"] svg {
-  transform: translateX(5px) !important;
+  transform: translateX(2px) !important;
 }
 
 /* 3. Reveal on Scroll Animation */
@@ -4528,6 +4576,23 @@ a.group[href]:hover span[data-slot="button"] svg {
 .hakura-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   HAKURA MEDICAL EXPAND PANEL (DRAWER) SPECIALTIES STYLES (2 COLUMNS)
+   ========================================================================== */
+/* Legacy duplicate rule removed - styled in Section 14 */
+
+#hakuraExpandScrim {
+  z-index: 100000 !important;
+}
+
+/* Hide floating site header while drawer is open so user is never trapped */
+body.drawer-open header[data-site-header] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-100%) !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
 }
 
 /* 4. Hero Scroll Indicator */
@@ -4692,17 +4757,7 @@ button:active,
 /* ==========================================================================
    HAKURA MEDICAL EXPAND PANEL (DRAWER) SPECIALTIES STYLES (2 COLUMNS)
    ========================================================================== */
-#hakuraExpandPanel {
-  background: #ffffff !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-height: 100dvh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-  -webkit-overflow-scrolling: touch !important;
-  box-shadow: -20px 0 60px rgba(15, 23, 42, 0.15) !important;
-}
+/* Legacy duplicate rule removed - styled in Section 14 */
 
 #expandPanelContent {
   flex: 1 1 0% !important;
@@ -4835,12 +4890,21 @@ button:active,
    and Dual-Screen / Foldables (Surface Duo, iPhone Duo / Folded width)
    ========================================================================== */
 
-/* 1. Global Viewport & Strict Overflow Control */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-  width: 100% !important;
+/* 1. Global Viewport & Strict Overflow Control (Preserves Desktop position: sticky) */
+html {
+  width: 100%;
   -webkit-overflow-scrolling: touch;
+}
+body {
+  overflow-x: clip;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: clip !important;
+    max-width: 100vw;
+  }
 }
 
 /* 2. Fluid Mobile Floating Pill */
@@ -5226,3 +5290,316 @@ html, body {
   box-shadow: none !important;
   border: none !important;
 }
+
+/* ==========================================================================
+   12. NEKO HEALTH 1:1 PRODUCT ACCORDION STACKING DYNAMIC
+   ========================================================================== */
+.product-accordion {
+  position: relative;
+  background-color: #f8fafc;
+}
+
+@media (min-width: 768px) {
+  .product-accordion-section {
+    display: contents !important;
+  }
+}
+
+.product-accordion-header {
+  height: 56px;
+  background-color: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.product-accordion-header:hover {
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+@media (min-width: 768px) {
+  .product-accordion-header {
+    position: sticky !important;
+    top: calc(84px + var(--stack-offset, 0px)) !important;
+    margin-bottom: var(--stack-reserve, 0px) !important;
+    z-index: 20 !important;
+  }
+  
+  .product-accordion-content {
+    margin-top: calc(-1 * var(--stack-reserve, 0px)) !important;
+    padding-top: 56px !important;
+    padding-bottom: 88px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-accordion-header {
+    position: sticky !important;
+    top: 70px !important;
+    z-index: 25 !important;
+  }
+  .product-accordion-content {
+    padding-top: 32px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* ==========================================================================
+   13. HAKURA LUXURY PILL CTA BUTTON (Arrow Containment & Micro-interactions)
+   ========================================================================== */
+.hakura-pill-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  padding: 8px 10px 8px 24px !important;
+  border-radius: 9999px !important;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+  width: fit-content !important;
+}
+
+.hakura-pill-cta:hover {
+  background-color: #379cb7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 28px -4px rgba(55, 156, 183, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+.hakura-pill-cta .hakura-cta-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.hakura-pill-cta:hover .hakura-cta-chip {
+  background-color: rgba(255, 255, 255, 0.28) !important;
+  transform: translateX(3px) !important;
+}
+
+.hakura-pill-cta .hakura-cta-chip svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.2 !important;
+}
+
+/* ==========================================================================
+   14. HAKURA PILLAR IMMERSIVE FULL-SCREEN PAGE & SCROLL STACKING (Neko-style)
+   ========================================================================== */
+#hakuraExpandPanel {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  z-index: 100001 !important;
+  background: #ffffff !important;
+  display: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+body.drawer-open #hakuraExpandPanel {
+  display: flex !important;
+  pointer-events: auto !important;
+}
+
+.pillar-stack-container {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  position: relative !important;
+  padding-bottom: 240px !important;
+}
+
+.pillar-stack-card {
+  position: sticky !important;
+  top: calc(76px + var(--stack-idx, 0) * 16px) !important;
+  z-index: calc(10 + var(--stack-idx, 0)) !important;
+  border-radius: 24px !important;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 -8px 32px -6px rgba(15, 23, 42, 0.08), 0 16px 40px -10px rgba(15, 23, 42, 0.08) !important;
+  margin-bottom: 32px !important;
+  overflow: hidden !important;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+  width: 100% !important;
+}
+
+.pillar-stack-card:hover {
+  border-color: rgba(55, 156, 183, 0.45) !important;
+  box-shadow: 0 -8px 32px -6px rgba(55, 156, 183, 0.12), 0 20px 48px -10px rgba(15, 23, 42, 0.12) !important;
+}
+
+.pillar-stack-card.is-open {
+  border-color: rgba(55, 156, 183, 0.35) !important;
+  box-shadow: 0 -12px 36px -6px rgba(55, 156, 183, 0.12), 0 24px 50px -10px rgba(15, 23, 42, 0.12) !important;
+}
+
+.pillar-card-header {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 24px !important;
+  background-color: rgba(248, 250, 252, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  user-select: none !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.pillar-card-header:hover {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+}
+
+.pillar-stack-card:not(.is-open) .pillar-card-header {
+  border-bottom: 1px solid transparent !important;
+}
+
+.pillar-accordion-chevron {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 9999px !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.pillar-card-body {
+  padding: 28px !important;
+  background-color: #ffffff !important;
+  transition: max-height 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease, padding 0.32s ease !important;
+  overflow: hidden !important;
+}
+
+.pillar-stack-card:not(.is-open) .pillar-card-body {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  pointer-events: none !important;
+}
+
+.pillar-accordion-grid {
+  display: grid !important;
+  grid-template-columns: 1.35fr 1.15fr 0.9fr !important;
+  gap: 32px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  .pillar-accordion-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+  .pillar-accordion-grid > div:last-child {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .pillar-stack-card {
+    top: calc(64px + var(--stack-idx, 0) * 10px) !important;
+    border-radius: 20px !important;
+    margin-bottom: 14px !important;
+  }
+  .pillar-card-header {
+    padding: 13px 16px !important;
+  }
+  .pillar-card-body {
+    padding: 20px 16px !important;
+  }
+  .pillar-accordion-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .pillar-accordion-grid > div:last-child {
+    grid-column: span 1 !important;
+  }
+}
+
+.pillar-professional-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 22px 18px !important;
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  height: 100% !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+}
+
+.pillar-pro-avatar {
+  position: relative !important;
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  background-color: #e2e8f0 !important;
+  border: 3.5px solid #ffffff !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12) !important;
+  margin-bottom: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.pillar-pro-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.pillar-specialty-photo-box {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 280px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background-color: #f1f5f9 !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06) !important;
+}
+
+.pillar-specialty-photo-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.pillar-specialty-photo-box:hover img {
+  transform: scale(1.05) !important;
+}
+
+

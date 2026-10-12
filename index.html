@@ -78,7 +78,7 @@
 </head>
 <body class="antialiased font-sans theme-default">
 
-<header data-site-header="" class="hakura-site-header theme-default transition-colors duration-300 sticky top-0 z-[100] bg-white/90 backdrop-blur-xl border-b border-slate-100/80 xpad flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 h-[64px] md:h-[72px]">
+<header data-site-header="" class="hakura-site-header theme-default transition-all duration-300 sticky top-0 z-[100] xpad flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 h-[64px] md:h-[72px]">
   <div class="transition-colors duration-300 flex items-center gap-3">
     <a aria-label="Hakura Home" class="hakura-nav-logo transition-transform hover:scale-105 shrink-0 block" href="#scan" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;display:block!important;border-radius:12px!important;overflow:hidden!important;">
       <img src="./assets/images/hakura_official_logo.png" alt="Hakura" style="width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;object-fit:cover!important;border-radius:12px!important;display:block!important;" />
@@ -93,28 +93,28 @@
         </a>
         <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50 w-56">
           <div class="bg-white/95 backdrop-blur-2xl border border-slate-200/80 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.15)] rounded-2xl p-2 flex flex-col gap-1">
-            <button type="button" onclick="window.selectDesktopPillar(0); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+            <button type="button" onclick="window.hakuraScrollToPillar(0);" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
               <span class="flex items-center gap-2">
                 <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
                 Medical
               </span>
               <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
             </button>
-            <button type="button" onclick="window.selectDesktopPillar(1); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+            <button type="button" onclick="window.hakuraScrollToPillar(1);" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
               <span class="flex items-center gap-2">
                 <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
                 Spa
               </span>
               <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
             </button>
-            <button type="button" onclick="window.selectDesktopPillar(2); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+            <button type="button" onclick="window.hakuraScrollToPillar(2);" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
               <span class="flex items-center gap-2">
                 <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
                 Holistic
               </span>
               <span class="text-[11px] text-slate-400 group-hover/item:translate-x-0.5 transition-transform">&rarr;</span>
             </button>
-            <button type="button" onclick="window.selectDesktopPillar(3); document.getElementById('especialidades')?.scrollIntoView({behavior:'smooth'});" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
+            <button type="button" onclick="window.hakuraScrollToPillar(3);" class="text-left px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-[13px] font-medium text-slate-700 hover:text-[#379cb7] transition-colors flex items-center justify-between cursor-pointer group/item">
               <span class="flex items-center gap-2">
                 <span class="size-1.5 rounded-full bg-[#379cb7]"></span>
                 Aesthetic
@@ -311,79 +311,6 @@
     <!-- Subtle Organic Floating Blue Dots Particles Canvas Layer -->
     <canvas id="hakuraEditorialParticlesCanvas" class="pointer-events-none absolute inset-0 z-0 block w-full h-full" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>
     
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const canvas = document.getElementById("hakuraEditorialParticlesCanvas");
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        
-        let particles = [];
-        const numParticles = 28;
-        let isVisible = false;
-        let animId = null;
-        
-        function resize() {
-          if (!canvas.parentElement) return;
-          canvas.width = canvas.parentElement.offsetWidth;
-          canvas.height = canvas.parentElement.offsetHeight;
-        }
-        window.addEventListener("resize", resize, { passive: true });
-        resize();
-
-        class Particle {
-          constructor() {
-            this.x = Math.random() * (canvas.width || 800);
-            this.y = Math.random() * (canvas.height || 400);
-            this.vx = (Math.random() - 0.5) * 0.3;
-            this.vy = (Math.random() - 0.5) * 0.3;
-            this.radius = Math.random() * 2 + 1;
-            this.baseAlpha = Math.random() * 0.35 + 0.2;
-            this.color = "rgba(55, 156, 183, " + this.baseAlpha + ")";
-          }
-          update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-          }
-          draw(ctx) {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-          }
-        }
-        
-        for (let i = 0; i < numParticles; i++) {
-          particles.push(new Particle());
-        }
-        
-        function animate() {
-          if (!isVisible) return;
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw(ctx);
-          }
-          animId = requestAnimationFrame(animate);
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              isVisible = true;
-              cancelAnimationFrame(animId);
-              animate();
-            } else {
-              isVisible = false;
-              cancelAnimationFrame(animId);
-            }
-          });
-        }, { threshold: 0.1 });
-        observer.observe(canvas.parentElement || canvas);
-      });
-    </script>
-
     <div class="xpad relative z-10">
       <div class="grid-default">
         <div class="col-span-full flex flex-col items-center text-center gap-10 md:gap-14 md:col-[2/-2] lg:col-[3/-3]">
@@ -397,7 +324,13 @@
             </a>
           </div>
         </div>
-     </div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:049b4c5cb02f;base=https%3A%2F%2Fwww.nekohealth.com"><section id="especialidades" data-slicetype="scanProductExplainer" class="theme-yellow hakura-reveal text-foreground bg-background !min-h-0 !overflow-x-visible">
+      </div>
+    </div>
+  </section>
+</div>
+
+<div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:049b4c5cb02f;base=https%3A%2F%2Fwww.nekohealth.com">
+  <section id="especialidades" data-slicetype="scanProductExplainer" class="theme-yellow hakura-reveal text-foreground bg-background !min-h-0 !overflow-x-visible">
   <!-- Desktop 4 Pillars Sticky Showcase -->
   <div class="hidden md:block">
     <div class="relative">
@@ -488,11 +421,11 @@
                   </div>
                   <div>
                     <div class="pointer-events-auto">
-                      <a id="hakuraExplainerLink" class="group flex cursor-pointer items-center gap-4 disabled:pointer-events-none w-fit" href="#scan" data-pillar="medical" onclick="event.preventDefault(); window.openPillarDrawer(this.getAttribute('data-pillar')); window.hakuraOpenDrawer &amp;&amp; window.hakuraOpenDrawer();">
-                        <span data-slot="button" aria-hidden="true" class="flex items-center justify-center gap-2 whitespace-nowrap transition-all shrink-0 bg-slate-900 text-white hover:bg-[#379cb7] size-11 md:size-12 rounded-full shadow-sm">
-                          <svg viewBox="0 0 24 24" fill="none" class="size-5 shrink-0" stroke="currentColor" stroke-width="2"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                      <a id="hakuraExplainerLink" class="hakura-pill-cta" href="#scan" data-pillar="medical" onclick="event.preventDefault(); window.openPillarDrawer(this.getAttribute('data-pillar'));">
+                        <span id="hakuraExplainerLinkText">Ver Especialidades Medical</span>
+                        <span class="hakura-cta-chip">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </span>
-                        <span id="hakuraExplainerLinkText" class="text-[16px] leading-[24px] font-medium md:text-[18px] text-slate-900 group-hover:text-[#379cb7] transition-colors">Ver Especialidades Medical</span>
                       </a>
                     </div>
                   </div>
@@ -534,7 +467,7 @@
              <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Acompanhamento multidisciplinar em fisioterapia, psicologia, nutrição funcional e medicina geral.</p>
           </div>
         </div>
-        <button type="button" onclick="window.openPillarDrawer('medical'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+        <button type="button" onclick="window.openPillarDrawer('medical');" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
           <span>Ver Especialidades</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -553,7 +486,7 @@
              <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais e alívio de tensões.</p>
           </div>
         </div>
-        <button type="button" onclick="window.openPillarDrawer('spa'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+        <button type="button" onclick="window.openPillarDrawer('spa');" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
           <span>Ver Rituais</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -572,7 +505,7 @@
              <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Harmonização bioenergética com acupunctura médica, sessões de reiki e consultas de homeopatia.</p>
           </div>
         </div>
-        <button type="button" onclick="window.openPillarDrawer('holistic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+        <button type="button" onclick="window.openPillarDrawer('holistic');" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
           <span>Ver Terapias</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -591,7 +524,7 @@
              <p class="text-[14.5px] text-white/85 leading-relaxed font-light line-clamp-3">Avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda.</p>
           </div>
         </div>
-        <button type="button" onclick="window.openPillarDrawer('aesthetic'); window.hakuraOpenDrawer && window.hakuraOpenDrawer();" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
+        <button type="button" onclick="window.openPillarDrawer('aesthetic');" class="w-full h-[52px] inline-flex items-center justify-center gap-2 px-5 rounded-[1.25rem] bg-slate-50 border border-slate-200 text-slate-900 hover:bg-slate-100 active:scale-[0.98] transition-all font-medium text-[14.5px] shadow-sm cursor-pointer">
           <span>Ver Cuidados</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -907,7 +840,7 @@
 
     </div>
   </div>
-</section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:492064dcadca;base=https%3A%2F%2Fwww.nekohealth.com"><section data-slicetype="ratings" class="bg-background hakura-reveal py-24 md:py-32"><div class="xpad"><div class="flex flex-col items-center gap-12 md:gap-[100px]"><div class="flex w-full max-w-[989px] flex-col items-center gap-6 text-center md:gap-8"><span class="text-[13px] md:text-[14px] uppercase tracking-[0.16em] font-semibold text-[#379cb7] block mb-[-1rem]">TESTEMUNHOS</span><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 max-w-[20ch] text-balance text-slate-900">Avaliado em 4.9 de 5 estrelas</h2><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px] max-w-[583px] text-balance text-slate-600">Comprometemo-nos com os mais elevados padrões clínicos – tal como os nossos pacientes.</p></div><div class="flex w-full flex-col gap-8 md:flex-row md:gap-5"><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Ter os resultados detalhados e o plano clínico apresentado por uma equipa médica de topo em poucos minutos foi simplesmente extraordinário. É assim que os cuidados de saúde integrativos devem ser.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Tiago M.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Lisboa · Parque das Nações</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">A minha experiência na Hakura superou qualquer expectativa. Tecnologia de diagnóstico avançada aliada a uma atenção humana genuína e um espaço de bem-estar profundamente harmonioso.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Carolina S.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Cascais</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Não podia ter investido uma hora de forma mais inteligente. O equilíbrio perfeito entre medicina preventiva, hidroterapia regenerativa e suporte clínico personalizado.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Inês P.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Sintra</span></div></figcaption></figure></div></div></div></section></div></div>
+</section></div><div data-sanity="id=b487ba62-4790-4589-96c6-9a7e429273aa;type=page;path=slices:492064dcadca;base=https%3A%2F%2Fwww.nekohealth.com"><section data-slicetype="ratings" class="bg-background hakura-reveal py-24 md:py-32"><div class="xpad"><div class="flex flex-col items-center gap-12 md:gap-[100px]"><div class="flex w-full max-w-[989px] flex-col items-center gap-6 text-center md:gap-8"><span class="text-[13px] md:text-[14px] uppercase tracking-[0.16em] font-semibold text-[#379cb7] block mb-[-1rem]">TESTEMUNHOS</span><h2 class="font-display text-[40px] leading-[44px] tracking-[0px] font-normal md:text-[68px] md:leading-[80px] prose-h2 max-w-[20ch] text-balance text-slate-900">Avaliado em 4.9 de 5 estrelas</h2><p class="text-[16px] leading-[24px] -tracking-[0.1px] font-normal md:text-[18px] max-w-[583px] text-balance text-slate-600">Comprometemo-nos com os mais elevados padrões clínicos – tal como os nossos pacientes.</p></div><div class="flex w-full flex-col gap-8 md:flex-row md:gap-5"><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Ter os resultados detalhados e o plano clínico apresentado por uma equipa médica de topo em poucos minutos foi simplesmente extraordinário. É assim que os cuidados de saúde integrativos devem ser.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Tiago M.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Lisboa · Parque das Nações</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">A minha experiência na Hakura superou qualquer expectativa. Tecnologia de diagnóstico avançada aliada a uma atenção humana genuína e um espaço de bem-estar profundamente harmonioso.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Carolina S.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Cascais</span></div></figcaption></figure><figure class="flex flex-1 flex-col items-center gap-6 border-b border-border pb-8 md:gap-10 md:border-none md:px-6 md:pb-0"><blockquote class="flex w-full flex-col items-center gap-6 md:gap-8"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none" aria-hidden="true" class="h-5 w-[26px] md:h-[25px] md:w-8" style="color: #379cb7;"><path fill="currentColor" d="M14.671 0c-3.003 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.427 8.92L1.964 25C.694 21.948 0 19.366 0 16.784 0 8.685 6.238 3.052 10.397.822 11.206.469 13.401 0 14.671 0ZM32 0c-3.004 2.582-5.43 6.573-5.43 12.793 0 2.23 1.156 6.221 2.426 8.92L19.292 25c-1.27-3.052-1.964-5.634-1.964-8.216 0-8.099 6.239-13.732 10.398-15.962C28.534.469 30.729 0 32 0Z"></path></svg><p class="text-[16px] leading-[24px] -tracking-[0.3px] font-[450] md:text-[20px] md:leading-[28px] text-center text-slate-700">Não podia ter investido uma hora de forma mais inteligente. O equilíbrio perfeito entre medicina preventiva, hidroterapia regenerativa e suporte clínico personalizado.</p></blockquote><figcaption class="flex w-full flex-col items-center gap-4"><span class="text-[14px] font-medium md:text-[16px] tracking-[2px] leading-none text-slate-900" aria-hidden="true">★★★★★</span><span class="sr-only">Avaliação de 5 em 5 estrelas</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="text-[15px] font-semibold text-slate-900">Inês P.</span><span class="text-slate-400">·</span><span class="text-[14px] text-slate-500">Sintra</span></div></figcaption></figure></div></div></div></section></div>
 <!-- ==========================================================================
      NOVA SECÇÃO: BLOG & LONGEVIDADE (Estilo Neko Carousel)
      ========================================================================== -->
@@ -1593,6 +1526,8 @@
   });
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script type="module" src="./js/animations.js"></script>
 
@@ -1665,12 +1600,19 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <!-- Neko Health UX/UI Enhancements: GSAP Scrollytelling & Custom Cursor -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // 1. Horizon Reveal Effect with GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
+
+    // Synchronize ScrollTrigger with Lenis Smooth Scroll
+    if (window.lenis) {
+      window.lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        window.lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
     
     const reveals = document.querySelectorAll(".horizon-reveal");
     reveals.forEach((reveal) => {
@@ -1728,58 +1670,254 @@ document.addEventListener("DOMContentLoaded", function() {
       medical: {
         badge: "ESPECIALIDADES",
         title: "Hakura Medical",
-        subtitle: "Especialidades Clínicas e Reabilitação",
-        description: "Acompanhamento clínico multidisciplinar com diagnóstico e recuperação funcional personalizada.",
+        subtitle: "Especialidades Clínicas & Reabilitação Funcional",
+        description: "Acompanhamento clínico multidisciplinar com diagnóstico médico de precisão, fisioterapia avançada e planos personalizados de reabilitação e longevidade.",
         specialties: [
-          { name: "Fisioterapia", desc: "Reabilitação funcional, motora e postural adaptada a cada fase de recuperação." },
-          { name: "Fisioterapia Pélvica", desc: "Prevenção e reabilitação especializada da musculatura do pavimento pélvico." },
-          { name: "Fisioterapia Temporomandibular (ATM)", desc: "Tratamento de disfunções da articulação temporomandibular, bruxismo e dor orofacial." },
-          { name: "Psicologia", desc: "Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo." },
-          { name: "Nutrição", desc: "Planos alimentares clínicos personalizados, otimização metabólica e reeducação alimentar." },
-          { name: "Medicina Geral e Familiar", desc: "Acompanhamento médico global, check-ups preventivos e diagnóstico clínico." },
-          { name: "Pilates Clínico (Individual)", desc: "Sessões individuais orientadas por fisioterapeuta para estabilidade postural e fortalecimento do core." },
-          { name: "Terapia da Fala", desc: "Avaliação e intervenção clínica em comunicação, linguagem e deglutição." }
+          { 
+            name: "Fisioterapia Geral & Postural", 
+            desc: "Reabilitação funcional, motora e postural adaptada a cada fase de recuperação. Diagnóstico mecânico avançado para alívio de dor e recuperação de mobilidade.",
+            image: "./assets/images/blog_fisioterapia.png",
+            bullets: [
+              "Avaliação biomecânica e postural personalizada",
+              "Reabilitação músculo-esquelética e preventiva",
+              "Terapia manual especializada e plano de exercícios clínicos"
+            ],
+            doctor: {
+              name: "Raquel Lança",
+              role: "TERAPEUTA",
+              spec: "Fisioterapia & Saúde Neuromuscular",
+              avatar: "./assets/images/team/raquel_lanca.png",
+              bio: "Especialista em reabilitação motora, correção postural e mobilidade articular continuada."
+            }
+          },
+          { 
+            name: "Fisioterapia Pélvica", 
+            desc: "Prevenção, diagnóstico funcional e reabilitação da musculatura do pavimento pélvico no homem e na mulher em todas as fases da vida.",
+            image: "./assets/images/hakura_clinic_space.png",
+            bullets: [
+              "Preparação para o parto e reabilitação pós-parto",
+              "Tratamento de incontinência urinária e prolapsos",
+              "Reeducação neuromuscular e biofeedback funcional"
+            ],
+            doctor: {
+              name: "Anabela Mealha",
+              role: "TERAPEUTA",
+              spec: "Fisioterapia Pélvica & Saúde da Mulher",
+              avatar: "./assets/images/team/anabela_mealha.png",
+              bio: "Dedicada ao fortalecimento funcional do pavimento pélvico e cuidados perinatais integrados."
+            }
+          },
+          { 
+            name: "Fisioterapia Temporomandibular (ATM)", 
+            desc: "Tratamento clínico especializado de disfunções da articulação temporomandibular, bruxismo, estalidos articulares, dor orofacial e cefaleias tensionais.",
+            image: "./assets/images/hakura_about_clinic.jpg",
+            bullets: [
+              "Alívio de tensão miofascial mastigatória e cervical",
+              "Normalização biomecânica da mastigação",
+              "Abordagem interdisciplinar com medicina dentária"
+            ],
+            doctor: {
+              name: "Raquel Lança",
+              role: "TERAPEUTA",
+              spec: "ATM & Dor Orofacial",
+              avatar: "./assets/images/team/raquel_lanca.png",
+              bio: "Protocolos direcionados para alívio de bruxismo crónico, descompressão articular e cefaleias."
+            }
+          },
+          { 
+            name: "Psicologia Clínica", 
+            desc: "Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo num ambiente acolhedor e seguro focado no seu equilíbrio emocional.",
+            image: "./assets/images/doctor-consult.jpg",
+            bullets: [
+              "Gestão de ansiedade, stress crónico e burnout",
+              "Psicoterapia individual para jovens e adultos",
+              "Desenvolvimento de resiliência e autorregulação emocional"
+            ],
+            doctor: {
+              name: "Dra. Lisbeth de Sousa",
+              role: "DRA. · PSICOLOGIA",
+              spec: "Psicologia Clínica & Psicoterapia",
+              avatar: "./assets/images/team/lisbeth_sousa.png",
+              bio: "Abordagem humanizada focada no autoconhecimento, inteligência emocional e equilíbrio biopsicossocial."
+            }
+          },
+          { 
+            name: "Nutrição Clínica Funcional", 
+            desc: "Planos alimentares clínicos individualizados, otimização metabólica, reeducação alimentar e nutrição de precisão para longevidade ativa.",
+            image: "./assets/images/blog_nutricao.jpg",
+            bullets: [
+              "Avaliação da composição corporal por bioimpedância",
+              "Modulação da microbiota e saúde digestiva",
+              "Estratégias nutricionais preventivas e anti-inflamatórias"
+            ],
+            doctor: {
+              name: "Dra. Safira Carvalho",
+              role: "DRA. · NUTRIÇÃO",
+              spec: "Nutrição Funcional & Longevidade",
+              avatar: "./assets/images/team/safira_carvalho.png",
+              bio: "Planos alimentares de precisão científica orientados para saúde metabólica e energia diária."
+            }
+          },
+          { 
+            name: "Medicina Geral e Familiar", 
+            desc: "Acompanhamento médico global, check-ups preventivos, rastreio precoce e diagnóstico clínico integrado para toda a família.",
+            image: "./assets/images/hakura_real_doctors.jpg",
+            bullets: [
+              "Consultas médicas de rotina e prevenção continuada",
+              "Avaliação abrangente de biomarcadores e saúde geral",
+              "Orientação diagnóstica e coordenação clínica personalizada"
+            ],
+            doctor: {
+              name: "Dra. Mariana Guerreiro",
+              role: "DRA. · MEDICINA",
+              spec: "Medicina Integrada & Longevidade",
+              avatar: "./assets/images/team/mariana_guerreiro.png",
+              bio: "Visão clínica integrativa, focada no diagnóstico preventivo precoce e bem-estar a longo prazo."
+            }
+          },
+          { 
+            name: "Pilates Clínico Individual", 
+            desc: "Sessões 1-para-1 orientadas exclusivamente por fisioterapeuta, com foco no fortalecimento do core, estabilização da coluna e correção postural.",
+            image: "./assets/images/hakura_pilar_1.png",
+            bullets: [
+              "Adaptação milimétrica a lesões prévias e postura",
+              "Fortalecimento dos estabilizadores profundos da coluna",
+              "Melhoria do controlo motor e consciência corporal"
+            ],
+            doctor: {
+              name: "Raquel Lança",
+              role: "TERAPEUTA",
+              spec: "Pilates Clínico 1-para-1",
+              avatar: "./assets/images/team/raquel_lanca.png",
+              bio: "Sessões individualizadas que unem precisão biomecânica a estabilidade articular profunda."
+            }
+          },
+          { 
+            name: "Terapia da Fala", 
+            desc: "Avaliação, diagnóstico e intervenção clínica em comunicação, articulação verbal, linguagem, voz e perturbações da deglutição.",
+            image: "./assets/images/hakura_doctor_raquel.png",
+            bullets: [
+              "Reabilitação de dificuldades articulatórias e fala",
+              "Terapia vocal e reeducação respiratória",
+              "Avaliação e tratamento especializado da disfagia"
+            ],
+            doctor: {
+              name: "Joana Gomes",
+              role: "TERAPEUTA",
+              spec: "Terapia da Fala & Desenvolvimento",
+              avatar: "./assets/images/team/joana_gomes.png",
+              bio: "Intervenção terapêutica personalizada na voz, comunicação interpessoal e padrões deglutitórios."
+            }
+          }
         ]
       },
       spa: {
         badge: "ESPECIALIDADES",
         title: "Hakura Spa",
-        subtitle: "Rituais de Bem-Estar e Descompressão",
-        description: "Experiências sensoriais de relaxamento profundo e descompressão através de técnicas manuais especializadas.",
+        subtitle: "Rituais de Bem-Estar e Recuperação Profunda",
+        description: "Experiências sensoriais de relaxamento profundo e descompressão do sistema nervoso através de técnicas manuais especializadas e termoterapia.",
         specialties: [
           { 
             name: "Massagem de Relaxamento", 
-            desc: "Descompressão do sistema nervoso e alívio de tensões acumuladas.",
-            options: ["Corpo Completo (80 min)", "Localizada (30 min)", "Pré-natal"]
+            desc: "Descompressão profunda do sistema nervoso e alívio de tensões acumuladas com óleos essenciais puros e manobras envolventes.",
+            image: "./assets/images/hakura_real_spa.jpg",
+            bullets: [
+              "Corpo Completo (80 min) ou Localizada (30 min)",
+              "Opção de protocolo pré-natal seguro e acolhedor",
+              "Restauração do ritmo circadiano e alívio de stress"
+            ],
+            doctor: {
+              name: "Joana Costa",
+              role: "TERAPEUTA",
+              spec: "Rituais SPA & Bem-Estar",
+              avatar: "./assets/images/team/joana_costa.png",
+              bio: "Especialista em técnicas manuais de relaxamento e alívio de sobrecargas emocionais."
+            }
           },
           { 
-            name: "Massagem Terapêutica", 
-            desc: "Recuperação miofascial e tratamento focado de desconfortos musculares.",
-            options: ["Corpo Completo (60 min)", "Localizada (30 min)", "Ayurvédica (60-70 min)"]
+            name: "Massagem Terapêutica & Ayurvédica", 
+            desc: "Recuperação miofascial e libertação focada de contraturas musculares, harmonizando os pontos vitais.",
+            image: "./assets/images/hakura_pilar_2.png",
+            bullets: [
+              "Libertação miofascial de pontos gatilho",
+              "Ayurvédica com óleos aquecidos terapêuticos",
+              "Alívio duradouro de rigidez lombar e cervical"
+            ],
+            doctor: {
+              name: "Joana Costa",
+              role: "TERAPEUTA",
+              spec: "Terapias Manuais Miofasciais",
+              avatar: "./assets/images/team/joana_costa.png",
+              bio: "Trabalho muscular aprofundado para dissolução de contraturas e renovação física."
+            }
           },
           { 
-            name: "Tratamento Anti-celulite / Delux Body Sculp", 
-            desc: "Protocolo intensivo corporal de firmeza, drenagem e remodelação.",
-            options: ["90 min"]
+            name: "Tratamento Deluxe Body Sculpt", 
+            desc: "Protocolo intensivo corporal de firmeza, drenagem e remodelação para devolver elasticidade e tonificação aos tecidos.",
+            image: "./assets/images/hakura_pilar_spa.png",
+            bullets: [
+              "Remodelação tecidual não-invasiva",
+              "Estímulo da circulação e firmeza dérmica",
+              "Duração de 90 min de puro cuidado corporal"
+            ],
+            doctor: {
+              name: "Dra. Mariana Guerreiro",
+              role: "DRA. · MEDICINA",
+              spec: "Supervisão Estética & Corporal",
+              avatar: "./assets/images/team/mariana_guerreiro.png",
+              bio: "Protocolos corporais de alta eficácia orientados para definição e revitalização dos tecidos."
+            }
           },
           { 
             name: "Reflexologia Podal", 
-            desc: "Estímulo das zonas reflexas podais para reequilíbrio orgânico.",
-            options: ["30 min"]
+            desc: "Estímulo das zonas reflexas podais para reequilíbrio orgânico, ativação dos sistemas excretores e alívio de cansaço extremo.",
+            image: "./assets/images/scanner-chamber.jpg",
+            bullets: [
+              "Estimulação precisa das terminações nervosas",
+              "Descongestão e relaxamento físico global",
+              "Sessões de 30 min com efeito revigorante"
+            ],
+            doctor: {
+              name: "Inês Silva",
+              role: "TERAPEUTA",
+              spec: "Terapia de Bowen & Reflexologia",
+              avatar: "./assets/images/team/ines_silva.png",
+              bio: "Estimulação bioenergética podal que ativa a regeneração orgânica e o descanso pleno."
+            }
           },
           { 
-            name: "Drenagem Linfática", 
-            desc: "Ativação da circulação linfática e desintoxicação natural do organismo.",
-            options: ["1 Sessão (50 min)", "4 Sessões / Mês"]
-          },
-          { 
-            name: "Esfoliação Corporal + Massagem", 
-            desc: "Renovação cutânea combinada com hidratação e massagem relaxante.",
-            options: ["50 min"]
+            name: "Drenagem Linfática Manual", 
+            desc: "Ativação suave do fluxo linfático para eliminação de toxinas, redução de retenção de líquidos e alívio de pernas pesadas.",
+            image: "./assets/images/cardio-scan.jpg",
+            bullets: [
+              "Protocolo clínico pós-cirúrgico ou profilático",
+              "Desintoxicação profunda e alívio de edemas",
+              "Opções individuais ou packs mensais"
+            ],
+            doctor: {
+              name: "Anabela Mealha",
+              role: "TERAPEUTA",
+              spec: "Drenagem Linfática Clínica",
+              avatar: "./assets/images/team/anabela_mealha.png",
+              bio: "Manobras suaves e ritmadas para redução de inflamação e renovação linfática."
+            }
           },
           { 
             name: "Ritual Facial Lifting Japonês", 
-            desc: "Técnica ancestral de rejuvenescimento manual e tonificação profunda da musculatura facial."
+            desc: "Técnica milenar manual de rejuvenescimento facial, estimulação de colagénio e tonificação profunda dos contornos do rosto.",
+            image: "./assets/images/skin-mapping.jpg",
+            bullets: [
+              "Efeito lifting natural sem recurso a químicos",
+              "Oxigenação tecidual e luminosidade dérmica",
+              "Drenagem facial e suavização de linhas de expressão"
+            ],
+            doctor: {
+              name: "Joana Costa",
+              role: "TERAPEUTA",
+              spec: "Cuidados Faciais Orientais",
+              avatar: "./assets/images/team/joana_costa.png",
+              bio: "Massagem facial milenar que reativa a circulação dérmica e reafirma a estrutura do rosto."
+            }
           }
         ]
       },
@@ -1787,21 +1925,58 @@ document.addEventListener("DOMContentLoaded", function() {
         badge: "ESPECIALIDADES",
         title: "Hakura Holistic",
         subtitle: "Medicina Integrativa e Equilíbrio Natural",
-        description: "Harmonização integral entre corpo, mente e energia vital através de terapias tradicionais integrativas.",
+        description: "Harmonização integral entre corpo, mente e energia vital através da convergência de saberes tradicionais com acompanhamento personalizado.",
         specialties: [
           { 
-            name: "Acupunctura", 
-            desc: "Equilíbrio bioenergético, alívio de dor e modulação neuromoduladora funcional.",
-            options: ["1 Sessão", "Acompanhamento"]
+            name: "Acupunctura Médica Tradicional", 
+            desc: "Equilíbrio dos meridianos bioenergéticos, neuromodulação da dor e suporte no tratamento de perturbações do sono e ansiedade.",
+            image: "./assets/images/hakura_pilar_3.png",
+            bullets: [
+              "Desbloqueio do fluxo energético e alívio de dor",
+              "Regulação do sistema nervoso autónomo",
+              "Planos de 1 sessão ou acompanhamento clínico"
+            ],
+            doctor: {
+              name: "John Sanchez",
+              role: "TERAPEUTA",
+              spec: "Medicina Tradicional Chinesa & Acupunctura",
+              avatar: "./assets/images/team/john_sanchez.png",
+              bio: "Neuromodulação bioenergética com foco em tratamento de dor crónica e equilíbrio interno."
+            }
           },
           { 
-            name: "Reiki", 
-            desc: "Harmonização energética e profundo relaxamento psicofísico para restauração do bem-estar."
+            name: "Reiki & Harmonização Energética", 
+            desc: "Canalização de energia universal para alinhamento dos centros energéticos (chakras) e relaxamento psicofísico regenerador.",
+            image: "./assets/images/hakura_real_reiki.png",
+            bullets: [
+              "Dissolução de bloqueios psicoemocionais",
+              "Restauração do equilíbrio vibracional natural",
+              "Experiência integrativa de tranquilidade profunda"
+            ],
+            doctor: {
+              name: "Fátima Ferreira",
+              role: "TERAPEUTA",
+              spec: "Reiki & Harmonização Energética",
+              avatar: "./assets/images/team/fatima_ferreira.png",
+              bio: "Canalização de serenidade e desbloqueio energético para restaurar a paz mental e física."
+            }
           },
           { 
-            name: "Homeopatia", 
-            desc: "Consulta clínica integrativa e abordagem terapêutica holística individualizada.",
-            options: ["1 Sessão"]
+            name: "Homeopatia Clínica", 
+            desc: "Abordagem terapêutica holística individualizada, estimulando a capacidade de autorrecuperação biológica do organismo.",
+            image: "./assets/images/blog_homeopatia.png",
+            bullets: [
+              "Consulta clínica integrativa detalhada",
+              "Prescrição de remédios naturais individualizados",
+              "Tratamento suave e sem efeitos secundários"
+            ],
+            doctor: {
+              name: "Carina Apolónia",
+              role: "TERAPEUTA",
+              spec: "Homeopatia Clínica & Equilíbrio Vital",
+              avatar: "./assets/images/team/carina_apolonia.png",
+              bio: "Abordagem clínica suave e profunda para estimular a capacidade regenerativa natural do corpo."
+            }
           }
         ]
       },
@@ -1809,27 +1984,95 @@ document.addEventListener("DOMContentLoaded", function() {
         badge: "ESPECIALIDADES",
         title: "Hakura Aesthetic",
         subtitle: "Medicina Estética e Cuidados da Pele",
-        description: "Protocolos clínicos seguros e tratamentos não-invasivos desenhados para a saúde dérmica e vitalidade da pele.",
+        description: "Protocolos médicos não-invasivos e cuidados cutâneos de vanguarda desenhados para promover a saúde dérmica e a sua beleza natural.",
         specialties: [
           { 
-            name: "Medicina Estética", 
-            desc: "Diagnóstico médico especializado e elaboração de planos de intervenção estética individualizados.",
-            options: ["Consulta de Avaliação", "Planos Personalizados"]
+            name: "Medicina Estética & Avaliação Médica", 
+            desc: "Diagnóstico médico minucioso para elaboração de planos estéticos personalizados que respeitam a harmonia e as feições do seu rosto.",
+            image: "./assets/images/hakura_pilar_aesthetic.png",
+            bullets: [
+              "Avaliação clínica médica individualizada",
+              "Planeamento de rejuvenescimento e prevenção dérmica",
+              "Protocolos seguros e com base em evidência médica"
+            ],
+            doctor: {
+              name: "Dra. Mariana Guerreiro",
+              role: "DRA. · MEDICINA",
+              spec: "Medicina Estética & Regenerativa",
+              avatar: "./assets/images/team/mariana_guerreiro.png",
+              bio: "Intervenções médicas delicadas com foco em resultados elegantes, naturais e harmoniosos."
+            }
           },
           { 
             name: "Limpeza Facial Profunda", 
-            desc: "Purificação minuciosa dos tecidos cutâneos, extração suave, oxigenação dérmica e luminosidade imediata."
+            desc: "Purificação minuciosa dos tecidos cutâneos, extração suave de impurezas, oxigenação dérmica e luminosidade imediata.",
+            image: "./assets/images/hakura_clinic_interior.jpg",
+            bullets: [
+              "Remoção de células mortas e desobstrução de poros",
+              "Hidratação profunda e nutrição com séruns clínicos",
+              "Glow imediato e textura homogénea da pele"
+            ],
+            doctor: {
+              name: "Dra. Mariana Guerreiro",
+              role: "DRA. · MEDICINA",
+              spec: "Saúde Cutânea & Dermocosmética",
+              avatar: "./assets/images/team/mariana_guerreiro.png",
+              bio: "Cuidado médico dermatológico para devolver pureza, viço e hidratação profunda à pele."
+            }
           }
         ]
       }
     };
+
+    // Card Stacking & Toggle Logic
+    window.togglePillarCard = function(targetIdx) {
+      const card = document.querySelector(`.pillar-stack-card[data-item-idx="${targetIdx}"]`);
+      if (!card) return;
+      const body = card.querySelector('.pillar-card-body');
+      const chevron = card.querySelector('.pillar-accordion-chevron');
+      const isCurrentlyOpen = card.classList.contains('is-open');
+
+      if (isCurrentlyOpen) {
+        card.classList.remove('is-open');
+        if (body) {
+          body.style.maxHeight = '0px';
+          body.style.opacity = '0';
+          body.style.padding = '0 28px';
+        }
+        if (chevron) {
+          chevron.style.transform = 'rotate(0deg)';
+          chevron.style.backgroundColor = '#f1f5f9';
+          chevron.style.color = '#475569';
+        }
+      } else {
+        card.classList.add('is-open');
+        if (body) {
+          body.style.maxHeight = '2000px';
+          body.style.opacity = '1';
+          body.style.padding = window.innerWidth < 768 ? '20px 16px' : '28px';
+        }
+        if (chevron) {
+          chevron.style.transform = 'rotate(180deg)';
+          chevron.style.backgroundColor = '#379cb7';
+          chevron.style.color = '#ffffff';
+        }
+      }
+    };
+    window.togglePillarAccordion = window.togglePillarCard;
 
     function openPillarDrawer(pillarKey, skipOpen = false) {
       const data = pillarsDrawerData[pillarKey] || pillarsDrawerData.medical;
       
       const badgeEl = document.getElementById("expandPanelBadge");
       const titleEl = document.getElementById("expandPanelTitle");
+      const descEl = document.getElementById("expandPanelDesc");
       const listEl = document.getElementById("expandSpecialtiesList");
+
+      // Reset scroll position to top
+      const expandPanelContent = document.getElementById("expandPanelContent");
+      if (expandPanelContent) {
+        expandPanelContent.scrollTop = 0;
+      }
 
       // Update tabs state
       document.querySelectorAll('.hakura-drawer-tab').forEach(tab => {
@@ -1842,38 +2085,157 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (badgeEl) badgeEl.textContent = data.badge || "ESPECIALIDADES";
       if (titleEl) titleEl.textContent = data.title;
-      
-      const descEl = document.getElementById("expandPanelDesc");
       if (descEl) descEl.textContent = data.description;
       
       if (listEl) {
-        listEl.innerHTML = data.specialties.map((item, idx) => `
-          <div class="hakura-specialty-card flex items-start gap-4 p-5 rounded-xl border border-slate-100 bg-white hover:bg-slate-50 transition-all h-full group">
-            <div class="flex-1">
-              <h4 class="text-[17px] md:text-[18px] font-bold text-slate-900 leading-snug" style="font-weight: 700;">
-                ${item.name}
-              </h4>
-              <p class="text-[13px] md:text-[13.5px] text-slate-500 font-light mt-1.5 leading-relaxed">
-                ${item.desc}
-              </p>
+        listEl.className = "pillar-stack-container w-full";
+        listEl.innerHTML = data.specialties.map((item, idx) => {
+          const bulletsHtml = (item.bullets || []).map(b => `
+            <li class="flex items-start gap-2.5 text-[13.5px] md:text-[14px] text-slate-600 leading-snug">
+              <span class="size-1.5 rounded-[2px] bg-[#379cb7] shrink-0 mt-2"></span>
+              <span>${b}</span>
+            </li>
+          `).join('');
+
+          return `
+            <div class="pillar-stack-card is-open" data-item-idx="${idx}" style="--stack-idx: ${idx};">
+              <!-- Card Sticky Header Bar (NO numbering) -->
+              <div class="pillar-card-header" onclick="window.togglePillarCard(${idx})" role="button" tabindex="0">
+                <div class="flex items-center gap-3.5">
+                  <span class="size-2 rounded-[2px] bg-[#379cb7] shrink-0"></span>
+                  <h3 class="text-[17px] md:text-[19px] font-bold text-slate-900 tracking-tight">${item.name}</h3>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4">
+                  <div class="hidden sm:flex items-center gap-2.5 px-3 py-1 rounded-full bg-white border border-slate-200/70 shadow-2xs">
+                    <img src="${item.doctor.avatar}" alt="" class="size-5 rounded-full object-cover shrink-0" />
+                    <span class="text-[12px] font-semibold text-slate-700">${item.doctor.name}</span>
+                    <span class="text-[10px] text-[#379cb7] font-mono uppercase tracking-wider">· ${item.doctor.role}</span>
+                  </div>
+                  <div class="pillar-accordion-chevron" style="transform: rotate(180deg); background-color: #379cb7; color: #ffffff;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Body: 3 Columns Spanning Full Width -->
+              <div id="stack-body-${idx}" class="pillar-card-body" style="max-height: 2000px; opacity: 1;">
+                <div class="pillar-accordion-grid">
+                  
+                  <!-- Coluna 1: Sobre a Especialidade -->
+                  <div class="flex flex-col justify-between gap-5">
+                    <div>
+                      <span class="text-[11px] font-bold text-[#379cb7] tracking-wider uppercase block mb-1.5">
+                        SOBRE A ESPECIALIDADE
+                      </span>
+                      <h4 class="font-display text-[22px] md:text-[24px] font-bold text-slate-900 leading-snug mb-3">
+                        ${item.name}
+                      </h4>
+                      <p class="text-[14px] md:text-[15px] text-slate-600 leading-relaxed font-light mb-4">
+                        ${item.desc}
+                      </p>
+                      ${bulletsHtml ? `
+                        <div class="mt-3 mb-2">
+                          <span class="text-[11px] font-semibold text-slate-400 tracking-wider uppercase block mb-2">Foco Clínico & Indicações</span>
+                          <ul class="flex flex-col gap-2">${bulletsHtml}</ul>
+                        </div>
+                      ` : ''}
+                    </div>
+
+                    <div class="pt-2">
+                      <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="hakura-pill-cta" title="Marcar ${item.name}">
+                        <span>Marcar Consulta</span>
+                        <span class="hakura-cta-chip">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Coluna 2: Fotografia da Clínica / Tratamento -->
+                  <div class="flex flex-col justify-between">
+                    <div class="pillar-specialty-photo-box relative group h-full min-h-[260px] md:min-h-[300px]">
+                      <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" class="size-full object-cover" loading="lazy" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-medium tracking-wide">
+                        <span class="bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">Clínica Hakura</span>
+                        <span class="opacity-90">Padrão Clínico Rigoroso</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna 3: O Profissional Especialista -->
+                  <div class="flex flex-col">
+                    <div class="pillar-professional-card">
+                      <div class="pillar-pro-avatar">
+                        <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" />
+                      </div>
+                      <span class="team-card-badge text-[10px] mb-2 uppercase tracking-wider">
+                        ${item.doctor.role}
+                      </span>
+                      <h5 class="text-[16px] font-bold text-slate-900 leading-tight mb-1">
+                        ${item.doctor.name}
+                      </h5>
+                      <p class="text-[12.5px] font-medium text-[#379cb7] mb-2 leading-tight">
+                        ${item.doctor.spec}
+                      </p>
+                      <p class="text-[12px] text-slate-500 font-light leading-relaxed mb-4">
+                        ${item.doctor.bio}
+                      </p>
+                      <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="mt-auto w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-[#379cb7] text-slate-700 hover:text-white text-[12px] font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-2xs group/btn">
+                        <span>Agendar com Especialista</span>
+                        <span class="group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
-            <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center justify-center size-10 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md mt-0.5 group-hover:-translate-y-0.5" style="background-color: #edf7fa; color: #379cb7; border: 1px solid #d4eff6;" onmouseover="this.style.backgroundColor='#379cb7'; this.style.color='white'" onmouseout="this.style.backgroundColor='#edf7fa'; this.style.color='#379cb7'" title="Marcar ${item.name}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </a>
-          </div>
-        `).join('');
+          `;
+        }).join('');
+      }
+
+      // Scroll listener to smoothly update chevron indicators as cards stack
+      if (expandContent && !expandContent.dataset.scrollListenerAttached) {
+        expandContent.dataset.scrollListenerAttached = "true";
+        expandContent.addEventListener('scroll', () => {
+          const cards = expandContent.querySelectorAll('.pillar-stack-card');
+          const containerTop = expandContent.getBoundingClientRect().top;
+          
+          cards.forEach((card, idx) => {
+            const nextCard = cards[idx + 1];
+            const chevron = card.querySelector('.pillar-accordion-chevron');
+            if (nextCard && chevron) {
+              const nextTop = nextCard.getBoundingClientRect().top;
+              // If next card has scrolled up to stack over this card
+              const isCovered = nextTop <= containerTop + 140;
+              if (isCovered) {
+                chevron.style.transform = 'rotate(0deg)';
+                chevron.style.backgroundColor = '#f1f5f9';
+                chevron.style.color = '#475569';
+              } else {
+                chevron.style.transform = 'rotate(180deg)';
+                chevron.style.backgroundColor = '#379cb7';
+                chevron.style.color = '#ffffff';
+              }
+            }
+          });
+        }, { passive: true });
       }
 
       if (skipOpen) return;
 
-      // If panel is already open, just animate the content in place without opening again
+      // 1. Pause Lenis smooth scroll ONLY when opening the drawer
+      if (window.lenis && typeof window.lenis.stop === 'function') {
+        window.lenis.stop();
+      }
+
+      // Add drawer-open class to body so site header is smoothly hidden
+      document.body.classList.add("drawer-open");
+
+      // If panel is already open, just animate content smoothly
       if (expandPanel.style.pointerEvents === "auto") {
-        gsap.fromTo(expandContent, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" });
+        gsap.fromTo(expandContent, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", clearProps: "transform" });
         return;
       }
 
@@ -1898,13 +2260,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
       tl.to(expandPanel, {
         x: "0%",
-        duration: 0.5
+        duration: 0.45
       });
 
       tl.to(expandContent, {
         opacity: 1,
         y: 0,
-        duration: 0.35
+        duration: 0.35,
+        clearProps: "transform"
       }, "-=0.25");
 
       if (closeExpandBtn) {
@@ -1916,6 +2279,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function closePanelLogic() {
+      // Resume Lenis smooth scroll on the main site
+      if (window.lenis && typeof window.lenis.start === 'function') {
+        window.lenis.start();
+      }
+
+      // Restore site header by removing drawer-open class
+      document.body.classList.remove("drawer-open");
+
       const tl = gsap.timeline({ defaults: { ease: "power4.inOut" } });
       
       const hakuraExpandScrim = document.getElementById("hakuraExpandScrim");
@@ -1941,7 +2312,7 @@ document.addEventListener("DOMContentLoaded", function() {
         x: "100%",
         duration: 0.4,
         onComplete: () => {
-          gsap.set(expandPanel, { pointerEvents: "none", opacity: 0 });
+          gsap.set(expandPanel, { pointerEvents: "none", opacity: 0, display: "none" });
           document.body.style.overflow = "";
         }
       }, "-=0.1");
@@ -1951,7 +2322,19 @@ document.addEventListener("DOMContentLoaded", function() {
     window.hakuraCloseDrawer = closePanelLogic;
     window.openPillarDrawer = openPillarDrawer;
 
+    // Prevent any outer scroll hijacking from intercepting wheel or touch inside the drawer
+    if (expandPanel) {
+      expandPanel.addEventListener("wheel", (e) => {
+        e.stopPropagation();
+      }, { passive: true });
+      expandPanel.addEventListener("touchmove", (e) => {
+        e.stopPropagation();
+      }, { passive: true });
+    }
+
     if (closeExpandBtn) closeExpandBtn.addEventListener("click", closePanelLogic);
+    const closeExpandBtnX = document.getElementById("hakuraCloseExpandPanelX");
+    if (closeExpandBtnX) closeExpandBtnX.addEventListener("click", closePanelLogic);
     if (closeExpandText) closeExpandText.addEventListener("click", closePanelLogic);
 
     // Close on Scrim click
@@ -1981,62 +2364,65 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize with Medical Data so drawer isn't empty on first load if CSS/JS timing differs
     setTimeout(() => {
       openPillarDrawer('medical', true);
+      // Ensure Lenis is running for the main website
+      if (window.lenis && typeof window.lenis.start === 'function') {
+        window.lenis.start();
+      }
     }, 50);
   });
 </script>
 
 <!-- Hakura Expandable Info Panel Scrim -->
-<div id="hakuraExpandScrim" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[190] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<div id="hakuraExpandScrim" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[190] opacity-0 pointer-events-none transition-opacity duration-300" style="display: none;"></div>
 
-<!-- Hakura Expandable Info Panel (Specialties Drawer) -->
-<div id="hakuraExpandPanel" class="fixed inset-y-0 right-0 w-full md:w-[860px] lg:w-[980px] xl:w-[1040px] max-w-full bg-white z-[200] flex flex-col shadow-[-20px_0_60px_rgba(15,23,42,0.18)] opacity-0 pointer-events-none overflow-hidden" style="will-change: transform, opacity; height: 100dvh; max-height: 100dvh;">
+<!-- Hakura Expandable Info Panel (Full Screen Width Pillar Page) -->
+<div id="hakuraExpandPanel" data-lenis-prevent="true" class="fixed inset-0 w-screen h-screen max-w-full bg-white z-[200] flex flex-col shadow-none opacity-0 pointer-events-none overflow-hidden" style="display: none; will-change: transform, opacity; height: 100dvh; max-height: 100dvh; width: 100vw; max-width: 100vw;">
   
-  <!-- Drawer Header (Tabs + Close Button) -->
-  <div class="shrink-0 flex items-center justify-between px-5 md:px-10 py-3.5 md:py-4 border-b border-slate-100 bg-white z-[210]">
+  <!-- Header (Tabs + Close Buttons Across Full Screen Width) -->
+  <div class="shrink-0 flex items-center justify-between px-6 md:px-12 py-3.5 md:py-4 border-b border-slate-100 bg-white/95 backdrop-blur-md z-[210] sticky top-0 w-full">
+    <div class="flex items-center gap-3">
+      <span class="size-2 rounded-full bg-[#379cb7]"></span>
+      <span class="text-[12.5px] md:text-[13.5px] font-bold text-slate-900 tracking-wider uppercase font-mono">HAKURA · PILARES</span>
+    </div>
+    
     <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-slate-50 p-1.5 rounded-full border border-slate-200">
       <button type="button" onclick="window.openPillarDrawer('medical')" class="hakura-drawer-tab" data-tab-pillar="medical">Medical</button>
       <button type="button" onclick="window.openPillarDrawer('spa')" class="hakura-drawer-tab" data-tab-pillar="spa">Spa</button>
       <button type="button" onclick="window.openPillarDrawer('holistic')" class="hakura-drawer-tab" data-tab-pillar="holistic">Holistic</button>
       <button type="button" onclick="window.openPillarDrawer('aesthetic')" class="hakura-drawer-tab" data-tab-pillar="aesthetic">Aesthetic</button>
     </div>
-    <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-5 py-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-all shrink-0 ml-4 font-semibold text-[13px] tracking-wide gap-2 shadow-sm cursor-pointer" aria-label="Voltar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      VOLTAR
-    </button>
+
+    <div class="flex items-center gap-2 shrink-0 ml-4">
+      <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-all font-semibold text-[13px] tracking-wide gap-2 shadow-xs cursor-pointer" aria-label="Voltar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="size-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>VOLTAR</span>
+      </button>
+      <button id="hakuraCloseExpandPanelX" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center size-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all shadow-xs cursor-pointer" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
   </div>
   
-  <!-- Panel Content Container -->
-  <div id="expandPanelContent" class="w-full px-5 md:px-10 pt-5 md:pt-6 pb-28 md:pb-36 flex flex-col flex-1 opacity-0 translate-y-4 overflow-y-auto" style="min-height: 0 !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important;">
+  <!-- Panel Content Container (Full Width with Centered 1440px Container) -->
+  <div id="expandPanelContent" data-lenis-prevent="true" class="w-full flex flex-col flex-1 opacity-0 overflow-y-auto" style="min-height: 0 !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; touch-action: pan-y !important;">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-8 pb-32">
 
-    <span id="expandPanelBadge" class="text-[12px] md:text-[13px] text-[#379cb7] font-bold tracking-[0.2em] mb-2 uppercase block">
-      ESPECIALIDADES
-    </span>
-    
-    <h2 id="expandPanelTitle" class="font-display text-[30px] md:text-[40px] leading-[1.1] text-slate-900 mb-2.5 text-balance">
-      Hakura Medical
-    </h2>
-    <p id="expandPanelDesc" class="text-[15px] md:text-[16px] leading-relaxed text-slate-600 max-w-xl mb-6 font-light">
-      Acompanhamento clínico multidisciplinar com diagnóstico e recuperação funcional personalizada.
-    </p>
+      <span id="expandPanelBadge" class="text-[12px] md:text-[13px] text-[#379cb7] font-bold tracking-[0.2em] mb-2 uppercase block">
+        ESPECIALIDADES
+      </span>
+      
+      <h2 id="expandPanelTitle" class="font-display text-[32px] md:text-[46px] leading-[1.1] text-slate-900 mb-2.5 text-balance">
+        Hakura Medical
+      </h2>
+      <p id="expandPanelDesc" class="text-[15px] md:text-[17px] leading-relaxed text-slate-600 max-w-2xl mb-8 font-light">
+        Acompanhamento clínico multidisciplinar com diagnóstico e recuperação funcional personalizada.
+      </p>
 
-    <!-- Specialties List (Pre-rendered in 2-Column Responsive Grid) -->
-    <div class="w-full pb-4">
-      <div id="expandSpecialtiesList" class="hakura-specialties-grid">
+      <!-- Specialties Stacking Cards Container -->
+      <div id="expandSpecialtiesList" class="pillar-stack-container w-full">
       </div>
-    </div>
 
-    <!-- Helpful Bottom Assistance Box -->
-    <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left bg-slate-50/80 p-4 rounded-2xl">
-      <div>
-        <h4 class="text-[13.5px] font-semibold text-slate-900">Dúvidas sobre qual a especialidade indicada?</h4>
-        <p class="text-[12.5px] text-slate-500 font-light">A nossa equipa clínica orienta o seu agendamento de forma personalizada.</p>
-      </div>
-      <a href="https://wa.me/351964166845?text=Ol%C3%A1%2C%20gostaria%20de%20ajuda%20para%20escolher%20a%20minha%20especialidade%20na%20Hakura..." target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0f172a] hover:bg-[#379cb7] text-white text-[12.5px] font-medium transition-all shadow-sm">
-        <span>Falar com a Equipa</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
     </div>
-
   </div>
 </div>
 
@@ -2136,6 +2522,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
     }
+  };
+
+  // Desktop 4 Pillars Smooth Scroll to specific Phase
+  window.hakuraScrollToPillar = function(idx) {
+    idx = Math.max(0, Math.min(3, parseInt(idx) || 0));
+    window.selectDesktopPillar(idx);
+    const section = document.getElementById('especialidades');
+    if (!section) return;
+    const runwayHeight = section.offsetHeight - window.innerHeight;
+    const targetProgress = idx / 3;
+    const explainerTop = section.getBoundingClientRect().top + window.scrollY;
+    const targetScroll = explainerTop + targetProgress * (runwayHeight > 0 ? runwayHeight : 0);
+
+    window.__hakuraManualPillarSwitch = true;
+    if (window.lenis) {
+      window.lenis.scrollTo(targetScroll, { duration: 1.1 });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
+    setTimeout(() => {
+      window.__hakuraManualPillarSwitch = false;
+    }, 1200);
   };
 
   // Mobile 4 Pillars Switcher

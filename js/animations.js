@@ -32,21 +32,48 @@ let lenisInstance = null;
 function initSmoothScroll() {
   if (typeof Lenis !== 'undefined') {
     lenisInstance = new Lenis({
-      duration: 1.25,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
+    window.lenis = lenisInstance;
 
-    function raf(time) {
-      lenisInstance.raf(time);
+    // Connect Lenis with GSAP ScrollTrigger if loaded
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      lenisInstance.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenisInstance.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenisInstance.raf(time);
+        requestAnimationFrame(raf);
+      }
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
   }
+
+  // Global Hakura smooth scroll helper
+  window.hakuraScrollTo = function(target, offset = 84) {
+    let targetY = 0;
+    if (typeof target === 'number') {
+      targetY = target;
+    } else {
+      const el = typeof target === 'string' ? document.querySelector(target) : target;
+      if (!el) return;
+      targetY = el.getBoundingClientRect().top + window.scrollY - offset;
+    }
+    if (window.lenis) {
+      window.lenis.scrollTo(targetY, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+  };
 
   // Smooth scroll for anchor navigation links (e.g., #especialidades, #equipa, #contactos)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -56,13 +83,7 @@ function initSmoothScroll() {
         const targetEl = document.querySelector(hash);
         if (targetEl) {
           e.preventDefault();
-          const headerOffset = 84;
-          const targetY = targetEl.getBoundingClientRect().top + window.scrollY - headerOffset;
-          if (lenisInstance) {
-            lenisInstance.scrollTo(targetY, { duration: 1.2 });
-          } else {
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-          }
+          window.hakuraScrollTo(targetEl, 84);
         }
       }
     });
@@ -76,16 +97,15 @@ function initHeroScrollAnimation() {
   const heroSection = document.querySelector('section[data-slicetype="mainHero"]');
   if (!heroSection) return;
 
-  // The outer background asset container - KEEP AT FULL BACKGROUND TOTAL
+  // The outer background asset container
   const heroMedia = heroSection.querySelector('.pointer-events-none.absolute.inset-0.z-0');
-  const heroTextContainer = heroSection.querySelector('.xpad.absolute.inset-x-0.top-0');
+  const heroTextContainer = heroSection.querySelector('.xpad.hero-content-wrapper, .xpad.absolute.inset-x-0.top-0');
 
   function updateHero() {
     const scrollY = window.scrollY;
     const progress = Math.min(1, Math.max(0, scrollY / (window.innerHeight * 0.75)));
 
     if (heroMedia) {
-      // Award-winning smooth scroll inset into rounded floating card
       const inset = progress * 24; // 0px to 24px inset
       const radius = progress * 32; // 0px to 32px rounded corners
       heroMedia.style.left = `${inset}px`;
@@ -123,147 +143,75 @@ function initStickyExplainerAnimation() {
   const desktopContainer = explainerSection.querySelector('.hidden.md\\:block');
   if (!desktopContainer) return;
 
-  // The 4 asset layers (z-index 1, 2, 3, 4)
   const assetLayers = desktopContainer.querySelectorAll('.focus-clip-asset-rest');
-  
-  // The tab buttons
-  const tabButtons = desktopContainer.querySelectorAll('button[data-tab], .sticky button');
+  const tabButtons = desktopContainer.querySelectorAll('.hakura-desktop-pillar-tab, button[data-tab]');
 
-  // The text wrappers inside col-[7/12]
-  const textContainer = desktopContainer.querySelector('.col-span-full.md\\:col-\\[7\\/12\\]');
-  let textSlides = [];
-  if (textContainer) {
-    // Find each distinct heading block
-    textSlides = Array.from(textContainer.children);
-  }
-
-  // Find the runway scroll progress
   function updateExplainer() {
+    if (window.__hakuraManualPillarSwitch) return;
+
     const rect = explainerSection.getBoundingClientRect();
     const runwayHeight = explainerSection.offsetHeight - window.innerHeight;
     if (runwayHeight <= 0) return;
 
-    // Progress from 0 to 1
     const progress = Math.max(0, Math.min(1, -rect.top / runwayHeight));
-
-    // Determine active phase (0: skin, 1: heart, 2: blood, 3: body)
-    const phaseFloat = progress * 3; // 0 to 3
+    const phaseFloat = progress * 3;
     const activeIndex = Math.min(3, Math.floor(phaseFloat + 0.15));
 
-    // 1. Update Asset layers clip-paths
     assetLayers.forEach((layer, idx) => {
       if (idx === 0) {
-        // Base layer always visible
         layer.style.clipPath = 'inset(0 0 0 0)';
         layer.style.opacity = '1';
       } else {
-        // Subsequent layers reveal when phase reaches their index
-        // idx = 1 reveals between phaseFloat 0.7 and 1.3
-        // idx = 2 reveals between phaseFloat 1.7 and 2.3
-        // idx = 3 reveals between phaseFloat 2.7 and 3.0
         const layerStart = idx - 0.35;
         const layerEnd = idx + 0.35;
         const layerProgress = Math.max(0, Math.min(1, (phaseFloat - layerStart) / (layerEnd - layerStart)));
-
-        // Unveil from bottom to top
         const clipInsetTop = (1 - layerProgress) * 100;
         layer.style.clipPath = `inset(${clipInsetTop}% 0 0 0)`;
         layer.style.transition = 'clip-path 0.08s ease-out';
       }
     });
 
-    // 2. Update tab buttons highlighting
-    tabButtons.forEach((btn, idx) => {
-      const isSelected = (idx % 4) === activeIndex;
-      if (isSelected) {
-        btn.setAttribute('aria-current', 'step');
-        btn.style.opacity = '1';
-        btn.style.fontWeight = '600';
-        btn.style.borderBottom = '2px solid currentColor';
-      } else {
-        btn.removeAttribute('aria-current');
-        btn.style.opacity = '0.4';
-        btn.style.fontWeight = '400';
-        btn.style.borderBottom = 'none';
-      }
-    });
-
-    // 3. Update Text Slide Opacity / Content for the 4 Hakura Pillars
-    const hakuraPillarsData = [
-      {
-        pillar: "medical",
-        title: "Medicina Integrada e Reabilitação Funcional",
-        description: "Acompanhamento multidisciplinar em fisioterapia geral, pélvica e ATM, psicologia clínica, nutrição e medicina geral e familiar.",
-        buttonText: "Saber mais"
-      },
-      {
-        pillar: "spa",
-        title: "Rituais de Bem-Estar e Recuperação Profunda",
-        description: "Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais remodeladores, drenagem linfática e alívio de tensões.",
-        buttonText: "Saber mais"
-      },
-      {
-        pillar: "holistic",
-        title: "Terapias Integrativas e Equilíbrio Natural",
-        description: "Harmonização bioenergética e autorregeneração com acupunctura médica tradicional, sessões de reiki e consultas de homeopatia personalizadas.",
-        buttonText: "Saber mais"
-      },
-      {
-        pillar: "aesthetic",
-        title: "Medicina Estética e Cuidados Cutâneos",
-        description: "Consultas de avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda para vitalidade da sua pele.",
-        buttonText: "Saber mais"
-      }
-    ];
-
     if (typeof window.selectDesktopPillar === 'function') {
       if (window.__hakuraCurrentDesktopPillar !== activeIndex) {
         window.__hakuraCurrentDesktopPillar = activeIndex;
-        window.selectDesktopPillar(activeIndex);
-      }
-    } else {
-      const activePillar = hakuraPillarsData[activeIndex];
-      const textWrapper = desktopContainer.querySelector('.relative.mt-10 .flex.w-full.flex-col');
-      if (textWrapper && textWrapper.dataset.currentIndex !== String(activeIndex)) {
-        textWrapper.dataset.currentIndex = String(activeIndex);
-        textWrapper.style.opacity = '0';
-        textWrapper.style.transform = 'translateY(8px)';
-        textWrapper.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
 
-        setTimeout(() => {
-          const titleEl = textWrapper.querySelector('h2');
-          const descEl = textWrapper.querySelector('p');
-          const btnLink = textWrapper.querySelector('a');
-          const btnTextEl = textWrapper.querySelector('a span:last-child');
+        const tabs = document.querySelectorAll(".hakura-desktop-pillar-tab");
+        tabs.forEach((tab, i) => {
+          if (i === activeIndex) {
+            tab.setAttribute("aria-current", "step");
+            tab.classList.add("text-slate-900", "font-semibold", "border-slate-900", "opacity-100");
+            tab.classList.remove("text-slate-900/50", "font-normal", "border-transparent", "hover:opacity-80");
+          } else {
+            tab.removeAttribute("aria-current");
+            tab.classList.remove("text-slate-900", "font-semibold", "border-slate-900", "opacity-100");
+            tab.classList.add("text-slate-900/50", "font-normal", "border-transparent", "hover:opacity-80");
+          }
+        });
 
-          if (titleEl) titleEl.textContent = activePillar.title;
-          if (descEl) descEl.textContent = activePillar.description;
-          if (btnTextEl) btnTextEl.textContent = activePillar.buttonText;
-          if (btnLink) btnLink.setAttribute('data-pillar', activePillar.pillar);
+        if (window.hakuraPillarsData) {
+          const data = window.hakuraPillarsData[activeIndex];
+          const titleEl = document.getElementById("hakuraExplainerTitle");
+          const descEl = document.getElementById("hakuraExplainerDesc");
+          const linkEl = document.getElementById("hakuraExplainerLink");
+          const linkTextEl = document.getElementById("hakuraExplainerLinkText");
 
-          textWrapper.style.opacity = '1';
-          textWrapper.style.transform = 'translateY(0px)';
-        }, 200);
+          if (titleEl) titleEl.textContent = data.title;
+          if (descEl) descEl.textContent = data.desc;
+          if (linkEl) linkEl.setAttribute("data-pillar", data.key);
+          if (linkTextEl) linkTextEl.textContent = data.linkText;
+        }
       }
     }
   }
 
-  // Tab click handler to scroll directly to that phase
   tabButtons.forEach((btn, idx) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const targetIdx = idx % 4;
-      if (typeof window.selectDesktopPillar === 'function') {
+      if (typeof window.hakuraScrollToPillar === 'function') {
+        window.hakuraScrollToPillar(targetIdx);
+      } else if (typeof window.selectDesktopPillar === 'function') {
         window.selectDesktopPillar(targetIdx);
-      }
-      const runwayHeight = explainerSection.offsetHeight - window.innerHeight;
-      const targetProgress = targetIdx / 3;
-      const targetScroll = explainerSection.offsetTop + targetProgress * runwayHeight;
-
-      if (lenisInstance) {
-        lenisInstance.scrollTo(targetScroll, { duration: 1.2 });
-      } else {
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
     });
   });
@@ -282,7 +230,6 @@ function initMarqueeAnimation() {
   const marquee = marqueeContainer.querySelector('.rfm-marquee');
   if (!marquee) return;
 
-  // Duplicate child logos to create seamless infinite loop
   const initialChild = marquee.querySelector('.rfm-initial-child-container');
   if (initialChild && !marquee.querySelector('.rfm-clone')) {
     const clone = initialChild.cloneNode(true);
@@ -299,7 +246,8 @@ function initMarqueeAnimation() {
    5. INTERACTIVE CLINICS CAROUSEL (Where to find us)
    ========================================================================== */
 function initClinicsCarousel() {
-  const carousel = document.querySelector('[data-slot="carousel"]');
+  // Target exclusively the locations / contacts carousel, never the team carousel
+  const carousel = document.querySelector('section#contactos [data-slot="carousel"]');
   if (!carousel) return;
 
   const content = carousel.querySelector('[data-slot="carousel-content"]');
@@ -361,10 +309,9 @@ function initClinicsCarousel() {
 function initScrollReveals() {
   const elementsToReveal = document.querySelectorAll(`
     section[data-slicetype="scanDataPointsFeatures"] [role="listitem"],
-    section[data-slicetype="scanProductExplainer"] [role="listitem"],
     section[data-slicetype="ratings"] figure,
     section[data-slicetype="articleAndText"] .col-span-full,
-    h2.font-display:not(#hakuraEditorialHeading)
+    h2.font-display:not(#hakuraEditorialHeading):not(#hakuraExplainerTitle)
   `);
 
   const observer = new IntersectionObserver((entries) => {
@@ -387,6 +334,7 @@ function initScrollReveals() {
     observer.observe(el);
   });
 }
+
 
 /* ==========================================================================
    7. COMPACT FROSTED HEADER ON SCROLL
