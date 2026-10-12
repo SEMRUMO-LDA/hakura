@@ -4595,7 +4595,8 @@ header[data-site-header] {
 body.drawer-open header[data-site-header] {
   opacity: 1 !important;
   pointer-events: auto !important;
-  transform: translateY(0) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   background-color: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -5434,7 +5435,7 @@ body.drawer-open #hakuraExpandPanel {
   flex-direction: column !important;
   width: 100% !important;
   position: relative !important;
-  padding-bottom: clamp(140px, 20vh, 260px) !important;
+  padding-bottom: 60px !important;
 }
 
 .pillar-stack-card {
@@ -5520,16 +5521,8 @@ body.drawer-open #hakuraExpandPanel {
 .pillar-card-body {
   padding: 26px 24px !important;
   background-color: #ffffff !important;
-  transition: max-height 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease, padding 0.32s ease !important;
   overflow: hidden !important;
-}
-
-.pillar-stack-card:not(.is-open) .pillar-card-body {
-  max-height: 0 !important;
-  opacity: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  pointer-events: none !important;
+  width: 100% !important;
 }
 
 .pillar-accordion-grid {
