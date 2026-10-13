@@ -2007,27 +2007,37 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     };
 
-    // Card Stacking & Toggle Logic - Full Deck Stacking & Smooth Navigation
-    window.togglePillarCard = function(targetIdx) {
-      const container = document.getElementById("expandPanelContent");
-      const card = document.querySelector(`.pillar-stack-card[data-item-idx="${targetIdx}"]`);
-      const listEl = document.getElementById("expandSpecialtiesList");
-      if (!card || !container || !listEl) return;
+    // FAQ-Style Accordion Toggle Logic (Exact Neko Health FAQ Pattern)
+    window.toggleSpecialtyAccordion = function(targetIdx) {
+      const container = document.getElementById("expandSpecialtiesList");
+      if (!container) return;
+      const items = container.querySelectorAll('.hakura-faq-item');
+      items.forEach((item, idx) => {
+        const trigger = item.querySelector('.hakura-faq-trigger');
+        const collapse = item.querySelector('.hakura-faq-collapse');
+        const icon = item.querySelector('.hakura-faq-icon');
+        const isCurrent = idx === targetIdx;
+        const isOpen = collapse.classList.contains('is-open');
 
-      const headerH = window.innerWidth < 768 ? 44 : 46;
-      const baseTop = window.innerWidth < 768 ? 8 : 10;
-      const targetStickyTop = baseTop + targetIdx * headerH;
-      const naturalTop = parseFloat(card.dataset.naturalTop != null ? card.dataset.naturalTop : card.offsetTop);
-      
-      // Calculate natural scroll position to bring target card to its sticky position
-      const targetScroll = Math.max(0, listEl.offsetTop + naturalTop - targetStickyTop);
-
-      container.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth'
+        if (isCurrent) {
+          const willOpen = !isOpen;
+          trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          if (willOpen) {
+            collapse.classList.add('is-open');
+            if (icon) icon.classList.add('rotate-45');
+          } else {
+            collapse.classList.remove('is-open');
+            if (icon) icon.classList.remove('rotate-45');
+          }
+        } else {
+          trigger.setAttribute('aria-expanded', 'false');
+          collapse.classList.remove('is-open');
+          if (icon) icon.classList.remove('rotate-45');
+        }
       });
     };
-    window.togglePillarAccordion = window.togglePillarCard;
+    window.togglePillarCard = window.toggleSpecialtyAccordion;
+    window.togglePillarAccordion = window.toggleSpecialtyAccordion;
 
     function openPillarDrawer(pillarKey, skipOpen = false) {
       const data = pillarsDrawerData[pillarKey] || pillarsDrawerData.medical;
@@ -2057,7 +2067,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (descEl) descEl.textContent = data.description;
       
       if (listEl) {
-        listEl.className = "pillar-stack-container w-full";
+        listEl.className = "hakura-faq-container w-full";
         listEl.innerHTML = data.specialties.map((item, idx) => {
           const bulletsHtml = (item.bullets || []).map(b => `
             <li class="flex items-start gap-2.5 text-[13.5px] md:text-[14px] text-slate-600 leading-snug">
@@ -2066,191 +2076,102 @@ document.addEventListener("DOMContentLoaded", function() {
             </li>
           `).join('');
 
+          const isFirstOpen = idx === 0;
+
           return `
-            <div class="pillar-stack-card is-open" data-item-idx="${idx}" style="--stack-idx: ${idx};">
-              <!-- Card Sticky Header Bar -->
-              <div class="pillar-card-header" onclick="window.togglePillarCard(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.togglePillarCard(${idx});}" role="button" tabindex="0" aria-expanded="true" title="Ver especialidade ${item.name}">
-                <div class="flex items-center gap-3 md:gap-3.5 min-w-0 pr-2">
+            <div class="hakura-faq-item" data-faq-idx="${idx}">
+              <!-- Accordion Trigger Row (Estilo FAQ Neko Health) -->
+              <button type="button" class="hakura-faq-trigger" onclick="window.toggleSpecialtyAccordion(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.toggleSpecialtyAccordion(${idx});}" aria-expanded="${isFirstOpen ? 'true' : 'false'}" title="${item.name}">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0 pr-3">
                   <span class="size-2 rounded-[2px] bg-[#379cb7] shrink-0"></span>
-                  <h3 class="text-[15px] sm:text-[17px] md:text-[18px] font-bold text-slate-900 tracking-tight truncate">${item.name}</h3>
+                  <span class="hakura-faq-title truncate">
+                    ${item.name}
+                  </span>
                 </div>
-                <div class="flex items-center gap-2.5 sm:gap-3 md:gap-4 shrink-0">
-                  <div class="hidden sm:flex items-center gap-2.5 px-3 py-1 rounded-full bg-white border border-slate-200/70 shadow-2xs">
-                    <img src="${item.doctor.avatar}" alt="" class="size-5 rounded-full object-cover shrink-0" onerror="this.style.display='none'" />
-                    <span class="text-[12px] font-semibold text-slate-700">${item.doctor.name}</span>
-                    <span class="text-[10px] text-[#379cb7] font-mono uppercase tracking-wider">· ${item.doctor.role}</span>
+                <div class="flex items-center gap-3 shrink-0">
+                  <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/80 text-[12px] font-medium text-slate-600">
+                    <img src="${item.doctor.avatar}" alt="" class="size-4.5 rounded-full object-cover shrink-0" onerror="this.style.display='none'" />
+                    <span>${item.doctor.name}</span>
                   </div>
-                  <div class="pillar-accordion-chevron" style="transform: rotate(180deg); background-color: #379cb7; color: #ffffff;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                  <div class="hakura-faq-icon ${isFirstOpen ? 'rotate-45' : ''}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
+                    </svg>
                   </div>
                 </div>
-              </div>
+              </button>
 
-              <!-- Card Body: 3 Columns Spanning Full Width (Sem repetições, Sem CTAs internos) -->
-              <div id="stack-body-${idx}" class="pillar-card-body" style="display: block; opacity: 1;">
-                <div class="pillar-accordion-grid">
-                  
-                  <!-- Coluna 1: Sobre a Especialidade (Sem repetição do título, Foco no Conteúdo Clínico) -->
-                  <div class="flex flex-col justify-start">
-                    <p class="text-[13.5px] md:text-[14px] text-slate-600 leading-relaxed font-light mb-3">
-                      ${item.desc}
-                    </p>
-                    ${bulletsHtml ? `
-                      <div class="mt-1 pt-1.5 border-t border-slate-100">
-                        <span class="text-[10px] font-bold text-[#379cb7] tracking-wider uppercase block mb-1.5">FOCO CLÍNICO &amp; INDICAÇÕES</span>
-                        <ul class="flex flex-col gap-1.5">${bulletsHtml}</ul>
+              <!-- Accordion Expandable Content Box -->
+              <div class="hakura-faq-collapse ${isFirstOpen ? 'is-open' : ''}">
+                <div>
+                  <div class="hakura-faq-content-box">
+                    <div class="pillar-accordion-grid">
+                      
+                      <!-- Coluna 1: Sobre a Especialidade -->
+                      <div class="flex flex-col justify-start">
+                        <p class="text-[14px] md:text-[14.5px] text-slate-600 leading-relaxed font-light mb-4">
+                          ${item.desc}
+                        </p>
+                        ${bulletsHtml ? `
+                          <div class="mt-1 pt-2.5 border-t border-slate-100">
+                            <span class="text-[10px] font-bold text-[#379cb7] tracking-wider uppercase block mb-2">FOCO CLÍNICO &amp; INDICAÇÕES</span>
+                            <ul class="flex flex-col gap-1.5">${bulletsHtml}</ul>
+                          </div>
+                        ` : ''}
                       </div>
-                    ` : ''}
-                  </div>
 
-                  <!-- Coluna 2: Fotografia da Clínica / Tratamento (Sem Curva no Topo) -->
-                  <div class="flex flex-col">
-                    <div class="pillar-specialty-photo-box relative group">
-                      <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/hakura_clinic_interior.jpg';" />
-                      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
-                      <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white text-[10.5px] font-medium tracking-wide">
-                        <span class="bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">Clínica Hakura</span>
-                        <span class="opacity-90">Padrão Clínico</span>
+                      <!-- Coluna 2: Fotografia da Clínica -->
+                      <div class="flex flex-col">
+                        <div class="pillar-specialty-photo-box relative group">
+                          <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/hakura_clinic_interior.jpg';" />
+                          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
+                          <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white text-[10.5px] font-medium tracking-wide">
+                            <span class="bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">Clínica Hakura</span>
+                            <span class="opacity-90">Padrão Clínico</span>
+                          </div>
+                        </div>
                       </div>
+
+                      <!-- Coluna 3: O Profissional Especialista com CTA de Reserva -->
+                      <div class="flex flex-col">
+                        <div class="pillar-professional-card">
+                          <div class="pillar-pro-avatar">
+                            <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/team/mariana_guerreiro.png';" />
+                          </div>
+                          <span class="team-card-badge text-[9.5px] mb-1 uppercase tracking-wider">
+                            ${item.doctor.role}
+                          </span>
+                          <h5 class="text-[14px] font-bold text-slate-900 leading-tight mb-0.5">
+                            ${item.doctor.name}
+                          </h5>
+                          <p class="text-[11.5px] font-medium text-[#379cb7] mb-1 leading-tight">
+                            ${item.doctor.spec}
+                          </p>
+                          <p class="text-[11px] text-slate-500 font-light leading-snug line-clamp-2 mb-2.5">
+                            ${item.doctor.bio}
+                          </p>
+                          <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="pillar-pro-book-btn" title="Reservar consulta com ${item.doctor.name}">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px!important;height:13px!important;min-width:13px!important;display:inline-block!important;">
+                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="16" y1="2" x2="16" y2="6"></line>
+                              <line x1="8" y1="2" x2="8" y2="6"></line>
+                              <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span>Reservar</span>
+                          </a>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
-
-                  <!-- Coluna 3: O Profissional Especialista (com CTA de Reserva) -->
-                  <div class="flex flex-col">
-                    <div class="pillar-professional-card">
-                      <div class="pillar-pro-avatar">
-                        <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/team/mariana_guerreiro.png';" />
-                      </div>
-                      <span class="team-card-badge text-[9.5px] mb-1 uppercase tracking-wider">
-                        ${item.doctor.role}
-                      </span>
-                      <h5 class="text-[14px] font-bold text-slate-900 leading-tight mb-0.5">
-                        ${item.doctor.name}
-                      </h5>
-                      <p class="text-[11.5px] font-medium text-[#379cb7] mb-1 leading-tight">
-                        ${item.doctor.spec}
-                      </p>
-                      <p class="text-[11px] text-slate-500 font-light leading-snug line-clamp-2 mb-2.5">
-                        ${item.doctor.bio}
-                      </p>
-                      <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="pillar-pro-book-btn" title="Reservar consulta com ${item.doctor.name}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px!important;height:13px!important;min-width:13px!important;display:inline-block!important;">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        <span>Reservar</span>
-                      </a>
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
           `;
         }).join('');
-
-        function calibratePillarStackRunway() {
-          if (!expandContent || !listEl) return;
-          const cards = listEl.querySelectorAll('.pillar-stack-card');
-          if (!cards.length) return;
-          
-          const lastCard = cards[cards.length - 1];
-          const totalCards = cards.length;
-          const headerH = window.innerWidth < 768 ? 44 : 46;
-          const baseTop = window.innerWidth < 768 ? 8 : 10;
-          const targetStickyTop = baseTop + (totalCards - 1) * headerH;
-          const cardH = lastCard.offsetHeight || 350;
-          
-          const availableSpaceBelow = expandContent.clientHeight - (targetStickyTop + cardH);
-          const neededPadding = Math.max(0, Math.round(availableSpaceBelow));
-          listEl.style.setProperty('padding-bottom', `${neededPadding}px`, 'important');
-        }
-
-        requestAnimationFrame(() => {
-          listEl.querySelectorAll('.pillar-stack-card').forEach(c => {
-            c.dataset.naturalTop = c.offsetTop;
-          });
-          calibratePillarStackRunway();
-        });
       }
 
-      // Re-calibrate runway on window resize
-      if (!window.__hakuraResizeRunwayAttached) {
-        window.__hakuraResizeRunwayAttached = true;
-        window.addEventListener('resize', () => {
-          const content = document.getElementById("expandPanelContent");
-          const list = document.getElementById("expandSpecialtiesList");
-          if (!content || !list) return;
-          const cards = list.querySelectorAll('.pillar-stack-card');
-          if (!cards.length) return;
-          const lastCard = cards[cards.length - 1];
-          const totalCards = cards.length;
-          const headerH = window.innerWidth < 768 ? 44 : 46;
-          const baseTop = window.innerWidth < 768 ? 8 : 10;
-          const targetStickyTop = baseTop + (totalCards - 1) * headerH;
-          const cardH = lastCard.offsetHeight || 350;
-          const availableSpaceBelow = content.clientHeight - (targetStickyTop + cardH);
-          list.style.setProperty('padding-bottom', `${Math.max(0, Math.round(availableSpaceBelow))}px`, 'important');
-        }, { passive: true });
-      }
-
-      // Scroll listener: dynamically stack cards and update chevrons as user scrolls
-      if (expandContent && !expandContent.dataset.scrollListenerAttached) {
-        expandContent.dataset.scrollListenerAttached = "true";
-        expandContent.addEventListener('scroll', () => {
-          const cards = expandContent.querySelectorAll('.pillar-stack-card');
-          const list = document.getElementById("expandSpecialtiesList");
-          const headerH = window.innerWidth < 768 ? 44 : 46;
-          const baseTop = window.innerWidth < 768 ? 8 : 10;
-
-          // Stop last card cleanly at its stacked position - never scroll past
-          if (cards.length > 0 && list) {
-            const lastCard = cards[cards.length - 1];
-            const targetStickyTop = baseTop + (cards.length - 1) * headerH;
-            const naturalTop = parseFloat(lastCard.dataset.naturalTop != null ? lastCard.dataset.naturalTop : lastCard.offsetTop);
-            const maxAllowedScroll = Math.max(0, Math.round(list.offsetTop + naturalTop - targetStickyTop));
-            if (expandContent.scrollTop > maxAllowedScroll) {
-              expandContent.scrollTop = maxAllowedScroll;
-            }
-          }
-          
-          cards.forEach((card, idx) => {
-            const nextCard = cards[idx + 1];
-            const chevron = card.querySelector('.pillar-accordion-chevron');
-
-            if (nextCard) {
-              const cardTop = card.getBoundingClientRect().top;
-              const nextTop = nextCard.getBoundingClientRect().top;
-              const isCovered = nextTop <= cardTop + headerH + 6;
-
-              if (isCovered) {
-                card.classList.add('is-stacked');
-                if (chevron) {
-                  chevron.style.transform = 'rotate(0deg)';
-                  chevron.style.backgroundColor = '#f1f5f9';
-                  chevron.style.color = '#475569';
-                }
-              } else {
-                card.classList.remove('is-stacked');
-                if (chevron) {
-                  chevron.style.transform = 'rotate(180deg)';
-                  chevron.style.backgroundColor = '#379cb7';
-                  chevron.style.color = '#ffffff';
-                }
-              }
-            } else {
-              card.classList.remove('is-stacked');
-              if (chevron) {
-                chevron.style.transform = 'rotate(180deg)';
-                chevron.style.backgroundColor = '#379cb7';
-                chevron.style.color = '#ffffff';
-              }
-            }
-          });
-        }, { passive: true });
-      }
+      if (skipOpen) return;
 
       if (skipOpen) return;
 
@@ -2432,13 +2353,10 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
 
-    <div class="flex items-center justify-end gap-2 shrink-0">
-      <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="hidden sm:flex items-center justify-center px-3.5 py-1.5 rounded-full bg-slate-100/90 hover:bg-slate-200/90 text-slate-700 hover:text-slate-900 border-0 transition-all font-semibold text-[12px] tracking-wide gap-1.5 shadow-none cursor-pointer" aria-label="Voltar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="size-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>VOLTAR</span>
-      </button>
-      <button id="hakuraCloseExpandPanelX" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center size-8 rounded-full bg-slate-100/90 hover:bg-slate-200/90 text-slate-600 hover:text-slate-900 border-0 transition-all shadow-none cursor-pointer" aria-label="Fechar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    <div class="flex items-center justify-end shrink-0">
+      <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-3.5 py-1.5 rounded-full bg-slate-100/90 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border-0 transition-all font-semibold text-[12.5px] tracking-wide gap-2 shadow-none cursor-pointer" aria-label="Voltar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Voltar</span>
       </button>
     </div>
   </div>
