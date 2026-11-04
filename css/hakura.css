@@ -2819,57 +2819,7 @@ section[data-slicetype="mainHero"] .hero-subtitle {
   background-color: #F0F7F9 !important;
 }
 
-/* Responsive Header with ESPECIALIDADES, EQUIPA, CONTACTOS */
-@media (max-width: 768px) {
-  header[data-site-header] {
-    height: auto !important;
-    padding-top: 14px !important;
-    padding-bottom: 12px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-  header[data-site-header] > div:nth-child(2) {
-    order: 1 !important;
-    flex: 0 0 auto !important;
-  }
-  header[data-site-header] .flex.justify-end {
-    order: 2 !important;
-    flex: 0 0 auto !important;
-    margin-left: auto !important;
-  }
-  header[data-site-header] nav {
-    order: 3 !important;
-    width: 100% !important;
-    flex: 0 0 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 10px !important;
-  }
-  header[data-site-header] nav ul {
-    gap: 14px !important;
-    justify-content: center !important;
-    display: flex !important;
-    width: 100% !important;
-  }
-  header[data-site-header] nav ul span {
-    font-size: 11px !important;
-    letter-spacing: 0.5px !important;
-    font-weight: 600 !important;
-  }
-  header[data-site-header] [data-slot="button"] {
-    height: 38px !important;
-    min-height: 38px !important;
-    padding: 6px 12px !important;
-    font-size: 13px !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    gap: 6px !important;
-  }
-}
+/* (Removed: legacy <=768px wrapped-nav header — superseded by css/hakura-responsive.css) */
 
 
 /* ==========================================================================
@@ -5042,10 +4992,10 @@ body {
 }
 
 /* ==========================================================================
-   7. MOBILE HEADER STRICT RULE (< 1024px)
+   7. MOBILE HEADER STRICT RULE (< 980px)
    Strictly shows ONLY logo icon on left & hamburger button on right
    ========================================================================== */
-@media (max-width: 1023px) {
+@media (max-width: 979.98px) { /* aligned with md (980px): mobile nav drawer + bottom CTA */
   .hakura-site-header {
     height: 64px !important;
     padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;

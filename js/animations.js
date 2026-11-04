@@ -153,17 +153,21 @@ function initStickyExplainerAnimation() {
     const runwayHeight = explainerSection.offsetHeight - window.innerHeight;
     if (runwayHeight <= 0) return;
 
+    // Each pillar owns one band of the runway: [k, k+1] on a 0..4 scale.
+    // Photo k wipes in over [k - 0.3, k + 0.3], so the first and last photos
+    // get a long hold (0.7) and the last photo is fully revealed well before
+    // the section unpins. Keep in sync with window.hakuraScrollToPillar.
     const progress = Math.max(0, Math.min(1, -rect.top / runwayHeight));
-    const phaseFloat = progress * 3;
-    const activeIndex = Math.min(3, Math.floor(phaseFloat + 0.15));
+    const phaseFloat = progress * 4;
+    const activeIndex = Math.min(3, Math.floor(phaseFloat));
 
     assetLayers.forEach((layer, idx) => {
       if (idx === 0) {
         layer.style.clipPath = 'inset(0 0 0 0)';
         layer.style.opacity = '1';
       } else {
-        const layerStart = idx - 0.35;
-        const layerEnd = idx + 0.35;
+        const layerStart = idx - 0.3;
+        const layerEnd = idx + 0.3;
         const layerProgress = Math.max(0, Math.min(1, (phaseFloat - layerStart) / (layerEnd - layerStart)));
         const clipInsetTop = (1 - layerProgress) * 100;
         layer.style.clipPath = `inset(${clipInsetTop}% 0 0 0)`;

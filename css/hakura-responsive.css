@@ -1,0 +1,243 @@
+/* ==========================================================================
+   HAKURA — MOBILE-FIRST PRODUCTION LAYER
+   Loaded LAST (after hakura.css and hakura-utilities.css).
+   Breakpoints follow hakura.css: sm 560 / md 980 / lg 1440.
+   Below md (< 980px) the site runs its "mobile" UI: hamburger menu,
+   bottom CTA bar and the swipe carousel for the 4 pillars.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Header (< 980px): logo left, hamburger right — no desktop nav
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  header[data-site-header] {
+    display: flex !important;
+    justify-content: space-between !important;
+    grid-template-columns: none !important;
+  }
+  header[data-site-header] > nav,
+  header[data-site-header] .hakura-header-cta {
+    display: none !important;
+  }
+  #hakuraMobileMenuBtn {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Overlay stacking — every overlay must sit above the fixed header pill
+      (header is z-index 9999) and above the mobile bottom CTA bar.
+   -------------------------------------------------------------------------- */
+/* The header is intentionally kept at 100020 so it stays visible above the
+   specialties panel (#hakuraExpandPanel, 100005). Panels that carry their
+   own close button must sit above it, or the header hides that button. */
+#hakuraMobileNavDrawer { z-index: 100030 !important; }
+.hakura-drawer-backdrop { z-index: 100025 !important; }
+.hakura-contact-drawer { z-index: 100030 !important; }
+#hakuraSpecialtyModal,
+.hakura-modal-overlay { z-index: 100040 !important; }
+
+/* Closed off-canvas panels: out of the tab order / accessibility tree */
+.hakura-contact-drawer {
+  visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.4s !important;
+}
+.hakura-contact-drawer.open {
+  visibility: visible;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0s !important;
+}
+#hakuraMobileNavDrawer:not(.open) {
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s !important;
+}
+#hakuraMobileNavDrawer.open {
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s !important;
+}
+.hakura-modal-overlay:not(.open),
+.hakura-specialty-modal-overlay:not(.open) {
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s !important;
+}
+.hakura-modal-overlay.open,
+.hakura-specialty-modal-overlay.open {
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s linear 0s !important;
+}
+#hakuraMobileNavDrawer .hakura-mobile-nav-link {
+  min-height: 48px;
+}
+#hakuraCloseMobileNavBtn {
+  width: 44px !important;
+  height: 44px !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile: the bottom CTA bar (WhatsApp + Marcar Consulta) replaces the
+      floating chat bubble, which otherwise sits half-hidden behind the bar.
+      Contacts stay reachable from the menu ("Contactos").
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  .hakura-float-contact-btn { display: none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   4. Forms — iOS Safari zooms the page when an input is < 16px
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  input[type="email"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Newsletter: keep the e-mail placeholder readable on small phones */
+@media (max-width: 559.98px) {
+  .hakura-newsletter-form > svg {
+    left: 1rem !important;
+  }
+  .hakura-newsletter-input {
+    padding-left: 2.75rem !important;
+    padding-right: 0.5rem !important;
+    min-width: 0;
+  }
+  .hakura-newsletter-form button[type="submit"] {
+    min-width: 0 !important;
+    padding: 12px 18px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Touch targets (>= 44px) for footer links on touch layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  .hakura-official-footer ul a,
+  .hakura-official-footer a[href^="tel:"],
+  .hakura-official-footer a[href^="mailto:"] {
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 44px;
+  }
+  .hakura-official-footer ul {
+    row-gap: 0 !important;
+  }
+  .hakura-official-footer a[aria-label*="Facebook"],
+  .hakura-official-footer a[aria-label*="Instagram"] {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Legibility — eyebrow labels were forced to 11px on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  span.uppercase.tracking-\[0\.16em\],
+  span.uppercase.tracking-\[0\.2em\],
+  span.uppercase.tracking-\[0\.15em\] {
+    font-size: 12px !important;
+  }
+  /* "Pilar 0X · ..." badges on the mobile pillar cards */
+  #especialidades .snap-start span.absolute.uppercase {
+    font-size: 11.5px !important;
+  }
+  /* "Pilares Hakura" CTA in the intro section */
+  #sobre a, #sobre button {
+    min-height: 44px;
+  }
+}
+/* ERS badge label (all sizes) */
+.hakura-official-footer span.text-\[9px\] {
+  font-size: 10px !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Mobile pillar carousel — consistent card width on phones and tablets
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  #especialidades .snap-x > .snap-start {
+    width: min(85vw, 340px) !important;
+  }
+}
+
+/* Desktop pillar tabs (MEDICAL / SPA / HOLISTIC / AESTHETIC) on small
+   laptops: the text column is ~325px at 1024px and clipped "AESTHETIC". */
+@media (min-width: 980px) and (max-width: 1279.98px) {
+  #especialidades nav[aria-label="Product features"] ul {
+    gap: 18px !important;
+  }
+  #especialidades nav[aria-label="Product features"] ul span {
+    font-size: 13.5px !important;
+    letter-spacing: 0.4px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Specialties panel sub-header on phones: tabs + "Voltar" must fit
+      (grid 1fr/auto/1fr pushed "Voltar" off-screen at 375px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 559.98px) {
+  #hakuraDrawerSubheader {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    gap: 8px !important;
+  }
+  #hakuraDrawerSubheader > div:first-child { display: none !important; }
+  #hakuraDrawerSubheader > div:nth-child(2) {
+    justify-content: flex-start !important;
+    min-width: 0;
+  }
+  #hakuraDrawerSubheader > div:nth-child(2) > div { max-width: 100% !important; }
+  #hakuraExpandPanel .hakura-drawer-tab {
+    padding: 8px 8px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.04em !important;
+  }
+  #hakuraCloseExpandPanel {
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+  }
+  #hakuraCloseExpandPanel span { display: none !important; }
+}
+
+/* Specialty accordion: long titles (nowrap) were widening the grid track
+   past the viewport, cutting the expanded content on the right. */
+.hakura-faq-columns-grid {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+@media (min-width: 1024px) {
+  .hakura-faq-columns-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+}
+.hakura-faq-col,
+.hakura-faq-item,
+.hakura-faq-collapse { min-width: 0 !important; }
+@media (max-width: 979.98px) {
+  .hakura-faq-title {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-align: left;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Respect "reduce motion"
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

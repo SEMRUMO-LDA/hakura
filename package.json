@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite --host --port 3000",
+    "css:utilities": "tailwindcss -c tailwind.config.cjs -o css/hakura-utilities.css",
+    "prebuild": "npm run css:utilities",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "puppeteer-core": "^25.13.0",
+    "tailwindcss": "^3.4.19",
     "vite": "^8.3.3"
   }
 }
