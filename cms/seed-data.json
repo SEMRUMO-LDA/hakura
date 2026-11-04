@@ -113,7 +113,7 @@
       "especialidade": "Homeopatia Clínica & Equilíbrio Vital",
       "cargo": "TERAPEUTA",
       "foto_local": "/assets/images/team/carina_apolonia.webp",
-      "mostrar_na_equipa": true,
+      "mostrar_na_equipa": false,
       "ordem": 8,
       "bio": "Abordagem clínica suave e profunda para estimular a capacidade regenerativa natural do corpo."
     },
