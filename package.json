@@ -8,7 +8,8 @@
     "css:utilities": "tailwindcss -c tailwind.config.cjs -o css/hakura-utilities.css",
     "prebuild": "npm run css:utilities",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cms:seed": "node --env-file=.env.seed scripts/kiban-seed.mjs"
   },
   "keywords": [],
   "author": "",

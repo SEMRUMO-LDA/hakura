@@ -4,3 +4,6 @@ dist/
 *.bak
 scratch/
 .env*
+
+# Allow the env template (real .env files stay ignored)
+!.env*.example

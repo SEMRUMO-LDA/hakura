@@ -1299,6 +1299,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script type="module" src="./js/animations.js"></script>
+<!-- kibanCMS: equipa, especialidades, testemunhos e contactos (fallback = HTML estático) -->
+<script type="module" src="./js/cms.js"></script>
 
 <script>
 window.toggleHakuraPillar = function(pillarId) {
@@ -1905,7 +1907,8 @@ document.addEventListener("DOMContentLoaded", function() {
                       </div>
                     ` : ''}
 
-                    <!-- Specialist Doctor Card & Booking Button -->
+                    <!-- Specialist Doctor Card & Booking Button (only when a professional is assigned) -->
+                    ${item.doctor ? `
                     <div class="hakura-faq-doctor-card">
                       <div class="flex items-center gap-3 min-w-0">
                         <div class="pillar-pro-avatar shrink-0">
@@ -1934,6 +1937,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <span>Reservar</span>
                       </a>
                     </div>
+                    ` : ''}
 
                   </div>
                 </div>
@@ -2053,6 +2057,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Expose close drawer globally
     window.hakuraCloseDrawer = closePanelLogic;
     window.openPillarDrawer = openPillarDrawer;
+    // Exposed so js/cms.js can replace the specialties with kibanCMS content
+    window.hakuraPillarsDrawerData = pillarsDrawerData;
 
     // Prevent any outer scroll hijacking from intercepting wheel or touch inside the drawer
     if (expandPanel) {

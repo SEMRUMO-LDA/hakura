@@ -1,0 +1,343 @@
+{
+  "pilares": [
+    {
+      "key": "medical",
+      "ordem": 1,
+      "nome": "Hakura Medical",
+      "etiqueta": "ESPECIALIDADES",
+      "subtitulo": "Especialidades Clínicas & Reabilitação Funcional",
+      "descricao": "Acompanhamento clínico multidisciplinar com diagnóstico médico de precisão, fisioterapia avançada e planos personalizados de reabilitação e longevidade.",
+      "destaque_titulo": "Medicina Integrada e Reabilitação Funcional",
+      "destaque_descricao": "Acompanhamento multidisciplinar em fisioterapia geral, pélvica e ATM, psicologia clínica, nutrição e medicina geral e familiar.",
+      "texto_botao": "Ver Especialidades Medical"
+    },
+    {
+      "key": "spa",
+      "ordem": 2,
+      "nome": "Hakura Spa",
+      "etiqueta": "ESPECIALIDADES",
+      "subtitulo": "Rituais de Bem-Estar e Recuperação Profunda",
+      "descricao": "Experiências sensoriais de relaxamento profundo e descompressão do sistema nervoso através de técnicas manuais especializadas e termoterapia.",
+      "destaque_titulo": "Rituais de Bem-Estar e Recuperação Profunda",
+      "destaque_descricao": "Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais remodeladores, drenagem linfática e alívio de tensões musculares.",
+      "texto_botao": "Ver Rituais de Spa"
+    },
+    {
+      "key": "holistic",
+      "ordem": 3,
+      "nome": "Hakura Holistic",
+      "etiqueta": "ESPECIALIDADES",
+      "subtitulo": "Medicina Integrativa e Equilíbrio Natural",
+      "descricao": "Harmonização integral entre corpo, mente e energia vital através da convergência de saberes tradicionais com acompanhamento personalizado.",
+      "destaque_titulo": "Terapias Integrativas e Equilíbrio Natural",
+      "destaque_descricao": "Harmonização bioenergética e autorregeneração com acupunctura médica tradicional, sessões de reiki e consultas de homeopatia personalizadas.",
+      "texto_botao": "Ver Terapias Holísticas"
+    },
+    {
+      "key": "aesthetic",
+      "ordem": 4,
+      "nome": "Hakura Aesthetic",
+      "etiqueta": "ESPECIALIDADES",
+      "subtitulo": "Medicina Estética e Cuidados da Pele",
+      "descricao": "Protocolos médicos não-invasivos e cuidados cutâneos de vanguarda desenhados para promover a saúde dérmica e a sua beleza natural.",
+      "destaque_titulo": "Medicina Estética e Cuidados Cutâneos",
+      "destaque_descricao": "Consultas de avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda para revitalização e saúde da pele.",
+      "texto_botao": "Ver Cuidados Estéticos"
+    }
+  ],
+  "equipa": [
+    {
+      "nome": "Raquel Lança",
+      "especialidade": "Fisioterapia & Saúde Neuromuscular",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/raquel_lanca.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 1,
+      "bio": "Especialista em reabilitação motora, correção postural e mobilidade articular continuada."
+    },
+    {
+      "nome": "Dra. Mariana Guerreiro",
+      "especialidade": "Medicina Estética & Regenerativa",
+      "cargo": "DRA. · MEDICINA",
+      "foto_local": "/assets/images/team/mariana_guerreiro.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 2,
+      "bio": "Visão clínica integrativa, focada no diagnóstico preventivo precoce e bem-estar a longo prazo."
+    },
+    {
+      "nome": "Dra. Lisbeth de Sousa",
+      "especialidade": "Psicologia Clínica & Bem-Estar Mental",
+      "cargo": "DRA. · PSICOLOGIA",
+      "foto_local": "/assets/images/team/lisbeth_sousa.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 3,
+      "bio": "Abordagem humanizada focada no autoconhecimento, inteligência emocional e equilíbrio biopsicossocial."
+    },
+    {
+      "nome": "Dra. Safira Carvalho",
+      "especialidade": "Nutrição Funcional & Longevidade",
+      "cargo": "DRA. · NUTRIÇÃO",
+      "foto_local": "/assets/images/team/safira_carvalho.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 4,
+      "bio": "Planos alimentares de precisão científica orientados para saúde metabólica e energia diária."
+    },
+    {
+      "nome": "Sandra Fernandes",
+      "especialidade": "Macrobiótica & Alimentação Curativa",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/sandra_fernandes.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 5
+    },
+    {
+      "nome": "John Sanchez",
+      "especialidade": "Acupunctura Médica Tradicional",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/john_sanchez.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 6,
+      "bio": "Neuromodulação bioenergética com foco em tratamento de dor crónica e equilíbrio interno."
+    },
+    {
+      "nome": "Joana Costa",
+      "especialidade": "Massagens Terapêuticas & Rituais SPA",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/joana_costa.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 7,
+      "bio": "Especialista em técnicas manuais de relaxamento e alívio de sobrecargas emocionais."
+    },
+    {
+      "nome": "Carina Apolónia",
+      "especialidade": "Homeopatia Clínica & Equilíbrio Vital",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/carina_apolonia.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 8,
+      "bio": "Abordagem clínica suave e profunda para estimular a capacidade regenerativa natural do corpo."
+    },
+    {
+      "nome": "Fátima Ferreira",
+      "especialidade": "Reiki & Harmonização Energética",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/fatima_ferreira.webp",
+      "mostrar_na_equipa": true,
+      "ordem": 9,
+      "bio": "Canalização de serenidade e desbloqueio energético para restaurar a paz mental e física."
+    },
+    {
+      "nome": "Anabela Mealha",
+      "especialidade": "Fisioterapia Pélvica & Saúde da Mulher",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/anabela_mealha.webp",
+      "mostrar_na_equipa": false,
+      "ordem": 109,
+      "bio": "Dedicada ao fortalecimento funcional do pavimento pélvico e cuidados perinatais integrados."
+    },
+    {
+      "nome": "Joana Gomes",
+      "especialidade": "Terapia da Fala & Desenvolvimento",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/joana_gomes.webp",
+      "mostrar_na_equipa": false,
+      "ordem": 110,
+      "bio": "Intervenção terapêutica personalizada na voz, comunicação interpessoal e padrões deglutitórios."
+    },
+    {
+      "nome": "Inês Silva",
+      "especialidade": "Terapia de Bowen & Reflexologia",
+      "cargo": "TERAPEUTA",
+      "foto_local": "/assets/images/team/ines_silva.webp",
+      "mostrar_na_equipa": false,
+      "ordem": 111,
+      "bio": "Estimulação bioenergética podal que ativa a regeneração orgânica e o descanso pleno."
+    }
+  ],
+  "especialidades": [
+    {
+      "nome": "Fisioterapia Geral & Postural",
+      "pilar": "medical",
+      "ordem": 1,
+      "descricao": "Reabilitação funcional, motora e postural adaptada a cada fase de recuperação. Diagnóstico mecânico avançado para alívio de dor e recuperação de mobilidade.",
+      "pontos": "Avaliação biomecânica e postural personalizada\nReabilitação músculo-esquelética e preventiva\nTerapia manual especializada e plano de exercícios clínicos",
+      "profissional": "Raquel Lança"
+    },
+    {
+      "nome": "Fisioterapia Pélvica",
+      "pilar": "medical",
+      "ordem": 2,
+      "descricao": "Prevenção, diagnóstico funcional e reabilitação da musculatura do pavimento pélvico no homem e na mulher em todas as fases da vida.",
+      "pontos": "Preparação para o parto e reabilitação pós-parto\nTratamento de incontinência urinária e prolapsos\nReeducação neuromuscular e biofeedback funcional",
+      "profissional": "Anabela Mealha"
+    },
+    {
+      "nome": "Fisioterapia Temporomandibular (ATM)",
+      "pilar": "medical",
+      "ordem": 3,
+      "descricao": "Tratamento clínico especializado de disfunções da articulação temporomandibular, bruxismo, estalidos articulares, dor orofacial e cefaleias tensionais.",
+      "pontos": "Alívio de tensão miofascial mastigatória e cervical\nNormalização biomecânica da mastigação\nAbordagem interdisciplinar com medicina dentária",
+      "profissional": "Raquel Lança"
+    },
+    {
+      "nome": "Psicologia Clínica",
+      "pilar": "medical",
+      "ordem": 4,
+      "descricao": "Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo num ambiente acolhedor e seguro focado no seu equilíbrio emocional.",
+      "pontos": "Gestão de ansiedade, stress crónico e burnout\nPsicoterapia individual para jovens e adultos\nDesenvolvimento de resiliência e autorregulação emocional",
+      "profissional": "Dra. Lisbeth de Sousa"
+    },
+    {
+      "nome": "Nutrição Clínica Funcional",
+      "pilar": "medical",
+      "ordem": 5,
+      "descricao": "Planos alimentares clínicos individualizados, otimização metabólica, reeducação alimentar e nutrição de precisão para longevidade ativa.",
+      "pontos": "Avaliação da composição corporal por bioimpedância\nModulação da microbiota e saúde digestiva\nEstratégias nutricionais preventivas e anti-inflamatórias",
+      "profissional": "Dra. Safira Carvalho"
+    },
+    {
+      "nome": "Medicina Geral e Familiar",
+      "pilar": "medical",
+      "ordem": 6,
+      "descricao": "Acompanhamento médico global, check-ups preventivos, rastreio precoce e diagnóstico clínico integrado para toda a família.",
+      "pontos": "Consultas médicas de rotina e prevenção continuada\nAvaliação abrangente de biomarcadores e saúde geral\nOrientação diagnóstica e coordenação clínica personalizada",
+      "profissional": "Dra. Mariana Guerreiro"
+    },
+    {
+      "nome": "Pilates Clínico Individual",
+      "pilar": "medical",
+      "ordem": 7,
+      "descricao": "Sessões 1-para-1 orientadas exclusivamente por fisioterapeuta, com foco no fortalecimento do core, estabilização da coluna e correção postural.",
+      "pontos": "Adaptação milimétrica a lesões prévias e postura\nFortalecimento dos estabilizadores profundos da coluna\nMelhoria do controlo motor e consciência corporal",
+      "profissional": "Raquel Lança"
+    },
+    {
+      "nome": "Terapia da Fala",
+      "pilar": "medical",
+      "ordem": 8,
+      "descricao": "Avaliação, diagnóstico e intervenção clínica em comunicação, articulação verbal, linguagem, voz e perturbações da deglutição.",
+      "pontos": "Reabilitação de dificuldades articulatórias e fala\nTerapia vocal e reeducação respiratória\nAvaliação e tratamento especializado da disfagia",
+      "profissional": "Joana Gomes"
+    },
+    {
+      "nome": "Massagem de Relaxamento",
+      "pilar": "spa",
+      "ordem": 1,
+      "descricao": "Descompressão profunda do sistema nervoso e alívio de tensões acumuladas com óleos essenciais puros e manobras envolventes.",
+      "pontos": "Corpo Completo (80 min) ou Localizada (30 min)\nOpção de protocolo pré-natal seguro e acolhedor\nRestauração do ritmo circadiano e alívio de stress",
+      "profissional": "Joana Costa"
+    },
+    {
+      "nome": "Massagem Terapêutica & Ayurvédica",
+      "pilar": "spa",
+      "ordem": 2,
+      "descricao": "Recuperação miofascial e libertação focada de contraturas musculares, harmonizando os pontos vitais.",
+      "pontos": "Libertação miofascial de pontos gatilho\nAyurvédica com óleos aquecidos terapêuticos\nAlívio duradouro de rigidez lombar e cervical",
+      "profissional": "Joana Costa"
+    },
+    {
+      "nome": "Tratamento Deluxe Body Sculpt",
+      "pilar": "spa",
+      "ordem": 3,
+      "descricao": "Protocolo intensivo corporal de firmeza, drenagem e remodelação para devolver elasticidade e tonificação aos tecidos.",
+      "pontos": "Remodelação tecidual não-invasiva\nEstímulo da circulação e firmeza dérmica\nDuração de 90 min de puro cuidado corporal",
+      "profissional": "Dra. Mariana Guerreiro"
+    },
+    {
+      "nome": "Reflexologia Podal",
+      "pilar": "spa",
+      "ordem": 4,
+      "descricao": "Estímulo das zonas reflexas podais para reequilíbrio orgânico, ativação dos sistemas excretores e alívio de cansaço extremo.",
+      "pontos": "Estimulação precisa das terminações nervosas\nDescongestão e relaxamento físico global\nSessões de 30 min com efeito revigorante",
+      "profissional": "Inês Silva"
+    },
+    {
+      "nome": "Drenagem Linfática Manual",
+      "pilar": "spa",
+      "ordem": 5,
+      "descricao": "Ativação suave do fluxo linfático para eliminação de toxinas, redução de retenção de líquidos e alívio de pernas pesadas.",
+      "pontos": "Protocolo clínico pós-cirúrgico ou profilático\nDesintoxicação profunda e alívio de edemas\nOpções individuais ou packs mensais",
+      "profissional": "Anabela Mealha"
+    },
+    {
+      "nome": "Ritual Facial Lifting Japonês",
+      "pilar": "spa",
+      "ordem": 6,
+      "descricao": "Técnica milenar manual de rejuvenescimento facial, estimulação de colagénio e tonificação profunda dos contornos do rosto.",
+      "pontos": "Efeito lifting natural sem recurso a químicos\nOxigenação tecidual e luminosidade dérmica\nDrenagem facial e suavização de linhas de expressão",
+      "profissional": "Joana Costa"
+    },
+    {
+      "nome": "Acupunctura Médica Tradicional",
+      "pilar": "holistic",
+      "ordem": 1,
+      "descricao": "Equilíbrio dos meridianos bioenergéticos, neuromodulação da dor e suporte no tratamento de perturbações do sono e ansiedade.",
+      "pontos": "Desbloqueio do fluxo energético e alívio de dor\nRegulação do sistema nervoso autónomo\nPlanos de 1 sessão ou acompanhamento clínico",
+      "profissional": "John Sanchez"
+    },
+    {
+      "nome": "Reiki & Harmonização Energética",
+      "pilar": "holistic",
+      "ordem": 2,
+      "descricao": "Canalização de energia universal para alinhamento dos centros energéticos (chakras) e relaxamento psicofísico regenerador.",
+      "pontos": "Dissolução de bloqueios psicoemocionais\nRestauração do equilíbrio vibracional natural\nExperiência integrativa de tranquilidade profunda",
+      "profissional": "Fátima Ferreira"
+    },
+    {
+      "nome": "Homeopatia Clínica",
+      "pilar": "holistic",
+      "ordem": 3,
+      "descricao": "Abordagem terapêutica holística individualizada, estimulando a capacidade de autorrecuperação biológica do organismo.",
+      "pontos": "Consulta clínica integrativa detalhada\nPrescrição de remédios naturais individualizados\nTratamento suave e sem efeitos secundários",
+      "profissional": "Carina Apolónia"
+    },
+    {
+      "nome": "Medicina Estética & Avaliação Médica",
+      "pilar": "aesthetic",
+      "ordem": 1,
+      "descricao": "Diagnóstico médico minucioso para elaboração de planos estéticos personalizados que respeitam a harmonia e as feições do seu rosto.",
+      "pontos": "Avaliação clínica médica individualizada\nPlaneamento de rejuvenescimento e prevenção dérmica\nProtocolos seguros e com base em evidência médica",
+      "profissional": "Dra. Mariana Guerreiro"
+    },
+    {
+      "nome": "Limpeza Facial Profunda",
+      "pilar": "aesthetic",
+      "ordem": 2,
+      "descricao": "Purificação minuciosa dos tecidos cutâneos, extração suave de impurezas, oxigenação dérmica e luminosidade imediata.",
+      "pontos": "Remoção de células mortas e desobstrução de poros\nHidratação profunda e nutrição com séruns clínicos\nGlow imediato e textura homogénea da pele",
+      "profissional": "Dra. Mariana Guerreiro"
+    }
+  ],
+  "testemunhos": [
+    {
+      "autor": "Teresa Tinoco",
+      "texto": "Recentemente fiz o Tratamento Tecarterapia para a celulite nas coxas com a Fisioterapeuta Raquel Lança, durante 5 sessões e obtive o resultado esperado. Uma diminuição bastante visível da minha celulite nas coxas. Recomendo vivamente este tratamento.",
+      "origem": "Avaliação Google",
+      "estrelas": 5,
+      "ordem": 1
+    },
+    {
+      "autor": "Samia N.",
+      "texto": "Adorei este novo espaço tão necessário em Albufeira! Gostei muito de poder encontrar tudo num só lugar: clínica geral, massagens e pilates. Fui lá por causa de uma gripe e o médico foi muito paciente e explicou tudo detalhadamente. Senti-me melhor em menos de dois dias. A experiência foi agradável do início ao fim. Uma equipa muito acolhedora. Voltarei com certeza para as aulas de pilates e ioga.",
+      "origem": "Avaliação Google",
+      "estrelas": 5,
+      "ordem": 2
+    },
+    {
+      "autor": "Ronald Philippo",
+      "texto": "Chegamos para perguntar se poderiam ajudar minha esposa, que estava com dores nas costas. Em 40 minutos, ela pôde ser atendida. Ela fez um tratamento de 50 minutos e, após o tratamento, ganhamos um bolo de cenoura e uma xícara de café. A fisioterapeuta foi muito simpática e fez um ótimo trabalho. O mesmo vale para a recepcionista. Senhoras muito simpáticas.",
+      "origem": "Avaliação Google",
+      "estrelas": 5,
+      "ordem": 3
+    }
+  ],
+  "contactos": {
+    "telefone": "+351 964 166 845",
+    "telefone_nota": "(Chamada para a rede móvel nacional)",
+    "email": "geral@hakura.pt",
+    "morada": "Estrada Salgados, Urbanização Monte Galé, N.º 39, 3.º\n8200-428 Albufeira",
+    "google_maps_url": "https://maps.app.goo.gl/qLxvpvJ2Ga3hNEPR7",
+    "horario": "Segunda a Sexta: 09h00 – 19h00\nSábado e Domingo: Encerrado",
+    "whatsapp": "351964166845"
+  }
+}
