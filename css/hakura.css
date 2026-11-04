@@ -5455,15 +5455,66 @@ body.drawer-open #hakuraExpandPanel {
   pointer-events: auto !important;
 }
 
+/* ==========================================================================
+   HAKURA DRAWER SUBHEADER & VOLTAR BUTTON CENTERED WITH MARCAR CONSULTA
+   ========================================================================== */
+#hakuraDrawerSubheader {
+  padding-left: clamp(20px, 3.5vw, 48px) !important;
+  padding-right: clamp(20px, 3.5vw, 48px) !important;
+}
+
+@media (min-width: 1024px) {
+  #hakuraDrawerSubheader {
+    padding-left: clamp(24px, 4vw, 48px) !important;
+    padding-right: clamp(24px, 4vw, 48px) !important;
+  }
+  .hakura-voltar-anchor {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: var(--hakura-cta-width, 203px) !important;
+    min-width: var(--hakura-cta-width, 203px) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #hakuraDrawerSubheader {
+    padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+    padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+  }
+  .hakura-voltar-anchor {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+}
+
 
 /* ==========================================================================
-   HAKURA SPECIALTIES ACCORDION (FAQ STYLE - EXACT NEKO HEALTH PATTERN)
+   HAKURA SPECIALTIES ACCORDION (FAQ STYLE - 2-COLUMN LAYOUT)
    ========================================================================== */
-.hakura-faq-container {
+.hakura-faq-columns-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 44px !important;
+  width: 100% !important;
+  padding-bottom: 60px !important;
+  align-items: start !important;
+}
+
+@media (min-width: 1024px) {
+  .hakura-faq-columns-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 52px !important;
+  }
+}
+
+.hakura-faq-col {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
-  padding-bottom: 60px !important;
 }
 
 .hakura-faq-item {
@@ -5472,8 +5523,16 @@ body.drawer-open #hakuraExpandPanel {
   transition: border-color 0.25s ease !important;
 }
 
-.hakura-faq-item:last-child {
-  border-bottom: none !important;
+@media (min-width: 1024px) {
+  .hakura-faq-item:last-child {
+    border-bottom: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hakura-faq-col:first-child .hakura-faq-item:last-child {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
 }
 
 .hakura-faq-trigger {
@@ -5481,7 +5540,7 @@ body.drawer-open #hakuraExpandPanel {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  padding: 20px 4px !important;
+  padding: 18px 4px !important;
   background: transparent !important;
   border: none !important;
   cursor: pointer !important;
@@ -5492,7 +5551,7 @@ body.drawer-open #hakuraExpandPanel {
 
 @media (min-width: 768px) {
   .hakura-faq-trigger {
-    padding: 24px 6px !important;
+    padding: 22px 4px !important;
   }
 }
 
@@ -5502,7 +5561,7 @@ body.drawer-open #hakuraExpandPanel {
 
 .hakura-faq-title {
   font-family: inherit !important;
-  font-size: 18px !important;
+  font-size: 17px !important;
   font-weight: 500 !important;
   color: #0f172a !important;
   letter-spacing: -0.01em !important;
@@ -5512,7 +5571,7 @@ body.drawer-open #hakuraExpandPanel {
 
 @media (min-width: 768px) {
   .hakura-faq-title {
-    font-size: 21px !important;
+    font-size: 19px !important;
   }
 }
 
@@ -5571,62 +5630,39 @@ body.drawer-open #hakuraExpandPanel {
 
 .hakura-faq-content-box {
   background-color: #ffffff !important;
-  border-radius: 20px !important;
+  border-radius: 18px !important;
   border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.04) !important;
   padding: 20px !important;
   margin-top: 4px !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 22px !important;
 }
 
 @media (min-width: 768px) {
   .hakura-faq-content-box {
-    padding: 28px !important;
-    margin-bottom: 28px !important;
+    padding: 24px !important;
+    margin-bottom: 24px !important;
   }
 }
 
-.pillar-accordion-grid {
-  display: grid !important;
-  grid-template-columns: 1.3fr 1.15fr 0.95fr !important;
-  gap: 20px !important;
-  align-items: stretch !important;
-  width: 100% !important;
-}
-
-@media (max-width: 1024px) {
-  .pillar-accordion-grid {
-    grid-template-columns: 1.2fr 1fr !important;
-    gap: 18px !important;
-  }
-  .pillar-accordion-grid > div:last-child {
-    grid-column: span 2 !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .pillar-accordion-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .pillar-accordion-grid > div:last-child {
-    grid-column: span 1 !important;
-  }
-}
-
-.pillar-professional-card {
+.hakura-faq-doctor-card {
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-  padding: 16px 14px !important;
-  border-radius: 18px !important;
+  gap: 12px !important;
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
-  border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  height: 250px !important;
-  min-height: 250px !important;
-  max-height: 250px !important;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03) !important;
+  margin-top: 14px !important;
+}
+
+@media (min-width: 480px) {
+  .hakura-faq-doctor-card {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
 }
 
 .pillar-pro-book-btn {
@@ -5646,7 +5682,6 @@ body.drawer-open #hakuraExpandPanel {
   text-decoration: none !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-shadow: 0 2px 8px rgba(55, 156, 183, 0.25) !important;
-  margin-top: auto !important;
   width: auto !important;
   cursor: pointer !important;
 }
@@ -5670,14 +5705,13 @@ body.drawer-open #hakuraExpandPanel {
 
 .pillar-pro-avatar {
   position: relative !important;
-  width: 62px !important;
-  height: 62px !important;
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 9999px !important;
   overflow: hidden !important;
   background-color: #f1f5f9 !important;
-  border: 3px solid #ffffff !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1) !important;
-  margin-bottom: 8px !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08) !important;
   flex-shrink: 0 !important;
 }
 
@@ -5693,36 +5727,19 @@ body.drawer-open #hakuraExpandPanel {
   object-position: center 10% !important;
 }
 
-.pillar-specialty-photo-box {
-  position: relative !important;
-  width: 100% !important;
-  height: 250px !important;
-  min-height: 250px !important;
-  max-height: 250px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-left-radius: 18px !important;
-  border-bottom-right-radius: 18px !important;
-  border-radius: 0 0 18px 18px !important;
-  overflow: hidden !important;
-  background-color: #f1f5f9 !important;
-  border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+
+
+/* ==========================================================================
+   FOOTER — Barra de Assinaturas Algarve 2030 (link para a Ficha de Operação)
+   ========================================================================== */
+.hakura-funding-bar {
+  transition: opacity 0.2s ease;
 }
-
-.pillar-specialty-photo-box img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-left-radius: 17px !important;
-  border-bottom-right-radius: 17px !important;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.hakura-funding-bar:hover {
+  opacity: 0.75;
 }
-
-.pillar-specialty-photo-box:hover img {
-  transform: scale(1.05) !important;
+.hakura-funding-bar:focus-visible {
+  outline: 2px solid #379cb7;
+  outline-offset: 6px;
+  border-radius: 4px;
 }
-
-

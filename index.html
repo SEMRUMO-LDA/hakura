@@ -89,7 +89,9 @@
       <li><a href="#especialidades"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">ESPECIALIDADES</span></a></li>
       <li><a href="#equipa"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">EQUIPA</span></a></li>
       <li><a href="#sobre"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">SOBRE</span></a></li>
+      <!-- BLOG oculto até à Fase 2.1 — descomentar para reativar
       <li><a href="#blog"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">BLOG</span></a></li>
+      -->
       <li><a href="#contactos" id="hakuraNavContactLink"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">CONTACTOS</span></a></li>
     </ul>
   </nav>
@@ -144,10 +146,12 @@
         <span>Sobre Nós</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
+      <!-- BLOG oculto até à Fase 2.1 — descomentar para reativar
       <a href="#blog" class="hakura-mobile-nav-link flex items-center justify-between py-2.5 px-3.5 rounded-2xl text-[16px] font-medium text-slate-800 hover:bg-slate-50 transition-colors">
         <span>Blog &amp; Saúde</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
+      -->
       <a href="#contactos" class="hakura-mobile-nav-link flex items-center justify-between py-2.5 px-3.5 rounded-2xl text-[16px] font-medium text-slate-800 hover:bg-slate-50 transition-colors">
         <span>Contactos</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
@@ -803,7 +807,8 @@
 <!-- ==========================================================================
      NOVA SECÇÃO: BLOG & LONGEVIDADE (Estilo Neko Carousel)
      ========================================================================== -->
-<section id="blog" data-slicetype="siteCarousel" class="hakura-blog-section hakura-reveal py-24 md:py-32 bg-[#F8FAFC] overflow-hidden scroll-mt-24">
+<!-- BLOG oculto até à Fase 2.1 — remover o atributo "hidden" e o style display:none para reativar -->
+<section id="blog" hidden style="display: none !important;" data-slicetype="siteCarousel" class="hakura-blog-section hakura-reveal py-24 md:py-32 bg-[#F8FAFC] overflow-hidden scroll-mt-24">
   <div class="xpad">
     <div class="flex flex-col gap-10 md:gap-14">
       
@@ -1070,6 +1075,15 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Barra de Assinaturas Algarve 2030 / Portugal 2030 / UE — abre a Ficha de Operação PT2030 (PDF) -->
+  <div class="bg-white" style="border-top: 1px solid #f1f5f9;">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex justify-center">
+      <a href="./docs/PT2030_FichaOperacao_Algarve2030_Hakura.pdf" target="_blank" rel="noopener noreferrer" class="hakura-funding-bar block w-full" style="max-width: 560px;" title="Ficha de Operação PT2030 – Algarve 2030 (PDF)">
+        <img src="./assets/images/algarve2030_barra_assinaturas.svg" alt="Cofinanciado por Algarve 2030, Portugal 2030 e União Europeia – Ficha de Operação (PDF)" width="357" height="34" class="block w-full h-auto" loading="lazy" />
+      </a>
     </div>
   </div>
 
@@ -2012,11 +2026,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const container = document.getElementById("expandSpecialtiesList");
       if (!container) return;
       const items = container.querySelectorAll('.hakura-faq-item');
-      items.forEach((item, idx) => {
+      items.forEach((item) => {
+        const itemIdx = parseInt(item.getAttribute('data-faq-idx'), 10);
         const trigger = item.querySelector('.hakura-faq-trigger');
         const collapse = item.querySelector('.hakura-faq-collapse');
         const icon = item.querySelector('.hakura-faq-icon');
-        const isCurrent = idx === targetIdx;
+        const isCurrent = itemIdx === targetIdx;
         const isOpen = collapse.classList.contains('is-open');
 
         if (isCurrent) {
@@ -2067,37 +2082,37 @@ document.addEventListener("DOMContentLoaded", function() {
       if (descEl) descEl.textContent = data.description;
       
       if (listEl) {
-        listEl.className = "hakura-faq-container w-full";
-        listEl.innerHTML = data.specialties.map((item, idx) => {
+        listEl.className = "hakura-faq-columns-grid w-full";
+        
+        const total = data.specialties.length;
+        const mid = Math.ceil(total / 2);
+        const col1 = data.specialties.slice(0, mid);
+        const col2 = data.specialties.slice(mid);
+
+        const renderAccordionItem = (item, idx) => {
           const bulletsHtml = (item.bullets || []).map(b => `
-            <li class="flex items-start gap-2.5 text-[13.5px] md:text-[14px] text-slate-600 leading-snug">
-              <span class="size-1.5 rounded-[2px] bg-[#379cb7] shrink-0 mt-2"></span>
+            <li class="flex items-start gap-2.5 text-[13px] md:text-[13.5px] text-slate-600 leading-snug">
+              <span class="size-1.5 rounded-[2px] bg-[#379cb7] shrink-0 mt-1.5"></span>
               <span>${b}</span>
             </li>
           `).join('');
 
-          const isFirstOpen = idx === 0;
+          const isFirstOpen = false; // All accordions start closed by default
 
           return `
             <div class="hakura-faq-item" data-faq-idx="${idx}">
               <!-- Accordion Trigger Row (Estilo FAQ Neko Health) -->
               <button type="button" class="hakura-faq-trigger" onclick="window.toggleSpecialtyAccordion(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.toggleSpecialtyAccordion(${idx});}" aria-expanded="${isFirstOpen ? 'true' : 'false'}" title="${item.name}">
-                <div class="flex items-center gap-3 sm:gap-4 min-w-0 pr-3">
+                <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-3">
                   <span class="size-2 rounded-[2px] bg-[#379cb7] shrink-0"></span>
                   <span class="hakura-faq-title truncate">
                     ${item.name}
                   </span>
                 </div>
-                <div class="flex items-center gap-3 shrink-0">
-                  <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/80 text-[12px] font-medium text-slate-600">
-                    <img src="${item.doctor.avatar}" alt="" class="size-4.5 rounded-full object-cover shrink-0" onerror="this.style.display='none'" />
-                    <span>${item.doctor.name}</span>
-                  </div>
-                  <div class="hakura-faq-icon ${isFirstOpen ? 'rotate-45' : ''}">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
-                    </svg>
-                  </div>
+                <div class="hakura-faq-icon ${isFirstOpen ? 'rotate-45' : ''}">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
+                  </svg>
                 </div>
               </button>
 
@@ -2105,70 +2120,64 @@ document.addEventListener("DOMContentLoaded", function() {
               <div class="hakura-faq-collapse ${isFirstOpen ? 'is-open' : ''}">
                 <div>
                   <div class="hakura-faq-content-box">
-                    <div class="pillar-accordion-grid">
-                      
-                      <!-- Coluna 1: Sobre a Especialidade -->
-                      <div class="flex flex-col justify-start">
-                        <p class="text-[14px] md:text-[14.5px] text-slate-600 leading-relaxed font-light mb-4">
-                          ${item.desc}
-                        </p>
-                        ${bulletsHtml ? `
-                          <div class="mt-1 pt-2.5 border-t border-slate-100">
-                            <span class="text-[10px] font-bold text-[#379cb7] tracking-wider uppercase block mb-2">FOCO CLÍNICO &amp; INDICAÇÕES</span>
-                            <ul class="flex flex-col gap-1.5">${bulletsHtml}</ul>
-                          </div>
-                        ` : ''}
-                      </div>
+                    <!-- Clinical Description -->
+                    <p class="text-[13.5px] md:text-[14px] text-slate-600 leading-relaxed font-light mb-3">
+                      ${item.desc}
+                    </p>
 
-                      <!-- Coluna 2: Fotografia da Clínica -->
-                      <div class="flex flex-col">
-                        <div class="pillar-specialty-photo-box relative group">
-                          <img src="${item.image || './assets/images/hakura_clinic_interior.jpg'}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/hakura_clinic_interior.jpg';" />
-                          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
-                          <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white text-[10.5px] font-medium tracking-wide">
-                            <span class="bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">Clínica Hakura</span>
-                            <span class="opacity-90">Padrão Clínico</span>
-                          </div>
+                    <!-- Foco Clínico & Indicações -->
+                    ${bulletsHtml ? `
+                      <div class="pt-2.5 pb-1 border-t border-slate-100">
+                        <span class="text-[10px] font-bold text-[#379cb7] tracking-wider uppercase block mb-2">FOCO CLÍNICO &amp; INDICAÇÕES</span>
+                        <ul class="flex flex-col gap-1.5">${bulletsHtml}</ul>
+                      </div>
+                    ` : ''}
+
+                    <!-- Specialist Doctor Card & Booking Button -->
+                    <div class="hakura-faq-doctor-card">
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div class="pillar-pro-avatar shrink-0">
+                          <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/team/mariana_guerreiro.png';" />
                         </div>
-                      </div>
-
-                      <!-- Coluna 3: O Profissional Especialista com CTA de Reserva -->
-                      <div class="flex flex-col">
-                        <div class="pillar-professional-card">
-                          <div class="pillar-pro-avatar">
-                            <img src="${item.doctor.avatar}" alt="${item.doctor.name}" loading="lazy" onerror="this.onerror=null; this.src='./assets/images/team/mariana_guerreiro.png';" />
-                          </div>
-                          <span class="team-card-badge text-[9.5px] mb-1 uppercase tracking-wider">
+                        <div class="min-w-0 flex-1">
+                          <span class="team-card-badge text-[9px] mb-0.5 tracking-wider uppercase block">
                             ${item.doctor.role}
                           </span>
-                          <h5 class="text-[14px] font-bold text-slate-900 leading-tight mb-0.5">
+                          <h5 class="text-[13.5px] font-bold text-slate-900 leading-tight truncate">
                             ${item.doctor.name}
                           </h5>
-                          <p class="text-[11.5px] font-medium text-[#379cb7] mb-1 leading-tight">
+                          <p class="text-[11px] text-[#379cb7] font-medium leading-tight truncate">
                             ${item.doctor.spec}
                           </p>
-                          <p class="text-[11px] text-slate-500 font-light leading-snug line-clamp-2 mb-2.5">
-                            ${item.doctor.bio}
-                          </p>
-                          <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="pillar-pro-book-btn" title="Reservar consulta com ${item.doctor.name}">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px!important;height:13px!important;min-width:13px!important;display:inline-block!important;">
-                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                              <line x1="16" y1="2" x2="16" y2="6"></line>
-                              <line x1="8" y1="2" x2="8" y2="6"></line>
-                              <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            <span>Reservar</span>
-                          </a>
                         </div>
                       </div>
 
+                      <a href="https://zappysoftware.com/m/hakura" target="_blank" rel="noopener noreferrer" class="pillar-pro-book-btn shrink-0" title="Reservar consulta com ${item.doctor.name}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>Reservar</span>
+                      </a>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
           `;
-        }).join('');
+        };
+
+        listEl.innerHTML = `
+          <div class="hakura-faq-col">
+            ${col1.map((item, i) => renderAccordionItem(item, i)).join('')}
+          </div>
+          <div class="hakura-faq-col">
+            ${col2.map((item, i) => renderAccordionItem(item, mid + i)).join('')}
+          </div>
+        `;
       }
 
       if (skipOpen) return;
@@ -2182,6 +2191,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Add drawer-open class to body so site header is smoothly hidden
       document.body.classList.add("drawer-open");
+      syncCtaWidth();
 
       // If panel is already open, just animate content smoothly
       if (expandPanel.style.pointerEvents === "auto") {
@@ -2320,9 +2330,22 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
+    function syncCtaWidth() {
+      const cta = document.querySelector('.hakura-site-header .hakura-header-cta');
+      if (cta) {
+        const w = cta.getBoundingClientRect().width;
+        if (w > 0) {
+          document.documentElement.style.setProperty('--hakura-cta-width', `${w}px`);
+        }
+      }
+    }
+    window.addEventListener('resize', syncCtaWidth, { passive: true });
+    syncCtaWidth();
+
     // Initialize with Medical Data so drawer isn't empty on first load if CSS/JS timing differs
     setTimeout(() => {
       openPillarDrawer('medical', true);
+      syncCtaWidth();
       // Ensure Lenis is running for the main website
       if (window.lenis && typeof window.lenis.start === 'function') {
         window.lenis.start();
@@ -2338,7 +2361,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="hakuraExpandPanel" data-lenis-prevent="true" class="fixed w-screen max-w-full bg-white z-[100005] flex flex-col shadow-none opacity-0 pointer-events-none overflow-hidden" style="display: none; will-change: transform, opacity; width: 100vw; max-width: 100vw;">
   
   <!-- Header (Tabs + Close Buttons Across Full Screen Width - Sem Linhas Divisórias) -->
-  <div class="shrink-0 grid grid-cols-[1fr_auto_1fr] items-center px-4 md:px-12 py-3.5 md:py-4.5 bg-slate-50/85 backdrop-blur-md z-[210] sticky top-0 w-full gap-2 border-b-0 border-none">
+  <div id="hakuraDrawerSubheader" class="hakura-drawer-subheader shrink-0 grid grid-cols-[1fr_auto_1fr] items-center px-4 md:px-12 py-3.5 md:py-4.5 bg-slate-50/85 backdrop-blur-md z-[210] sticky top-0 w-full gap-2 border-b-0 border-none">
     <div class="flex items-center gap-2.5 min-w-0">
       <span class="size-2 rounded-full bg-[#379cb7] animate-pulse shrink-0"></span>
       <span class="text-[12px] md:text-[13px] font-bold text-slate-900 tracking-wider uppercase font-mono truncate hidden sm:inline">HAKURA · PILARES</span>
@@ -2354,10 +2377,12 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 
     <div class="flex items-center justify-end shrink-0">
-      <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-3.5 py-1.5 rounded-full bg-slate-100/90 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border-0 transition-all font-semibold text-[12.5px] tracking-wide gap-2 shadow-none cursor-pointer" aria-label="Voltar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        <span>Voltar</span>
-      </button>
+      <div class="hakura-voltar-anchor flex items-center justify-center">
+        <button id="hakuraCloseExpandPanel" type="button" onclick="window.hakuraCloseDrawer && window.hakuraCloseDrawer()" class="flex items-center justify-center px-3.5 py-1.5 rounded-full bg-slate-100/90 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border-0 transition-all font-semibold text-[12.5px] tracking-wide gap-2 shadow-none cursor-pointer" aria-label="Voltar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Voltar</span>
+        </button>
+      </div>
     </div>
   </div>
   
