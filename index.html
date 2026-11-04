@@ -906,7 +906,7 @@
           </button>
         </form>
         <p class="text-[12px] text-slate-400 mt-4 text-center">
-          Ao subscrever, concorda com a nossa <a href="#" class="underline hover:text-slate-600">Política de Privacidade</a>.
+          Ao subscrever, concorda com a nossa <a href="#politica-de-privacidade" data-privacy-open aria-haspopup="dialog" class="underline hover:text-slate-600">Política de Privacidade</a>.
         </p>
       </div>
     </div>
@@ -1037,8 +1037,7 @@
   <div class="bg-white border-t border-slate-100 flex flex-col items-center justify-center pt-8 pb-28 md:py-12">
     <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6 max-w-7xl mx-auto px-6">
       <ul class="flex flex-wrap justify-center items-center gap-6 text-[13px] md:text-[14px] text-slate-500 m-0 p-0">
-        <li style="list-style: none;"><a href="https://hakura.pt/politica-de-privacidade/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Política de Privacidade</a></li>
-        <li style="list-style: none;"><a href="https://hakura.pt/termos-e-condicoes/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Termos e Condições</a></li>
+        <li style="list-style: none;"><a href="#politica-de-privacidade" data-privacy-open aria-haspopup="dialog" class="hover:text-[#379cb7] transition-colors no-underline">Política de Privacidade</a></li>
         <li style="list-style: none;"><a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener noreferrer" class="hover:text-[#379cb7] transition-colors no-underline">Livro de Reclamação Online</a></li>
       </ul>
       <p class="text-[13px] md:text-[14px] text-slate-500 font-normal m-0 tracking-wide text-center">
@@ -1047,6 +1046,101 @@
     </div>
   </div>
 </footer>
+
+<!-- ==========================================================================
+     POLÍTICA DE PRIVACIDADE — popup (<dialog>)
+     Abre com qualquer link [data-privacy-open] ou com o URL …/#politica-de-privacidade
+     Texto: hakura.pt/politica-de-privacidade/
+     ========================================================================== -->
+<dialog id="hakuraPrivacyDialog" class="hk-privacy" aria-labelledby="hkPrivacyTitle">
+  <div class="hk-privacy__panel">
+    <header class="hk-privacy__header">
+      <div>
+        <span class="hk-privacy__eyebrow">Hakura · RGPD</span>
+        <h2 id="hkPrivacyTitle" class="hk-privacy__title">Política de Privacidade</h2>
+      </div>
+      <button type="button" class="hk-privacy__close" data-privacy-close aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+
+    <div class="hk-privacy__body" data-lenis-prevent>
+      <section>
+        <h3>Considerações gerais</h3>
+        <p>Hakura, Clínica de Bem Estar, Lda. (adiante designada por Hakura), contribuinte n.º 517 986 078, estabelecida em Estrada Salgados – Urbanização Monte Galé, Número 39, 3, Albufeira, tendo como representantes legais Rui Sacramento, é a empresa proprietária do sítio na Internet sob o domínio www.hakura.pt, destinado à apresentação da sua marca, comunicação dos seus serviços, portfólio e forma de contacto.</p>
+        <p>A sua privacidade é muito importante para a Hakura. Respeitamo-la e estamos empenhados em protegê-la.</p>
+        <p>A Hakura compromete-se sempre a respeitar e a cumprir o previsto na legislação nacional e europeia que rege o tratamento de dados pessoais e, por consequência, à defesa e proteção da privacidade, nomeadamente:</p>
+        <ul>
+          <li>Lei de Proteção de Dados Pessoais — Lei n.º 67/98, de 26 de outubro</li>
+          <li>Regulamento Geral sobre a Proteção de Dados — Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, de 27 de abril</li>
+        </ul>
+        <p>A Hakura advoga também todas e quaisquer outras normativas que permitam o estrito cumprimento do tema em questão.</p>
+        <p>Os presentes termos e condições e política de privacidade respeitam ao sítio na Internet supracitado, dando a conhecer aos titulares dos dados a forma de tratamento dos mesmos.</p>
+        <p>A utilização deste site implica a aceitação da presente Política de Privacidade. Caso discorde da mesma, queira por favor abandonar, neste momento, a sua visita.</p>
+      </section>
+
+      <section>
+        <h3>Confidencialidade dos dados</h3>
+        <p>Não solicitamos qualquer informação de caráter pessoal, nem recolhemos dados pessoais, aquando da utilização do nosso sítio, excetuando dados técnicos automáticos provenientes de cookies, conforme abaixo descrito. Não obstante, por sua própria iniciativa, quando entrar em contacto connosco por email, telefone, carta ou presencialmente pelas formas descritas na nossa página de contactos do nosso sítio, poderão ser solicitadas informações referentes a email, telefone e outros dados que possam ser importantes para o acompanhamento do (potencial) cliente. As informações serão somente utilizadas pela Hakura para os propósitos em questão.</p>
+        <p>Sempre que visita o nosso site, é instalado um cookie no seu computador ou outro dispositivo que o aceda. Um cookie é um ficheiro de texto que um site envia para o software do seu browser. Os cookies permitem que um site personalize as informações que lhe são apresentadas, com base nas suas preferências de navegação. Poderá optar por não receber cookies no seu browser, acedendo às configurações do mesmo.</p>
+        <p>A Hakura também utiliza cookies para rastrear as visitas ao nosso site.</p>
+        <p>As informações recolhidas ajudam-nos a otimizar o conteúdo, navegação, layout e desempenho do site, para que possamos proporcionar um melhor serviço.</p>
+        <p>Não facultamos a terceiros, sob circunstância alguma, as suas informações pessoais, sem previamente o informarmos, e sempre em conformidade com a legislação atualmente em vigor relativa à proteção das informações pessoais.</p>
+        <p>As suas informações pessoais poderão ser transmitidas a fornecedores externos subcontratados para determinados serviços, aos quais exigimos que as mantenham igualmente confidenciais.</p>
+      </section>
+
+      <section>
+        <h3>Responsável pelo tratamento de dados</h3>
+        <p>A Hakura é a entidade responsável pela receção e tratamento dos dados pessoais, selecionando que dados são recolhidos (via cookies), as formas de tratamento dos mesmos e o propósito da sua utilização.</p>
+      </section>
+
+      <section>
+        <h3>Controlo sobre os seus dados e esquecimento</h3>
+        <p>A Hakura faculta a todos os clientes a possibilidade de rever, alterar, anular ou eliminar os seus dados pessoais. Para tal, basta contactar-nos por email pelo seguinte endereço <a href="mailto:rgpd@hakura.pt">rgpd@hakura.pt</a> e sugerir a alteração desejada.</p>
+        <p>A Hakura dará resposta a todos os pedidos no mais curto espaço de tempo possível.</p>
+      </section>
+
+      <section>
+        <h3>Tempo de armazenamento</h3>
+        <p>A Hakura guarda os dados até ao máximo de dois anos. Após este período, os mesmos serão eliminados, exceto os que terão que ser mantidos para cumprir as obrigações legais da Hakura, e somente pelo período de tempo necessário, após o qual serão excluídos.</p>
+      </section>
+
+      <section>
+        <h3>Formas de contacto com o cliente</h3>
+        <p>A sua opinião é importante para nós. Poderá ser contactado quando nos coloca alguma questão ou solicita algum esclarecimento utilizando o nosso endereço de email. Esse contacto poderá dar-se por email, por telefone ou através de reunião presencial.</p>
+      </section>
+
+      <section>
+        <h3>Links a sites terceiros</h3>
+        <p>Não incluímos hiperligações para sites de terceiros.</p>
+      </section>
+
+      <section>
+        <h3>Alterações à política de privacidade</h3>
+        <p>Quaisquer mudanças realizadas na Política de Privacidade da Hakura serão discriminadas nesta página.</p>
+      </section>
+
+      <section>
+        <h3>Comissão Nacional de Proteção de Dados (CNPD)</h3>
+        <p>A CNPD é a Autoridade Nacional de Controlo de Dados Pessoais, tendo “[…] como atribuição genérica controlar e fiscalizar o processamento de dados pessoais, em rigoroso respeito pelos direitos do homem e pelas liberdades e garantias consagradas na Constituição e na lei.” Fonte: <a href="https://www.cnpd.pt/" target="_blank" rel="noopener noreferrer">www.cnpd.pt</a></p>
+        <p>Saiba que deverá recorrer à CNPD para qualquer reclamação referente à utilização dos seus dados pessoais.</p>
+      </section>
+
+      <section>
+        <h3>Contactos</h3>
+        <p>Para quaisquer questões relativas a esta Política de Privacidade e assuntos relacionados, ou para efetuar uma reclamação, é favor contactar:</p>
+        <address class="hk-privacy__address">
+          A/c Departamento de Privacidade<br>
+          Hakura<br>
+          Estrada Salgados – Urbanização Monte Galé, Número 39, 3<br>
+          8200-428 Albufeira<br>
+          Tel.: <a href="tel:+351939487700">+351 939 487 700</a><br>
+          Email: <a href="mailto:rgpd@hakura.pt">rgpd@hakura.pt</a>
+        </address>
+      </section>
+    </div>
+  </div>
+</dialog>
 
 <!-- Interactive Booking Modal for HAKURA -->
 <div class="hakura-modal-overlay" id="hakuraModal">
@@ -2550,6 +2644,44 @@ document.addEventListener("DOMContentLoaded", function() {
         closeMobileNav();
       });
     });
+  })();
+</script>
+
+<script>
+  // Política de Privacidade — popup (<dialog>)
+  (function initPrivacyDialog() {
+    const dialog = document.getElementById("hakuraPrivacyDialog");
+    if (!dialog || typeof dialog.showModal !== "function") return;
+    const body = dialog.querySelector(".hk-privacy__body");
+    const HASH = "#politica-de-privacidade";
+
+    function openPrivacy(e) {
+      if (e) e.preventDefault();
+      if (dialog.open) return;
+      if (window.closeMobileNavMenu) window.closeMobileNavMenu();
+      document.documentElement.classList.add("hk-dialog-open");
+      if (window.lenis && window.lenis.stop) window.lenis.stop();
+      dialog.showModal();
+      if (body) body.scrollTop = 0;
+    }
+
+    function onClosed() {
+      document.documentElement.classList.remove("hk-dialog-open");
+      if (window.lenis && window.lenis.start) window.lenis.start();
+      if (location.hash === HASH) history.replaceState(null, "", location.pathname + location.search);
+    }
+
+    document.addEventListener("click", (e) => {
+      const trigger = e.target.closest("[data-privacy-open]");
+      if (trigger) openPrivacy(e);
+    });
+    dialog.querySelectorAll("[data-privacy-close]").forEach((btn) => btn.addEventListener("click", () => dialog.close()));
+    // Click on the dimmed backdrop closes (the panel fills the dialog box)
+    dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener("close", onClosed);
+
+    window.openPrivacyPolicy = openPrivacy;
+    if (location.hash === HASH) openPrivacy();
   })();
 </script>
 </body>

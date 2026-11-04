@@ -241,3 +241,157 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   10. Política de Privacidade — popup (<dialog id="hakuraPrivacyDialog">)
+       Desktop: centred card. Phones: bottom sheet.
+   -------------------------------------------------------------------------- */
+html.hk-dialog-open { overflow: hidden !important; }
+
+.hk-privacy {
+  padding: 0;
+  border: 0;
+  margin: auto;
+  width: min(720px, calc(100vw - 48px));
+  max-width: none;
+  max-height: none;
+  background: transparent;
+  color: #334155;
+  overflow: visible;
+}
+.hk-privacy::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.hk-privacy[open] { animation: hkPrivacyIn 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.hk-privacy[open]::backdrop { animation: hkPrivacyFade 0.35s ease; }
+@keyframes hkPrivacyIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes hkPrivacyFade { from { opacity: 0; } to { opacity: 1; } }
+
+.hk-privacy__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(86vh, 860px);
+  max-height: min(86dvh, 860px);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 32px 80px -24px rgba(15, 23, 42, 0.4);
+  overflow: hidden;
+}
+
+.hk-privacy__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+.hk-privacy__eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #379cb7;
+}
+.hk-privacy .hk-privacy__title {
+  margin: 6px 0 0;
+  font-family: 'Gotu', serif !important;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+.hk-privacy__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #334155;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.hk-privacy__close:hover { background: #e2e8f0; color: #0f172a; }
+.hk-privacy__close:focus-visible { outline: 2px solid #379cb7; outline-offset: 2px; }
+.hk-privacy__close svg { width: 20px; height: 20px; }
+
+.hk-privacy__body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 32px 36px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.hk-privacy__body section { padding-top: 24px; }
+.hk-privacy .hk-privacy__body h3 {
+  margin: 0 0 8px;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 15px;
+  font-weight: 600 !important;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #0f172a;
+}
+.hk-privacy__body p,
+.hk-privacy__body li,
+.hk-privacy__body address {
+  margin: 0 0 12px;
+  color: #475569;
+  font-style: normal;
+}
+.hk-privacy__body ul {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  list-style: disc;
+}
+.hk-privacy__body li { margin-bottom: 6px; }
+.hk-privacy__body li::marker { color: #379cb7; }
+.hk-privacy__body a {
+  color: #2b7d93;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(55, 156, 183, 0.4);
+}
+.hk-privacy__body a:hover { text-decoration-color: currentColor; }
+.hk-privacy__address {
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: #f8fafc;
+  line-height: 1.8;
+}
+
+@media (max-width: 559.98px) {
+  .hk-privacy {
+    width: 100vw;
+    margin: auto 0 0;
+  }
+  .hk-privacy[open] { animation-name: hkPrivacyUp; }
+  @keyframes hkPrivacyUp {
+    from { transform: translateY(100%); }
+    to   { transform: none; }
+  }
+  .hk-privacy__panel {
+    max-height: 90vh;
+    max-height: 90dvh;
+    border-radius: 24px 24px 0 0;
+  }
+  .hk-privacy__header { padding: 22px 20px 16px; }
+  .hk-privacy .hk-privacy__title { font-size: 24px; }
+  .hk-privacy__body {
+    padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
+    font-size: 14.5px;
+  }
+}
