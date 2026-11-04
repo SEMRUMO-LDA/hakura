@@ -1,6 +1,6 @@
 /**
- * HAKURA HEALTH — SCROLL EFFECTS & ANIMATION ENGINE
- * Replicating Neko Health's signature UX/UI motion design:
+ * HAKURA — SCROLL EFFECTS & ANIMATION ENGINE
+ * Signature UX/UI motion design:
  * 1. Lenis Smooth Inertia Scrolling
  * 2. Hero Scroll Scale & Border-Radius Morph
  * 3. Sticky 4-Modalities Explainer Runway (Skin -> Heart -> Blood -> Body) with clip-path transitions
@@ -451,7 +451,7 @@ function initHakuraParticles() {
 }
 
 /* ==========================================================================
-   9. HAKURA BLOG & WELLNESS CAROUSEL (Neko Health Carousel Motion)
+   9. HAKURA BLOG & WELLNESS CAROUSEL
    ========================================================================== */
 function initBlogCarousel() {
   const track = document.getElementById('blogCarouselTrack');

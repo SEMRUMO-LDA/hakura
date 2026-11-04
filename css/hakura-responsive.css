@@ -35,8 +35,6 @@
 #hakuraMobileNavDrawer { z-index: 100030 !important; }
 .hakura-drawer-backdrop { z-index: 100025 !important; }
 .hakura-contact-drawer { z-index: 100030 !important; }
-#hakuraSpecialtyModal,
-.hakura-modal-overlay { z-index: 100040 !important; }
 
 /* Closed off-canvas panels: out of the tab order / accessibility tree */
 .hakura-contact-drawer {
@@ -54,16 +52,6 @@
 #hakuraMobileNavDrawer.open {
   visibility: visible;
   transition: opacity 0.3s ease, visibility 0s linear 0s !important;
-}
-.hakura-modal-overlay:not(.open),
-.hakura-specialty-modal-overlay:not(.open) {
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0s linear 0.25s !important;
-}
-.hakura-modal-overlay.open,
-.hakura-specialty-modal-overlay.open {
-  visibility: visible;
-  transition: opacity 0.25s ease, visibility 0s linear 0s !important;
 }
 #hakuraMobileNavDrawer .hakura-mobile-nav-link {
   min-height: 48px;
@@ -393,5 +381,120 @@ html.hk-dialog-open { overflow: hidden !important; }
   .hk-privacy__body {
     padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
     font-size: 14.5px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Corpo Clínico — compact cards (~20% smaller; more of the team in view)
+       Overrides the sizing in hakura.css (same breakpoints: 640 / 1024).
+   -------------------------------------------------------------------------- */
+.hakura-team-slide {
+  width: 296px !important;
+  min-width: 296px !important;
+  max-width: 296px !important;
+  flex: 0 0 296px !important;
+  padding-left: 20px !important;
+}
+.hakura-team-card-inner {
+  height: 460px !important;
+  border-radius: 24px !important;
+}
+.hakura-team-card-inner img.hakura-team-cutout { padding-top: 20px !important; }
+.hakura-team-card-inner .relative.z-10.p-6 { padding: 20px 22px 24px !important; }
+.team-card-name { font-size: 19px !important; line-height: 1.25 !important; }
+.team-card-spec {
+  font-size: 12.5px !important;
+  min-height: 2.8em; /* reserve 2 lines so names align across cards */
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hakura-team-slide {
+    width: 290px !important;
+    min-width: 290px !important;
+    max-width: 290px !important;
+    flex: 0 0 290px !important;
+    padding-left: 18px !important;
+  }
+  .hakura-team-card-inner { height: 440px !important; }
+}
+
+@media (max-width: 640px) {
+  .hakura-team-slide {
+    width: min(76vw, 284px) !important;
+    min-width: min(76vw, 284px) !important;
+    max-width: 284px !important;
+    flex: 0 0 auto !important;
+    padding-left: 14px !important;
+  }
+  .hakura-team-card-inner { height: 420px !important; }
+  .hakura-team-card-inner .relative.z-10.p-6 { padding: 18px 18px 22px !important; }
+  .team-card-name { font-size: 18px !important; }
+  .team-card-spec { font-size: 12px !important; }
+}
+
+/* --------------------------------------------------------------------------
+   12. Morada → Google Maps (footer + contact drawer)
+   -------------------------------------------------------------------------- */
+.hakura-map-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none !important;
+  border-radius: 6px;
+}
+.hakura-map-link__address { transition: color 0.2s ease; }
+.hakura-map-link__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2b7d93;
+  text-underline-offset: 3px;
+}
+.hakura-map-link__hint svg { width: 14px; height: 14px; flex-shrink: 0; }
+.hakura-map-link:hover .hakura-map-link__address { color: #379cb7; }
+.hakura-map-link:hover .hakura-map-link__hint { text-decoration: underline; }
+.hakura-map-link:focus-visible { outline: 2px solid #379cb7; outline-offset: 4px; }
+@media (max-width: 979.98px) {
+  .hakura-map-link__hint { min-height: 32px; }
+}
+
+/* --------------------------------------------------------------------------
+   13. Footer credits — "Desenvolvido pela AORUBRO"
+       Phones: stacked under the copyright. Desktop: same line with a "·".
+   -------------------------------------------------------------------------- */
+.hakura-credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.hakura-credits__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #334155 !important;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+.hakura-credits__link:hover { color: #379cb7 !important; }
+.hakura-credits__link:focus-visible { outline: 2px solid #379cb7; outline-offset: 2px; border-radius: 4px; }
+@media (min-width: 980px) {
+  .hakura-credits { flex-direction: row; gap: 0; }
+  .hakura-credits__dev::before { content: "·"; margin: 0 10px; color: #cbd5e1; }
+  .hakura-credits__link { min-height: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   14. Hero "CONHEÇA MELHOR" — keep it above the mobile bottom CTA bar
+       (on short screens it sat behind the bar and taps hit the bar instead)
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  .hero-cta-wrap {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }

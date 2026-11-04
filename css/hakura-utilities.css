@@ -158,11 +158,6 @@
   aspect-ratio: 4/5
 }
 
-.size-4\.5 {
-  width: 1.125rem;
-  height: 1.125rem
-}
-
 .size-\[18px\] {
   width: 18px;
   height: 18px
@@ -895,15 +890,6 @@
     gap: 1rem
   }
 
-  .sm\:p-8 {
-    padding: 2rem
-  }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
-
   .sm\:text-\[18px\] {
     font-size: 18px
   }
@@ -922,11 +908,6 @@
 
   .sm\:text-\[54px\] {
     font-size: 54px
-  }
-
-  .sm\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem
   }
 
   .sm\:leading-\[46px\] {
