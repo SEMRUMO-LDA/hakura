@@ -661,3 +661,58 @@ body.drawer-open .hakura-nav-caret { transform: none !important; }
 /* The cookie banner must sit above the floating widget buttons while it is
    open — otherwise they cover its "Rejeitar" / "Aceitar" buttons on phones. */
 html body #stcm-wrapper { z-index: 2147483646 !important; }
+
+/* --------------------------------------------------------------------------
+   19. Specialties panel — booking button shown on its own while the
+       specialist cards are hidden (SHOW_SPECIALISTS = false in index.html)
+   -------------------------------------------------------------------------- */
+.hakura-faq-book-row {
+  display: flex;
+  margin-top: 16px;
+}
+.hakura-faq-book-row .pillar-pro-book-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 18px !important;
+  font-size: 12.5px !important;
+}
+/* Header over the hero uses white nav text; when a pillar panel opens the
+   header turns white, so force dark, shadow-free nav text in that state. */
+body.drawer-open header[data-site-header] nav ul a,
+body.drawer-open header[data-site-header] nav ul a span,
+body.drawer-open header[data-site-header]:not(.header-scrolled) nav ul a,
+body.drawer-open header[data-site-header]:not(.header-scrolled) nav ul a span {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   20. Physiotherapy focus — "Fisioterapia" tag on physio specialties and the
+       short "about Hakura" paragraph under the footer logo
+   -------------------------------------------------------------------------- */
+.hakura-faq-tag {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: #e8f4f7;
+  color: #2b7d93;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hakura-footer-about {
+  max-width: 340px;
+  margin: 2px 0 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #64748b;
+}
+@media (max-width: 979.98px) {
+  .hakura-footer-about { font-size: 14px; max-width: 100%; }
+}

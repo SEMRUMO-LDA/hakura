@@ -6,9 +6,9 @@
       "nome": "Hakura Medical",
       "etiqueta": "ESPECIALIDADES",
       "subtitulo": "Especialidades Clínicas & Reabilitação Funcional",
-      "descricao": "Acompanhamento clínico multidisciplinar com diagnóstico médico de precisão, fisioterapia avançada e planos personalizados de reabilitação e longevidade.",
-      "destaque_titulo": "Medicina Integrada e Reabilitação Funcional",
-      "destaque_descricao": "Acompanhamento multidisciplinar em fisioterapia geral, pélvica e ATM, psicologia clínica, nutrição e medicina geral e familiar.",
+      "descricao": "Fisioterapia e reabilitação com tecarterapia, ondas de choque, eletroterapia e terapia manual, acompanhadas por medicina, psicologia e nutrição para uma recuperação completa.",
+      "destaque_titulo": "Fisioterapia e Reabilitação Funcional",
+      "destaque_descricao": "Fisioterapia geral, pélvica e ATM, Pilates clínico, tecarterapia e ondas de choque, com o apoio de medicina geral, psicologia e nutrição.",
       "texto_botao": "Ver Especialidades Medical"
     },
     {
@@ -159,8 +159,8 @@
       "nome": "Fisioterapia Geral & Postural",
       "pilar": "medical",
       "ordem": 1,
-      "descricao": "Reabilitação funcional, motora e postural adaptada a cada fase de recuperação. Diagnóstico mecânico avançado para alívio de dor e recuperação de mobilidade.",
-      "pontos": "Avaliação biomecânica e postural personalizada\nReabilitação músculo-esquelética e preventiva\nTerapia manual especializada e plano de exercícios clínicos",
+      "descricao": "Avaliação e tratamento de dor lombar e cervical, lesões músculo-esqueléticas e desportivas e reabilitação pós-operatória, com terapia manual, exercício terapêutico, tecarterapia, ondas de choque e eletroterapia.",
+      "pontos": "Avaliação biomecânica e postural personalizada\nReabilitação pós-operatória e de lesões musculares e articulares\nTecarterapia, ondas de choque, ultrassons e eletroterapia\nTerapia manual e plano de exercício terapêutico",
       "profissional": "Raquel Lança"
     },
     {
@@ -182,7 +182,7 @@
     {
       "nome": "Psicologia Clínica",
       "pilar": "medical",
-      "ordem": 4,
+      "ordem": 5,
       "descricao": "Consultas de psicologia clínica e acompanhamento psicoterapêutico contínuo num ambiente acolhedor e seguro focado no seu equilíbrio emocional.",
       "pontos": "Gestão de ansiedade, stress crónico e burnout\nPsicoterapia individual para jovens e adultos\nDesenvolvimento de resiliência e autorregulação emocional",
       "profissional": "Dra. Lisbeth de Sousa"
@@ -190,7 +190,7 @@
     {
       "nome": "Nutrição Clínica Funcional",
       "pilar": "medical",
-      "ordem": 5,
+      "ordem": 6,
       "descricao": "Planos alimentares clínicos individualizados, otimização metabólica, reeducação alimentar e nutrição de precisão para longevidade ativa.",
       "pontos": "Avaliação da composição corporal por bioimpedância\nModulação da microbiota e saúde digestiva\nEstratégias nutricionais preventivas e anti-inflamatórias",
       "profissional": "Dra. Safira Carvalho"
@@ -198,7 +198,7 @@
     {
       "nome": "Medicina Geral e Familiar",
       "pilar": "medical",
-      "ordem": 6,
+      "ordem": 7,
       "descricao": "Acompanhamento médico global, check-ups preventivos, rastreio precoce e diagnóstico clínico integrado para toda a família.",
       "pontos": "Consultas médicas de rotina e prevenção continuada\nAvaliação abrangente de biomarcadores e saúde geral\nOrientação diagnóstica e coordenação clínica personalizada",
       "profissional": "Dra. Mariana Guerreiro"
@@ -206,7 +206,7 @@
     {
       "nome": "Pilates Clínico Individual",
       "pilar": "medical",
-      "ordem": 7,
+      "ordem": 4,
       "descricao": "Sessões 1-para-1 orientadas exclusivamente por fisioterapeuta, com foco no fortalecimento do core, estabilização da coluna e correção postural.",
       "pontos": "Adaptação milimétrica a lesões prévias e postura\nFortalecimento dos estabilizadores profundos da coluna\nMelhoria do controlo motor e consciência corporal",
       "profissional": "Raquel Lança"

@@ -385,7 +385,8 @@ function renderContacts(contactos) {
   document.querySelectorAll('.hakura-map-link').forEach((link) => {
     if (f.google_maps_url) link.setAttribute('href', f.google_maps_url);
     const label = link.querySelector('.hakura-map-link__address');
-    if (label && address.length) label.innerHTML = address.map(esc).join('<br>');
+    // keep the last short token (e.g. "3.º") on the same line as the previous word
+    if (label && address.length) label.innerHTML = address.map((l) => esc(l).replace(/N\.º /g, 'N.º&nbsp;').replace(/ (\S{1,4})$/, '&nbsp;$1')).join('<br>');
   });
 
   // WhatsApp (bottom bar)
