@@ -498,3 +498,21 @@ html.hk-dialog-open { overflow: hidden !important; }
     padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   15. Mobile pillar cards — stronger scrim so the white text stays legible
+       on the new, brighter pillar photos
+   -------------------------------------------------------------------------- */
+#especialidades .snap-start .bg-gradient-to-t {
+  background-image: linear-gradient(
+    to top,
+    rgba(2, 6, 23, 0.92) 0%,
+    rgba(2, 6, 23, 0.74) 38%,
+    rgba(2, 6, 23, 0.28) 62%,
+    rgba(2, 6, 23, 0) 82%
+  ) !important;
+}
+#especialidades .snap-start h3,
+#especialidades .snap-start h3 + p {
+  text-shadow: 0 1px 12px rgba(2, 6, 23, 0.45);
+}
