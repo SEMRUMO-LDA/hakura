@@ -77,7 +77,30 @@
   </div>
   <nav class="hidden md:flex transition-all duration-300 opacity-100 translate-y-0 justify-center">
     <ul class="flex items-center gap-5 lg:gap-8">
-      <li><a href="#especialidades"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">ESPECIALIDADES</span></a></li>
+      <li class="hakura-nav-has-menu">
+        <a href="#especialidades" aria-haspopup="true"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">ESPECIALIDADES</span><svg class="hakura-nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <!-- Hover/focus menu: direct access to the 4 pillars (desktop) -->
+        <div class="hakura-nav-menu" aria-label="Pilares Hakura">
+          <div class="hakura-nav-menu__panel">
+            <button type="button" class="hakura-nav-menu__item" data-pillar="medical">
+              <img class="hakura-nav-menu__thumb" src="./assets/images/pilar_medical.webp" alt="" loading="lazy" decoding="async" />
+              <span class="hakura-nav-menu__text"><span class="hakura-nav-menu__name">Medical</span><span class="hakura-nav-menu__desc" data-pillar-desc>Medicina Integrada e Reabilitação</span></span>
+            </button>
+            <button type="button" class="hakura-nav-menu__item" data-pillar="spa">
+              <img class="hakura-nav-menu__thumb" src="./assets/images/pilar_spa.webp" alt="" loading="lazy" decoding="async" />
+              <span class="hakura-nav-menu__text"><span class="hakura-nav-menu__name">Spa</span><span class="hakura-nav-menu__desc" data-pillar-desc>Rituais de Bem-Estar e Recuperação</span></span>
+            </button>
+            <button type="button" class="hakura-nav-menu__item" data-pillar="holistic">
+              <img class="hakura-nav-menu__thumb" src="./assets/images/pilar_holistic.webp" alt="" loading="lazy" decoding="async" />
+              <span class="hakura-nav-menu__text"><span class="hakura-nav-menu__name">Holistic</span><span class="hakura-nav-menu__desc" data-pillar-desc>Terapias Integrativas e Equilíbrio</span></span>
+            </button>
+            <button type="button" class="hakura-nav-menu__item" data-pillar="aesthetic">
+              <img class="hakura-nav-menu__thumb" src="./assets/images/pilar_aesthetic.webp" alt="" loading="lazy" decoding="async" />
+              <span class="hakura-nav-menu__text"><span class="hakura-nav-menu__name">Aesthetic</span><span class="hakura-nav-menu__desc" data-pillar-desc>Medicina Estética e Cuidados Cutâneos</span></span>
+            </button>
+          </div>
+        </div>
+      </li>
       <li><a href="#equipa"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">EQUIPA</span></a></li>
       <li><a href="#sobre"><span class="text-[12.5px] lg:text-[13.5px] leading-[20px] tracking-[0.04em] font-medium whitespace-nowrap text-slate-800 hover:text-[#379cb7] transition-colors">SOBRE</span></a></li>
       <!-- BLOG oculto até à Fase 2.1 — descomentar para reativar
@@ -1202,21 +1225,6 @@
 <script>
   // Interactive functionality:
   document.addEventListener('DOMContentLoaded', () => {
-    // 2. Interactive tabs for the 4 modalities: skin, heart, blood, body
-    const tabButtons = document.querySelectorAll('button[id^="radix-"], [role="tab"], li button');
-    // Also handle locations carousel prev/next buttons
-    const nextBtns = document.querySelectorAll('button[aria-label="Next slide"], button[aria-label="Next"], [data-slot="carousel"] button');
-    const carouselContent = document.querySelector('[data-slot="carousel-content"]');
-    
-    if (carouselContent && nextBtns.length > 0) {
-      nextBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          carouselContent.scrollBy({ left: 380, behavior: 'smooth' });
-        });
-      });
-    }
-
     // 3. Blog carousel navigation controls
     const blogTrack = document.getElementById('blogCarouselTrack');
     const blogPrev = document.getElementById('blogPrevBtn');
@@ -2366,6 +2374,35 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
+  // Header "ESPECIALIDADES" menu → open a pillar directly (desktop)
+  (function initPillarsNavMenu() {
+    const item = document.querySelector(".hakura-nav-has-menu");
+    if (!item) return;
+    // Keep the subtitles in sync with the pillar titles (kibanCMS-driven)
+    const sync = () => {
+      const data = window.hakuraPillarsData || [];
+      item.querySelectorAll("[data-pillar]").forEach((btn) => {
+        const p = data.find((x) => x.key === btn.dataset.pillar);
+        const desc = btn.querySelector("[data-pillar-desc]");
+        if (p && p.title && desc) desc.textContent = p.title;
+      });
+    };
+    item.addEventListener("mouseenter", sync);
+    item.addEventListener("focusin", sync);
+    item.querySelectorAll("[data-pillar]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        item.classList.add("is-dismissed");
+        btn.blur();
+        if (window.openPillarDrawer) window.openPillarDrawer(btn.dataset.pillar);
+      });
+    });
+    item.addEventListener("mouseleave", () => item.classList.remove("is-dismissed"));
+    item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) item.classList.remove("is-dismissed"); });
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { item.classList.add("is-dismissed"); item.querySelector("a").focus(); }
+    });
+  })();
+
   // Hero "CONHEÇA MELHOR" → smooth scroll down to the next section (#sobre)
   (function initHeroCta() {
     const cta = document.querySelector(".hero-cta-btn");
