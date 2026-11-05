@@ -19,9 +19,11 @@ const API_URL = (import.meta.env.VITE_KIBAN_API_URL || '').replace(/\/+$/, '');
 const TENANT = import.meta.env.VITE_KIBAN_TENANT || '';
 const API_KEY = import.meta.env.VITE_KIBAN_API_KEY || '';
 
-const COLLECTIONS = ['equipa', 'especialidades', 'pilares', 'testemunhos', 'contactos'];
+// Testimonials: the standard kibanCMS "testimonials" collection is preferred;
+// "testemunhos" (created by scripts/kiban-seed.mjs) is the fallback.
+const COLLECTIONS = ['equipa', 'especialidades', 'pilares', 'testimonials', 'testemunhos', 'contactos'];
 const PILLAR_KEYS = ['medical', 'spa', 'holistic', 'aesthetic'];
-const CACHE_KEY = 'hakura-cms-v1';
+const CACHE_KEY = 'hakura-cms-v2';
 const CACHE_TTL = 10 * 60 * 1000; // 10 min — poupa pedidos (limite da API: 100 / 15 min por IP)
 const TIMEOUT = 6000;
 
@@ -63,6 +65,32 @@ const image = (url) => {
 };
 
 const isOn = (value) => value !== false && value !== 'false' && value !== 0;
+
+// js/animations.js hides some elements at load (inline opacity:0) and reveals
+// only the nodes it observed. Clones made from those nodes inherit the hidden
+// state and would never appear — so clones start clean and get the same
+// entrance animation here.
+const REVEAL_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
+let revealObserver = null;
+function revealOnScroll(el) {
+  el.removeAttribute('style');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  }
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = `opacity 0.75s ${REVEAL_EASE}, transform 0.75s ${REVEAL_EASE}`;
+  revealObserver.observe(el);
+}
 
 /* --------------------------------------------------------------------------
    Fetch + cache
@@ -236,7 +264,33 @@ function renderSpecialties(especialidades, equipa) {
 /* --------------------------------------------------------------------------
    3. Testemunhos
    -------------------------------------------------------------------------- */
-function renderTestimonials(testemunhos) {
+const isTrue = (value) => value === true || String(value).toLowerCase() === 'true';
+
+// Standard "testimonials" collection → same shape as "testemunhos"
+// (author_name, testimonial, rating, author_role, featured). Featured first,
+// then newest first. Empty author_role keeps the current "Avaliação Google".
+function fromStandardTestimonials(entries) {
+  return entries
+    .filter((e) => fieldsOf(e).testimonial)
+    .sort((a, b) =>
+      Number(isTrue(fieldsOf(b).featured)) - Number(isTrue(fieldsOf(a).featured)) ||
+      String(b.created_at || '').localeCompare(String(a.created_at || '')))
+    .map((e, i) => {
+      const f = fieldsOf(e);
+      return {
+        title: f.author_name || e.title || '',
+        content: { texto: f.testimonial, origem: f.author_role || 'Avaliação Google', estrelas: f.rating, ordem: i + 1 },
+      };
+    });
+}
+
+function pickTestimonials(data) {
+  const standard = fromStandardTestimonials(data.testimonials || []);
+  if (standard.length) return { list: standard, source: 'testimonials' };
+  return { list: data.testemunhos || [], source: 'testemunhos' };
+}
+
+function renderTestimonials(testemunhos, source) {
   const list = testemunhos.slice().sort(byOrder);
   if (!list.length) return;
   const section = document.querySelector('section[data-slicetype="ratings"]');
@@ -247,6 +301,7 @@ function renderTestimonials(testemunhos) {
     const f = fieldsOf(entry);
     const stars = Math.max(1, Math.min(5, Math.round(Number(f.estrelas) || 5)));
     const fig = template.cloneNode(true);
+    fig.removeAttribute('style'); // drop the inherited hidden state (see revealOnScroll)
     const quote = fig.querySelector('blockquote p');
     const starsEl = fig.querySelector('[aria-hidden="true"].tracking-\\[2px\\]') || fig.querySelector('figcaption span[aria-hidden="true"]');
     const srOnly = fig.querySelector('.sr-only');
@@ -256,10 +311,20 @@ function renderTestimonials(testemunhos) {
     if (starsEl) starsEl.textContent = '★'.repeat(stars);
     if (srOnly) srOnly.textContent = `Avaliação de ${stars} em 5 estrelas`;
     if (name) name.textContent = entry.title || '';
-    if (origin) origin.textContent = f.origem || '';
+    if (origin) {
+      if (f.origem) origin.textContent = f.origem;
+      else {
+        // no source → drop it and the "·" separator before it
+        const dot = origin.previousElementSibling;
+        if (dot && dot.textContent.trim() === '·') dot.remove();
+        origin.remove();
+      }
+    }
     return fig;
   });
   template.parentElement.replaceChildren(...figures);
+  figures.forEach(revealOnScroll);
+  if (section) section.dataset.cmsSource = source || 'testemunhos';
 }
 
 /* --------------------------------------------------------------------------
@@ -343,7 +408,10 @@ function apply(data) {
     () => equipa.length && renderTeam(equipa),
     () => (data.pilares || []).length && renderPillars(data.pilares),
     () => (data.especialidades || []).length && renderSpecialties(data.especialidades, equipa),
-    () => (data.testemunhos || []).length && renderTestimonials(data.testemunhos),
+    () => {
+      const { list, source } = pickTestimonials(data);
+      if (list.length) renderTestimonials(list, source);
+    },
     () => (data.contactos || []).length && renderContacts(data.contactos),
   ];
   steps.forEach((step) => {

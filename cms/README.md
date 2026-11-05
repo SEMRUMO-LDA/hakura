@@ -12,7 +12,7 @@ O site lê quatro conteúdos do kibanCMS **no browser**: Equipa, Especialidades 
 | `equipa` | Carrossel "Corpo Clínico" e o cartão do profissional em cada especialidade |
 | `pilares` | Os 4 pilares: título e descrição na secção Especialidades (desktop e cartões mobile), etiqueta, título e descrição do painel lateral |
 | `especialidades` | Lista de especialidades de cada pilar no painel lateral (descrição, pontos, profissional) |
-| `testemunhos` | Secção Testemunhos |
+| `testimonials` | Secção Testemunhos: `author_name`, `testimonial`, `rating`; `author_role` é a origem (vazio = "Avaliação Google"); `featured` põe-no primeiro. Se estiver vazia, o site usa `testemunhos` (a collection criada pela importação). |
 | `contactos` | Telefone, nota do telefone, email, morada, link do Google Maps, horário e WhatsApp: rodapé, gaveta de contactos, menu mobile e barra mobile |
 
 - Só aparecem no site as entries com estado **Published**. Os rascunhos ficam escondidos.
