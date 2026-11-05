@@ -84,3 +84,24 @@ Depois, fazer um novo build e deploy.
 - **Limite da API:** a API aceita 100 pedidos por 15 minutos por IP. O site faz 5 pedidos na primeira visita e nenhum durante os 10 minutos seguintes. Redes com muitos utilizadores atrás do mesmo IP podem atingir o limite. Nesse caso o site mostra o conteúdo de reserva.
 - **SEO:** o conteúdo de reserva está no HTML. Se o conteúdo no CMS se afastar muito do HTML, convém atualizar o `index.html` de vez em quando.
 - **Fotos da equipa:** usar um recorte com fundo transparente (PNG ou WebP), por volta de 640×1024. O ponto focal definido no CMS é ignorado nestes cartões, porque o recorte fica sempre alinhado em baixo.
+
+## Widgets do kibanCMS
+
+O site carrega o **loader de widgets** do kibanCMS (`js/cms.js` → `https://kiban.pt/api/v1/widgets/loader.js`, com a key de leitura e `data-tenant="hakura"`). O loader pergunta ao CMS que add-ons estão ativos e injeta só esses. **Ligar ou desligar um widget faz-se no admin (Add-ons), sem mexer no site.**
+
+| Widget | Onde aparece |
+|---|---|
+| Aviso de cookies | Na primeira visita e depois num ícone no canto inferior esquerdo |
+| Acessibilidade | Canto inferior esquerdo, agrupado com o ícone dos cookies |
+| Idiomas (tradução automática) | Canto inferior direito, por baixo do botão de chat do site (no computador) |
+| WhatsApp | Desligado, porque o site já tem WhatsApp na barra do telemóvel |
+
+- No telemóvel, os widgets ficam acima da barra "Marcar Consulta" (`css/hakura-responsive.css` §18).
+- Enquanto o aviso de cookies está aberto, fica por cima de todos os widgets.
+
+**Configurar no admin do kibanCMS:**
+- **Aviso de cookies:**
+  - `policyUrl` → `/#politica-de-privacidade` (abre o popup da política de privacidade);
+  - `primaryColor` → `#379cb7` (azul Hakura).
+- **Acessibilidade:** `buttonLabel` → "Acessibilidade".
+- **Idiomas:** precisa de uma chave DeepL válida. Sem ela, mudar de idioma não traduz nada. Se não houver chave, desligue o add-on.

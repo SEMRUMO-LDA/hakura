@@ -641,3 +641,23 @@ html.hk-dialog-open { overflow: hidden !important; }
    keep the menu closed (the panel has its own pillar tabs). */
 body.drawer-open .hakura-nav-menu { display: none !important; }
 body.drawer-open .hakura-nav-caret { transform: none !important; }
+
+/* --------------------------------------------------------------------------
+   18. kibanCMS widgets (loaded by js/cms.js) — on phones/tablets lift every
+       widget button and its panel above the bottom "Marcar Consulta" bar.
+       margin-bottom adds to the loader's own `bottom` offset (fixed elements),
+       so the loader's stacking maths and the widgets' animations stay intact.
+   -------------------------------------------------------------------------- */
+@media (max-width: 979.98px) {
+  html body #stcm-icon,
+  html body #kiban-a11y-btn,
+  html body #kiban-whatsapp-btn,
+  html body #kiban-i18n-widget,
+  html body [id^="kiban-cluster-trigger-b"],
+  html body [id^="kiban-cluster-panel-b"] {
+    margin-bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+/* The cookie banner must sit above the floating widget buttons while it is
+   open — otherwise they cover its "Rejeitar" / "Aceitar" buttons on phones. */
+html body #stcm-wrapper { z-index: 2147483646 !important; }
