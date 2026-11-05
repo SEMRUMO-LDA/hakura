@@ -3949,9 +3949,7 @@ section a:hover [data-slot="button"],
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.hakura-team-slide:hover {
-  transform: translateY(-4px) !important;
-}
+/* (Removed: team card hover lift — cards are not clickable, the effect suggested they were) */
 
 .hakura-carousel-progress-track {
   height: 2px !important;
@@ -4312,9 +4310,7 @@ section a:hover [data-slot="button"],
   }
 }
 
-.hakura-team-slide:hover {
-  /* Hover delegated to .hakura-team-card-inner for single smooth motion */
-}
+/* (Removed: team card hover lift — cards are not clickable, the effect suggested they were) */
 
 /* Inner Card Container: Liquid Glass Aesthetic on Clean White (User Request) */
 .hakura-team-card-inner {
@@ -4341,11 +4337,7 @@ section a:hover [data-slot="button"],
   }
 }
 
-.hakura-team-slide:hover .hakura-team-card-inner {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 28px 60px -12px rgba(55, 156, 183, 0.18), 0 8px 24px -4px rgba(18, 42, 66, 0.06), inset 0 1px 2px 0 rgba(255, 255, 255, 1) !important;
-  border-color: rgba(55, 156, 183, 0.35) !important;
-}
+/* (Removed: team card hover lift — cards are not clickable, the effect suggested they were) */
 
 .hakura-team-card-inner img.hakura-team-cutout {
   position: absolute !important;
@@ -4369,9 +4361,7 @@ section a:hover [data-slot="button"],
   filter: drop-shadow(0 8px 16px rgba(18, 42, 66, 0.05)) !important;
 }
 
-.hakura-team-slide:hover .hakura-team-card-inner img.hakura-team-cutout {
-  transform: scale(1.025) translateY(-3px) !important;
-}
+/* (Removed: team card hover lift — cards are not clickable, the effect suggested they were) */
 
 /* Eliminate opaque white milky scrim that was polluting dark clothes with gray haze */
 .hakura-team-scrim-bottom {
