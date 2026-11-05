@@ -10,8 +10,8 @@ O site lê quatro conteúdos do kibanCMS **no browser**: Equipa, Especialidades 
 | Collection | O que controla no site |
 |---|---|
 | `equipa` | Carrossel "Corpo Clínico" e o cartão do profissional em cada especialidade |
-| `pilares` | Os 4 pilares: título e descrição na secção Especialidades (desktop e cartões mobile), etiqueta, título e descrição do painel lateral |
-| `especialidades` | Lista de especialidades de cada pilar no painel lateral (descrição, pontos, profissional) |
+| `pilares` | Os 4 pilares: título e descrição na secção Especialidades (desktop e cartões mobile), etiqueta, título e descrição do painel lateral ; **Resumo no menu** = texto curto do menu ESPECIALIDADES no cabeçalho |
+| `especialidades` | Lista de especialidades de cada pilar no painel lateral (descrição, pontos, profissional) ; **Sintomas / palavras-chave** = termos que a lupa "O que sente?" usa para sugerir a especialidade |
 | `testimonials` | Secção Testemunhos: `author_name`, `testimonial`, `rating`; `author_role` é a origem (vazio = "Avaliação Google"); `featured` põe-no primeiro. Se estiver vazia, o site usa `testemunhos` (a collection criada pela importação). |
 | `contactos` | Telefone, nota do telefone, email, morada, link do Google Maps, horário e WhatsApp: rodapé, gaveta de contactos, menu mobile e barra mobile |
 
@@ -105,3 +105,11 @@ O site carrega o **loader de widgets** do kibanCMS (`js/cms.js` → `https://kib
   - `primaryColor` → `#379cb7` (azul Hakura).
 - **Acessibilidade:** `buttonLabel` → "Acessibilidade".
 - **Idiomas:** precisa de uma chave DeepL válida. Sem ela, mudar de idioma não traduz nada. Se não houver chave, desligue o add-on.
+
+## Lupa "O que sente?"
+
+No cabeçalho, a pessoa escreve o que sente (ex.: "dor nas costas") e o site sugere até 3 especialidades, com "Ver especialidade" e "Marcar consulta". Código: [`js/symptom-search.js`](../js/symptom-search.js).
+
+- **Privacidade:** tudo corre no browser e o texto escrito **não é enviado para nenhum servidor** (sintomas são dados de saúde).
+- **Como melhorar as sugestões:** no admin, em **Especialidades → Sintomas / palavras-chave**, acrescente os termos que as pessoas usam, separados por vírgulas. Se o campo estiver vazio, a lupa usa a lista de [`sintomas.json`](sintomas.json).
+- **Avisos:** palavras de alarme (ex.: "dor no peito", "falta de ar") mostram um aviso para ligar 112 / SNS 24. A nota "sugestão orientativa" aparece sempre.

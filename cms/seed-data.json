@@ -9,7 +9,8 @@
       "descricao": "Fisioterapia e reabilitação com tecarterapia, ondas de choque, eletroterapia e terapia manual, acompanhadas por medicina, psicologia e nutrição para uma recuperação completa.",
       "destaque_titulo": "Fisioterapia e Reabilitação Funcional",
       "destaque_descricao": "Fisioterapia geral, pélvica e ATM, Pilates clínico, tecarterapia e ondas de choque, com o apoio de medicina geral, psicologia e nutrição.",
-      "texto_botao": "Ver Especialidades Medical"
+      "texto_botao": "Ver Especialidades Medical",
+      "resumo_menu": "Fisioterapia, reabilitação e Pilates clínico"
     },
     {
       "key": "spa",
@@ -20,7 +21,8 @@
       "descricao": "Experiências sensoriais de relaxamento profundo e descompressão do sistema nervoso através de técnicas manuais especializadas e termoterapia.",
       "destaque_titulo": "Rituais de Bem-Estar e Recuperação Profunda",
       "destaque_descricao": "Massagens de relaxamento, terapêutica e ayurvédica, tratamentos corporais remodeladores, drenagem linfática e alívio de tensões musculares.",
-      "texto_botao": "Ver Rituais de Spa"
+      "texto_botao": "Ver Rituais de Spa",
+      "resumo_menu": "Massagens terapêuticas e de relaxamento"
     },
     {
       "key": "holistic",
@@ -31,7 +33,8 @@
       "descricao": "Harmonização integral entre corpo, mente e energia vital através da convergência de saberes tradicionais com acompanhamento personalizado.",
       "destaque_titulo": "Terapias Integrativas e Equilíbrio Natural",
       "destaque_descricao": "Harmonização bioenergética e autorregeneração com acupunctura médica tradicional, sessões de reiki e consultas de homeopatia personalizadas.",
-      "texto_botao": "Ver Terapias Holísticas"
+      "texto_botao": "Ver Terapias Holísticas",
+      "resumo_menu": "Acupunctura, reiki e homeopatia"
     },
     {
       "key": "aesthetic",
@@ -42,7 +45,8 @@
       "descricao": "Protocolos médicos não-invasivos e cuidados cutâneos de vanguarda desenhados para promover a saúde dérmica e a sua beleza natural.",
       "destaque_titulo": "Medicina Estética e Cuidados Cutâneos",
       "destaque_descricao": "Consultas de avaliação médica estética, tratamentos faciais personalizados e limpeza facial profunda para revitalização e saúde da pele.",
-      "texto_botao": "Ver Cuidados Estéticos"
+      "texto_botao": "Ver Cuidados Estéticos",
+      "resumo_menu": "Medicina estética e cuidados de pele"
     }
   ],
   "equipa": [

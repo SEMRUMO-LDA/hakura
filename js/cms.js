@@ -204,6 +204,7 @@ function renderPillars(pilares) {
       if (f.destaque_titulo) slot.title = f.destaque_titulo;
       if (f.destaque_descricao) slot.desc = f.destaque_descricao;
       if (f.texto_botao) slot.linkText = f.texto_botao;
+      if (f.resumo_menu) slot.menu = f.resumo_menu; // header ESPECIALIDADES menu
     }
 
     const card = mobileCards[idx];
@@ -227,6 +228,8 @@ function renderPillars(pilares) {
       if (link) link.textContent = current.linkText;
     }
   }
+  // keep the 4 titles in 2 lines with the new texts (index.html)
+  if (window.hakuraFitExplainerTitle) window.hakuraFitExplainerTitle();
 }
 
 function renderSpecialties(especialidades, equipa) {
@@ -244,6 +247,8 @@ function renderSpecialties(especialidades, equipa) {
       const person = people.get(f.profissional);
       const pf = fieldsOf(person);
       return {
+        slug: entry.slug,
+        keywords: String(f.sintomas || ''), // used only for matching by js/symptom-search.js
         name: esc(entry.title),
         desc: esc(f.descricao),
         bullets: lines(f.pontos).map(esc),

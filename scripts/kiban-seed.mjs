@@ -79,6 +79,7 @@ export const COLLECTIONS = [
       field('destaque_titulo', 'Título em destaque', 'text', { helpText: 'Secção Especialidades (desktop e cartões mobile)' }),
       field('destaque_descricao', 'Descrição em destaque', 'textarea'),
       field('texto_botao', 'Texto do botão (desktop)', 'text'),
+      field('resumo_menu', 'Resumo no menu', 'text', { helpText: 'Texto curto do menu ESPECIALIDADES no cabeçalho' }),
       ORDER,
     ],
   },
@@ -93,6 +94,7 @@ export const COLLECTIONS = [
       field('descricao', 'Descrição', 'textarea', { required: true }),
       field('pontos', 'Foco clínico & indicações', 'textarea', { helpText: 'Um ponto por linha' }),
       field('profissional', 'Profissional responsável', 'reference', { referenceCollection: 'equipa' }),
+      field('sintomas', 'Sintomas / palavras-chave (pesquisa)', 'textarea', { helpText: 'Termos que as pessoas escrevem na lupa do site, separados por vírgulas' }),
       ORDER,
     ],
   },
@@ -213,6 +215,7 @@ async function uploadPhoto(localPath, alt) {
    -------------------------------------------------------------------------- */
 async function main() {
   const seed = JSON.parse(await readFile(path.join(ROOT, 'cms', 'seed-data.json'), 'utf8'));
+  const sintomas = JSON.parse(await readFile(path.join(ROOT, 'cms', 'sintomas.json'), 'utf8'));
   console.log(`kibanCMS: ${API} (tenant "${TENANT}")${DRY_RUN ? ' — DRY RUN' : ''}`);
 
   console.log('→ Login');
@@ -255,6 +258,7 @@ async function main() {
         destaque_titulo: p.destaque_titulo || '',
         destaque_descricao: p.destaque_descricao || '',
         texto_botao: p.texto_botao || '',
+        resumo_menu: p.resumo_menu || '',
         ordem: p.ordem,
       },
     });
@@ -270,6 +274,7 @@ async function main() {
         descricao: e.descricao || '',
         pontos: e.pontos || '',
         profissional: (e.profissional && peopleIds.get(e.profissional)) || '',
+        sintomas: sintomas[`${e.pilar}-${slugify(e.nome)}`] || '',
         ordem: e.ordem,
       },
     });
