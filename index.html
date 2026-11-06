@@ -323,10 +323,10 @@
             <span class="hakura-reveal-word">Na</span> <span class="hakura-reveal-word">Hakura,</span> <span class="hakura-reveal-word">tratamos</span> <span class="hakura-reveal-word">corpo,</span> <span class="hakura-reveal-word">mente</span> <span class="hakura-reveal-word">e</span> <span class="hakura-reveal-word">espírito.</span> <span class="hakura-reveal-word">Unimos</span> <span class="hakura-reveal-word">a</span> <span class="hakura-reveal-word">fisioterapia</span> <span class="hakura-reveal-word">e</span> <span class="hakura-reveal-word">a</span> <span class="hakura-reveal-word">medicina</span> <span class="hakura-reveal-word">convencional</span> <span class="hakura-reveal-word">às</span> <span class="hakura-reveal-word">práticas</span> <span class="hakura-reveal-word">holísticas</span> <span class="hakura-reveal-word">de</span> <span class="hakura-reveal-word">modo</span> <span class="hakura-reveal-word">a</span> <span class="hakura-reveal-word">oferecermos</span> <span class="hakura-reveal-word">um</span> <span class="hakura-reveal-word">atendimento</span> <span class="hakura-reveal-word">único</span> <span class="hakura-reveal-word">e</span> <span class="hakura-reveal-word">acolhedor.</span>
           </h2>
           <div>
-            <a class="hakura-header-cta" href="#especialidades">
-              <span>Pilares Hakura</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:14px!important;height:14px!important;min-width:14px!important;max-width:14px!important;min-height:14px!important;max-height:14px!important;stroke:currentColor!important;"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-            </a>
+            <button type="button" class="hakura-header-cta hk-video-cta" data-video-open aria-haspopup="dialog" aria-controls="hakuraVideoDialog">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10.2 8.6v6.8l5.4-3.4z" fill="currentColor" stroke="none"/></svg>
+              <span>Sente o nosso Espaço</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1118,6 +1118,20 @@
 </dialog>
 
 <!-- ==========================================================================
+     VÍDEO DO ESPAÇO — lightbox (<dialog>, js/video-lightbox.js)
+     Abre com o botão "Sente o nosso Espaço" ([data-video-open]) na secção Sobre.
+     O vídeo só é descarregado quando o visitante abre a lightbox.
+     ========================================================================== -->
+<dialog id="hakuraVideoDialog" class="hk-video" aria-label="Vídeo: conheça o espaço Hakura">
+  <div class="hk-video__frame">
+    <button type="button" class="hk-video__close" data-video-close aria-label="Fechar vídeo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <video class="hk-video__player" controls playsinline preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></video>
+  </div>
+</dialog>
+
+<!-- ==========================================================================
      POLÍTICA DE PRIVACIDADE — popup (<dialog>)
      Abre com qualquer link [data-privacy-open] ou com o URL …/#politica-de-privacidade
      Texto: hakura.pt/politica-de-privacidade/
@@ -1477,6 +1491,8 @@
 <script type="module" src="./js/promo-popup.js"></script>
 <!-- Contact form in the contact drawer → kibanCMS → /obrigado/ -->
 <script type="module" src="./js/contact-form.js"></script>
+<!-- "Sente o nosso Espaço" — video lightbox -->
+<script type="module" src="./js/video-lightbox.js"></script>
 
 <script>
 window.toggleHakuraPillar = function(pillarId) {

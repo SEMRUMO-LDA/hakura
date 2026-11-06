@@ -7,3 +7,6 @@ scratch/
 
 # Allow the env template (real .env files stay ignored)
 !.env*.example
+
+# Original (uncompressed) videos — too big for GitHub; the site uses the web versions in assets/videos/
+assets/videos/originais/
