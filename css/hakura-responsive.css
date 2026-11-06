@@ -1134,12 +1134,22 @@ body.drawer-open .hakura-search-btn { display: none; }
 [data-contact-form][hidden],
 [data-contact-info][hidden] { display: none !important; }
 
-.hk-cform-wrap { display: flex; flex-direction: column; gap: 22px; }
-.hk-cform { display: flex; flex-direction: column; gap: 14px; }
-.hk-cform__row { display: grid; grid-template-columns: 1fr; gap: 14px; }
-@media (min-width: 440px) { .hk-cform__row { grid-template-columns: 1fr 1fr; } }
+/* Compact drawer chrome in form mode, so the whole form fits without scrolling */
+.hakura-contact-drawer.has-form > div:first-child { padding: 14px 24px !important; }
+.hakura-contact-drawer.has-form > div:first-child > span { font-size: 26px !important; }
+.hakura-contact-drawer.has-form > [data-lenis-prevent] { padding: 16px 24px 20px !important; gap: 0 !important; }
+@media (min-width: 980px) {
+  .hakura-contact-drawer.has-form > div:first-child { padding: 16px 32px !important; }
+  .hakura-contact-drawer.has-form > [data-lenis-prevent] { padding: 18px 32px 22px !important; }
+}
 
-.hk-cform__field { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.hk-cform-wrap { display: flex; flex-direction: column; gap: 14px; }
+.hk-cform__lead { margin: 0; font-size: 15px; line-height: 1.5; color: #475569; }
+.hk-cform { display: flex; flex-direction: column; gap: 11px; }
+.hk-cform__row { display: grid; grid-template-columns: 1fr; gap: 11px; }
+@media (min-width: 400px) { .hk-cform__row { grid-template-columns: 1fr 1fr; } }
+
+.hk-cform__field { display: flex; flex-direction: column; gap: 5px; min-width: 0; border: 0; padding: 0; margin: 0; }
 .hk-cform__field > label,
 .hk-cform__field > legend {
   font-size: 13px;
@@ -1147,7 +1157,7 @@ body.drawer-open .hakura-search-btn { display: none; }
   color: #334155;
   padding: 0;
 }
-.hk-cform__field > legend { margin-bottom: 8px; }
+.hk-cform__field > legend { margin-bottom: 6px; }
 .hk-cform__optional { font-weight: 400; color: #94a3b8; }
 
 .hk-cform input[type="text"],
@@ -1155,8 +1165,8 @@ body.drawer-open .hakura-search-btn { display: none; }
 .hk-cform input[type="email"],
 .hk-cform textarea {
   width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
+  min-height: 44px;
+  padding: 10px 14px;
   font-size: 16px; /* ≥16px: no zoom on iOS */
   line-height: 1.4;
   color: #0f172a;
@@ -1166,7 +1176,7 @@ body.drawer-open .hakura-search-btn { display: none; }
   outline: none;
   transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
-.hk-cform textarea { min-height: 84px; resize: vertical; }
+.hk-cform textarea { min-height: 66px; resize: vertical; }
 .hk-cform textarea::placeholder { color: #94a3b8; }
 .hk-cform input:hover,
 .hk-cform textarea:hover { border-color: #cbd5e1; }
@@ -1189,8 +1199,8 @@ body.drawer-open .hakura-search-btn { display: none; }
 .hk-cform__chip span {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 8px 15px;
+  min-height: 36px;
+  padding: 6px 14px;
   font-size: 14px;
   font-weight: 500;
   color: #334155;
@@ -1227,9 +1237,9 @@ body.drawer-open .hakura-search-btn { display: none; }
   justify-content: center;
   gap: 8px;
   width: 100%;
-  min-height: 54px;
-  margin-top: 4px;
-  padding: 14px 24px;
+  min-height: 50px;
+  margin-top: 3px;
+  padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
@@ -1250,25 +1260,58 @@ body.drawer-open .hakura-search-btn { display: none; }
 .hk-cform__status a { font-weight: 600; text-decoration: underline; white-space: nowrap; }
 
 /* "Prefere falar já?" */
-.hk-cform__alt { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 1px solid #f1f5f9; }
-.hk-cform__alt-label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; }
-.hk-cform__alt-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hk-cform__alt { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid #f1f5f9; }
+.hk-cform__alt-label { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; white-space: nowrap; }
+.hk-cform__alt-links { display: flex; gap: 8px; }
 .hk-cform__alt-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 46px;
-  font-size: 14.5px;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 14px;
   font-weight: 500;
   color: #0f172a;
   background: #f1f5f9;
-  border-radius: 14px;
+  border-radius: 12px;
   transition: background-color .2s ease, color .2s ease;
 }
 .hk-cform__alt-btn:hover { background: rgba(55, 156, 183, 0.14); color: #1f6f86; }
-.hk-cform__alt-btn svg { width: 18px; height: 18px; color: #379cb7; }
-.hk-cform__hours { font-size: 12.5px; color: #64748b; margin: 0; }
+.hk-cform__alt-btn svg { width: 17px; height: 17px; color: #379cb7; }
+
+/* Short screens (1366×768 laptops, phones): tighter rhythm so it all fits */
+@media (max-height: 760px) {
+  .hk-cform__lead,
+  .hk-cform__hint { display: none; }
+  .hk-cform { gap: 9px; }
+  .hk-cform-wrap { gap: 12px; }
+  .hk-cform__row { gap: 9px; }
+  .hk-cform input[type="text"],
+  .hk-cform input[type="tel"],
+  .hk-cform input[type="email"] { min-height: 42px; padding-top: 9px; padding-bottom: 9px; }
+  .hk-cform textarea { min-height: 46px; height: 46px; }
+  .hk-cform__chip span { min-height: 34px; padding: 5px 13px; }
+  .hk-cform__submit { min-height: 46px; padding-top: 10px; padding-bottom: 10px; }
+  .hk-cform__alt { padding-top: 12px; }
+  .hk-cform__alt-btn { min-height: 38px; }
+}
+
+/* Phones: slimmer drawer chrome, phone + email side by side, compact chips */
+@media (max-width: 979.98px) {
+  .hakura-contact-drawer.has-form > div:first-child { padding: 10px 16px !important; }
+  .hakura-contact-drawer.has-form > div:first-child > span { font-size: 22px !important; }
+  .hakura-contact-drawer.has-form > [data-lenis-prevent] { padding: 14px 16px 16px !important; }
+  .hk-cform__row { grid-template-columns: 1fr 1fr; }
+  .hk-cform__chips { gap: 6px; }
+  .hk-cform__chip span { font-size: 13.5px; padding-left: 12px; padding-right: 12px; }
+  .hk-cform__consent { font-size: 12.5px !important; }
+}
+@media (max-width: 419.98px) {
+  .hk-cform__alt-label { display: none; }
+  .hk-cform__alt-links { flex: 1; }
+  .hk-cform__alt-btn { flex: 1; }
+}
 /* Phone: the drawer is full-width — hide the kibanCMS floating widgets
    (languages, accessibility/cookies cluster) while it is open, so they don't
    sit on top of the form. The cookie banner itself (#stcm-banner) stays. */
@@ -1280,4 +1323,8 @@ body.drawer-open .hakura-search-btn { display: none; }
     visibility: hidden !important;
     pointer-events: none !important;
   }
+}
+@media (max-width: 379.98px) {
+  .hk-cform__chips { gap: 5px; }
+  .hk-cform__chip span { font-size: 13px; padding-left: 10px; padding-right: 10px; }
 }

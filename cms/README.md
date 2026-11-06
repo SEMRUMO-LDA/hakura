@@ -134,16 +134,11 @@ A gaveta de contactos (botão de chat e links "Contactos") pode mostrar um formu
 
 ### Para ligar (por esta ordem)
 
-1. **Corrigir o kibanCMS: a key do site não pode ler os pedidos. Isto bloqueia tudo o resto.**
-   - Hoje, qualquer API key válida lê qualquer collection: `GET /entries/:collection` usa o cliente de serviço e não verifica a role.
-   - Também lê os pedidos em `GET /forms/submissions`, que só pede uma key.
-   - A key do site é pública, porque está no código do site. Com o add-on Forms instalado, qualquer pessoa poderia ler os nomes, emails e telefones dos pedidos.
-   - **Correção:** em `apps/api/src/routes/entries.ts`, nos `GET` `/:collection`, `/:collection/:slug` e `/by-id/:id`, e em `apps/api/src/routes/forms.ts` (`GET /submissions`), recusar com 403 as collections privadas (`form-submissions`, `forms-config`, newsletter e reservas) quando a role não for `super_admin`, `admin` ou `editor`.
-   - **Confirmar com a key do site.** Os dois pedidos têm de devolver **403**:
-     ```bash
-     curl -H "Authorization: Bearer $VITE_KIBAN_API_KEY" -H "X-Tenant: hakura" https://kiban.pt/api/v1/entries/form-submissions
-     curl -H "Authorization: Bearer $VITE_KIBAN_API_KEY" -H "X-Tenant: hakura" https://kiban.pt/api/v1/forms/submissions
-     ```
+1. **Fazer deploy da correção no kibanCMS.** O ramo `fix/private-collections-api-key` (repositório kibanCMS) impede que a key do site leia os pedidos e as outras collections privadas. Fazer merge para o `main` (deploy no Railway). Depois confirmar com a key do site; os dois pedidos têm de devolver **403**:
+   ```bash
+   curl -H "Authorization: Bearer $VITE_KIBAN_API_KEY" -H "X-Tenant: hakura" https://kiban.pt/api/v1/entries/form-submissions
+   curl -H "Authorization: Bearer $VITE_KIBAN_API_KEY" -H "X-Tenant: hakura" https://kiban.pt/api/v1/forms/submissions
+   ```
 2. **Instalar o add-on Forms** no tenant `hakura` (Extensões → Forms → Install). Cria as collections `form-submissions` e `forms-config`.
 3. **Forms Config:** criar uma entry **Published** com:
    - `form_name` → `contacto`;
@@ -152,13 +147,7 @@ A gaveta de contactos (botão de chat e links "Contactos") pode mostrar um formu
    - `is_active` → `true`;
    - `auto_reply` (opcional) → texto do email de confirmação para o visitante.
 4. **Envio de emails:** o kibanCMS envia por Resend. Confirmar que o tenant tem o email configurado. Em alternativa, usar um `webhook_url` (Make.com), como explica o `docs/FORMS_EMAIL_SETUP.md` do kibanCMS.
-5. **Política de Privacidade:** o texto atual diz "Não solicitamos qualquer informação de caráter pessoal…". Com o formulário passa a ser falso. É preciso acrescentar:
-   - que dados são recolhidos e para quê (responder ao pedido de contacto);
-   - a base legal (consentimento);
-   - durante quanto tempo são guardados (ex.: 12 meses);
-   - os direitos do titular.
-
-   A política está no `index.html` (`#hakuraPrivacyDialog`) e não é gerida pelo CMS.
+5. **Política de Privacidade:** já inclui a secção "Formulário de contacto": dados recolhidos, finalidade, consentimento, 12 meses de conservação e o pedido para não incluir informação clínica. Convém a clínica validá-la e cumprir esses 12 meses.
 6. **Ligar:** em `js/contact-form.js`, mudar `enabled: false` para `enabled: true`. Fazer o build e o deploy. Depois fazer um envio de teste real e confirmar:
    - o pedido aparece em **Form Submissions**;
    - o email chega a geral@hakura.pt.

@@ -1151,12 +1151,20 @@
 
       <section>
         <h3>Confidencialidade dos dados</h3>
-        <p>Não solicitamos qualquer informação de caráter pessoal, nem recolhemos dados pessoais, aquando da utilização do nosso sítio, excetuando dados técnicos automáticos provenientes de cookies, conforme abaixo descrito. Não obstante, por sua própria iniciativa, quando entrar em contacto connosco por email, telefone, carta ou presencialmente pelas formas descritas na nossa página de contactos do nosso sítio, poderão ser solicitadas informações referentes a email, telefone e outros dados que possam ser importantes para o acompanhamento do (potencial) cliente. As informações serão somente utilizadas pela Hakura para os propósitos em questão.</p>
+        <p>A simples navegação no nosso sítio não exige que nos forneça dados pessoais: recolhemos apenas dados técnicos automáticos provenientes de cookies, conforme abaixo descrito. Só recolhemos dados pessoais quando, por sua própria iniciativa, entra em contacto connosco, através do formulário de contacto do sítio, por email, telefone, carta ou presencialmente. Nesses casos, poderão ser solicitadas informações referentes a email, telefone e outros dados que possam ser importantes para o acompanhamento do (potencial) cliente. As informações serão somente utilizadas pela Hakura para os propósitos em questão.</p>
         <p>Sempre que visita o nosso site, é instalado um cookie no seu computador ou outro dispositivo que o aceda. Um cookie é um ficheiro de texto que um site envia para o software do seu browser. Os cookies permitem que um site personalize as informações que lhe são apresentadas, com base nas suas preferências de navegação. Poderá optar por não receber cookies no seu browser, acedendo às configurações do mesmo.</p>
         <p>A Hakura também utiliza cookies para rastrear as visitas ao nosso site.</p>
         <p>As informações recolhidas ajudam-nos a otimizar o conteúdo, navegação, layout e desempenho do site, para que possamos proporcionar um melhor serviço.</p>
         <p>Não facultamos a terceiros, sob circunstância alguma, as suas informações pessoais, sem previamente o informarmos, e sempre em conformidade com a legislação atualmente em vigor relativa à proteção das informações pessoais.</p>
         <p>As suas informações pessoais poderão ser transmitidas a fornecedores externos subcontratados para determinados serviços, aos quais exigimos que as mantenham igualmente confidenciais.</p>
+      </section>
+
+      <section>
+        <h3>Formulário de contacto</h3>
+        <p>Quando preenche o formulário de contacto do sítio, recolhemos o seu nome, telemóvel, email, a área do seu interesse e, caso a escreva, a sua mensagem. Registamos também a página a partir da qual fez o pedido e, quando chega ao sítio através de um anúncio ou campanha, os respetivos identificadores (por exemplo, os parâmetros "gclid" e "utm"), para sabermos que campanhas dão origem a pedidos de contacto.</p>
+        <p>Estes dados são utilizados exclusivamente para responder ao seu pedido e, se o desejar, marcar a sua consulta. O tratamento tem por base o seu consentimento, dado ao assinalar a caixa de autorização do formulário, que pode retirar a qualquer momento, sem comprometer a licitude do tratamento efetuado até essa data.</p>
+        <p>Pedimos que não inclua informação clínica na mensagem: a avaliação do seu caso é feita em consulta.</p>
+        <p>Os pedidos ficam guardados na plataforma de gestão do sítio, alojada por fornecedores subcontratados, aos quais exigimos que os mantenham confidenciais, e são conservados apenas pelo tempo necessário para lhes dar resposta, no máximo 12 meses, salvo se se tornar cliente da Hakura. Para aceder, retificar ou eliminar estes dados, ou retirar o seu consentimento, escreva para <a href="mailto:rgpd@hakura.pt">rgpd@hakura.pt</a>.</p>
       </section>
 
       <section>
@@ -1177,7 +1185,7 @@
 
       <section>
         <h3>Formas de contacto com o cliente</h3>
-        <p>A sua opinião é importante para nós. Poderá ser contactado quando nos coloca alguma questão ou solicita algum esclarecimento utilizando o nosso endereço de email. Esse contacto poderá dar-se por email, por telefone ou através de reunião presencial.</p>
+        <p>A sua opinião é importante para nós. Poderá ser contactado quando nos coloca alguma questão ou solicita algum esclarecimento através do nosso endereço de email ou do formulário de contacto do sítio. Esse contacto poderá dar-se por email, por telefone ou através de reunião presencial.</p>
       </section>
 
       <section>
@@ -1243,12 +1251,7 @@
     <!-- A) Contact form → kibanCMS (js/contact-form.js). Shown only when
          CONTACT_FORM.enabled is true (or with ?form=1 to preview). -->
     <div class="hk-cform-wrap" data-contact-form hidden>
-      <div>
-        <h2 class="font-display text-3xl md:text-4xl text-slate-900 font-normal tracking-tight">Ligamos-lhe nós</h2>
-        <p class="text-[15px] leading-relaxed text-slate-600 mt-2 font-normal">
-          Deixe o seu contacto e a nossa equipa liga-lhe para esclarecer dúvidas ou marcar a sua consulta.
-        </p>
-      </div>
+      <p class="hk-cform__lead">Deixe o seu contacto e nós ligamos-lhe.</p>
 
       <form id="hkContactForm" class="hk-cform" novalidate>
         <div class="hk-cform__field">
@@ -1283,7 +1286,7 @@
 
         <div class="hk-cform__field">
           <label for="hkcfMessage">Mensagem <span class="hk-cform__optional">(opcional)</span></label>
-          <textarea id="hkcfMessage" name="message" rows="3" maxlength="1500" placeholder="Ex.: a melhor altura para lhe ligarmos" aria-describedby="hkcfMessageHint"></textarea>
+          <textarea id="hkcfMessage" name="message" rows="2" maxlength="1500" placeholder="Ex.: a melhor altura para lhe ligarmos" aria-describedby="hkcfMessageHint"></textarea>
           <p class="hk-cform__hint" id="hkcfMessageHint">Por favor, não inclua aqui informação clínica detalhada.</p>
         </div>
 
@@ -1319,7 +1322,6 @@
             <span>WhatsApp</span>
           </a>
         </div>
-        <p class="hk-cform__hours">Atendimento: <span>Segunda a Sexta: 09h00 – 18h00</span></p>
       </div>
     </div>
 
