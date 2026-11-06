@@ -1123,11 +1123,13 @@
      O vídeo só é descarregado quando o visitante abre a lightbox.
      ========================================================================== -->
 <dialog id="hakuraVideoDialog" class="hk-video" aria-label="Vídeo: conheça o espaço Hakura">
-  <div class="hk-video__frame">
+  <div class="hk-video__stage" tabindex="-1" autofocus>
     <button type="button" class="hk-video__close" data-video-close aria-label="Fechar vídeo">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
-    <video class="hk-video__player" controls playsinline preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></video>
+    <div class="hk-video__frame">
+      <video class="hk-video__player" controls playsinline preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></video>
+    </div>
   </div>
 </dialog>
 
