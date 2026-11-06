@@ -116,7 +116,7 @@ No cabeçalho, a pessoa escreve o que sente (ex.: "dor nas costas") e o site sug
 
 ## Formulário de contacto → kibanCMS
 
-A gaveta de contactos (botão de chat e links "Contactos") pode mostrar um formulário. Hoje mostra a informação de contacto:
+A gaveta de contactos (botão de chat e links "Contactos") mostra um formulário de pedido de contacto. **Ativo desde 6/11/2026.** Para voltar a mostrar só os contactos, mude `enabled: true` para `false` em `js/contact-form.js`:
 
 | Ficheiro | O que faz |
 |---|---|
@@ -132,7 +132,7 @@ A gaveta de contactos (botão de chat e links "Contactos") pode mostrar um formu
   - o kibanCMS aceita no máximo 20 envios por 15 minutos por IP.
 - **Pré-visualizar:** acrescente `?form=1` ao URL (ex.: `https://www.hakura.pt/?form=1`).
 
-### Para ligar (por esta ordem)
+### Como foi ligado (para referência ou para outro site)
 
 1. **Fazer deploy da correção no kibanCMS.** O ramo `fix/private-collections-api-key` (repositório kibanCMS) impede que a key do site leia os pedidos e as outras collections privadas. Fazer merge para o `main` (deploy no Railway). Depois confirmar com a key do site; os dois pedidos têm de devolver **403**:
    ```bash

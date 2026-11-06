@@ -11,11 +11,12 @@
  * - Anti-spam: hidden honeypot field + "too fast" check (kibanCMS also limits
  *   to 20 submissions per 15 min per IP).
  *
- * ⚠️ Off until kibanCMS is ready (see cms/README.md → "Formulário de contacto").
- *    Preview at any time with ?form=1 in the URL.
+ * Live since 2026-11-06 (kibanCMS blocks public-key reads of the leads).
+ * Set enabled: false to go back to the plain contact details (?form=1 still
+ * previews the form). Setup: cms/README.md → "Formulário de contacto".
  */
 const CONTACT_FORM = {
-  enabled: false,
+  enabled: true,
   formName: 'contacto',
   thankYouUrl: '/obrigado/',
 };

@@ -1248,7 +1248,7 @@
 
   <!-- Drawer Body -->
   <div class="flex-1 p-6 md:p-8 flex flex-col justify-between gap-8 overflow-y-auto" data-lenis-prevent>
-    <!-- A) Contact form → kibanCMS (js/contact-form.js). Shown only when
+    <!-- A) Contact form → kibanCMS (js/contact-form.js). Shown when
          CONTACT_FORM.enabled is true (or with ?form=1 to preview). -->
     <div class="hk-cform-wrap" data-contact-form hidden>
       <p class="hk-cform__lead">Deixe o seu contacto e nós ligamos-lhe.</p>
@@ -1325,7 +1325,7 @@
       </div>
     </div>
 
-    <!-- B) Contact details (shown while the form is off) -->
+    <!-- B) Contact details (fallback when the form is switched off) -->
     <div class="flex flex-col gap-6" data-contact-info>
       <div>
         <h2 class="font-display text-3xl md:text-4xl text-slate-900 font-normal tracking-tight">Apoio & Contacto</h2>
