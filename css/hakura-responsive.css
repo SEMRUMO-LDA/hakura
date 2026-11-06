@@ -1280,21 +1280,29 @@ body.drawer-open .hakura-search-btn { display: none; }
 .hk-cform__alt-btn:hover { background: rgba(55, 156, 183, 0.14); color: #1f6f86; }
 .hk-cform__alt-btn svg { width: 17px; height: 17px; color: #379cb7; }
 
-/* Short screens (1366×768 laptops, phones): tighter rhythm so it all fits */
+/* Fill the drawer height on every screen: sizes are fluid with the viewport
+   height, the message box takes the remaining space (46px → ~280px) and
+   "Prefere falar já?" sits at the bottom — no empty band, no scrolling. */
+.hakura-contact-drawer.has-form > [data-lenis-prevent] { justify-content: flex-start !important; }
+.hk-cform-wrap { flex: 1 0 auto; gap: clamp(12px, 2.4vh, 28px); }
+.hk-cform { flex: 1 0 auto; gap: clamp(9px, 1.8vh, 20px); }
+.hk-cform__row { gap: clamp(9px, 1.5vh, 16px); }
+.hk-cform__field { gap: clamp(5px, .75vh, 8px); }
+.hk-cform input[type="text"],
+.hk-cform input[type="tel"],
+.hk-cform input[type="email"] { min-height: clamp(42px, 5.5vh, 54px); padding-top: 9px; padding-bottom: 9px; }
+.hk-cform__chips { gap: clamp(6px, 1vh, 10px); }
+.hk-cform__chip span { min-height: clamp(34px, 4.4vh, 42px); }
+.hk-cform__field--grow { flex: 1 1 auto; min-height: 0; max-height: 340px; }
+.hk-cform__field--grow textarea { flex: 1 1 0; height: auto; min-height: 46px; resize: none; }
+.hk-cform__submit { min-height: clamp(46px, 6.2vh, 58px); }
+.hk-cform__lead { font-size: clamp(15px, 1.75vh, 17px); }
+.hk-cform__alt { margin-top: auto; padding-top: clamp(12px, 2.2vh, 22px); }
+.hk-cform__alt-btn { min-height: clamp(38px, 4.8vh, 46px); }
+/* Short screens (1366×768 laptops, phones): drop the lead line and the hint */
 @media (max-height: 760px) {
   .hk-cform__lead,
   .hk-cform__hint { display: none; }
-  .hk-cform { gap: 9px; }
-  .hk-cform-wrap { gap: 12px; }
-  .hk-cform__row { gap: 9px; }
-  .hk-cform input[type="text"],
-  .hk-cform input[type="tel"],
-  .hk-cform input[type="email"] { min-height: 42px; padding-top: 9px; padding-bottom: 9px; }
-  .hk-cform textarea { min-height: 46px; height: 46px; }
-  .hk-cform__chip span { min-height: 34px; padding: 5px 13px; }
-  .hk-cform__submit { min-height: 46px; padding-top: 10px; padding-bottom: 10px; }
-  .hk-cform__alt { padding-top: 12px; }
-  .hk-cform__alt-btn { min-height: 38px; }
 }
 
 /* Phones: slimmer drawer chrome, phone + email side by side, compact chips */
