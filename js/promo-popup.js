@@ -12,7 +12,7 @@
 const PROMO = {
   id: 'hifu-2026-11',
   enabled: true,
-  delaySeconds: 50,
+  delaySeconds: 35,
   snoozeDays: 14,
 };
 

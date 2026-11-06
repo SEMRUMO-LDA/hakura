@@ -490,7 +490,7 @@ html.hk-dialog-open { overflow: hidden !important; }
 }
 
 /* --------------------------------------------------------------------------
-   14. Hero "CONHEÇA MELHOR" — keep it above the mobile bottom CTA bar
+   14. Hero scroll cue — keep it above the mobile bottom CTA bar
        (on short screens it sat behind the bar and taps hit the bar instead)
    -------------------------------------------------------------------------- */
 @media (max-width: 979.98px) {
@@ -1062,4 +1062,222 @@ body.drawer-open .hakura-search-btn { display: none; }
   .hk-promo__text { font-size: 15px; }
   .hk-promo__cta { width: 100%; justify-content: center; }
   .hk-promo__later { width: 100%; height: 40px; }
+}
+
+/* --------------------------------------------------------------------------
+   24. Hero scroll cue — discreet "Descubra" label + thin line with a light
+       travelling down it (replaces the old "CONHEÇA MELHOR" glass pill)
+   -------------------------------------------------------------------------- */
+.hero-scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px 4px;
+  margin-bottom: clamp(10px, 2vh, 24px);
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  position: relative;
+  z-index: 20;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.3s ease;
+}
+.hero-scroll-cue__label {
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding-left: 0.24em; /* optically centre the tracked text */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+.hero-scroll-cue__line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 46px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.24);
+}
+.hero-scroll-cue__line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 16px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  animation: hk-scroll-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes hk-scroll-cue {
+  0% { transform: translateY(-16px); }
+  100% { transform: translateY(46px); }
+}
+.hero-scroll-cue:hover,
+.hero-scroll-cue:focus-visible { color: #ffffff; }
+.hero-scroll-cue:focus-visible { outline: 1px solid rgba(255, 255, 255, 0.7); outline-offset: 4px; border-radius: 6px; }
+@media (max-width: 979.98px) {
+  .hero-scroll-cue__line { height: 34px; }
+  @keyframes hk-scroll-cue {
+    0% { transform: translateY(-16px); }
+    100% { transform: translateY(34px); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue__line::after { animation: none; transform: translateY(14px); }
+}
+
+/* --------------------------------------------------------------------------
+   25. Contact form in the contact drawer (js/contact-form.js)
+       The drawer shows either the form (.has-form) or the contact details.
+   -------------------------------------------------------------------------- */
+[data-contact-form][hidden],
+[data-contact-info][hidden] { display: none !important; }
+
+.hk-cform-wrap { display: flex; flex-direction: column; gap: 22px; }
+.hk-cform { display: flex; flex-direction: column; gap: 14px; }
+.hk-cform__row { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 440px) { .hk-cform__row { grid-template-columns: 1fr 1fr; } }
+
+.hk-cform__field { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.hk-cform__field > label,
+.hk-cform__field > legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  padding: 0;
+}
+.hk-cform__field > legend { margin-bottom: 8px; }
+.hk-cform__optional { font-weight: 400; color: #94a3b8; }
+
+.hk-cform input[type="text"],
+.hk-cform input[type="tel"],
+.hk-cform input[type="email"],
+.hk-cform textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  font-size: 16px; /* ≥16px: no zoom on iOS */
+  line-height: 1.4;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.hk-cform textarea { min-height: 84px; resize: vertical; }
+.hk-cform textarea::placeholder { color: #94a3b8; }
+.hk-cform input:hover,
+.hk-cform textarea:hover { border-color: #cbd5e1; }
+.hk-cform input:focus,
+.hk-cform textarea:focus {
+  background: #ffffff;
+  border-color: #379cb7;
+  box-shadow: 0 0 0 4px rgba(55, 156, 183, 0.14);
+}
+.hk-cform [aria-invalid="true"]:not([type="radio"]) { border-color: #dc6b5b; background: #fffaf9; }
+
+.hk-cform__error { font-size: 12.5px; color: #b42318; min-height: 0; margin: 0; }
+.hk-cform__error:empty { display: none; }
+.hk-cform__hint { font-size: 12px; color: #94a3b8; margin: 0; }
+
+/* Interest chips (radio pills) */
+.hk-cform__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.hk-cform__chip { position: relative; cursor: pointer; }
+.hk-cform__chip input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.hk-cform__chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  user-select: none;
+}
+.hk-cform__chip:hover span { border-color: #9fd3e1; }
+.hk-cform__chip input:checked + span { background: #379cb7; border-color: #379cb7; color: #ffffff; }
+.hk-cform__chip input:focus-visible + span { box-shadow: 0 0 0 4px rgba(55, 156, 183, 0.22); }
+.hk-cform__chip input[aria-invalid="true"] + span { border-color: #f0b4aa; }
+
+/* Consent */
+.hk-cform__consent { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px !important; font-weight: 400 !important; line-height: 1.5; color: #475569 !important; }
+.hk-cform__consent input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: #379cb7;
+  cursor: pointer;
+}
+.hk-cform__consent a { color: #2a87a0; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Honeypot (off-screen; never shown to people) */
+.hk-cform__hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+/* Submit */
+.hk-cform__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 4px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #379cb7;
+  border-radius: 16px;
+  transition: background-color .2s ease, opacity .2s ease;
+  text-align: center !important;
+}
+.hk-cform__submit:hover { background: #2e88a0; }
+.hk-cform__submit:focus-visible { outline: 2px solid #0f172a; outline-offset: 3px; }
+.hk-cform__submit svg { transition: transform .25s ease; }
+.hk-cform__submit:hover svg { transform: translateX(3px); }
+.hk-cform__submit.is-sending { opacity: .75; cursor: progress; }
+.hk-cform__submit.is-sending svg { display: none; }
+
+.hk-cform__status { font-size: 13.5px; line-height: 1.5; color: #b42318; margin: 0; }
+.hk-cform__status:empty { display: none; }
+.hk-cform__status a { font-weight: 600; text-decoration: underline; white-space: nowrap; }
+
+/* "Prefere falar já?" */
+.hk-cform__alt { display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 1px solid #f1f5f9; }
+.hk-cform__alt-label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #94a3b8; }
+.hk-cform__alt-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hk-cform__alt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #0f172a;
+  background: #f1f5f9;
+  border-radius: 14px;
+  transition: background-color .2s ease, color .2s ease;
+}
+.hk-cform__alt-btn:hover { background: rgba(55, 156, 183, 0.14); color: #1f6f86; }
+.hk-cform__alt-btn svg { width: 18px; height: 18px; color: #379cb7; }
+.hk-cform__hours { font-size: 12.5px; color: #64748b; margin: 0; }
+/* Phone: the drawer is full-width — hide the kibanCMS floating widgets
+   (languages, accessibility/cookies cluster) while it is open, so they don't
+   sit on top of the form. The cookie banner itself (#stcm-banner) stays. */
+@media (max-width: 979.98px) {
+  .hakura-contact-drawer.open ~ #kiban-i18n-widget,
+  .hakura-contact-drawer.open ~ .kiban-cluster-trigger,
+  .hakura-contact-drawer.open ~ .kiban-cluster-panel {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }

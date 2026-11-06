@@ -529,7 +529,7 @@ function initBlogCarousel() {
    10. ORGANIC FLOATING BLUE DOT PARTICLES (Editorial Background Layer)
    ========================================================================== */
 /* ==========================================================================
-   10. SOFT & DISCREET ORGANIC BLUE FLOATING PARTICLES (Editorial Background)
+   10. ORGANIC BLUE FLOATING PARTICLES (Editorial Background) — visible, calm
    ========================================================================== */
 function initEditorialParticles() {
   const canvas = document.getElementById('hakuraEditorialParticlesCanvas');
@@ -570,14 +570,14 @@ function initEditorialParticles() {
 
   function createParticles() {
     particles = [];
-    // Soft, discreet density: ~22 on mobile, ~42 on desktop
+    // Visible but calm density: ~36 on mobile, ~70 on desktop
     const isMobile = width < 768;
-    const count = isMobile ? 22 : 42;
+    const count = isMobile ? 36 : 70;
 
     for (let i = 0; i < count; i++) {
       const palette = softBluePalettes[Math.floor(Math.random() * softBluePalettes.length)];
-      // Delicate micro-dot radius (1.0px to 2.2px)
-      const radius = Math.random() * 1.2 + 1.0;
+      // Dot radius 1.6px to 3.4px
+      const radius = Math.random() * 1.8 + 1.6;
 
       particles.push({
         x: Math.random() * width,
@@ -586,8 +586,8 @@ function initEditorialParticles() {
         baseY: Math.random() * height,
         radius: radius,
         color: palette,
-        // Whisper-soft discreet opacity (0.10 to 0.26)
-        baseAlpha: Math.random() * 0.16 + 0.10,
+        // Clearly visible but soft opacity (0.32 to 0.58)
+        baseAlpha: Math.random() * 0.26 + 0.32,
         pulseSpeed: Math.random() * 0.012 + 0.005,
         pulsePhase: Math.random() * Math.PI * 2,
         // Slower, calming organic floating waves
@@ -629,7 +629,7 @@ function initEditorialParticles() {
     ctx.clearRect(0, 0, width, height);
 
     // Subtle faint filaments (barely visible ethereal connections)
-    const connectDist = width < 768 ? 50 : 65;
+    const connectDist = width < 768 ? 70 : 95;
     for (let i = 0; i < particles.length; i++) {
       const p1 = particles[i];
       for (let j = i + 1; j < particles.length; j++) {
@@ -638,12 +638,12 @@ function initEditorialParticles() {
         const dy = p1.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < connectDist) {
-          const lineAlpha = (1 - dist / connectDist) * 0.05 * Math.min(p1.currentAlpha || 0.18, p2.currentAlpha || 0.18);
+          const lineAlpha = (1 - dist / connectDist) * 0.32 * Math.min(p1.currentAlpha || 0.4, p2.currentAlpha || 0.4);
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
           ctx.strokeStyle = `rgba(55, 156, 183, ${lineAlpha.toFixed(3)})`;
-          ctx.lineWidth = 0.6;
+          ctx.lineWidth = 0.8;
           ctx.stroke();
         }
       }
@@ -688,11 +688,18 @@ function initEditorialParticles() {
 
       // Gentle, subtle breathing opacity
       const pulse = Math.sin(time * p.pulseSpeed * 60 + p.pulsePhase);
-      const currentAlpha = Math.max(0.06, Math.min(0.28, p.baseAlpha + pulse * 0.04));
+      const currentAlpha = Math.max(0.2, Math.min(0.65, p.baseAlpha + pulse * 0.08));
       p.currentAlpha = currentAlpha;
 
       const { r, g, b } = p.color;
 
+      // soft halo on the larger dots
+      if (p.radius > 2.6) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${(currentAlpha * 0.12).toFixed(3)})`;
+        ctx.fill();
+      }
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${currentAlpha.toFixed(3)})`;

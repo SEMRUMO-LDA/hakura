@@ -300,13 +300,11 @@
 
     </div>
 
-    <!-- Bottom CTA Button (CONHEÇA MELHOR ↓) - Liquid Glass -->
+    <!-- Discreet scroll cue (label + thin animated line) → #sobre -->
     <div class="hero-cta-wrap flex flex-col items-center pb-10 md:pb-14">
-      <a href="#sobre" class="hero-cta-btn hero-reveal pointer-events-auto group" aria-label="Conheça melhor — descer para a apresentação">
-        <span>CONHEÇA MELHOR</span>
-        <svg viewBox="0 0 24 24" fill="none" class="size-4 shrink-0 transition-transform" stroke="currentColor" stroke-width="2.2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+      <a href="#sobre" class="hero-scroll-cue hero-reveal pointer-events-auto" aria-label="Descer para a apresentação">
+        <span class="hero-scroll-cue__label">Descubra</span>
+        <span class="hero-scroll-cue__line" aria-hidden="true"></span>
       </a>
     </div>
   </div>
@@ -1086,7 +1084,7 @@
 </dialog>
 
 <!-- ==========================================================================
-     PROMO — HIFU (popup comercial). Aparece após 50 s de tempo ativo no site,
+     PROMO — HIFU (popup comercial). Aparece após 35 s de tempo ativo no site,
      uma vez por visitante a cada 14 dias. Configuração: js/promo-popup.js
      Pré-visualizar já: adicionar ?promo=hifu ao endereço.
      ========================================================================== -->
@@ -1241,8 +1239,92 @@
   </div>
 
   <!-- Drawer Body -->
-  <div class="flex-1 p-6 md:p-8 flex flex-col justify-between gap-8 overflow-y-auto">
-    <div class="flex flex-col gap-6">
+  <div class="flex-1 p-6 md:p-8 flex flex-col justify-between gap-8 overflow-y-auto" data-lenis-prevent>
+    <!-- A) Contact form → kibanCMS (js/contact-form.js). Shown only when
+         CONTACT_FORM.enabled is true (or with ?form=1 to preview). -->
+    <div class="hk-cform-wrap" data-contact-form hidden>
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl text-slate-900 font-normal tracking-tight">Ligamos-lhe nós</h2>
+        <p class="text-[15px] leading-relaxed text-slate-600 mt-2 font-normal">
+          Deixe o seu contacto e a nossa equipa liga-lhe para esclarecer dúvidas ou marcar a sua consulta.
+        </p>
+      </div>
+
+      <form id="hkContactForm" class="hk-cform" novalidate>
+        <div class="hk-cform__field">
+          <label for="hkcfName">Nome</label>
+          <input id="hkcfName" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="hkcfNameErr">
+          <p class="hk-cform__error" id="hkcfNameErr"></p>
+        </div>
+        <div class="hk-cform__row">
+          <div class="hk-cform__field">
+            <label for="hkcfPhone">Telemóvel</label>
+            <input id="hkcfPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" required aria-describedby="hkcfPhoneErr">
+            <p class="hk-cform__error" id="hkcfPhoneErr"></p>
+          </div>
+          <div class="hk-cform__field">
+            <label for="hkcfEmail">Email</label>
+            <input id="hkcfEmail" name="email" type="email" autocomplete="email" maxlength="160" required aria-describedby="hkcfEmailErr">
+            <p class="hk-cform__error" id="hkcfEmailErr"></p>
+          </div>
+        </div>
+
+        <fieldset class="hk-cform__field" aria-describedby="hkcfInterestErr">
+          <legend>Em que podemos ajudar?</legend>
+          <div class="hk-cform__chips">
+            <label class="hk-cform__chip"><input type="radio" name="interest" value="fisioterapia" required><span>Fisioterapia</span></label>
+            <label class="hk-cform__chip"><input type="radio" name="interest" value="massagens"><span>Massagens</span></label>
+            <label class="hk-cform__chip"><input type="radio" name="interest" value="holisticas"><span>Terapias holísticas</span></label>
+            <label class="hk-cform__chip"><input type="radio" name="interest" value="estetica"><span>Estética e HIFU</span></label>
+            <label class="hk-cform__chip"><input type="radio" name="interest" value="outro"><span>Outro assunto</span></label>
+          </div>
+          <p class="hk-cform__error" id="hkcfInterestErr"></p>
+        </fieldset>
+
+        <div class="hk-cform__field">
+          <label for="hkcfMessage">Mensagem <span class="hk-cform__optional">(opcional)</span></label>
+          <textarea id="hkcfMessage" name="message" rows="3" maxlength="1500" placeholder="Ex.: a melhor altura para lhe ligarmos" aria-describedby="hkcfMessageHint"></textarea>
+          <p class="hk-cform__hint" id="hkcfMessageHint">Por favor, não inclua aqui informação clínica detalhada.</p>
+        </div>
+
+        <div class="hk-cform__field">
+          <label class="hk-cform__consent">
+            <input type="checkbox" name="consent" required aria-describedby="hkcfConsentErr">
+            <span>Autorizo a Hakura a usar estes dados para me contactar sobre este pedido, nos termos da <a href="#politica-de-privacidade" data-privacy-open aria-haspopup="dialog">Política de Privacidade</a>.</span>
+          </label>
+          <p class="hk-cform__error" id="hkcfConsentErr"></p>
+        </div>
+
+        <!-- anti-spam: real people never see or fill this -->
+        <div class="hk-cform__hp" aria-hidden="true">
+          <label>Não preencher <input type="text" name="hk_hp" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <button type="submit" class="hk-cform__submit">
+          <span class="hk-cform__submit-label">Pedir contacto</span>
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <p class="hk-cform__status" role="alert"></p>
+      </form>
+
+      <div class="hk-cform__alt">
+        <span class="hk-cform__alt-label">Prefere falar já?</span>
+        <div class="hk-cform__alt-links">
+          <a href="tel:+351964166845" class="hk-cform__alt-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <span>Ligar</span>
+          </a>
+          <a href="https://wa.me/351964166845?text=Ol%C3%A1%2C%20estive%20no%20vosso%20site%20e%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="hk-cform__alt-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 01-1.45-5.04c0-5.22 4.25-9.47 9.48-9.47a9.4 9.4 0 016.7 2.78 9.4 9.4 0 012.77 6.7c0 5.22-4.25 9.47-9.47 9.47zm8.06-17.53A11.33 11.33 0 0012.04.63C5.76.63.66 5.73.66 12c0 2 .52 3.96 1.52 5.69L.56 23.63l6.08-1.6a11.36 11.36 0 005.4 1.38h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <p class="hk-cform__hours">Atendimento: <span>Segunda a Sexta: 09h00 – 18h00</span></p>
+      </div>
+    </div>
+
+    <!-- B) Contact details (shown while the form is off) -->
+    <div class="flex flex-col gap-6" data-contact-info>
       <div>
         <h2 class="font-display text-3xl md:text-4xl text-slate-900 font-normal tracking-tight">Apoio & Contacto</h2>
         <p class="text-[15px] leading-relaxed text-slate-600 mt-2 font-normal">
@@ -1310,7 +1392,7 @@
     </div>
 
     <!-- Bottom Button: Send message -->
-    <div class="flex flex-col gap-3 mt-6">
+    <div class="flex flex-col gap-3 mt-6" data-contact-info>
       <div class="flex items-center gap-4 before:h-px before:flex-1 before:bg-slate-100 after:h-px after:flex-1 after:bg-slate-100 mb-2">
         <span class="text-[13px] font-semibold tracking-wider text-slate-400 uppercase">Precisa de Ajuda?</span>
       </div>
@@ -1377,10 +1459,11 @@
 
     // Close the contact drawer on Escape key
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !document.querySelector('dialog[open]')) {
         closeDrawer();
       }
     });
+    window.openContactDrawer = openDrawer;
 
   });
 </script>
@@ -1393,8 +1476,10 @@
 <script type="module" src="./js/cms.js"></script>
 <!-- "O que sente?" — symptom → specialty suggestions (runs locally in the browser) -->
 <script type="module" src="./js/symptom-search.js"></script>
-<!-- Commercial popup (HIFU) after 50 s of active time -->
+<!-- Commercial popup (HIFU) after 35 s of active time -->
 <script type="module" src="./js/promo-popup.js"></script>
+<!-- Contact form in the contact drawer → kibanCMS → /obrigado/ -->
+<script type="module" src="./js/contact-form.js"></script>
 
 <script>
 window.toggleHakuraPillar = function(pillarId) {
@@ -2585,9 +2670,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   })();
 
-  // Hero "CONHEÇA MELHOR" → smooth scroll down to the next section (#sobre)
+  // Hero scroll cue → smooth scroll down to the next section (#sobre)
   (function initHeroCta() {
-    const cta = document.querySelector(".hero-cta-btn");
+    const cta = document.querySelector(".hero-scroll-cue");
     if (!cta) return;
     cta.addEventListener("click", (e) => {
       e.preventDefault();

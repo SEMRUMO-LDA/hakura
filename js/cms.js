@@ -15,6 +15,8 @@
  *                        NUNCA usar a key de um admin/editor: fica pública no site.
  */
 
+import { loadKibanWidgets } from './kiban-widgets.js';
+
 const API_URL = (import.meta.env.VITE_KIBAN_API_URL || '').replace(/\/+$/, '');
 const TENANT = import.meta.env.VITE_KIBAN_TENANT || '';
 const API_KEY = import.meta.env.VITE_KIBAN_API_KEY || '';
@@ -426,33 +428,9 @@ function apply(data) {
   if (window.ScrollTrigger) window.ScrollTrigger.refresh();
 }
 
-/* --------------------------------------------------------------------------
-   kibanCMS widgets (cookie notice, accessibility, languages, WhatsApp…)
-   One loader asks the CMS which add-ons are enabled and injects only those —
-   turning a widget on/off is done in the kibanCMS admin, not here.
-   -------------------------------------------------------------------------- */
-function loadWidgets() {
-  if (document.querySelector('script[data-kiban-widgets]')) return;
-  // Desktop: let the loader stack our floating chat button with the widgets in
-  // the bottom-right corner instead of overlapping it (hidden on mobile, where
-  // the bottom CTA bar is used — see css/hakura-responsive.css §18).
-  const chat = document.getElementById('hakuraContactDrawerBtn');
-  if (chat && window.matchMedia('(min-width: 980px)').matches) {
-    chat.setAttribute('data-kiban-stack-corner', 'bottomRight');
-    chat.setAttribute('data-kiban-stack-height', '56');
-  }
-  const script = document.createElement('script');
-  script.src = new URL('/api/v1/widgets/loader.js', API_URL).href;
-  script.async = true;
-  script.setAttribute('data-api-key', API_KEY);
-  if (TENANT) script.setAttribute('data-tenant', TENANT);
-  script.setAttribute('data-kiban-widgets', '');
-  document.body.appendChild(script);
-}
-
 async function init() {
   if (!API_URL || !API_KEY) return; // CMS not configured → static content stays
-  loadWidgets();
+  loadKibanWidgets(); // cookie notice, accessibility… (js/kiban-widgets.js)
 
   const cached = readCache();
   if (cached) apply(cached.data);
